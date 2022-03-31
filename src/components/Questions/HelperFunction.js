@@ -4,7 +4,7 @@
 var sortedQuestions = resData.results.sort( (a, b) => {
   return  b.question_helpfulness - a.question_helpfulness
  })
-//  Output = [ {}, {}, {}, {} ]
+//  Output = High->Low    [ {}, {}, {}, {} ]
 
 
 //  Sorted answers per question
@@ -17,4 +17,4 @@ var sortAnswers = (question) => {
       return  b.helpfulness - a.helpfulness
     })
 }
-//  Output = [ {}, {}, {}, {} ]
+//  Output = High->Low   [ {}, {}, {}, {} ]

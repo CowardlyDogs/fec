@@ -1,5 +1,6 @@
 
-
+// Sample Data from GET request for single product.
+// https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/?product_id=40344&count=100&page=1
 
 var sampleData = {
   "product_id": "40344",
@@ -871,37 +872,3 @@ var sampleData = {
       }
   ]
 }
-
-
-// var testing = () => {
-//   sampleData.results.forEach(question => {
-//     console.log(question.question_body)
-//   })
-// }
-
-debugger;
- var sortQuestions = (resData) => {
-   var results = resData.results.sort( (a, b) => {
-     return  b.question_helpfulness - a.question_helpfulness
-   })
-   return results;
- }
-
- var sortAnswers = (question) => {
-   var results = [];
-   for (const key in question.answers) {
-     results.push(question.answers[key])
-    }
-    results.sort( (a, b) => {
-       return  b.helpfulness - a.helpfulness
-     })
- }
-
-var sorted = sortQuestions(sampleData)
-
-var answers = sortAnswers(sorted[0])
-
-
-console.log(answers)
-
-
