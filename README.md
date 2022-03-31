@@ -12,5 +12,5 @@ https://github.com/DaltonHart/HowTo-React-Webpack-Babel
 - Cors? - maybe not since only front-end
 - axios
 - Moment
-
-
+- React
+- ReactDOM
