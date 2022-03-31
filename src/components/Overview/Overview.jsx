@@ -5,12 +5,12 @@ import StylesSelector from './sub-components/StylesSelector/StylesSelector.jsx';
 import Cart from './sub-components/Cart/Cart.jsx';
 import ImageGallery from './sub-components/ImageGallery/ImageGallery.jsx';
 
-const OverviewContext = React.createContext(null);
+export const OverviewContext = React.createContext(null);
 
 function Overview () {
 
   return (
-    <OverviewContext.Provider>
+    <OverviewContext.Provider value="hi">
       <ProductInfo />
       <StylesSelector />
       <Cart />
