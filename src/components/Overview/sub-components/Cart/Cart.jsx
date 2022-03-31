@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
-import Overview from '../Overview.jsx';
+import SizeSelector from ('./SizeSelector.jsx');
+import QuantitySelector from ('./QuantitySelector.jsx');
+import AddToCart from ('./AddToCart.jsx');
 
 function Cart () {
   const product = useContext(OverviewContext);

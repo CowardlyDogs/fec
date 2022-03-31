@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import Overview from '../Overview.jsx';
+import DefaultView from ('./DefaultView.jsx');
+import ExpandedView from ('./ExpandedView.jsx');
 
 function ImageGallery () {
   const product = useContext(OverviewContext);
