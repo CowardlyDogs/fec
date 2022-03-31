@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import App from '../App.jsx';
+import Overview from '../Overview.jsx';
 
-function Overview () {
+function Cart () {
 
 
   return (
@@ -11,4 +11,4 @@ function Overview () {
   );
 }
 
-export default Overview;
+export default Cart;
