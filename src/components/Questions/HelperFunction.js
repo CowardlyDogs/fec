@@ -1,13 +1,17 @@
 // Data helper functions
 
 // Sorting questions from product based on **helpfulness**
-var sortedQuestions = resData.results.sort( (a, b) => {
-  return  b.question_helpfulness - a.question_helpfulness
- })
-//  Output = High->Low    [ {}, {}, {}, {} ]
+var sortQuestions = (resData) => {
+  var results = resData.results.sort( (a, b) => {
+    return  b.question_helpfulness - a.question_helpfulness
+  })
+  return results;
+}
+//  Output = High->Low   [ {}, {}, {}, {} ]
 
 
-//  Sorted answers per question
+
+// Sorting answers from single question
 var sortAnswers = (question) => {
   var results = [];
   for (const key in question.answers) {

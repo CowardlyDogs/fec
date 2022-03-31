@@ -1,6 +1,5 @@
 
-// Sample Data from GET request for single product.
-// https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/?product_id=40344&count=100&page=1
+
 
 var sampleData = {
   "product_id": "40344",
@@ -872,3 +871,4 @@ var sampleData = {
       }
   ]
 }
+
