@@ -1,34 +1,100 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
+import axios from 'axios';
 
+import HelperFunction from './HelperFunction.js'
+import QuesContainer from './sub-components/Question/QuesContainer.jsx';
+import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
-import QuestionModal from './sub-components/QuestionModal.jsx';
 import AddQuestion from './sub-components/AddQuestion.jsx';
 
 
-const QandAContext = React.createContext(null);
+export const QandAContext = React.createContext(null);
 
-var questionsModule = () => {
+var QandA = (props) => {
 
-  // Boolean switches - Button OR AddQuestion pop-up
-  var questionButton = <button onClick={toggleStateBOOLEAN}>Have a question?</button>
-  var addQuestionModal = stateBOOLEAN ? questionButton : <AddQuestion />
+  const [ product, setProduct ] = useState(props.productID)
+  const [ questions, setQuestions ] = useState(null);
+  const [ searchVal, setSearchVal ] = useState('');
+  const [ searchResults, setSearchQuestions ] = useState(null);
+  const [ addQuestion, setAddQuestion ] = useState(false);
+  const [ viewNum, setViewNum ] = useState(0);
+
+  // Axios GET request to bring in data -- potentially inside useEffect?
+  // Set state with data from API call
+  //  Need to attach headers
+  // useEffect(() => {
+  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/40344/100/1')
+  //     .then(response => {
+  //       console.log(response);
+  //       var sorted = HelperFunction.sortQuestions(response.data);
+  //       setQuestions(sorted);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     })
+  // }, []);
+
+
+  // After search, set searchQuestions to filtered results
+  var searchQuestions = (search) => {
+    // Filter questions
+    console.log('hello')
+    // var filtered = questions.map( question => {
+    //   if (question.body.includes(search)) {
+    //     return question;
+    //   }
+    // })
+    // // Sort questions
+    // var sortedSearch = HelperFunction.sortQuestions(filtered);
+    // // Set them to state
+    // setSearchQuestions(sortedSearch);
+  }
+
+
+
+
+
+  // Boolean switche for addQuestion Modal
+  var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Have a question?</button>
+  var addQuestionModal = !addQuestion ? questionButton : <AddQuestion />
+
+
 
   // Conditional rendering
-  if (productQuestions.length > ) {
-    pageload = <QuestionModal data={TopQuestion}/>;
-    searchQuestions = <Search />
-    showMore = <button>Show more Questions</button>
+  //  If length of questions is 0, load a 'No questions asked yet'
+  var pageload, search, noQuestions;
+  if (false) {
+    pageload = <QuesContainer />;
+    search = <Search />
+  } else {
+    pageload = <span>No questions asked yet.</span>
   }
 
 
   return (
-    <div>
-      <h2>Questions</h2>
-           {searchQuestions}
-           {pageLoad}
-           {addQuestionModal}
-    </div>
+    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions}}>
+      <div>
+        {console.log(addQuestion)}
+        <h2>Questions and Answers</h2>
+        <div>{search}</div>
+        <div>{pageload}</div>
+        <div>{addQuestionModal}</div>
+      </div>
+    </QandAContext.Provider>
   );
 }
 
-export default questionsModule;
+export default QandA;
+
+
+
+
+// For testing before future import to App.js
+// const App = () => {
+//   return (
+//     <div>
+//       <h1>Hello World</h1>
+//       <QandA />
+//     </div>
+//   )
+// }
