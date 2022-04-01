@@ -1,5 +1,7 @@
 import React from 'react';
-import '../Related.css';
+import './css/Related.css';
+const sHelp = require('./ServerHelper.js');
+const shirt = require("./temp/shirt.png");
 //import hooks
 
 //will be carousel scrolling horizontal
@@ -11,31 +13,38 @@ import '../Related.css';
 //once last card on right is displayed, right arrow hides
 //action button opens modal comparing details of current product and selected product
 function Related() {
-  return
+  return (
     <div
-      className="related"
+      className="card"
       // onClick={update main product id to clicked id}
       >
       <div>
         {/* star image */}
+        *****
       </div>
-      <img>
-      {/* product.image */}
-      </img>
+      <button>
+        {/* action button */}
+        STAR
+      </button>
+      <img src={shirt}/>
       <p>
         {/* product.name
         in
         product.category */}
+        Product Name <br/>
+        in <br/>
+        Product Category
       </p>
       <p>
         {/* product.saleprice */}
         {/* was */}
         {/* product.price */}
+        Sale Price <br/>
+        was <br/>
+        Full Price
       </p>
-      <button>
-        {/* action button */}
-      </button>
     </div>
+  )
 }
 
 

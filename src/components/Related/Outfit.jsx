@@ -1,5 +1,6 @@
 import React from 'react';
-import '../Outfits.css';
+import './css/Related.css';
+const sHelp = require('./ServerHelper.js');
 //import needed hooks
 
 //appears below related list
@@ -16,31 +17,43 @@ import '../Outfits.css';
 //persist after leaving and returning (definitely session id cookie)
 //action button = X -> removes item from list
 function Outfit() {
-  return
-    <div className="Outfit">
-      <div className="add-outfit">
+  return (
+    <div
+      className="card">
+      <h2>Your Outfit</h2>
+      <h3>
         Add to Outfit
-      </div>
+      </h3>
       <div>
         {/* star image */}
+        *****
       </div>
-      <img>
+      <button>
+        {/* action button */}
+        X
+      </button>
+      <p className="delete me">Product Image</p>
+      {/* <img> */}
       {/* product.image */}
-      </img>
+      {/* </img> */}
       <p>
         {/* product.name
         in
         product.category */}
+        Product Name <br/>
+        in <br/>
+        Product Category
       </p>
       <p>
         {/* product.saleprice */}
         {/* was */}
         {/* product.price */}
+        Sale Price <br/>
+        was <br/>
+        Full Price
       </p>
-      <button>
-        {/* action button */}
-      </button>
     </div>
+  )
 }
 
 

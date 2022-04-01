@@ -13,12 +13,14 @@ import React from 'react';
 //if comparison too long to display, should become scrollable
 //product names remain fixed at top of list
 function Compare() {
+  return (
   <div>
     <h3>
       Comparing
     </h3>
     {/* do stuff */}
   </div>
+  )
 }
 
 
