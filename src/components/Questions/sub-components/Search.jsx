@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
-import { QandAContext } from '../QandA.jsx'
+import { QandAContext } from '../QandA.jsx';
 
-function Search () {
+var Search = () => {
   const { product, setSearchVal, searchVal, searchQuestions } = useContext(QandAContext);
 
   var handleClick = (e) => {
     e.preventDefault();
-    searchQuestions(searchVal)
-  }
+    searchQuestions(searchVal);
+  };
 
   return (
     <form>
@@ -17,6 +17,6 @@ function Search () {
       <button type='submit' onClick={handleClick}> Search </button>
     </form>
   );
-}
+};
 
 export default Search;

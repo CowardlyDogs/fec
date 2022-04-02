@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
-import { QandAContext } from '../QandA.jsx'
+import { QandAContext } from '../QandA.jsx';
 
 // Pop-up module to add answer - toggles with button on QandA component.
 // Click anywhere on screen outside of modal and should disappear.
 
-function AddQuestion () {
+var AddQuestion = () => {
   const product = useContext(QandAContext);
 
   return (
@@ -13,6 +13,6 @@ function AddQuestion () {
       Add Question
     </div>
   );
-}
+};
 
 export default AddQuestion;
