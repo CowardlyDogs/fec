@@ -16,7 +16,7 @@ function Carousel() {
   return (
     <div className="container">
       <div className="left" onClick={()=>{curItem > 0 && setCurItem(curItem - 1)}}> <ArrowBackIosIcon/> </div>
-      <Card/>
+      <MapHelper/>
       <div className="right" onClick={()=>{curItem < items.length - 1 && setCurItem(curItem + 1)}}> <ArrowForwardIosIcon/> </div>
     </div>
   )

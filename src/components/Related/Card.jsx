@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import './css/Related.css';
-import items from './sampledata.jsx';
 import StarIcon from '@material-ui/icons/Star';
 import FlareIcon from '@material-ui/icons/Flare';
+import items from './sampledata.jsx';
 
 
 function Card() {
+  // const [state, changeState] = useState({
+  //   image: '',
+  //   star: null,
+  //   action: null,
+  //   product: '',
+  //   category: '',
+  //   price: '',
+  //   sale: ''
+  // });
   const [curItem, setCurItem] = useState(0);
+
   return (
     <div className="card">
         <div className="card-inner" style={{backgroundImage: `url(${items[curItem].image})`}}>
