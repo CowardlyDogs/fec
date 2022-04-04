@@ -4,14 +4,22 @@ import ReviewList from './sub-components/ReviewList.jsx';
 
 var ReviewModule = (props) => {
 
-  const [ product,   setProduct]   = useState(props.productID);
-  const [ reviews,   setReviews]   = useState([]);
-  const [ addReview, setAddReview] = useState(false);
-  const [ page,      addPage]      = useState(0);
+  var productID = props.productID ||'40344';
+
+  const   [   product,            setProduct            ]   =   useState(productID);
+  //const [   reviews,            setReviews            ]   =   useState([]);
+  const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
+  const   [   page,               setPage               ]   =   useState(0);
+
+  var toggleNewReview = () => {
+    setNewReviewVisible(!newReviewVisible);
+  }
+
 
   return (
     <div>
       <h1>Ratings and Reviews Will Go Here</h1>
+
       {/*****TODO***
       *
       * Create styled Div's
@@ -20,8 +28,8 @@ var ReviewModule = (props) => {
       *
       */}
 
-      <NewReview/>
-      <ReviewList/>
+      <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product}/>
+      <ReviewList page={page} setPage={setPage} product={product}/>
    </div>
   );
 }
