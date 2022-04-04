@@ -4,7 +4,7 @@ import ProductInfo from './sub-components/ProductInfo/ProductInfo.jsx';
 import StylesSelector from './sub-components/StylesSelector/StylesSelector.jsx';
 import Cart from './sub-components/Cart/Cart.jsx';
 import ImageGallery from './sub-components/ImageGallery/ImageGallery.jsx';
-import authorizaion from '../../../config.js';
+import authorization from '../../../config.js';
 const axios = require('axios');
 
 export const OverviewContext = React.createContext(null);
@@ -17,7 +17,7 @@ function Overview () {
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
       headers: {
-        Authorization: authorizaion.TOKEN
+        Authorization: authorization.TOKEN
       }
     })
       .then((results) => {
