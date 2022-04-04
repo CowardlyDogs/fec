@@ -1,7 +1,9 @@
 import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
+import reactDOM from 'react-dom';
+import './styles.css';
 
-import HelperFunction from './HelperFunction.js';
+import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
 import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
@@ -10,10 +12,11 @@ import AddQuestion from './sub-components/AddQuestion.jsx';
 
 export const QandAContext = React.createContext(null);
 
+
 var QandA = (props) => {
 
   const [ product,       setProduct ] =         useState(props.productID);
-  const [ questions,     setQuestions ] =       useState(null);
+  const [ questions,     setQuestions ] =       useState([]);
   const [ searchVal,     setSearchVal ] =       useState('');
   const [ searchResults, setSearchQuestions ] = useState(null);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
@@ -21,18 +24,18 @@ var QandA = (props) => {
 
   // Axios GET request to bring in data. Set state with data from API call. **Need to attach authorization headers
   useEffect(() => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/40344/100/1', {
-      headers: {Authorization: 'tokenhere'}
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/?product_id=40344&page=1&count=100', {
+      headers: { Authorization: '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' }
     })
       .then(response => {
-        console.log(response);
-        var sorted = HelperFunction.sortQuestions(response.data);
+        var sorted = sortQuestions(response.data);
         setQuestions(sorted);
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
+
 
 
   // After search, set searchQuestions to filtered results
@@ -61,12 +64,12 @@ var QandA = (props) => {
 
   // Conditional rendering
   //  If length of questions is 0, load a 'No questions asked yet'
-  var pageload;
+  var questionList;
   var search;
   var noQuestions;
 
-  if (false) {
-    pageload = <QuesContainer />;
+  if (true) {
+    questionList = <QuesContainer />;
     search = <Search />;
   } else {
     pageload = <span>No questions asked yet.</span>;
@@ -76,10 +79,9 @@ var QandA = (props) => {
   return (
     <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions}}>
       <div>
-        {console.log(addQuestion)}
         <h2>Questions and Answers</h2>
         <div>{search}</div>
-        <div>{pageload}</div>
+        <div>{questionList}</div>
         <div>{addQuestionModal}</div>
       </div>
     </QandAContext.Provider>

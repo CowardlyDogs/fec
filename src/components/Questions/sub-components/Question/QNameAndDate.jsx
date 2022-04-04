@@ -4,15 +4,15 @@ import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 
 
-var HelpReport = () => {
+var QNameAndDate = ({name, date}) => {
   const product = useContext(QandAContext);
   const { data } = useContext(QuestionContext);
 
   return (
     <div>
-      Question Helpful? Report Question
+      <strong>Question from: {name} on {date}</strong>
     </div>
   );
 };
 
-export default HelpReport;
+export default QNameAndDate;

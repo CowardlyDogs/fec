@@ -12,7 +12,6 @@ var Search = () => {
 
   return (
     <form>
-      {console.log(searchQuestions)}
       <input id='searchVal' value={searchVal} onChange={e => setSearchVal(e.target.value)}/>
       <button type='submit' onClick={handleClick}> Search </button>
     </form>

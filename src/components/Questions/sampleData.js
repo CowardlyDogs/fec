@@ -4,14 +4,14 @@
 var sampleData = {
   "product_id": "40344",
   "results": [
-      {
-          "question_id": 563524,
-          "question_body": "Why is Ginwoo's cat so cute?",
-          "question_date": "2022-01-07T00:00:00.000Z",
-          "asker_name": "LukeAtHim",
-          "question_helpfulness": 8,
-          "reported": false,
-          "answers": {
+    {
+        "question_id": 563524,
+        "question_body": "Why is Ginwoo's cat so cute?",
+        "question_date": "2022-01-07T00:00:00.000Z",
+        "asker_name": "LukeAtHim",
+        "question_helpfulness": 8,
+        "reported": false,
+        "answers": {
               "5360970": {
                   "id": 5360970,
                   "body": "yes there are!",
