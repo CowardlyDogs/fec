@@ -1,8 +1,11 @@
-.element {
-  background: 'string';
+
+.Qcontainer {
+  /* display: flex; */
+  background-color: lightblue;
+  /* justify-content: center; */
 }
 
-
-.container {
-  color: blue;
+.Acontainer {
+  color: red
 }
+

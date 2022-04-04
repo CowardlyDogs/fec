@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import QandA from '../../QandA.jsx';
 import Answer from './Answer.jsx';
+import '../../styles.css';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
@@ -30,6 +31,11 @@ var AnswerContainer = () => {
     setStart(prev => prev - 4);
   };
 
+
+
+
+
+
   var answerList;
   var showMore;
   var prevAnswers;
@@ -41,11 +47,12 @@ var AnswerContainer = () => {
       setView(1);
     }}>Show More Answers</button>;
   } else if (view === 1) {
+    // Accordion view of answers
     answerList = mapAnswers(sortedAnswers.slice(start, end));
     showMore = <button onClick={increment}>Show more Answers</button>;
     prevAnswers = <button onClick={decrement}>Previous Answers</button>;
 
-    if (start < 0) {
+    if (start < 0 || start > answerList.length) {
       setView(0);
       setStart(0);
       setEnd(1);
@@ -53,7 +60,7 @@ var AnswerContainer = () => {
   }
 
   return (
-    <div>
+    <div className='Acontainer'>
       <strong>Answers for question : {data.question_id}</strong>
       {answerList}
       {showMore}

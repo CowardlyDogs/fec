@@ -11,19 +11,14 @@ export const QuestionContext = React.createContext(null);
 
 var Question = ({data}) => {
   const product = useContext(QandAContext);
-  const { question_body, question_date, answers, asker_name } = data;
+  const { question_body, question_date, answers, asker_name, question_id } = data;
 
   const [ viewNum, setViewNum ] = useState(0);
-  // ViewNum 0 = shows top answer
-  // ViewNum 1 = shows top 4 answers?
-  // Increment viewNum shows next 4 answers
-  // If AnswersLeftToShow = 0, viewNum = 0
-  // BUTTONS to toggle viewNum - Previous Answers --- More Answers
 
   var sortedAnswers = sortAnswers(answers);
 
   return (
-    <QuestionContext.Provider value={{sortedAnswers, data, viewNum}}>
+    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id}}>
       <div>
         <QNameAndDate name={asker_name} date={question_date}/>
         <QuestionBody body={question_body}/>

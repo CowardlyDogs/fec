@@ -22,12 +22,11 @@ var QandA = ({product_id}) => {
   const [ addQuestion,   setAddQuestion ] =     useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
 
-  var product_id = 40344;
-  // ?product_id=${product_id}&page1&count=200
+  var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
-  // Axios GET request to bring in data. Set state with data from API call. **Need to attach authorization headers
+
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`, {
+    axios.get(`${url}questions/`, {
       headers: { Authorization: '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' },
       params: { product_id: 40344, page: 1, count: 200}
     })
@@ -81,7 +80,7 @@ var QandA = ({product_id}) => {
 
 
   return (
-    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions}}>
+    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions, url}}>
       <div>
         <h2>Questions and Answers</h2>
         <div>{search}</div>

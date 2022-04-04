@@ -18,7 +18,7 @@ var Answer = ({answerData}) => {
     <div>
       <NameAndDate name={answerer_name} date={date}/>
       <AnswerBody body={body}/>
-      <HelpReport />
+      <HelpReport id={id}/>
     </div>
   );
 };

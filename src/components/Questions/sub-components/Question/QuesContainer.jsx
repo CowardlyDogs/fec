@@ -2,15 +2,7 @@ import React, { useState, useContext } from 'react';
 import QandA from '../../QandA.jsx';
 import Question from './Question.jsx';
 import { QandAContext } from '../../QandA.jsx';
-
-
-
-// var styles = {
-//   container: {
-//     backgroundColor: 'red'
-//   },
-
-// };
+import '../../styles.css';
 
 
 var QuesContainer = () => {
@@ -20,10 +12,6 @@ var QuesContainer = () => {
   const [ start, setStart ] = useState(0);
   const [ end, setEnd ] = useState(1);
 
-
-  // var handleClick = (e) => {
-  //   e.preventDefault();
-  // };
 
   var increment = () => {
     setEnd(prev => prev + 4);
@@ -54,8 +42,6 @@ var QuesContainer = () => {
       setEnd(prev => prev + 3);
       setView(1);
     }}>Show more Questions</button>;
-
-
   } else if ( view === 1 ) {
     // Accordion view of questions
     questionList = mapQuestions(questions.slice(start, end));
@@ -72,12 +58,8 @@ var QuesContainer = () => {
   }
 
 
-
-
-
-
   return (
-    <div>
+    <div className='Qcontainer'>
       {questionList}
       {showMore}
       {prevQuestions}
