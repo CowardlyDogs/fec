@@ -49,9 +49,7 @@ var QuesContainer = () => {
 
   // Conditional render
   if ( view === 0 ) {
-    // Send GET request for first question
     questionList = mapQuestions(questions.slice(start, end));
-    console.log(questions);
     showMore = <button onClick={()=> {
       setEnd(prev => prev + 3);
       setView(1);
@@ -60,7 +58,6 @@ var QuesContainer = () => {
 
   } else if ( view === 1 ) {
     // Accordion view of questions
-    // Need to dynamically go through q's
     questionList = mapQuestions(questions.slice(start, end));
 
     showMore = <button onClick={increment}>Show more Questions</button>;
