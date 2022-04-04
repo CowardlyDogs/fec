@@ -1,7 +1,12 @@
 import React from 'react';
+import Overview from './Overview/Overview.jsx';
 
 const App = () => {
-  return <h1>Hello World</h1>
+  return (
+    <div>
+      <Overview />
+    </div>
+  )
 }
 
 export default App;

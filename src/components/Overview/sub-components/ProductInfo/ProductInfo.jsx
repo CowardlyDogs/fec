@@ -14,7 +14,6 @@ function ProductInfo () {
 
   return (
     <div>
-      ProductInfo
     </div>
   );
 }
