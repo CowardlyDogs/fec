@@ -17,16 +17,19 @@ var Question = ({data}) => {
 
   var sortedAnswers = sortAnswers(answers);
 
+
+
+
   return (
     <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id}}>
       <div>
+        {console.log(data.question_helpfulness)}
         <QNameAndDate name={asker_name} date={question_date}/>
         <QuestionBody body={question_body}/>
         <HelpReport />
         <AnswerContainer />
       </div>
     </QuestionContext.Provider>
-
   );
 };
 

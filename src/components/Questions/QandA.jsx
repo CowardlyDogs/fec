@@ -18,9 +18,11 @@ var QandA = ({product_id}) => {
   const [ product,       setProduct ] =         useState(product_id);
   const [ questions,     setQuestions ] =       useState([]);
   const [ searchVal,     setSearchVal ] =       useState('');
-  const [ searchResults, setSearchQuestions ] = useState(null);
+  const [ searchResults, setSearchResults ] = useState(null);
+  const [ searchView,    setSearchView ] =      useState(false);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
+  const [ visibleQs,     setVisibleQs ] =           useState(questions);
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
@@ -33,6 +35,7 @@ var QandA = ({product_id}) => {
       .then(response => {
         var sorted = sortQuestions(response.data);
         setQuestions(sorted);
+        setVisibleQs(sorted);
       })
       .catch(error => {
         console.log(error);
@@ -43,16 +46,13 @@ var QandA = ({product_id}) => {
 
   // After search, set searchQuestions to filtered results
   var searchQuestions = (search) => {
+
     // Filter questions
-    // var filtered = questions.map( question => {
-    //   if (question.body.includes(search)) {
-    //     return question;
-    //   }
-    // })
-    // // Sort questions
-    // var sortedSearch = HelperFunction.sortQuestions(filtered);
-    // // Set them to state
-    // setSearchQuestions(sortedSearch);
+    var filtered = questions.filter( question => {
+      return question.question_body.includes(search);
+    });
+    setVisibleQs(filtered);
+    setSearchView(true);
   };
 
 
@@ -71,16 +71,16 @@ var QandA = ({product_id}) => {
   var search;
   var noQuestions;
 
-  if (true) {
+  if (questions.length > 0) {
     questionList = <QuesContainer />;
     search = <Search />;
   } else {
-    pageload = <span>No questions asked yet.</span>;
+    questionList = <span>No questions asked yet.</span>;
   }
 
 
   return (
-    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions, url}}>
+    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView}}>
       <div>
         <h2>Questions and Answers</h2>
         <div>{search}</div>

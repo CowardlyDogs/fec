@@ -6,7 +6,7 @@ import '../../styles.css';
 
 
 var QuesContainer = () => {
-  const { product, questions, searchResults, answers } = useContext(QandAContext);
+  const { product, questions, searchResults, answers, searchView, setSearchView, visibleQs } = useContext(QandAContext);
 
   const [ view, setView ] = useState(0);
   const [ start, setStart ] = useState(0);
@@ -35,16 +35,22 @@ var QuesContainer = () => {
   var showMore;
   var prevQuestions;
 
+  if (searchView) {
+    ()=>setView(0);
+  }
+
   // Conditional render
   if ( view === 0 ) {
-    questionList = mapQuestions(questions.slice(start, end));
+    questionList = mapQuestions(visibleQs.slice(start, end));
     showMore = <button onClick={()=> {
       setEnd(prev => prev + 3);
       setView(1);
     }}>Show more Questions</button>;
+
+
   } else if ( view === 1 ) {
     // Accordion view of questions
-    questionList = mapQuestions(questions.slice(start, end));
+    questionList = mapQuestions(visibleQs.slice(start, end));
 
     showMore = <button onClick={increment}>Show more Questions</button>;
 
