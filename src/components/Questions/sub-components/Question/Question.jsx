@@ -23,7 +23,6 @@ var Question = ({data}) => {
   return (
     <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id}}>
       <div>
-        {console.log(data.question_helpfulness)}
         <QNameAndDate name={asker_name} date={question_date}/>
         <QuestionBody body={question_body}/>
         <HelpReport />

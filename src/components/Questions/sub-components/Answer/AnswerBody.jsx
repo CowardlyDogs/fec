@@ -7,6 +7,9 @@ var AnswerBody = ({body}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
+
+  // POST request
+
   return (
     <div>
       Answer body: {body}

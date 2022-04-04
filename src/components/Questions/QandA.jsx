@@ -7,7 +7,7 @@ import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
 import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
-import AddQuestion from './sub-components/AddQuestion.jsx';
+import AddQuestion from './sub-components/Question/AddQuestion.jsx';
 
 
 export const QandAContext = React.createContext(null);
@@ -60,7 +60,7 @@ var QandA = ({product_id}) => {
 
 
   // Boolean switch for addQuestion Modal
-  var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Have a question?</button>;
+  var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Ask a Question</button>;
   var addQuestionModal = !addQuestion ? questionButton : <AddQuestion />;
 
 

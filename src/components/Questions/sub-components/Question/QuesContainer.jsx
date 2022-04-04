@@ -12,7 +12,7 @@ var QuesContainer = () => {
   const [ start, setStart ] = useState(0);
   const [ end, setEnd ] = useState(1);
 
-
+  // Functions to change view count in state.
   var increment = () => {
     setEnd(prev => prev + 4);
     setStart(prev => prev + 4);
@@ -23,7 +23,7 @@ var QuesContainer = () => {
     setStart(prev => prev - 4);
   };
 
-  // Function to map over questions
+  // Function to map over questions.
   var mapQuestions = (questions) => {
     return questions.map( (question, idx) => {
       return <Question key={idx} data={question}/>;
@@ -31,30 +31,36 @@ var QuesContainer = () => {
   };
 
 
+
+
+
   var questionList;
   var showMore;
   var prevQuestions;
 
-  if (searchView) {
-    ()=>setView(0);
-  }
-
   // Conditional render
   if ( view === 0 ) {
-    questionList = mapQuestions(visibleQs.slice(start, end));
-    showMore = <button onClick={()=> {
-      setEnd(prev => prev + 3);
-      setView(1);
-    }}>Show more Questions</button>;
 
+    if (visibleQs.length < 2) {
+      showMore = null;
+      questionList = mapQuestions(visibleQs.slice(start, end));
+    } else {
+      questionList = mapQuestions(visibleQs.slice(start, end));
+      showMore = <button onClick={()=> {
+        setEnd(prev => prev + 3);
+        setView(1);
+      }}>Show more Questions</button>;
+    }
 
   } else if ( view === 1 ) {
     // Accordion view of questions
     questionList = mapQuestions(visibleQs.slice(start, end));
-
     showMore = <button onClick={increment}>Show more Questions</button>;
-
     prevQuestions = <button onClick={decrement}>Previous Questions</button>;
+
+    if (questionList.length < 4) {
+      showMore = null;
+    }
 
     if (start < 0) {
       setView(0);
