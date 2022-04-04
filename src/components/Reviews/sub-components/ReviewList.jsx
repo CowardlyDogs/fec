@@ -1,7 +1,8 @@
 import React/*, { useState }*/ from 'react';
+import Review from './Review.jsx';
 
 
-function ReviewList() {
+function ReviewList({page, turnPage, product, reviews}) {
   return (
     // <h1>Ratings and Reviews Will Go Here</h1>
     /*
@@ -13,9 +14,12 @@ function ReviewList() {
     *
     */
     <div>
-      <h1> Reviews Go Here </h1>
+      <h1>{console.log(reviews)} Reviews Go Here </h1>
       <ul>
-          {/* Iterate over reviews, passing into Review element */}
+
+          {reviews.map(review => (
+            <Review review={review} key={review.review_id}/>
+      ))}
       </ul>
 
    </div>

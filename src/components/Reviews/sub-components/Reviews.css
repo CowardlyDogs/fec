@@ -1,0 +1,16 @@
+.userDate {
+  display: flex;
+}
+.username {
+  text-align: left;
+}
+.timestamp {
+  text-align: right;
+}
+.helpfulCircle {
+  border-radius:"50%";
+  background:"#fca311";
+}
+.helpfulness {
+  display: flex;
+}
