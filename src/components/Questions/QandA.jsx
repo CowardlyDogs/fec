@@ -13,19 +13,23 @@ import AddQuestion from './sub-components/AddQuestion.jsx';
 export const QandAContext = React.createContext(null);
 
 
-var QandA = (props) => {
+var QandA = ({product_id}) => {
 
-  const [ product,       setProduct ] =         useState(props.productID);
+  const [ product,       setProduct ] =         useState(product_id);
   const [ questions,     setQuestions ] =       useState([]);
   const [ searchVal,     setSearchVal ] =       useState('');
   const [ searchResults, setSearchQuestions ] = useState(null);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
 
+  var product_id = 40344;
+  // ?product_id=${product_id}&page1&count=200
+
   // Axios GET request to bring in data. Set state with data from API call. **Need to attach authorization headers
   useEffect(() => {
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/?product_id=40344&page=1&count=100', {
-      headers: { Authorization: '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' }
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/`, {
+      headers: { Authorization: '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' },
+      params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
         var sorted = sortQuestions(response.data);

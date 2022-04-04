@@ -17,19 +17,23 @@ var QuesContainer = () => {
   const { product, questions, searchResults, answers } = useContext(QandAContext);
 
   const [ view, setView ] = useState(0);
+  const [ start, setStart ] = useState(0);
+  const [ end, setEnd ] = useState(1);
 
 
-  var handleClick = (e) => {
-    e.preventDefault();
-    //  Set state-view - cause drop down accordion
-    setView(1);
-    // Functionality for showMore button TODO
-    // Keep state for:
-    //    view changer
-    //        0 = Single top rated answer displayed
-    //        1 = Expanded to size of all answers
+  // var handleClick = (e) => {
+  //   e.preventDefault();
+  // };
+
+  var increment = () => {
+    setEnd(prev => prev + 4);
+    setStart(prev => prev + 4);
   };
 
+  var decrement = () => {
+    setEnd(prev => prev - 4);
+    setStart(prev => prev - 4);
+  };
 
   // Function to map over questions
   var mapQuestions = (questions) => {
@@ -41,18 +45,33 @@ var QuesContainer = () => {
 
   var questionList;
   var showMore;
+  var prevQuestions;
+
   // Conditional render
   if ( view === 0 ) {
-    questionList = mapQuestions(questions.slice(0, 1));
-    showMore = <button>Show more Questions</button>;
+    // Send GET request for first question
+    questionList = mapQuestions(questions.slice(start, end));
+    console.log(questions);
+    showMore = <button onClick={()=> {
+      setEnd(prev => prev + 3);
+      setView(1);
+    }}>Show more Questions</button>;
+
 
   } else if ( view === 1 ) {
     // Accordion view of questions
     // Need to dynamically go through q's
-    questionList = mapQuestions(questions.slice(0, 4));
-    showMore = <button>Show more Questions</button>;
-  } else if ( view === 2 ) {
-    console.log('view 2');
+    questionList = mapQuestions(questions.slice(start, end));
+
+    showMore = <button onClick={increment}>Show more Questions</button>;
+
+    prevQuestions = <button onClick={decrement}>Previous Questions</button>;
+
+    if (start < 0) {
+      setView(0);
+      setStart(0);
+      setEnd(1);
+    }
   }
 
 
@@ -64,6 +83,7 @@ var QuesContainer = () => {
     <div>
       {questionList}
       {showMore}
+      {prevQuestions}
     </div>
   );
 };
