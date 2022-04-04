@@ -1,8 +1,14 @@
-import React/*, { useState }*/ from 'react';
+import React, { useState } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
 
-function ReviewModule() {
+var ReviewModule = (props) => {
+
+  const [ product,   setProduct]   = useState(props.productID);
+  const [ reviews,   setReviews]   = useState([]);
+  const [ addReview, setAddReview] = useState(false);
+  const [ page,      addPage]      = useState(0);
+
   return (
     <div>
       <h1>Ratings and Reviews Will Go Here</h1>
