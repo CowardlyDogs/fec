@@ -9,13 +9,18 @@ export const CartContext = React.createContext(null);
 
 function Cart() {
   const product = useContext(OverviewContext);
+  const [sku, setSku] = useState(null);
+  const [sizeSelected, setSizeSelected] = useState(null);
+  const [qtySelected, setQtySelected] = useState(null);
+
+
 
   return (
     <CartContext.Provider value={product}>
       {/* TODO: Delete Cart Title */}
       <h1>Add to Cart</h1>
-      <SizeSelector />
-      <QuantitySelector />
+      <SizeSelector setSku={setSku} setSizeSelected={setSizeSelected} sizeSelected={sizeSelected}/>
+      <QuantitySelector sku={sku}  setQtySelected={setQtySelected} qtySelected={qtySelected}/>
       <AddToCart />
     </CartContext.Provider>
   );
