@@ -2,15 +2,22 @@ import React, { useState, useContext } from 'react';
 import SizeSelector from './SizeSelector.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import AddToCart from './AddToCart.jsx';
-import OverviewContext from '../../Overview.jsx';
+import { Overview, OverviewContext } from '../../Overview.jsx';
 
-function Cart () {
+export const CartContext = React.createContext(null);
+
+
+function Cart() {
   const product = useContext(OverviewContext);
 
   return (
-    <div>
-
-    </div>
+    <CartContext.Provider value={product}>
+      {/* TODO: Delete Cart Title */}
+      <h1>Add to Cart</h1>
+      <SizeSelector />
+      <QuantitySelector />
+      <AddToCart />
+    </CartContext.Provider>
   );
 }
 

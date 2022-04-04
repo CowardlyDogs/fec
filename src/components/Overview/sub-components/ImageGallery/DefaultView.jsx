@@ -4,7 +4,6 @@ import { Overview, OverviewContext } from '../../Overview.jsx';
 
 function DefaultView() {
   const product = useContext(OverviewContext);
-  console.log(product.results);
 
   var defaultPhoto = {};
   for (let i = 0; i < product.results.length; i++) {
@@ -13,7 +12,6 @@ function DefaultView() {
       break;
     }
   }
-  console.log(defaultPhoto);
   return (
     <div className="image-gallery-default">
       {/* TODO: Delete Image Gallery Title */}
