@@ -13,6 +13,7 @@ function Review() {
     *
     */
     <div>
+      <h1>Just One Review</h1>
       {/* All review information */}
    </div>
   );

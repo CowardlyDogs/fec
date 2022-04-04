@@ -1,6 +1,6 @@
 import React/*, { useState }*/ from 'react';
-import NewReview from './NewReview.jsx';
-import ReviewList from './ReviewList.jsx';
+import NewReview from './sub-components/NewReview.jsx';
+import ReviewList from './sub-components/ReviewList.jsx';
 
 function ReviewModule() {
   return (

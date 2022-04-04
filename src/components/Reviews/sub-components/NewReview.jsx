@@ -23,7 +23,7 @@ function NewReview() {
           <input className='title-input' type='text' placeholder='Review Title'>  </input>
           <input className='review-input' type='text' placeholder='Review'>  </input>
 
-          <button className='modal-close' onClick={}>Submit</button>
+          <button className='modal-close' onClick={''}>Submit</button>
         </div>
       </div>
     </div>
