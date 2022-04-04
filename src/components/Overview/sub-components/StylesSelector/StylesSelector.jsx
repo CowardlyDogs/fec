@@ -4,7 +4,6 @@ import stylesData from '../../sample-data/stylesData.js';
 
 function StylesSelector() {
   const product = useContext(OverviewContext);
-  console.log(product);
 
   var productRows = [];
   var groupedStyles = [];

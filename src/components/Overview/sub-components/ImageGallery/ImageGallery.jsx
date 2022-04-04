@@ -5,12 +5,21 @@ import OverviewContext from '../../Overview.jsx';
 
 function ImageGallery () {
   const product = useContext(OverviewContext);
+  const [isDefault, setIsDefault] = useState(true);
 
-
-  return (
-    <div>
-    </div>
-  );
+  if (isDefault) {
+    return (
+      <div>
+        <DefaultView />
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <ExpandedView />
+      </div>
+    );
+  }
 }
 
 export default ImageGallery;
