@@ -23,3 +23,7 @@ var sortAnswers = (question) => {
    return results;
 }
 //  Output = High->Low   [ {}, {}, {}, {} ]
+
+
+// exports.module.sortAnswers = sortAnswers;
+// exports.module.sortQuestions = sortQuestions;
