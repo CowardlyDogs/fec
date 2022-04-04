@@ -14,7 +14,7 @@ function ReviewList({page, turnPage, product, reviews}) {
     *
     */
     <div>
-      <h1>{console.log(reviews)} Reviews Go Here </h1>
+      <h1> Reviews Go Here </h1>
       <ul>
 
           {reviews.map(review => (

@@ -25,6 +25,12 @@ function Review({review}) {
       <div>
         <p>{review.body}</p>
       </div>
+      <div className="ReviewImages">
+        {review.photos.map((image => (
+          <img key={image.id} src={image.url}/>
+        )))}
+        <img></img>
+      </div>
       <div className="helpfulness">
         <div className="helpfulCircle">
           <p>{review.helpfulness}</p>
