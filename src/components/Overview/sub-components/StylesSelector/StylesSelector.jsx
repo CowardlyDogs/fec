@@ -28,11 +28,11 @@ function StylesSelector() {
       {/* TODO: Delete Styles Selector Title */}
       <h1>Styles Selector</h1>
       {
-        productRows.map((row) =>
-          <div className="styles-row">
+        productRows.map((row, i) =>
+          <div key={i} className="styles-row">
             {
-              row.map((style) =>
-                <div className="style">
+              row.map((style, j) =>
+                <div key={j} className="style">
                   <span className="style-title">{style.name}</span>
                   <img className="style-thumbnail" src={style.photos[0].thumbnail_url} width={50} height={50} />
                 </div>

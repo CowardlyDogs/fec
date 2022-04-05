@@ -4,10 +4,16 @@ import { Cart, CartContext } from './Cart.jsx';
 function SizeSelector(props) {
   const product = useContext(CartContext);
   const [listOpen, setListOpen] = useState(false);
+  const [forceSize, setForceSize] = useState(false);
 
+  if (props.cartButtonClicked && !forceSize) {
+    setForceSize(true);
+  }
 
   return (
     <div>
+      {forceSize ? <span>Please enter size</span> : null}
+
       <button
         type="button"
         className="size-selector"
@@ -18,15 +24,19 @@ function SizeSelector(props) {
       >{props.sizeSelected ? props.sizeSelected : 'Select Size'} </button>
 
       {/* if the list is open, display the div below */}
-      {listOpen ? (
+      {listOpen || forceSize ? (
         <div>
           {
             // map through the keys of the skus and display the size of each sku
-            Object.keys(product.results[0].skus).map((sku) => (
-              <li onClick={() => {
+            Object.keys(product.results[0].skus).map((sku, i) => (
+              <li key={i} onClick={() => {
                 props.setSku(product.results[0].skus[sku]);
                 props.setSizeSelected(product.results[0].skus[sku].size)
-                setListOpen(!listOpen);
+                setListOpen(false);
+                setForceSize(false);
+                if (props.cartButtonClicked) {
+                  props.toggleCart(false)
+                }
               }
               }>
                 {product.results[0].skus[sku].size}

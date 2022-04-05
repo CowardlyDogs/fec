@@ -18,8 +18,8 @@ function DefaultView() {
       <h1>Image Gallery</h1>
       <img className="default-image" src={defaultPhoto.photos[0].url} />
       {
-        product.results.map((style) =>
-        <div className="thumbnail">
+        product.results.map((style, i) =>
+        <div key={i} className="thumbnail">
           <img className="photos-thumbnail" src={style.photos[0].thumbnail_url} width={50} height={50} />
         </div>
       )
