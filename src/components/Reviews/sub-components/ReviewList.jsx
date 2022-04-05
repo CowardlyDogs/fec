@@ -3,6 +3,11 @@ import Review from './Review.jsx';
 
 
 function ReviewList({page, turnPage, product, reviews}) {
+
+  var nextPage = () => {
+    turnPage('inc');
+  }
+
   return (
     // <h1>Ratings and Reviews Will Go Here</h1>
     /*
@@ -14,14 +19,18 @@ function ReviewList({page, turnPage, product, reviews}) {
     *
     */
     <div>
-      <h1> Reviews Go Here </h1>
-      <ul>
+      <div>
+        <h1> Reviews Go Here </h1>
+        <ul>
 
-          {reviews.map(review => (
-            <Review review={review} key={review.review_id}/>
-      ))}
-      </ul>
-
+            {reviews.map(review => (
+              <Review review={review} key={review.review_id}/>
+        ))}
+        </ul>
+      </div>
+      <div className="review-nav">
+        {(page === 0) ? (<button onClick={nextPage}>Show More</button>) : "<h1> page is not equal to zero <h1>"}
+      </div>
    </div>
   );
 }

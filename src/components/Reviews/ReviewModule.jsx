@@ -26,9 +26,20 @@ function ReviewModule(props) {
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=1&page=1`)
     .then((response) => {
-      if (response.data.results !== reviews) {
+      if (response.data.results !== reviews && page === 0) {
         setReviews(response.data.results);
-      }})
+      } else {
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=5&page=${page}`)
+      .then((response) => {
+        if (response.data.results !== reviews) {
+          setReviews(response.data.results);
+        }})
+        .catch(error => {
+          console.log(error);
+        });
+      }
+
+      })
       .catch(error => {
         console.log(error);
       });
@@ -43,7 +54,6 @@ function ReviewModule(props) {
   var turnPage = (option) => {
     if (option === 'inc') {
       setPage(page + 1);
-      setReviews = axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${product}&sort=helpful&count=4&page=${page}`).results;
     } else if (option === 'dec') {
       setPage(page - 1);
     }
