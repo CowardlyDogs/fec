@@ -6,7 +6,7 @@ import StarIcon from '@material-ui/icons/Star';
 import FlareIcon from '@material-ui/icons/Flare';
 
 function Carousel(props) {
-  const addFit = "https://iconsplace.com/wp-content/uploads/_icons/ffa500/256/png/plus-2-icon-11-256.png"
+  const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
   // console.log('Items that made it to Carousel: ', props.items)
   const start = useRef(0);
   const end = useRef(props.add === true ? props.items.length > 5 ? 5 : props.items.length : props.items.length > 6 ? 6 : props.items.length);
@@ -54,9 +54,9 @@ function Carousel(props) {
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
       <div className="track">
         {props.add === true &&
-          <div className="card">
-            <div className="card-inner" style={{height: "inherit", width: "inherit", backgroundImage: `url(${addFit})`}}>
-              <div><h1 className="add">Add Item to Outfit</h1></div>
+          <div className="add">
+            <div className="add-fit" style={{backgroundImage: `url(${addFit})`}}>
+              <h1 className="add-text">Add Item to Outfit</h1>
             </div>
           </div>
         }
@@ -74,7 +74,7 @@ function Carousel(props) {
                   <div className="action"><FlareIcon/></div>
                 </div>
                 <div className="bottom">
-                  <div>{product.name}</div>
+                  <div className="product-name">{product.name}</div>
                   <div>{product.category}</div>
                   <div className="price-container">
                       <div className="price">{product.default_price}</div>
