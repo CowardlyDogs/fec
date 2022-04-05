@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
+import {ProductInfo, ProductContext } from './ProductInfo.jsx';
 
 function ProductOverview () {
+  const product = useContext(ProductContext).product;
 
   return (
-    <div>
-
-    </div>
+    <p>
+      {product.description}
+    </p>
   )
 }
 

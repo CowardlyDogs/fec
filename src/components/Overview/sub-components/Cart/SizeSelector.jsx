@@ -12,7 +12,7 @@ function SizeSelector(props) {
 
   return (
     <div>
-      {forceSize ? <span>Please enter size</span> : null}
+      {forceSize ? <div>Please select size</div> : null}
 
       <button
         type="button"

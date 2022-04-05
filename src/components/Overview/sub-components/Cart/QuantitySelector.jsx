@@ -35,8 +35,8 @@ function QuantitySelector(props) {
       {/* if the button is clicked, the state is set to open and will render the div below */}
       {listOpen ? (
         <div>
-          {quantity.map((num) => (
-            <li onClick={() => {
+          {quantity.map((num, i) => (
+            <li key={i} onClick={() => {
               setListOpen(!listOpen);
               props.setQtySelected(num);
             }}>

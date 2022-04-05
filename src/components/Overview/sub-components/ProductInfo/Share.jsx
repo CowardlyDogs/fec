@@ -4,7 +4,7 @@ function Share () {
 
   return (
     <div>
-
+      Share on Social Media (TODO: get icons for facebook, twitter and pinterest)
     </div>
   )
 }
