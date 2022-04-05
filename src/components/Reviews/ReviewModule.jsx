@@ -43,11 +43,20 @@ function ReviewModule(props) {
       .catch(error => {
         console.log(error);
       });
-    }, [page])
+    }, [page]);
 
 
   var toggleNewReview = () => {
     setNewReviewVisible(!newReviewVisible);
+  }
+
+  var submitNewReview = (review) => {
+    console.log(review);
+    review.product_id = product;
+    review.rating = review.rating || 4; // **TODO** Make sure this is dynamic
+    toggleNewReview();
+
+    axios.post()
   }
 
 
@@ -71,7 +80,7 @@ function ReviewModule(props) {
       *
       */}
 
-      {/* <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product}/> */}
+      { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product} onSubmit={submitNewReview} /> }
       <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} />
    </div>
   );
