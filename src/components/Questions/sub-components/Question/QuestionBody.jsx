@@ -9,7 +9,9 @@ var QuestionBody = ({body}) => {
 
   return (
     <div>
-      Question Body: {body}
+      <br/>
+      {body}
+      <br/>
     </div>
   );
 };

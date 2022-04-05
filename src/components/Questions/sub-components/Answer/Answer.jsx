@@ -16,9 +16,9 @@ var Answer = ({answerData}) => {
 
   return (
     <div>
-      <NameAndDate name={answerer_name} date={date}/>
       <AnswerBody body={body}/>
-      <HelpReport id={id}/>
+      <NameAndDate name={answerer_name} date={date}/>
+      <HelpReport helpfulness={helpfulness} id={id}/>
     </div>
   );
 };

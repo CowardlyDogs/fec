@@ -8,6 +8,7 @@ import QuesContainer from './sub-components/Question/QuesContainer.jsx';
 import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
 import AddQuestion from './sub-components/Question/AddQuestion.jsx';
+import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
 
 
 export const QandAContext = React.createContext(null);
@@ -18,11 +19,11 @@ var QandA = ({product_id}) => {
   const [ product,       setProduct ] =         useState(product_id);
   const [ questions,     setQuestions ] =       useState([]);
   const [ searchVal,     setSearchVal ] =       useState('');
-  const [ searchResults, setSearchResults ] = useState(null);
   const [ searchView,    setSearchView ] =      useState(false);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
+  const [ addAnswer,     setAddAnswer ] =       useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
-  const [ visibleQs,     setVisibleQs ] =           useState(questions);
+  const [ visibleQs,     setVisibleQs ] =       useState(questions);
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
@@ -33,6 +34,7 @@ var QandA = ({product_id}) => {
       params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
+        console.log('hello, useEffect ran');
         var sorted = sortQuestions(response.data);
         setQuestions(sorted);
         setVisibleQs(sorted);
@@ -60,8 +62,8 @@ var QandA = ({product_id}) => {
 
 
   // Boolean switch for addQuestion Modal
-  var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Ask a Question</button>;
-  var addQuestionModal = !addQuestion ? questionButton : <AddQuestion />;
+  // var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Ask a Question</button>;
+  // var addQuestionModal = !addQuestion ? questionButton : <AddQuestion />;
 
 
 
@@ -79,13 +81,17 @@ var QandA = ({product_id}) => {
   }
 
 
+
+
+
   return (
-    <QandAContext.Provider value={{product, questions, searchResults, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView}}>
+    <QandAContext.Provider value={{product, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
       <div>
         <h2>Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
-        <div>{addQuestionModal}</div>
+        <AddQuestion />
+        {/* <div>{addQuestionModal}</div> */}
       </div>
     </QandAContext.Provider>
   );

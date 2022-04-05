@@ -12,7 +12,7 @@ var AnswerBody = ({body}) => {
 
   return (
     <div>
-      Answer body: {body}
+      {body}
     </div>
   );
 };

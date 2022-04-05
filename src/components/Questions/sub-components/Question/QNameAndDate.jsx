@@ -11,7 +11,7 @@ var QNameAndDate = ({name, date}) => {
 
   return (
     <div>
-      <strong>Question from: {name} on {moment(date).format("MMM Do YY")}</strong>
+      <strong>{name} {moment(date).format("MMM Do YY")}</strong>
     </div>
   );
 };

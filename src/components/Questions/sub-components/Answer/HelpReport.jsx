@@ -4,7 +4,7 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
-var HelpReport = ({id}) => {
+var HelpReport = ({id, helpfulness}) => {
   const { product, url } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
@@ -13,44 +13,73 @@ var HelpReport = ({id}) => {
 
 
   var reportAnswer = () => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${id}/report`, {
+
+    const options = {
+      url: `${url}answers/${id}/report`,
+      method: 'put',
       headers: { authorization: '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' }
-    })
+    };
+
+    axios(options)
       .then(response => {
         console.log(response, `Answer ${id} reported`);
         setReported(true);
       })
       .catch(error => {
         console.log(error, 'Answer not reported');
+        setReported(true);
       });
   };
 
   var helpfulAnswer = () => {
-    axios.put(`${url}answers/${id}/helpful`, {
-      headers: { Authorization: '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' }
-    })
+
+    const options = {
+      url: `${url}answers/${id}/helpful`,
+      method: 'put',
+      headers: { authorization: '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' }
+    };
+
+    axios(options)
       .then(response => {
         console.log('Answer marked helpful');
         setHelpful(true);
       })
       .catch(error => {
         console.log('Helpful PUT request failed');
+        setHelpful(true);
       });
   };
+
+
+
 
   var help;
   var report;
 
   if (helpful) {
-    help = <span>Thanks for the feedback!</span>;
+    help =
+    <div>
+      <span>Helpful?</span>
+      <a>Yes({helpfulness += 1})</a>
+    </div>;
   } else {
-    help = <a onClick={helpfulAnswer}>Was this helpful?</a>;
+    help =
+    <div>
+      <span>Helpful?</span>
+      <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
+    </div>;
   }
 
   if (reported) {
-    report = <span>Answer reported</span>;
+    report =
+    <div>
+      <a>Reported</a>
+    </div>;
   } else {
-    report = <a onClick={reportAnswer}>Reported</a>;
+    report =
+    <div>
+      <a onClick={reportAnswer}>Report</a>
+    </div>;
   }
 
 

@@ -13,8 +13,20 @@ var AnswerContainer = () => {
 
   const [ view, setView ] = useState(0);
   const [ start, setStart ] = useState(0);
-  const [ end, setEnd ] = useState(1);
+  const [ end, setEnd ] = useState(2);
   const [ answerBool, setAnswerBool ] = useState(false);
+
+
+  // Need to sort answers - bring seller responses to top
+  var seller = [];
+  var anons = [];
+  sortedAnswers.forEach( answer => {
+    if (answer.answerer_name === 'Seller') {
+      seller.push(answer);
+    } else {
+      anons.push(answer);
+    }
+  });
 
   // Function to map over answers
   var mapAnswers = (answers) => {
@@ -23,15 +35,7 @@ var AnswerContainer = () => {
     });
   };
 
-  var increment = () => {
-    setEnd(prev => prev + 4);
-    setStart(prev => prev + 4);
-  };
 
-  var decrement = () => {
-    setEnd(prev => prev - 4);
-    setStart(prev => prev - 4);
-  };
 
   var answerList;
   var showMore;
@@ -48,31 +52,30 @@ var AnswerContainer = () => {
 
   if (sortedAnswers.length === 0) {
     answerList = <span>No answers yet.</span>;
+
+  } else if (sortedAnswers.length <= 2) {
+    answerList = mapAnswers([...seller, ...anons]);
+    showMore = null;
   } else {
     if (view === 0) {
-      answerList = mapAnswers(sortedAnswers.slice(start, end));
+      answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       showMore = <button onClick={()=> {
-        setEnd(prev => prev + 3);
         setView(1);
-      }}>Show More Answers</button>;
+      }}>See More Answers</button>;
+
+
     } else if (view === 1) {
       // Accordion view of answers
-      answerList = mapAnswers(sortedAnswers.slice(start, end));
-      showMore = <button onClick={increment}>Show more Answers</button>;
-      prevAnswers = <button onClick={decrement}>Previous Answers</button>;
-
-      if (start < 0 || start > answerList.length) {
-        setView(0);
-        setStart(0);
-        setEnd(1);
-      }
+      answerList = mapAnswers([...seller, ...anons]);
+      // showMore = <button onClick={increment}>Show more Answers</button>;
+      prevAnswers = <button onClick={()=>setView(0)}>Collapse answers</button>;
     }
   }
 
 
   return (
     <div className='Acontainer'>
-      {answerList}
+      <strong>A:</strong> {answerList}
       {showMore}
       {prevAnswers}
       {addAnswer}

@@ -11,9 +11,14 @@ var NameAndDate = ({name, date}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
+  var answererName = name;
+  if (name === 'Seller') {
+    answererName = <strong>{name}</strong>;
+  }
+
   return (
     <div>
-      Answer from: {name} on {moment(date).format("MMM Do YY")}
+      {answererName} {moment(date).format("MMM Do YY")}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 
 
-var HelpReport = () => {
+var HelpReport = ({ helpfulness }) => {
   const { url, product } = useContext(QandAContext);
   const { question_id } = useContext(QuestionContext);
 
@@ -15,33 +15,45 @@ var HelpReport = () => {
 
 
   var reportQuestion = () => {
-    axios.put(`${url}questions/${question_id}/report`, {
+
+    const options = {
+      url: `${url}questions/${question_id}/report`,
+      method: 'put',
       headers: { authorization: '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' }
-    })
+    };
+
+    axios(options)
       .then(response => {
         console.log(response, `Question ${id} reported`);
         setReported(true);
       })
       .catch(error => {
         console.log(error, 'Question {} not reported');
+        setReported(true);
       });
   };
 
 
 
   var helpfulQuestion = () => {
-    axios.put(`${url}questions/${question_id}/helpful`, {
-      headers: { Authorization: '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' }
-    })
+
+    const options = {
+      url: `${url}questions/${question_id}/helpful`,
+      method: 'put',
+      headers: { authorization: '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' }
+    };
+
+
+    axios(options)
       .then(response => {
         console.log('Question marked helpful');
         setHelpful(true);
       })
       .catch(error => {
         console.log('Helpful Question PUT request failed');
+        setHelpful(true);
       });
   };
-
 
 
 
@@ -50,21 +62,36 @@ var HelpReport = () => {
   var report;
 
   if (helpful) {
-    help = <span>'Thanks for the feedback!'</span>;
+    help =
+    <div>
+      <span>Helpful?</span>
+      <a>Yes({helpfulness += 1})</a>
+    </div>;
   } else {
-    help = <a onClick={helpfulQuestion}>Was this helpful?</a>;
+    help =
+    <div>
+      <span>Helpful?</span>
+      <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
+    </div>;
   }
 
   if (reported) {
-    report = <span>Question reported</span>;
+    report =
+    <div>
+      <a>Reported</a>
+    </div>;
   } else {
-    report = <a onClick={reportQuestion}>Reported</a>;
+    report =
+    <div>
+      <a onClick={reportQuestion}>Report</a>
+    </div>;
   }
 
 
 
   return (
     <div>
+      <br/>
       {report}
       {help}
     </div>

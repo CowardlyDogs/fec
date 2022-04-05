@@ -2,17 +2,43 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
+import '../../styles.css';
 
 // Pop-up module to add answer - toggles with button on QandA component.
 // Click anywhere on screen outside of modal and should disappear.
 
+
 var AddQuestion = () => {
-  const product = useContext(QandAContext);
+  const { setAddQuestion, addQuestion, product } = useContext(QandAContext);
+
+  const [ questionVal, setQuestionVal ] = useState('');
+  const [ nicknameVal, setNicknameVal ] = useState('');
+
+  const backgroundChange = addQuestion ? "modal-background" : "hide";
+  const showHideAddQuestion = addQuestion ? "modal-body" : "hide";
+
+  var hideModal = (e) => {
+    e.preventDefault();
+    setAddQuestion(prev=>!prev);
+  };
 
   return (
     <div>
-      Add Question
+      <div className={backgroundChange} >
+
+        <form className={showHideAddQuestion}>
+          <input className='name' placeholder='NickName' value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
+          <input placeholder='Question body' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
+          <button type='submit'>Submit</button>
+          <button onClick={hideModal}>Close</button>
+        </form>
+
+
+      </div>
+
+      <button onClick={()=>setAddQuestion(prev=>!prev)}>Ask Question</button>
     </div>
+
   );
 };
 

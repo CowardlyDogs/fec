@@ -11,7 +11,7 @@ export const QuestionContext = React.createContext(null);
 
 var Question = ({data}) => {
   const product = useContext(QandAContext);
-  const { question_body, question_date, answers, asker_name, question_id } = data;
+  const { question_body, question_date, answers, asker_name, question_id, question_helpfulness } = data;
 
   const [ viewNum, setViewNum ] = useState(0);
 
@@ -23,9 +23,10 @@ var Question = ({data}) => {
   return (
     <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id}}>
       <div>
+        <strong>Q:</strong>
         <QNameAndDate name={asker_name} date={question_date}/>
         <QuestionBody body={question_body}/>
-        <HelpReport />
+        <HelpReport helpfulness={question_helpfulness}/>
         <AnswerContainer />
       </div>
     </QuestionContext.Provider>
