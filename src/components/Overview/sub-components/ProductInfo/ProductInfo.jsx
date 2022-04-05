@@ -14,7 +14,7 @@ export const ProductContext = React.createContext(null);
 
 
 function ProductInfo () {
-  const style = useContext(OverviewContext);
+  const style = useContext(OverviewContext).styles;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 

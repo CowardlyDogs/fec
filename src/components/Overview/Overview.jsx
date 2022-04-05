@@ -13,6 +13,10 @@ function Overview () {
 
   const [styles, setStyles] = useState({});
   const [loading, setLoading] = useState(true);
+  const [currentStyle, setCurrentStyle] = useState({});
+
+
+
   useEffect(() => {
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/styles', {
@@ -22,6 +26,7 @@ function Overview () {
     })
       .then((results) => {
         setStyles(results.data);
+        setCurrentStyle(results.data.results[0]);
         setLoading(false);
       })
       .catch((err) => {
@@ -34,11 +39,12 @@ function Overview () {
     return (<div></div>)
   }
 
+  console.log('currentStyle: ', currentStyle);
 
   return (
-    <OverviewContext.Provider value={styles}>
+    <OverviewContext.Provider value={{currentStyle: currentStyle, styles: styles}}>
       <ProductInfo />
-      <StylesSelector />
+      <StylesSelector setCurrentStyle={setCurrentStyle} />
       <Cart />
       <ImageGallery />
     </OverviewContext.Provider>

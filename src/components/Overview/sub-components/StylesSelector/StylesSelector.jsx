@@ -2,9 +2,10 @@ import React, { useState, useContext } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
 import stylesData from '../../sample-data/stylesData.js';
 
-function StylesSelector() {
-  const product = useContext(OverviewContext);
+function StylesSelector(props) {
+  const product = useContext(OverviewContext).styles;
 
+  // This is to separate the styles by four
   var productRows = [];
   var groupedStyles = [];
   var numStyles = 0;
@@ -34,7 +35,10 @@ function StylesSelector() {
               row.map((style, j) =>
                 <div key={j} className="style">
                   <span className="style-title">{style.name}</span>
-                  <img className="style-thumbnail" src={style.photos[0].thumbnail_url} width={50} height={50} />
+                  <img className="style-thumbnail" src={style.photos[0].thumbnail_url} width={50} height={50}
+                  onClick={() => {
+                    props.setCurrentStyle(style);
+                  }}/>
                 </div>
               )
             }

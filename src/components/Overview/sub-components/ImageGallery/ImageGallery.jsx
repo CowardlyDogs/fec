@@ -1,16 +1,16 @@
 import React, { useState, useContext } from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import OverviewContext from '../../Overview.jsx';
+import {Overview, OverviewContext } from '../../Overview.jsx';
 
 function ImageGallery () {
-  const product = useContext(OverviewContext);
+  const currentStyle = useContext(OverviewContext).currentStyle;
   const [isDefault, setIsDefault] = useState(true);
 
   if (isDefault) {
     return (
       <div>
-        <DefaultView />
+        <DefaultView currentStyle={currentStyle} />
       </div>
     )
   } else {
