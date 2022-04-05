@@ -1,12 +1,13 @@
 import React from 'react';
-import Outfit from './Related/Outfit.jsx';
-import RelatedItems from './Related/RelatedItems.jsx';
 import './App.css';
+import Outfit from './Related/Outfit.jsx';
+import Carousel from './Related/Carousel.jsx';
+import items from './Related/sampledata.jsx';
 
 const App = () => {
   return (
   <div className="App">
-    <RelatedItems/>
+    <Carousel items={items}/>
     <Outfit/>
   </div>
   )

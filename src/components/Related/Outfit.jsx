@@ -18,9 +18,7 @@ import Carousel from './Carousel.jsx';
 //action button = X -> removes item from list
 function Outfit() {
   return (
-    <div>
-      <Carousel items={items}/>
-    </div>
+      <Carousel items={items} add={true}/>
   )
 }
 

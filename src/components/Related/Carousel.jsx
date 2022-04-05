@@ -4,15 +4,16 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StarIcon from '@material-ui/icons/Star';
 import FlareIcon from '@material-ui/icons/Flare';
-// import items from './sampledata.jsx';
 
 function Carousel(props) {
+  const addFit = "https://iconsplace.com/wp-content/uploads/_icons/ffa500/256/png/plus-2-icon-11-256.png"
+  // console.log('Items that made it to Carousel: ', props.items)
   const start = useRef(0);
-  const end = useRef(props.items.length > 6 ? 6 : props.items.length);
+  const end = useRef(props.add === true ? props.items.length > 5 ? 5 : props.items.length : props.items.length > 6 ? 6 : props.items.length);
   const [products, setProducts] = useState(props.items);
   const [display, setDisplay] = useState(() => displayFill(props.items));
+  const length = props.items.length - 1;
   console.log(display)
-  const length = props.items.length;
 
 
   if (!Array.isArray(props.items) || length <= 0) {
@@ -27,11 +28,11 @@ function Carousel(props) {
     start.current = start.current - 1;
     end.current = end.current - 1;
     setDisplay(display => {
-      const tempLeft = [...display];
+      let tempLeft = [...display];
       tempLeft.pop();
       tempLeft.unshift(props.items[start.current]);
       return tempLeft;
-    })
+    });
     console.log('start: ', start.current, 'end: ', end.current);
   };
 
@@ -39,11 +40,11 @@ function Carousel(props) {
     start.current = start.current + 1;
     end.current = end.current + 1;
     setDisplay(display => {
-      const tempRight = [...display];
+      let tempRight = [...display];
       tempRight.push(props.items[end.current]);
       tempRight.shift();
       return tempRight;
-    })
+    });
     console.log('start: ', start.current, 'end: ', end.current);
   };
 
@@ -52,10 +53,17 @@ function Carousel(props) {
       {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
       <div className="track">
-          {display.map((product, key) => {
+        {props.add === true &&
+          <div className="card">
+            <div className="card-inner" style={{height: "inherit", width: "inherit", backgroundImage: `url(${addFit})`}}>
+              <div><h1 className="add">Add Item to Outfit</h1></div>
+            </div>
+          </div>
+        }
+          {display.map((product, x) => {
             return (
               <div className="card">
-                <div className="card-inner" style={{backgroundImage: `url(${product.image})`}}>
+                <div className="card-inner" style={{backgroundImage: `url(${product.url})`}} >
                   <div className="stars">
                     <StarIcon/>
                     <StarIcon/>
@@ -66,18 +74,18 @@ function Carousel(props) {
                   <div className="action"><FlareIcon/></div>
                 </div>
                 <div className="bottom">
-                  <div>{product.title}</div>
+                  <div>{product.name}</div>
                   <div>{product.category}</div>
                   <div className="price-container">
-                      <div className="price">{product.price}</div>
-                      <div className="sale">{product.sale}</div>
+                      <div className="price">{product.default_price}</div>
+                      <div className="sale">{product.sale_price}</div>
                   </div>
                 </div>
                </div>
             )}
           )}
       </div>
-      {end.current < (length - 1) &&
+      {end.current < (length) &&
         <div className="right" onClick={right}> <ArrowForwardIosIcon/> </div>}
     </div>
   )
