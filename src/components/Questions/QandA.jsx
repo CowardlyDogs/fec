@@ -86,7 +86,7 @@ var QandA = ({product_id}) => {
 
   return (
     <QandAContext.Provider value={{product, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
-      <div>
+      <div className='QandA'>
         <h2>Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>

@@ -5,6 +5,18 @@
   /* justify-content: center; */
 }
 
+.QandA {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  width: 100%;
+  height: auto;
+
+}
+
 .Acontainer {
   color: red
 }

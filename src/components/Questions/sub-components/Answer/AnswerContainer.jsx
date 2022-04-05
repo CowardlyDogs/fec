@@ -78,7 +78,8 @@ var AnswerContainer = () => {
       <strong>A:</strong> {answerList}
       {showMore}
       {prevAnswers}
-      {addAnswer}
+      <AddAnswer />
+      {/* {addAnswer} */}
     </div>
   );
 };

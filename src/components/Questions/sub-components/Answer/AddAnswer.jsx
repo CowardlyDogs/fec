@@ -9,19 +9,27 @@ var AddAnswer = () => {
   const { setAddAnswer, addAnswer, product } = useContext(QandAContext);
 
   const [ answerVal, setAnswerVal ] = useState('');
+  const [ nicknameVal, setNicknameVal ] = useState('');
 
   const backgroundChange = addAnswer ? "modal-background" : "hide";
   const showHideAddAnswer = addAnswer ? "modal-body" : "hide";
 
 
+  var hideModal = (e) => {
+    e.preventDefault();
+    setAddAnswer(prev=>!prev);
+  };
+
+
   return (
     <div>
-      <div className={backgroundChange} onClick={()=>setAddAnswer(prev=>!prev)}>
+      <div className={backgroundChange}>
         <form className={showHideAddAnswer}>
 
-          <input placeholder='NickName' value=''/>
-          <input placeholder='Answer body' value={answerVal} onChange={e=>setQuestionVal(e.target.value)}/>
+          <input placeholder='NickName' value=''onChange={e=>setNicknameVal(e.target.value)}/>
+          <input placeholder='Answer body' value={answerVal} onChange={e=>setAnswerVal(e.target.value)}/>
           <button type='submit'>Submit</button>
+          <button onClick={hideModal}>Close</button>
         </form>
       </div>
 
