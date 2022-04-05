@@ -61,7 +61,7 @@ function ReviewModule(props) {
 
   return (
     <div>
-      <h1>Ratings and Reviews Will Go Here</h1>
+      <h1>Ratings and Reviews</h1>
 
       {/*****TODO***
       *

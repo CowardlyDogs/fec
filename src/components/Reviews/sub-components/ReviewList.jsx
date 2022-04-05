@@ -7,6 +7,9 @@ function ReviewList({page, turnPage, product, reviews}) {
   var nextPage = () => {
     turnPage('inc');
   }
+  var prevPage = () => {
+    turnPage('dec');
+  }
 
   return (
     // <h1>Ratings and Reviews Will Go Here</h1>
@@ -20,7 +23,7 @@ function ReviewList({page, turnPage, product, reviews}) {
     */
     <div>
       <div>
-        <h1> Reviews Go Here </h1>
+        <h1> Reviews</h1>
         <ul>
 
             {reviews.map(review => (
@@ -29,7 +32,9 @@ function ReviewList({page, turnPage, product, reviews}) {
         </ul>
       </div>
       <div className="review-nav">
-        {(page === 0) ? (<button onClick={nextPage}>Show More</button>) : "<h1> page is not equal to zero <h1>"}
+        {(page > 1) ? (<div><button onClick={prevPage}>Previous Page</button></div>) : ""}
+        {(page === 0) ? (<div><button onClick={nextPage}>Show More</button></div>) : (<div><button onClick={nextPage}>Next Page</button></div>)}
+
       </div>
    </div>
   );
