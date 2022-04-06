@@ -4,6 +4,9 @@ describe('Quantity Selector', () => {
 
     cy.contains('Select Size').click();
     cy.contains('XS').click();
-    cy.should.contain('1');
+    cy.get('.quantity-selector > button')
+      .click()
+      .get('.quantity-list')
+      .should('be.visible')
   })
 })
