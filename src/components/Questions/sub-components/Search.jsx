@@ -26,7 +26,7 @@ var Search = () => {
 
   return (
     <form>
-      <input id='searchVal' placeholder='Have a question? Search for answers...' value={searchVal} onChange={handleChange}/>
+      <input className='search' id='searchVal' placeholder='Have a question? Search for answers...' value={searchVal} onChange={handleChange}/>
       {/* <button type='submit' onClick={handleClick}> Search </button> */}
     </form>
   );
