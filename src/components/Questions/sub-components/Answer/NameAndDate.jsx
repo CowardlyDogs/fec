@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import QandA from '../QandA.jsx';
+import QandA from '../../QandA.jsx';
 
 
 // One QuestionModal per question - resides in greater QandA component
 
-function QuestionModal () {
+function NameAndDate () {
   const product = useContext(QandAContext);
 
   return (
     <div>
-      Question Modal
+      NameAndDate
     </div>
   );
 }
 
-export default QuestionModal;
+export default NameAndDate;
