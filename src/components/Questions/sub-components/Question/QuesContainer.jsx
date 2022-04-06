@@ -50,7 +50,7 @@ var QuesContainer = () => {
       showMore = <button onClick={()=> {
         increment();
         setView(1);
-      }}>Show more Questions</button>;
+      }}>More Answered Questions</button>;
     }
   } else if ( view === 1 ) {
     // Accordion view of questions

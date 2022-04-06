@@ -28,6 +28,8 @@ var QandA = ({product_id}) => {
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
 
+
+
   useEffect(() => {
     axios.get(`${url}questions/`, {
       headers: { Authorization: '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' },
@@ -46,10 +48,10 @@ var QandA = ({product_id}) => {
 
 
 
-  // After search, set searchQuestions to filtered results
+
+
   var searchQuestions = (search) => {
 
-    // Filter questions
     var filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
@@ -60,15 +62,6 @@ var QandA = ({product_id}) => {
 
 
 
-
-  // Boolean switch for addQuestion Modal
-  // var questionButton = <button onClick={()=>setAddQuestion(prev => !prev)}>Ask a Question</button>;
-  // var addQuestionModal = !addQuestion ? questionButton : <AddQuestion />;
-
-
-
-  // Conditional rendering
-  //  If length of questions is 0, load a 'No questions asked yet'
   var questionList;
   var search;
   var noQuestions;
