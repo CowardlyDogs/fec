@@ -17,6 +17,7 @@ import Carousel from './Carousel.jsx';
 //persist after leaving and returning (definitely session id cookie)
 //action button = X -> removes item from list
 function Outfit() {
+
   //reverse hard-coded data for temporary variety between carousels
   items.reverse()
 

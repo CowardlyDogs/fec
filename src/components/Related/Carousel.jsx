@@ -3,7 +3,8 @@ import './css/Related.css';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StarIcon from '@material-ui/icons/Star';
-import FlareIcon from '@material-ui/icons/Flare';
+import CompareIcon from '@material-ui/icons/Compare';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 function Carousel(props) {
   const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
@@ -13,6 +14,10 @@ function Carousel(props) {
   const [products, setProducts] = useState(props.items);
   const [display, setDisplay] = useState(() => displayFill(props.items));
   const length = props.items.length - 1;
+
+  function action() {
+    return props.add === true ? <AddCircleOutlineIcon/> : <CompareIcon/>
+  }
   console.log(display)
 
 
@@ -71,7 +76,7 @@ function Carousel(props) {
                     <StarIcon/>
                     <StarIcon/>
                   </div>
-                  <div className="action"><FlareIcon/></div>
+                  <div className="action">{action()}</div>
                 </div>
                 <div className="bottom">
                   <div className="product-name">{product.name}</div>
