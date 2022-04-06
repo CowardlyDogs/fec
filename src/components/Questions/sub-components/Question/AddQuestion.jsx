@@ -4,9 +4,6 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import '../../styles.css';
 
-// Pop-up module to add answer - toggles with button on QandA component.
-// Click anywhere on screen outside of modal and should disappear.
-
 
 var AddQuestion = () => {
   const { setAddQuestion, addQuestion, product } = useContext(QandAContext);

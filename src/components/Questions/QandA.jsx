@@ -84,7 +84,6 @@ var QandA = ({product_id}) => {
         <div>{search}</div>
         <div>{questionList}</div>
         <AddQuestion />
-        {/* <div>{addQuestionModal}</div> */}
       </div>
     </QandAContext.Provider>
   );

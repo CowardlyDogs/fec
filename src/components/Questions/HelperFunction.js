@@ -6,7 +6,7 @@ module.exports = {
   // Sorting questions from product based on **helpfulness**
   sortQuestions: (resData) => {
     var results = resData.results.sort( (a, b) => {
-      return  b.question_helpfulness - a.question_helpfulness
+      return  b.question_helpfulness - a.question_helpfulness;
     });
     return results;
   },

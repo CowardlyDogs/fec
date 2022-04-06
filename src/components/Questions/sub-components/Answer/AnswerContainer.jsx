@@ -42,14 +42,6 @@ var AnswerContainer = () => {
   var prevAnswers;
 
 
-  // Boolean switch for addAnswer Modal
-  var answerButton = <button onClick={()=>setAnswerBool(prev => !prev)}>Add an answer</button>;
-  var addAnswer = !answerBool ? answerButton : <AddAnswer />;
-
-
-
-
-
   if (sortedAnswers.length === 0) {
     answerList = <span>No answers yet.</span>;
 
@@ -63,11 +55,9 @@ var AnswerContainer = () => {
         setView(1);
       }}>See More Answers</button>;
 
-
     } else if (view === 1) {
       // Accordion view of answers
       answerList = mapAnswers([...seller, ...anons]);
-      // showMore = <button onClick={increment}>Show more Answers</button>;
       prevAnswers = <button onClick={()=>setView(0)}>Collapse answers</button>;
     }
   }
@@ -79,7 +69,6 @@ var AnswerContainer = () => {
       {showMore}
       {prevAnswers}
       <AddAnswer />
-      {/* {addAnswer} */}
     </div>
   );
 };

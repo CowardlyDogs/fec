@@ -5,8 +5,6 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
 
-// One QuestionModal per question - resides in greater QandA component
-
 var NameAndDate = ({name, date}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
