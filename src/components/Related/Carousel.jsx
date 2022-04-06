@@ -8,7 +8,6 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 function Carousel(props) {
   const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
-  // console.log('Items that made it to Carousel: ', props.items)
   const start = useRef(0);
   const end = useRef(props.add === true ? props.items.length > 5 ? 5 : props.items.length : props.items.length > 6 ? 6 : props.items.length);
   const [products, setProducts] = useState(props.items);
@@ -18,7 +17,6 @@ function Carousel(props) {
   function action() {
     return props.add === true ? <AddCircleOutlineIcon/> : <CompareIcon/>
   }
-  console.log(display)
 
 
   if (!Array.isArray(props.items) || length <= 0) {
@@ -38,7 +36,6 @@ function Carousel(props) {
       tempLeft.unshift(props.items[start.current]);
       return tempLeft;
     });
-    console.log('start: ', start.current, 'end: ', end.current);
   };
 
   const right = () => {
@@ -50,7 +47,6 @@ function Carousel(props) {
       tempRight.shift();
       return tempRight;
     });
-    console.log('start: ', start.current, 'end: ', end.current);
   };
 
   return (
