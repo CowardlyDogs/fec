@@ -1,13 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import ReviewModule from './Reviews/ReviewModule.jsx'
-
-const App = () => {
-  return (
-  <div>
-    <h1>Hello World</h1>
-    <ReviewModule/>
-=======
 import './App.css';
 import Outfit from './Related/Outfit.jsx';
 import Carousel from './Related/Carousel.jsx';
@@ -18,7 +9,6 @@ const App = () => {
   <div className="App">
     <Carousel items={items}/>
     <Outfit/>
->>>>>>> main
   </div>
   )
 }
