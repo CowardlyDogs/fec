@@ -106,4 +106,7 @@ dist
 .tern-port
 
 #API Keys
-src/components/Reviews/config.js
+config.js
+
+#WebPack Bundle
+public/bundle.js
