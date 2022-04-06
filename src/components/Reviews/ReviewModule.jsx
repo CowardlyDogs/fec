@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
 import axios from 'axios';
-import authorization from '../../../../../config.js';
+import authorization from '../../../config.js';
 import './sub-components/Reviews.css';
-axios.defaults.headers.common['Authorization'] = ReviewAPIKey;
+axios.defaults.headers.common['Authorization'] = authorization.TOKEN;
 
 function ReviewModule(props) {
   var productID = props.productID ||'40344';
