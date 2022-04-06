@@ -3,6 +3,7 @@ import axios from 'axios';
 import QandA from '../../QandA.jsx';
 import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
+import authorization from '../../../../../config.js';
 
 
 var HelpReport = ({ helpfulness }) => {
@@ -19,7 +20,7 @@ var HelpReport = ({ helpfulness }) => {
     const options = {
       url: `${url}questions/${question_id}/report`,
       method: 'put',
-      headers: { authorization: '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' }
+      headers: { authorization: authorization.TOKEN }
     };
 
     axios(options)
@@ -40,7 +41,7 @@ var HelpReport = ({ helpfulness }) => {
     const options = {
       url: `${url}questions/${question_id}/helpful`,
       method: 'put',
-      headers: { authorization: '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' }
+      headers: { authorization: authorization.TOKEN }
     };
 
 

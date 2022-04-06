@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
 import reactDOM from 'react-dom';
 import './styles.css';
+import authorization from '../../../config.js';
 
 import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
@@ -32,7 +33,7 @@ var QandA = ({product_id}) => {
 
   useEffect(() => {
     axios.get(`${url}questions/`, {
-      headers: { Authorization: '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' },
+      headers: { Authorization: authorization.TOKEN },
       params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
