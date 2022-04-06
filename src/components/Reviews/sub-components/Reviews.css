@@ -1,0 +1,91 @@
+body {
+  background-color: #f5f2f0;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+  margin: 1rem;
+  background-color:#fca311;
+  background: linear-gradient(0deg, #fca311, #f2d9b1);
+  color: #14213d;
+  border-radius: .25rem;
+}
+
+hr {
+  text-align:center;
+  margin-left: .5rem;
+  margin-right: 1.5rem;
+}
+
+.userDate {
+  display: flex;
+}
+.username {
+  text-align: left;
+}
+.timestamp {
+  text-align: right;
+}
+.helpful-circle {
+  padding: .5rem;
+  border-style: solid;
+  border-radius: 50%;
+  background-color:#fca311;
+  background: linear-gradient(-45deg, #fca311, #f2d9b1);
+}
+.helpfulness {
+  justify-content: space-between;
+  width: 15%;
+  display: flex;
+}
+.review-nav {
+  display: flex;
+  justify-content: space-between;
+}
+.review-modal {
+  z-index:1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,0.75);
+}
+.modal-content {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  max-width: 40rem;
+  background: linear-gradient(145deg, #24314d, #14213d);
+  border-radius: 1.5rem;
+}
+.modal-row {
+  display: flex;
+  justify-content: center;
+}
+.reviews {
+  /* background-color: #e1e1e1; */
+  margin: 2rem;
+  padding: 1rem;
+
+  background: linear-gradient(145deg, #e1e1e1, #e9e9e9);
+  border-style: double;
+}
+.review {
+  width: 90%;
+  /* background-color: #e9e9e9; */
+  background: linear-gradient(325deg, #e9e9e9, #f1f1f1);
+  border-style: double;
+  border-radius: 1.5rem;
+  margin: 1rem;
+  padding: .5rem;
+  padding-left: 1.5rem;
+}
+.review-body {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+
