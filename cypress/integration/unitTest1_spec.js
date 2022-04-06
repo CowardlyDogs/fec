@@ -4,6 +4,7 @@ describe('First Unit Test', function () {
   })
 })
 
+
 describe('Search query input', function () {
   it('Finds search input, enters text', function () {
     cy.visit('http://localhost:3000/');
