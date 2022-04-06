@@ -23,7 +23,6 @@ function ReviewList({page, turnPage, product, reviews}) {
     */
     <div>
       <div>
-        <h1> Reviews</h1>
         <ul>
 
             {reviews.map(review => (
