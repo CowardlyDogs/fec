@@ -4,6 +4,7 @@ import Outfit from './Related/Outfit.jsx';
 import Carousel from './Related/Carousel.jsx';
 import items from './Related/sampledata.jsx';
 import Overview from './Overview/Overview.jsx';
+import QandA from './Questions/QandA.jsx';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
     <Overview />
     <Carousel items={items}/>
     <Outfit/>
+    <QandA />
   </div>
   )
 }

@@ -1,22 +1,35 @@
 import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
-import { QandAContext } from '../QandA.jsx'
+import { QandAContext } from '../QandA.jsx';
 
-function Search () {
-  const { product, setSearchVal, searchVal, searchQuestions } = useContext(QandAContext);
+var Search = () => {
+  const { product, setSearchVal, searchVal, searchQuestions, setVisibleQs, questions } = useContext(QandAContext);
 
-  var handleClick = (e) => {
-    e.preventDefault();
-    searchQuestions(searchVal)
-  }
+
+
+  // var handleClick = (e) => {
+  //   e.preventDefault();
+  //   searchQuestions(searchVal);
+  // };
+
+  var handleChange = (e) => {
+    setSearchVal(e.target.value);
+
+    if (e.target.value.length > 2) {
+      console.log('in first block');
+      searchQuestions(searchVal);
+    } else if (e.target.value.length < 3) {
+      console.log('in second block');
+      setVisibleQs(questions);
+    }
+  };
 
   return (
     <form>
-      {console.log(searchQuestions)}
-      <input id='searchVal' value={searchVal} onChange={e => setSearchVal(e.target.value)}/>
-      <button type='submit' onClick={handleClick}> Search </button>
+      <input id='searchVal' placeholder='Have a question? Search for answers...' value={searchVal} onChange={handleChange}/>
+      {/* <button type='submit' onClick={handleClick}> Search </button> */}
     </form>
   );
-}
+};
 
 export default Search;

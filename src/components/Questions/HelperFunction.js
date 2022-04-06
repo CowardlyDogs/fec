@@ -1,29 +1,30 @@
 // Data helper functions
 
-// Sorting questions from product based on **helpfulness**
-var sortQuestions = (resData) => {
-  var results = resData.results.sort( (a, b) => {
-    return  b.question_helpfulness - a.question_helpfulness
-  })
-  return results;
-}
-//  Output = High->Low   [ {}, {}, {}, {} ]
+module.exports = {
 
 
-
-// Sorting answers from single question
-var sortAnswers = (question) => {
-  var results = [];
-  for (const key in question.answers) {
-    results.push(question.answers[key])
-   };
-   results.sort( (a, b) => {
-      return  b.helpfulness - a.helpfulness
+  // Sorting questions from product based on **helpfulness**
+  sortQuestions: (resData) => {
+    var results = resData.results.sort( (a, b) => {
+      return  b.question_helpfulness - a.question_helpfulness;
     });
-   return results;
-}
-//  Output = High->Low   [ {}, {}, {}, {} ]
+    return results;
+  },
+  //  Output = High->Low   [ {}, {}, {}, {} ]
 
 
-// exports.module.sortAnswers = sortAnswers;
-// exports.module.sortQuestions = sortQuestions;
+
+  // Sorting answers from single question
+  sortAnswers: (answers) => {
+    var results = [];
+    for (const key in answers) {
+      results.push(answers[key]);
+    }
+
+    results.sort( (a, b) => {
+      return  b.helpfulness - a.helpfulness;
+    });
+    return results;
+  }
+  //  Output = High->Low   [ {}, {}, {}, {} ]
+};
