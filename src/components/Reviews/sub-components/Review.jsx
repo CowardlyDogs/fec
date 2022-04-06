@@ -1,6 +1,6 @@
 import React/*, { useState }*/ from 'react';
 import moment from 'moment';
-import './Reviews.css';
+
 
 
 function Review({review}) {
@@ -15,14 +15,15 @@ function Review({review}) {
     *
     *
     */
-    <div>
+    <div className="review">
       <h3>{review.summary}</h3>
       <div className="userDate">
         <div className='username'><p>{review.reviewer_name}</p></div>
         <div className='timestamp' float='right'><p>{moment(review.date).fromNow()}</p></div>
       </div>
       <div>{/*star rating here and reccomended*/}</div>
-      <div>
+      <hr/>
+      <div className="review-body">
         <p>{review.body}</p>
       </div>
       <div className="ReviewImages">
@@ -32,11 +33,11 @@ function Review({review}) {
         <img></img>
       </div>
       <div className="helpfulness">
-        <div className="helpfulCircle">
-          <p>{review.helpfulness}</p>
+        <div className="helpful-circle">
+          {review.helpfulness}
         </div>
         <div>
-          <p>people found this helpful</p>
+          people found this helpful
         </div>
 
       </div>

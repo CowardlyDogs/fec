@@ -3,6 +3,7 @@ import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
 import axios from 'axios';
 import ReviewAPIKey from './config.js';
+import './sub-components/Reviews.css';
 axios.defaults.headers.common['Authorization'] = ReviewAPIKey;
 
 function ReviewModule(props) {
@@ -51,12 +52,30 @@ function ReviewModule(props) {
   }
 
   var submitNewReview = (review) => {
+
+
+    /*
+    **TODO** setup review object in correct format
+
+
+    product_id
+    rating
+    summary
+    body
+    recommend
+    name
+    email
+    photos
+    characteristics
+
+
+    */
     console.log(review);
     review.product_id = product;
     review.rating = review.rating || 4; // **TODO** Make sure this is dynamic
     toggleNewReview();
 
-    axios.post()
+    // axios.post(); **TODO** Post Request
   }
 
 
@@ -69,7 +88,7 @@ function ReviewModule(props) {
   }
 
   return (
-    <div>
+    <div className="reviews">
       <h1>Ratings and Reviews</h1>
 
       {/*****TODO***

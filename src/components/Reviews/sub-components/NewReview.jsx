@@ -4,40 +4,71 @@ import React/*, { useState }*/ from 'react';
 
 function NewReview({visible, toggle, product, onSubmit}) {
 
-  var username = '';
-  var changeUsername = (e) => {
-    username = e.target.value;
+  var rating = 0;
+  // var changeRating = (stars) => {
+  //   rating = stars;
+  // }
+
+  var summary = '';
+  var changeSummary = (e) => {
+    summary = e.target.value;
   }
-  var title = '';
-  var changeTitle = (e) => {
-    title = e.target.value;
-  }
-  var email = '';
-  var changeEmail = (e) => {
-    email = e.target.value;
-  }
+
   var review = '';
   var changeReview = (e) => {
     review = e.target.value;
   }
 
+  var username = '';
+  var changeUsername = (e) => {
+    username = e.target.value;
+  }
+
+  var email = '';
+  var changeEmail = (e) => {
+    email = e.target.value;
+  }
+
+  var photos = [];
+  // var changePhotos = (e) => {
+  //   photos = e.target.value;
+  // }
+
+  var characteristics = {};
+  // var changeCharacteristics = () => {
+  //   characteristics = e.target.value;
+  // }
+
+
   var handleSubmit = () => {
-    onSubmit({username, title, email, review});
+    onSubmit({
+      product_id: product,
+      rating: rating,
+      summary: summary,
+      body: review,
+      name: username,
+      email : email,
+      photos: photos,
+      characteristics: characteristics
+     });
   }
 
   return (
-    // <h1>Ratings and Reviews Will Go Here</h1>
-    /*
-    ***TODO***
-    *
-    *Adjust to css to lightbox
-    *
-    *
-    */
+
     <div>
-      <h1>Reviews</h1>
-      {/* TODO New Form HTML Code */}
-      <button onClick={toggle} style={{display: (!visible ? "block" : "none")}}>New Review</button>
+      {/*
+
+      **TODO**
+
+      Add Star Rating System
+
+      Idea -- 5 icons
+              onhover, icon grows larger.
+              On click set rating integer to the star number.
+              If rating >= star number, color = gold, else white. (Use ternary)
+
+      */}
+      <button onClick={toggle} style={{display: (!visible ? "block" : "none")}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? "flex" : "none")}}>
         <div className="modal-content">
           {/* TODO figure out star rating input */}
@@ -48,7 +79,7 @@ function NewReview({visible, toggle, product, onSubmit}) {
           </div>
           <br/>
           <div className="modal-row">
-            <input className='title-input' type='text' placeholder='Review Title' onChange={changeTitle}/>
+            <input className='title-input' type='text' placeholder='Review Title' onChange={changeSummary}/>
             <input className='review-input' type='text' placeholder='Review' onChange={changeReview}/>
           </div>
           <br/>
@@ -56,12 +87,6 @@ function NewReview({visible, toggle, product, onSubmit}) {
             <button className='modal-close' onClick={handleSubmit}>Submit</button>
             <button className='modal-close' onClick={toggle}> Cancel </button>
           </div>
-
-
-          <br/>
-
-          <br/>
-
         </div>
       </div>
     </div>
