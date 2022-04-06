@@ -14,7 +14,7 @@ export const ProductContext = React.createContext(null);
 
 
 function ProductInfo () {
-  const style = useContext(OverviewContext).styles;
+  const currentStyle = useContext(OverviewContext).currentStyle;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ function ProductInfo () {
 
 
   return (
-    <ProductContext.Provider value={{style: style, product: product}}>
+    <ProductContext.Provider value={{currentStyle: currentStyle, product: product}}>
       {/* TODO: Delete Styles Selector Title */}
       <h1>Product Info</h1>
       <StarRating />

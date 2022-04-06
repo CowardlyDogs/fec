@@ -3,7 +3,7 @@ import { Cart, CartContext } from './Cart.jsx';
 
 
 function QuantitySelector(props) {
-  const product = useContext(CartContext);
+  const currentStyle = useContext(CartContext).currentStyle;
   const sku = props.sku;
   const [listOpen, setListOpen] = useState(false);
 

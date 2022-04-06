@@ -39,7 +39,6 @@ function Overview () {
     return (<div></div>)
   }
 
-  console.log('currentStyle: ', currentStyle);
 
   return (
     <OverviewContext.Provider value={{currentStyle: currentStyle, styles: styles}}>
