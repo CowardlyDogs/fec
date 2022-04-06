@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
 import axios from 'axios';
-import ReviewAPIKey from './config.js';
+import authorization from '../../../../../config.js';
 import './sub-components/Reviews.css';
 axios.defaults.headers.common['Authorization'] = ReviewAPIKey;
 
