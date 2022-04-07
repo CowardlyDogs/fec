@@ -16,10 +16,8 @@ var Search = () => {
     setSearchVal(e.target.value);
 
     if (e.target.value.length > 2) {
-      console.log('in first block');
       searchQuestions(searchVal);
     } else if (e.target.value.length < 3) {
-      console.log('in second block');
       setVisibleQs(questions);
     }
   };

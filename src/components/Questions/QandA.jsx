@@ -15,21 +15,22 @@ import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
 export const QandAContext = React.createContext(null);
 
 
-var QandA = ({product_id}) => {
+var QandA = ({product_id, productName}) => {
 
   const [ product,       setProduct ] =         useState(product_id);
   const [ questions,     setQuestions ] =       useState([]);
   const [ searchVal,     setSearchVal ] =       useState('');
   const [ searchView,    setSearchView ] =      useState(false);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
-  const [ addAnswer,     setAddAnswer ] =       useState(false);
+  // const [ addAnswer,     setAddAnswer ] =       useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
   const [ visibleQs,     setVisibleQs ] =       useState(questions);
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
 
-
+  var product_id = 40344
+  var productName = 'Camo Onesie'
 
   useEffect(() => {
     axios.get(`${url}questions/`, {
@@ -37,7 +38,6 @@ var QandA = ({product_id}) => {
       params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
-        console.log('hello, useEffect ran');
         var sorted = sortQuestions(response.data);
         setQuestions(sorted);
         setVisibleQs(sorted);
@@ -77,14 +77,13 @@ var QandA = ({product_id}) => {
 
 
 
-
   return (
-    <QandAContext.Provider value={{product, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
+    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddQuestion, addQuestion}}>
       <div className='QandA'>
         <h2>Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
-        <AddQuestion />
+        <AddQuestion product_id={product_id} productName={productName}/>
       </div>
     </QandAContext.Provider>
   );

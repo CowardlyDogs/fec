@@ -21,13 +21,13 @@ var Question = ({data}) => {
 
 
   return (
-    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id}}>
+    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body}}>
       <div>
         <strong>Q:</strong>
         <QNameAndDate name={asker_name} date={question_date}/>
         <QuestionBody body={question_body}/>
-        <HelpReport helpfulness={question_helpfulness}/>
-        <AnswerContainer />
+        <HelpReport   helpfulness={question_helpfulness}/>
+        <AnswerContainer question_body={question_body}/>
       </div>
     </QuestionContext.Provider>
   );
