@@ -45,6 +45,10 @@ var AddQuestion = ({product_id, productName}) => {
       {headers: { 'Authorization': authorization.TOKEN }})
       .then(response => {
         console.log(response, 'success')
+        setQuestionVal('');
+        setNicknameVal('');
+        setEmailVal('');
+        setAddQuestion(prev=>!prev)
       })
       .catch(error => {
         console.log(error, 'failed', question)
@@ -59,7 +63,6 @@ var AddQuestion = ({product_id, productName}) => {
     e.preventDefault();
     var warning = false;
 
-    console.log(!emailVal.includes('.com'))
 
     if (nicknameVal.length === 0) {
       setWarningBool(true)
@@ -80,21 +83,20 @@ var AddQuestion = ({product_id, productName}) => {
       setWarningVals(prev=>[...prev, 'Email in correct format'])
       warning = true;
     }
-
-
     if (!warning) {
       postQuestion();
-      setQuestionVal('');
-      setNicknameVal('');
-      setEmailVal('');
-      setAddQuestion(prev=>!prev)
     }
   }
+
+
 
   var setAndClear = () => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
+    setQuestionVal('');
+    setNicknameVal('');
+    setEmailVal('');
   }
 
 
