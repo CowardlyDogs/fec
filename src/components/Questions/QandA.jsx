@@ -37,7 +37,7 @@ var QandA = ({product_id}) => {
       params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
-        console.log('hello, useEffect ran');
+        // console.log('hello, useEffect ran');
         var sorted = sortQuestions(response.data);
         setQuestions(sorted);
         setVisibleQs(sorted);
