@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+config.js
+public/bundle.js
+package-lock.json
+>>>>>>> main
 
 # Logs
 logs
