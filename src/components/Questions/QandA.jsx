@@ -22,7 +22,7 @@ var QandA = ({product_id, productName}) => {
   const [ searchVal,     setSearchVal ] =       useState('');
   const [ searchView,    setSearchView ] =      useState(false);
   const [ addQuestion,   setAddQuestion ] =     useState(false);
-  const [ addAnswer,     setAddAnswer ] =       useState(false);
+  // const [ addAnswer,     setAddAnswer ] =       useState(false);
   const [ viewNum,       setViewNum ] =         useState(0);
   const [ visibleQs,     setVisibleQs ] =       useState(questions);
 
@@ -38,7 +38,6 @@ var QandA = ({product_id, productName}) => {
       params: { product_id: 40344, page: 1, count: 200}
     })
       .then(response => {
-        console.log('hello, useEffect ran');
         var sorted = sortQuestions(response.data);
         setQuestions(sorted);
         setVisibleQs(sorted);
@@ -78,9 +77,8 @@ var QandA = ({product_id, productName}) => {
 
 
 
-
   return (
-    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
+    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddQuestion, addQuestion}}>
       <div className='QandA'>
         <h2>Questions and Answers</h2>
         <div>{search}</div>
