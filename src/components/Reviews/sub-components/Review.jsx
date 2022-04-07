@@ -1,9 +1,18 @@
 import React/*, { useState }*/ from 'react';
 import moment from 'moment';
+import axios from 'axios';
+import authorization from '../../../../config.js';
 
 
 
-function Review({review}) {
+function Review({review, helpful, report}) {
+
+  var handleHelp = () => {
+    helpful(review.review_id);
+  }
+  var handleReport = () => {
+    report(review.review_id);
+  }
 
   return (
     // <h1>Ratings and Reviews Will Go Here</h1>
@@ -32,14 +41,21 @@ function Review({review}) {
         )))}
         <img></img>
       </div>
-      <div className="helpfulness">
-        <div className="helpful-circle">
-          {review.helpfulness}
+      <div>
+        <div className="helpfulness">
+          <div className="helpful-circle">
+            {review.helpfulness}
+          </div>
+          <div>
+            people found this helpful
+          </div>
+          <div>
+            <button onClick={handleHelp}> I did too! </button>
+          </div>
         </div>
-        <div>
-          people found this helpful
+        <div className="report">
+          <button onClick={handleReport}> Report </button>
         </div>
-
       </div>
       {/* All review information */}
    </div>
