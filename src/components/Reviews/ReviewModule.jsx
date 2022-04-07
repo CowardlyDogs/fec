@@ -13,7 +13,6 @@ function ReviewModule(props) {
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
   const   [   page,               setPage               ]   =   useState(0);
-  const   [   ,                   updateState           ]   =   React.useState();
   const   [   update,             setUpdate             ]   =   useState(0);
 
 
