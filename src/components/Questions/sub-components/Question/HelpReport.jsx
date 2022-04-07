@@ -17,42 +17,49 @@ var HelpReport = ({ helpfulness }) => {
 
   var reportQuestion = () => {
 
-    const options = {
-      url: `${url}questions/${question_id}/report`,
-      method: 'put',
+    axios.put(`${url}questions/${question_id}/report`, {
       headers: { authorization: authorization.TOKEN }
-    };
-
-    axios(options)
+    })
       .then(response => {
-        console.log(response, `Question ${id} reported`);
+        console.log(response, `Question ${question_id} reported`);
         setReported(true);
       })
       .catch(error => {
         console.log(error, 'Question {} not reported');
-        setReported(true);
       });
   };
 
 
+// WAS WORKING WITH options object but now will not
+  // var helpfulQuestion = () => {
+  //   const options = {
+  //     url: `${url}questions/${question_id}/helpful`,
+  //     method: 'put',
+  //     headers: { authorization: authorization.TOKEN }
+  //   };
+
+  //   axios(options)
+  //     .then(response => {
+  //       console.log('Question marked helpful');
+  //       setHelpful(true);
+  //     })
+  //     .catch(error => {
+  //       console.log('Helpful Question PUT request failed', authorization.TOKEN);
+  //       setHelpful(true);
+  //     });
+  // };
 
   var helpfulQuestion = () => {
 
-    const options = {
-      url: `${url}questions/${question_id}/helpful`,
-      method: 'put',
+    axios.put(`${url}questions/${question_id}/helpful`, {
       headers: { authorization: authorization.TOKEN }
-    };
-
-
-    axios(options)
+    })
       .then(response => {
         console.log('Question marked helpful');
         setHelpful(true);
       })
       .catch(error => {
-        console.log('Helpful Question PUT request failed');
-        setHelpful(true);
+        console.log('Helpful Question PUT request failed', authorization.TOKEN);
       });
   };
 

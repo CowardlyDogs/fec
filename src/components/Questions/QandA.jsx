@@ -15,7 +15,7 @@ import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
 export const QandAContext = React.createContext(null);
 
 
-var QandA = ({product_id}) => {
+var QandA = ({product_id, productName}) => {
 
   const [ product,       setProduct ] =         useState(product_id);
   const [ questions,     setQuestions ] =       useState([]);
@@ -29,7 +29,8 @@ var QandA = ({product_id}) => {
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
 
-
+  var product_id = 40344
+  var productName = 'Camo Onesie'
 
   useEffect(() => {
     axios.get(`${url}questions/`, {
@@ -79,12 +80,12 @@ var QandA = ({product_id}) => {
 
 
   return (
-    <QandAContext.Provider value={{product, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
+    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddAnswer, addAnswer, setAddQuestion, addQuestion}}>
       <div className='QandA'>
         <h2>Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
-        <AddQuestion />
+        <AddQuestion product_id={product_id} productName={productName}/>
       </div>
     </QandAContext.Provider>
   );
