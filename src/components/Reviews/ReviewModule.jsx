@@ -13,16 +13,9 @@ function ReviewModule(props) {
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
   const   [   page,               setPage               ]   =   useState(0);
+  const   [   ,                   updateState           ]   =   React.useState();
+  const   [   update,             setUpdate             ]   =   useState(0);
 
-  // useEffect(() => {
-  //   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=40344&sort=helpful&count=10&page=1')
-  //     .then(response => {
-  //       setReviews(response.results);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     })
-  // }, []);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=1&page=1`)
@@ -44,7 +37,7 @@ function ReviewModule(props) {
       .catch(error => {
         console.log(error);
       });
-    }, [page]);
+    }, [page, update]);
 
 
   var toggleNewReview = () => {
@@ -87,6 +80,25 @@ function ReviewModule(props) {
     }
   }
 
+  var helpful = (review_id) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/helpful`, {
+        headers: {Authorization: authorization.TOKEN}
+      })
+        .then(() => {
+        setUpdate(update + 1);
+        });
+
+  }
+
+  var report = (review_id) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/report`, {
+        headers: {Authorization: authorization.TOKEN}
+      })
+        .then(() => {
+        setUpdate(update + 1);
+        });
+  }
+
   return (
     <div className="reviews">
       <h1>Ratings and Reviews</h1>
@@ -100,7 +112,7 @@ function ReviewModule(props) {
       */}
 
       { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product} onSubmit={submitNewReview} /> }
-      <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} />
+      <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} helpful={helpful} report={report} />
    </div>
   );
 }

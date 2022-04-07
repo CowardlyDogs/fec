@@ -107,17 +107,14 @@ dist
 # TernJS port file
 .tern-port
 
-<<<<<<< HEAD
+
 #API Keys
-<<<<<<< HEAD
 config.js
 
 #WebPack Bundle
 public/bundle.js
-=======
-src/components/Reviews/config.js
-=======
+
+
 # Github Authorization
 config.js
->>>>>>> b60ee456eb65766fefe897680d2a3f35efe64e62
->>>>>>> main
+
