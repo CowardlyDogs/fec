@@ -41,7 +41,7 @@ function Review({review, helpful, report}) {
         )))}
         <img></img>
       </div>
-      <div>
+      <div className="help-report">
         <div className="helpfulness">
           <div className="helpful-circle">
             {review.helpfulness}
@@ -49,11 +49,10 @@ function Review({review, helpful, report}) {
           <div>
             people found this helpful
           </div>
-          <div>
-            <button onClick={handleHelp}> I did too! </button>
-          </div>
+
         </div>
         <div className="report">
+          <button onClick={handleHelp}> This was Helpful </button>
           <button onClick={handleReport}> Report </button>
         </div>
       </div>
