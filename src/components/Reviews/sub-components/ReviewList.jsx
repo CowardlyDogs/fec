@@ -2,7 +2,7 @@ import React/*, { useState }*/ from 'react';
 import Review from './Review.jsx';
 
 
-function ReviewList({page, turnPage, product, reviews}) {
+function ReviewList({page, turnPage, product, reviews, helpful, report}) {
 
   var nextPage = () => {
     turnPage('inc');
@@ -26,7 +26,7 @@ function ReviewList({page, turnPage, product, reviews}) {
         <ul>
 
             {reviews.map(review => (
-              <Review review={review} key={review.review_id}/>
+              <Review review={review} key={review.review_id} helpful={helpful} report={report}/>
         ))}
         </ul>
       </div>
