@@ -14,13 +14,15 @@ var Answer = ({answerData}) => {
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
   const { answerer_name, body, date, helpfulness, id, photos } = answerData;
 
+  var photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
+
 
   return (
     <div>
-      <AnswerBody body={body}/>
+      <AnswerBody  body={body}/>
       <NameAndDate name={answerer_name} date={date}/>
-      <Photos photos={photos}/>
-      <HelpReport helpfulness={helpfulness} id={id}/>
+      {photoDiv}
+      <HelpReport  helpfulness={helpfulness} id={id}/>
     </div>
   );
 };

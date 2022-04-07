@@ -7,8 +7,16 @@ var Photos = ({photos}) => {
 
 
   return (
+    <div>
+      { photos.map( (photo, idx) => {
+          console.log(photo)
+          return <img key={idx} src={photo}></img>
+      })}
 
-  )
+
+
+    </div>
+  );
 };
 
 export default Photos;
