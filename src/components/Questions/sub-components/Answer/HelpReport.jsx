@@ -4,6 +4,7 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 var HelpReport = ({id, helpfulness}) => {
   const {       product, url           } = useContext(QandAContext);
@@ -13,17 +14,14 @@ var HelpReport = ({id, helpfulness}) => {
   const [ reported, setReported ] = useState(false);
 
   var reportAnswer = () => {
-
-    axios.put(`${url}answers/${id}/report`, {
-      headers: { 'Authorization': authorization.TOKEN }
-    })
-      .then(response => {
-        console.log(response, `Answer ${id} reported`);
+      APIHelpers.reportAnswer(id, (err, res) => {
+        if (err) {
+          console.log(err, 'Answer not reported');
+        } else {
+          console.log(res, `Answer ${id} reported`);
         setReported(true);
+        }
       })
-      .catch(error => {
-        console.log(error, 'Answer not reported');
-      });
   };
 
 
