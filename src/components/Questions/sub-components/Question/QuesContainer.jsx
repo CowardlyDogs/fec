@@ -30,11 +30,11 @@ var QuesContainer = () => {
   if ( view === 0 ) {
 
     if (visibleQs.length <= 2) {
-          showMore = null;
+      showMore = null;
       questionList = mapQuestions(visibleQs.slice(0, end));
     } else {
       questionList = mapQuestions(visibleQs.slice(0, end));
-          showMore = <button onClick={()=> {
+      showMore = <button onClick={()=> {
         increment();
         setView(1);
       }}>   More Answered Questions   </button>;
@@ -43,9 +43,9 @@ var QuesContainer = () => {
 
   } else if ( view === 1 ) {
     // Accordion view of questions
-     questionList = mapQuestions(visibleQs.slice(0, end));
+    questionList = mapQuestions(visibleQs.slice(0, end));
 
-         showMore = <button onClick={increment}>       More Answered Questions </button>;
+    showMore = <button onClick={increment}>       More Answered Questions </button>;
     prevQuestions = <button onClick={()=>setEnd(2)}>   Collapse Questions      </button>;
 
     if (questionList.length <= 2) {

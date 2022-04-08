@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import OutfitMain from './Related/OutfitMain.jsx';
 import Overview from './Overview/Overview.jsx';
@@ -7,18 +7,18 @@ import ReviewModule from './Reviews/ReviewModule.jsx';
 import RelatedMain from './Related/RelatedMain.jsx';
 
 const App = () => {
-  const defaultId = '65631';
+  const [productId, setProduct] = useState('65631');
   return (
-  <div className="App">
-    <Overview/>
-    <h1>Related Items</h1>
-    <RelatedMain defaultId={defaultId}/>
-    <h1>Your Outfit</h1>
-    <OutfitMain defaultId={defaultId}/>
-    <QandA defaultId={defaultId}/>
-    <ReviewModule/>
-  </div>
-  )
-}
+    <div className="App">
+      <Overview/>
+      <h1>Related Items</h1>
+      <RelatedMain     mainId={productId}/>
+      <h1>Your Outfit</h1>
+      <OutfitMain      mainId={productId}/>
+      <QandA        defaultId={productId}/>
+      <ReviewModule productId={productId}/>
+    </div>
+  );
+};
 
 export default App;
