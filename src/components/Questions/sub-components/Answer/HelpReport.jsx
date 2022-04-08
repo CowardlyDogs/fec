@@ -6,24 +6,11 @@ import { QuestionContext } from '../Question/Question.jsx';
 import authorization from '../../../../../config.js';
 
 var HelpReport = ({id, helpfulness}) => {
-  const { product, url } = useContext(QandAContext);
+  const {       product, url           } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
-  const [ helpful, setHelpful ] = useState(false);
+  const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
-
-  //   const options = {
-  //     url: `${url}answers/${id}/report`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
-
-  //   const options = {
-  //     url: `${url}answers/${id}/helpful`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
-
 
   var reportAnswer = () => {
 
@@ -62,29 +49,25 @@ var HelpReport = ({id, helpfulness}) => {
   var report;
 
   if (helpful) {
-    help =
-    <div>
-      <span>Helpful?</span>
-      <a>Yes({helpfulness += 1})</a>
-    </div>;
+    help = <div>
+             <span>Helpful?</span>
+             <a>Yes({helpfulness += 1})</a>
+           </div>;
   } else {
-    help =
-    <div>
-      <span>Helpful?</span>
-      <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
-    </div>;
+    help = <div>
+              <span>Helpful?</span>
+              <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
+            </div>;
   }
 
   if (reported) {
-    report =
-    <div>
-      <a>Reported</a>
-    </div>;
+    report = <div>
+              <a>Reported</a>
+            </div>;
   } else {
-    report =
-    <div>
-      <a onClick={reportAnswer}>Report</a>
-    </div>;
+    report = <div>
+               <a onClick={reportAnswer}>Report</a>
+             </div>;
   }
 
 

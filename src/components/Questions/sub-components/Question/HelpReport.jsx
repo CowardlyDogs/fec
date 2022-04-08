@@ -10,7 +10,7 @@ var HelpReport = ({ helpfulness }) => {
   const { url, product } = useContext(QandAContext);
   const { question_id } = useContext(QuestionContext);
 
-  const [ helpful, setHelpful ] = useState(false);
+  const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
 
 
@@ -29,25 +29,6 @@ var HelpReport = ({ helpfulness }) => {
       });
   };
 
-
-// WAS WORKING WITH options object but now will not
-  // var helpfulQuestion = () => {
-  //   const options = {
-  //     url: `${url}questions/${question_id}/helpful`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
-
-  //   axios(options)
-  //     .then(response => {
-  //       console.log('Question marked helpful');
-  //       setHelpful(true);
-  //     })
-  //     .catch(error => {
-  //       console.log('Helpful Question PUT request failed', authorization.TOKEN);
-  //       setHelpful(true);
-  //     });
-  // };
 
   var helpfulQuestion = () => {
 
@@ -70,29 +51,25 @@ var HelpReport = ({ helpfulness }) => {
   var report;
 
   if (helpful) {
-    help =
-    <div>
-      <span>Helpful?</span>
-      <a>Yes({helpfulness += 1})</a>
-    </div>;
+    help = <div>
+             <span>Helpful?</span>
+             <a>Yes({helpfulness += 1})</a>
+           </div>;
   } else {
-    help =
-    <div>
-      <span>Helpful?</span>
-      <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
-    </div>;
+    help = <div>
+             <span>Helpful?</span>
+             <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
+           </div>;
   }
 
   if (reported) {
-    report =
-    <div>
-      <a>Reported</a>
-    </div>;
+    report = <div>
+               <a>Reported</a>
+             </div>;
   } else {
-    report =
-    <div>
-      <a onClick={reportQuestion}>Report</a>
-    </div>;
+    report = <div>
+               <a onClick={reportQuestion}>Report</a>
+             </div>;
   }
 
 

@@ -3,7 +3,6 @@ import axios from 'axios';
 import reactDOM from 'react-dom';
 import './styles.css';
 import authorization from '../../../config.js';
-
 import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
 import Question from './sub-components/Question/Question.jsx';
@@ -11,23 +10,19 @@ import Search from './sub-components/Search.jsx';
 import AddQuestion from './sub-components/Question/AddQuestion.jsx';
 import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
 
-
 export const QandAContext = React.createContext(null);
-
 
 var QandA = ({product_id, productName}) => {
 
-  const [ product,       setProduct ] =         useState(product_id);
-  const [ questions,     setQuestions ] =       useState([]);
-  const [ searchVal,     setSearchVal ] =       useState('');
-  const [ searchView,    setSearchView ] =      useState(false);
-  const [ addQuestion,   setAddQuestion ] =     useState(false);
-  // const [ addAnswer,     setAddAnswer ] =       useState(false);
-  const [ viewNum,       setViewNum ] =         useState(0);
-  const [ visibleQs,     setVisibleQs ] =       useState(questions);
+  const [     product, setProduct     ] = useState(product_id);
+  const [   questions, setQuestions   ] = useState([]);
+  const [   searchVal, setSearchVal   ] = useState('');
+  const [  searchView, setSearchView  ] = useState(false);
+  const [   visibleQs, setVisibleQs   ] = useState(questions);
+  const [ addQuestion, setAddQuestion ] = useState(false);
+  const [     viewNum, setViewNum     ] = useState(0);
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
-
 
   var product_id = 40344
   var productName = 'Camo Onesie'
@@ -48,6 +43,21 @@ var QandA = ({product_id, productName}) => {
   }, []);
 
 
+  var postAnswer = () => {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
+      .then(response => {
+        console.log(`Question ${question_id} posted`, response)
+        setAnswerVal('');
+        setNicknameVal('');
+        setEmailVal('');
+        setAddAnswer(prev=>!prev)
+      })
+      .catch(error => {
+        console.log('Error', error)
+        setEmailBool(true)
+        setInvalidEmail('Question not posted, please provide valid email address')
+      })
+  }
 
 
 
@@ -69,7 +79,7 @@ var QandA = ({product_id, productName}) => {
 
   if (questions.length > 0) {
     questionList = <QuesContainer />;
-    search = <Search />;
+          search = <Search />;
   } else {
     questionList = <span>No questions asked yet.</span>;
   }
@@ -78,9 +88,17 @@ var QandA = ({product_id, productName}) => {
 
 
   return (
-    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddQuestion, addQuestion}}>
+    <QandAContext.Provider value={{product,     productName,
+                                   questions,   url,
+                                   searchVal,   setSearchVal,
+                                   visibleQs,   setVisibleQs,
+                                   searchView,  setSearchView,
+                                   addQuestion, setAddQuestion,
+                                                searchQuestions,
+                                                postAnswer}}>
+
       <div className='QandA'>
-        <h2>Questions and Answers</h2>
+        <h2> Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
         <AddQuestion product_id={product_id} productName={productName}/>
@@ -90,16 +108,3 @@ var QandA = ({product_id, productName}) => {
 };
 
 export default QandA;
-
-
-
-
-// For testing before future import to App.js
-// const App = () => {
-//   return (
-//     <div>
-//       <h1>Hello World</h1>
-//       <QandA />
-//     </div>
-//   )
-// }

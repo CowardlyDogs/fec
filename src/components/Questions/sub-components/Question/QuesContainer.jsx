@@ -9,7 +9,7 @@ var QuesContainer = () => {
   const { product, questions, searchResults, answers, searchView, setSearchView, visibleQs } = useContext(QandAContext);
 
   const [ view, setView ] = useState(0);
-  const [ end, setEnd ] = useState(2);
+  const [  end, setEnd  ] = useState(2);
 
 
 
@@ -17,11 +17,6 @@ var QuesContainer = () => {
   var increment = () => {
     setEnd(prev => prev + 2);
   };
-
-  var decrement = () => {
-    setEnd(prev => prev - 2);
-  };
-
 
 
   // Function to map over questions.
@@ -39,29 +34,30 @@ var QuesContainer = () => {
   var showMore;
   var prevQuestions;
 
-  // Conditional render
   if ( view === 0 ) {
 
     if (visibleQs.length <= 2) {
-      showMore = null;
+          showMore = null;
       questionList = mapQuestions(visibleQs.slice(0, end));
     } else {
       questionList = mapQuestions(visibleQs.slice(0, end));
-      showMore = <button onClick={()=> {
+          showMore = <button onClick={()=> {
         increment();
         setView(1);
-      }}>More Answered Questions</button>;
+      }}>   More Answered Questions   </button>;
     }
+
+
   } else if ( view === 1 ) {
     // Accordion view of questions
-    questionList = mapQuestions(visibleQs.slice(0, end));
-    showMore = <button onClick={increment}>More Answered Questions</button>;
-    prevQuestions = <button onClick={()=>setEnd(2)}>Collapse Questions</button>;
+     questionList = mapQuestions(visibleQs.slice(0, end));
+
+         showMore = <button onClick={increment}>       More Answered Questions </button>;
+    prevQuestions = <button onClick={()=>setEnd(2)}>   Collapse Questions      </button>;
 
     if (questionList.length <= 2) {
       showMore = null;
     }
-
     if (end === 2) {
       setView(0);
       setEnd(2);

@@ -44,16 +44,16 @@ var AddQuestion = ({product_id, productName}) => {
       question,
       {headers: { 'Authorization': authorization.TOKEN }})
       .then(response => {
-        console.log(response, 'success')
+        console.log(response, 'success');
         setQuestionVal('');
         setNicknameVal('');
         setEmailVal('');
         setAddQuestion(prev=>!prev)
       })
       .catch(error => {
-        console.log(error, 'failed', question)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
+        console.log(error, 'failed', question);
+        setEmailBool(true);
+        setInvalidEmail('Question not posted, please provide valid email address');
       })
   };
 
