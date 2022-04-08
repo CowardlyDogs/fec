@@ -8,6 +8,51 @@
 
 .thumbnail {
   display: inline-block;
+  cursor: pointer;
+}
 
+.default-photo {
+  cursor: zoom-in;
+}
 
+.expanded-photo {
+  cursor: crosshair;
+}
+
+.expanded-view-icon {
+  cursor: pointer;
+}
+
+.previous {
+  cursor: pointer;
+}
+
+.next {
+  cursor: pointer;
+}
+
+.add-to-cart {
+  cursor: pointer;
+}
+
+.quantity-button {
+  cursor: pointer;
+}
+
+.quantity-list {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.size-button {
+  cursor: pointer;
+}
+
+.size-list {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.style {
+  cursor: pointer;
 }

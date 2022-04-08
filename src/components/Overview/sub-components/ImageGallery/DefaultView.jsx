@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
+import carosel from './carosel.js';
 
 
 function DefaultView(props) {
@@ -7,33 +8,13 @@ function DefaultView(props) {
   const [currentPhoto      , setCurrentPhoto      ] = useState(currentStyle.photos[0]);
   const [displayedStyles   , setDisplayedStyles   ] = useState(currentStyle.photos.slice(0, 7));
 
+
   useEffect(() => {
     setCurrentPhoto(currentStyle.photos[0])
-  }, [currentStyle.photos[0]])
+    setDisplayedStyles(currentStyle.photos.slice(0, 7))
+  }, [currentStyle])
 
-  const shiftThumbnailsLeft = () => {
-    for (let i = 0; i < displayedStyles.length; i++) {
-      if (i === displayedStyles.length - 1) {
-        displayedStyles[i] = currentStyle.photos[currentStyle.photos.indexOf(displayedStyles[i]) + 1];
-        break;
-      }
-      displayedStyles[i] = displayedStyles[i + 1];
-    }
 
-    setDisplayedStyles([...displayedStyles]);
-  }
-
-  const shiftThumbnailsRight = () => {
-    for (let i = displayedStyles.length - 1; i >= 0; i--) {
-      if (i === 0) {
-        displayedStyles[i] = currentStyle.photos[currentStyle.photos.indexOf(displayedStyles[i]) - 1];
-        break;
-      }
-      displayedStyles[i] = displayedStyles[i - 1];
-    }
-
-    setDisplayedStyles([...displayedStyles]);
-  }
 
 
   return (
@@ -42,13 +23,17 @@ function DefaultView(props) {
       <h1>Image Gallery</h1>
 
       {/* current image being displayed */}
-      <img className="default-image" src={currentPhoto.url} width={500} height={500} />
+      <img className="default-photo" src={currentPhoto.url} width={500} height={500}
+        onClick={() => {
+          props.setIsDefault(false);
+          props.setExpandedPhoto(currentPhoto);
+        }} />
 
       {/* if the user scrolled the carosel to the left, this button will be available */}
       {
         displayedStyles[0] !== currentStyle.photos[0]
         ? <button className="previous"
-            onClick={() => shiftThumbnailsRight()} >
+            onClick={() => carosel.shiftThumbnailsRight(displayedStyles, currentStyle, setDisplayedStyles)} >
           Previous
           </button>
         : null
@@ -72,7 +57,7 @@ function DefaultView(props) {
       {
         displayedStyles[displayedStyles.length - 1] !== currentStyle.photos[currentStyle.photos.length - 1]
         ? <button className="next"
-            onClick={() => shiftThumbnailsLeft()} >
+            onClick={() => carosel.shiftThumbnailsLeft(displayedStyles, currentStyle, setDisplayedStyles)} >
             Next
             </button>
         : null
