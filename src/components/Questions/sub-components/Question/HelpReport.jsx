@@ -43,27 +43,27 @@ var HelpReport = ({ helpfulness }) => {
 
 
 
-  var help;
-  var report;
+  var helpfulDiv;
+  var reportDiv;
 
   if (helpful) {
-    help = <div>
+    helpfulDiv = <div>
              <span>Helpful?</span>
              <a>Yes({helpfulness += 1})</a>
            </div>;
   } else {
-    help = <div>
+    helpfulDiv = <div>
              <span>Helpful?</span>
              <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
            </div>;
   }
 
   if (reported) {
-    report = <div>
+    reportDiv = <div>
                <a>Reported</a>
              </div>;
   } else {
-    report = <div>
+    reportDiv = <div>
                <a onClick={reportQuestion}>Report</a>
              </div>;
   }
@@ -73,8 +73,8 @@ var HelpReport = ({ helpfulness }) => {
   return (
     <div>
       <br/>
-      {report}
-      {help}
+      {reportDiv}
+      {helpfulDiv}
     </div>
   );
 };

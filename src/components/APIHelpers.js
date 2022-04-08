@@ -41,6 +41,13 @@ const APIHelpers = {
       .catch(err => callback(err))
   },
 
+  postQuestion: (question, callback) => {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/', question,
+    {headers: { Authorization: Authorization.TOKEN }})
+      .then(res => callback(null, res))
+      .catch(err => callback(err))
+  },
+
   reportQuestion: (questionID, callback) => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/${questionID}/report`, {
       headers: { Authorization: Authorization.TOKEN }
