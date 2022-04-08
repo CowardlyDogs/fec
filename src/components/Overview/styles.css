@@ -1,0 +1,13 @@
+.style {
+  display: inline-block
+}
+.style-title {
+  display: list-item;
+  list-style-type: none;
+}
+
+.thumbnail {
+  display: inline-block;
+
+
+}

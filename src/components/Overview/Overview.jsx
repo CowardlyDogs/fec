@@ -6,6 +6,7 @@ import Cart from './sub-components/Cart/Cart.jsx';
 import ImageGallery from './sub-components/ImageGallery/ImageGallery.jsx';
 import authorization from '../../../config.js';
 import APIHelpers from '../APIHelpers.js';
+import './styles.css';
 
 export const OverviewContext = React.createContext(null);
 
@@ -20,7 +21,9 @@ function Overview () {
 
   useEffect(() => {
 
-    APIHelpers.getStyles(65631, (err, res) => {
+    // 65631 original
+    // 65635 for styles with lots of pictures
+    APIHelpers.getStyles(65635, (err, res) => {
       if (err) {
         console.error(err);
       } else {
@@ -30,7 +33,7 @@ function Overview () {
       }
     })
 
-    APIHelpers.getProductInfo(65631, (err, res) => {
+    APIHelpers.getProductInfo(65635, (err, res) => {
       if (err) {
         console.error(err);
       } else {
