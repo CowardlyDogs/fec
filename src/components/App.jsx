@@ -12,9 +12,9 @@ const App = () => {
   <div className="App">
     {/* <Overview/> */}
     <h1>Related Items</h1>
-    <RelatedMain defaultId={productId}/>
+    <RelatedMain mainId={productId}/>
     <h1>Your Outfit</h1>
-    <OutfitMain defaultId={productId}/>
+    <OutfitMain mainId={productId}/>
     {/* <QandA/> */}
     <ReviewModule productId={productId}/>
   </div>
