@@ -9,13 +9,13 @@ import RelatedMain from './Related/RelatedMain.jsx';
 const App = () => {
   return (
   <div className="App">
-    {/* <Overview/> */}
+    <Overview/>
     <h1>Related Items</h1>
     <RelatedMain/>
     <h1>Your Outfit</h1>
     <OutfitMain/>
-    {/* <QandA/> */}
-    {/* <ReviewModule/> */}
+    <QandA/>
+    <ReviewModule/>
   </div>
   )
 }

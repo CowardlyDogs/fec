@@ -7,7 +7,7 @@ import authorization from '../../../../../config.js';
 
 
 var AddAnswer = () => {
-  const {     product, productName, postAnswer   } = useContext(QandAContext);
+  const {     product, productName   } = useContext(QandAContext);
   const { question_id, question_body } = useContext(QuestionContext);
 
   const [ addAnswer,    setAddAnswer    ] = useState(false)

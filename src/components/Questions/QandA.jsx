@@ -94,8 +94,8 @@ var QandA = ({product_id, productName}) => {
                                    visibleQs,   setVisibleQs,
                                    searchView,  setSearchView,
                                    addQuestion, setAddQuestion,
-                                                searchQuestions,
-                                                postAnswer}}>
+                                                searchQuestions
+                                                }}>
 
       <div className='QandA'>
         <h2> Questions and Answers</h2>
