@@ -13,7 +13,7 @@ import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
-var QandA = ({defaultId}) => {
+const QandA = ({defaultId}) => {
 
   // const [   defaultId, setdefaultId     ] = useState(defaultId);
   const [ productName, setProductName ] = useState('')
@@ -23,8 +23,6 @@ var QandA = ({defaultId}) => {
   const [   visibleQs, setVisibleQs   ] = useState(questions);
   const [ addQuestion, setAddQuestion ] = useState(false);
   const [     viewNum, setViewNum     ] = useState(0);
-
-  var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
 
   useEffect(() => {
@@ -49,9 +47,9 @@ var QandA = ({defaultId}) => {
 
 
 
-  var searchQuestions = (search) => {
+  const searchQuestions = (search) => {
 
-    var filtered = questions.filter( question => {
+    let filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
     setVisibleQs(filtered);
@@ -61,9 +59,9 @@ var QandA = ({defaultId}) => {
 
 
 
-  var questionList;
-  var search;
-  var noQuestions;
+  let questionList;
+  let search;
+  let noQuestions;
 
   if (questions.length > 0) {
     questionList = <QuesContainer />;

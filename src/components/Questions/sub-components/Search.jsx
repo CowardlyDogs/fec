@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
 import { QandAContext } from '../QandA.jsx';
 
-var Search = () => {
+const Search = () => {
   const { product, setSearchVal, searchVal, searchQuestions, setVisibleQs, questions } = useContext(QandAContext);
 
   // var handleClick = (e) => {
@@ -10,7 +10,7 @@ var Search = () => {
   //   searchQuestions(searchVal);
   // };
 
-  var handleChange = (e) => {
+  const handleChange = (e) => {
     setSearchVal(e.target.value);
 
     if (e.target.value.length > 2) {

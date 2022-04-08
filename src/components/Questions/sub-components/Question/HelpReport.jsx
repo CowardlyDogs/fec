@@ -7,7 +7,7 @@ import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
 
 
-var HelpReport = ({ helpfulness }) => {
+const HelpReport = ({ helpfulness }) => {
   const { url, product } = useContext(QandAContext);
   const { question_id } = useContext(QuestionContext);
 
@@ -16,26 +16,26 @@ var HelpReport = ({ helpfulness }) => {
 
 
 
-  var reportQuestion = () => {
+  const reportQuestion = () => {
     APIHelpers.reportQuestion(question_id, (err, res) => {
       if (err) {
-        console.log(err, 'Question not reported')
+        console.log(err, 'Question not reported');
       } else {
-        console.log('Question Reported')
+        console.log('Question Reported');
         setReported(true);
       }
     });
   };
 
 
-  var helpfulQuestion = () => {
+  const helpfulQuestion = () => {
     APIHelpers.helpfulQuestion(question_id, (err, res) => {
       if (err) {
-        console.log(err)
-        console.log('Question NOT marked helpful')
+        console.log(err);
+        console.log('Question NOT marked helpful');
       } else {
         setHelpful(true);
-        console.log('Question marked helpful')
+        console.log('Question marked helpful');
       }
     })
   };
@@ -43,29 +43,33 @@ var HelpReport = ({ helpfulness }) => {
 
 
 
-  var helpfulDiv;
-  var reportDiv;
+  let helpfulDiv;
+  let reportDiv;
 
   if (helpful) {
-    helpfulDiv = <div>
-             <span>Helpful?</span>
-             <a>Yes({helpfulness += 1})</a>
-           </div>;
+    helpfulDiv =
+    <div>
+      <span>Helpful?</span>
+      <a>Yes({helpfulness += 1})</a>
+    </div>;
   } else {
-    helpfulDiv = <div>
-             <span>Helpful?</span>
-             <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
-           </div>;
+    helpfulDiv =
+    <div>
+      <span>Helpful?</span>
+      <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
+    </div>;
   }
 
   if (reported) {
-    reportDiv = <div>
-               <a>Reported</a>
-             </div>;
+    reportDiv =
+    <div>
+      <a>Reported</a>
+    </div>;
   } else {
-    reportDiv = <div>
-               <a onClick={reportQuestion}>Report</a>
-             </div>;
+    reportDiv =
+    <div>
+      <a onClick={reportQuestion}>Report</a>
+    </div>;
   }
 
 
