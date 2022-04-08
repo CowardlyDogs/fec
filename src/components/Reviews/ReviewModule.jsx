@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
-import axios from 'axios';
-import authorization from '../../../config.js';
 import './sub-components/Reviews.css';
-axios.defaults.headers.common['Authorization'] = authorization.TOKEN;
+import Helpers from '../APIHelpers.js';
 
-function ReviewModule(props) {
-  var productID = props.productID ||'40344';
+// import axios from 'axios';
+// import authorization from '../../../config.js';
+
+// axios.defaults.headers.common['Authorization'] = authorization.TOKEN;
+
+var ReviewModule = ({productId}) => {
+  var productId = productId || '40344';
 
   const   [   product,            setProduct            ]   =   useState(productID);
   const   [   reviews,            setReviews            ]   =   useState([]);
@@ -16,40 +19,24 @@ function ReviewModule(props) {
   const   [   update,             setUpdate             ]   =   useState(0);
 
 
-  useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=1&page=1`)
-    .then((response) => {
-      if (response.data.results !== reviews && page === 0) {
-        setReviews(response.data.results);
-      } else {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=5&page=${page}`)
-      .then((response) => {
-        if (response.data.results !== reviews) {
-          setReviews(response.data.results);
-        }})
-        .catch(error => {
-          console.log(error);
-        });
-      }
-
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    }, [page, update]);
-
-
   var toggleNewReview = () => {
     setNewReviewVisible(!newReviewVisible);
-  }
+  };
+
+  useEffect(() => {
+    Helpers.getReviews({productId, page}, (err, data) => {
+      if (err) {
+        console.error('Unable to fetch Reviews');
+      } else {
+        setReviews(data.results);
+      }
+    });
+
+  }, [page, update]);
 
   var submitNewReview = (review) => {
-
-
     /*
-    **TODO** setup review object in correct format
-
-
+    **TODO** double check that review object is in correct format
     product_id
     rating
     summary
@@ -59,16 +46,23 @@ function ReviewModule(props) {
     email
     photos
     characteristics
-
-
     */
-    console.log(review);
-    review.product_id = product;
-    review.rating = review.rating || 4; // **TODO** Make sure this is dynamic
-    toggleNewReview();
+    Helpers.postReview(review, (err) => {
+      if (err) { console.error('Unable to Post'); }
+    });
+  };
 
-    // axios.post(); **TODO** Post Request
-  }
+  var helpful = (review_id) => {
+    Helpers.rateHelpful(review_id, (err) => {
+      if (err) { console.error('Unable to Rate Helpful'); }
+    });
+  };
+
+  var report = (review_id) => {
+    Helpers.rateReport(review_id,  (err) => {
+      if (err) { console.error('Unable to Report'); }
+    });
+  };
 
 
   var turnPage = (option) => {
@@ -77,26 +71,9 @@ function ReviewModule(props) {
     } else if (option === 'dec') {
       setPage(page - 1);
     }
-  }
+  };
 
-  var helpful = (review_id) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/helpful`, {
-        headers: {Authorization: authorization.TOKEN}
-      })
-        .then(() => {
-        setUpdate(update + 1);
-        });
 
-  }
-
-  var report = (review_id) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/report`, {
-        headers: {Authorization: authorization.TOKEN}
-      })
-        .then(() => {
-        setUpdate(update + 1);
-        });
-  }
 
   return (
     <div className="reviews">
@@ -112,8 +89,8 @@ function ReviewModule(props) {
 
       { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product} onSubmit={submitNewReview} /> }
       <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} helpful={helpful} report={report} />
-   </div>
+    </div>
   );
-}
+};
 
 export default ReviewModule;
