@@ -29,17 +29,15 @@ var HelpReport = ({ helpfulness }) => {
 
 
   var helpfulQuestion = () => {
-
-    axios.put(`${url}questions/${question_id}/helpful`, {
-      headers: { authorization: authorization.TOKEN }
-    })
-      .then(response => {
-        console.log('Question marked helpful');
+    APIHelpers.helpfulQuestion(question_id, (err, res) => {
+      if (err) {
+        console.log(err)
+        console.log('Question NOT marked helpful')
+      } else {
         setHelpful(true);
-      })
-      .catch(error => {
-        console.log('Helpful Question PUT request failed', authorization.TOKEN);
-      });
+        console.log('Question marked helpful')
+      }
+    })
   };
 
 

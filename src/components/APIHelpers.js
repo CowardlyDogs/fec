@@ -47,6 +47,14 @@ const APIHelpers = {
     })
       .then(res => callback(null, res))
       .catch(err => callback(err))
+  },
+
+  helpfulQuestion: (questionID, callback) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/${questionID}/helpful`, {
+      headers: { Authorization: Authorization.TOKEN }
+    })
+    .then(res => callback(null, res))
+    .catch(err => callback(err))
   }
 
 };
