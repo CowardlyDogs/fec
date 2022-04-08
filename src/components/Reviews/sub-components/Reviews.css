@@ -87,5 +87,12 @@ hr {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+.StarIcon {
+  color: goldenrod;
+}
+.StarIconEmpty {
+  color: gray;
+}
+
 
 
