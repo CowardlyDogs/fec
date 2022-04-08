@@ -4,6 +4,7 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
 var HelpReport = ({ helpfulness }) => {
@@ -16,17 +17,14 @@ var HelpReport = ({ helpfulness }) => {
 
 
   var reportQuestion = () => {
-
-    axios.put(`${url}questions/${question_id}/report`, {
-      headers: { authorization: authorization.TOKEN }
-    })
-      .then(response => {
-        console.log(response, `Question ${question_id} reported`);
+    APIHelpers.reportQuestion(question_id, (err, res) => {
+      if (err) {
+        console.log(err, 'Question not reported')
+      } else {
+        console.log('Question Reported')
         setReported(true);
-      })
-      .catch(error => {
-        console.log(error, 'Question {} not reported');
-      });
+      }
+    });
   };
 
 

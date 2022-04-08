@@ -26,8 +26,6 @@ var QandA = ({defaultId}) => {
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
-  // var product_id = 40344
-  // var productName = 'Camo Onesie'
 
   useEffect(() => {
     APIHelpers.getProductName(defaultId, (err, res) => {
