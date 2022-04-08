@@ -1,7 +1,9 @@
-import React/*, { useState }*/ from 'react';
+import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import authorization from '../../../../config.js';
+import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
+import Rating from './StarRating.jsx';
 
 
 
@@ -30,7 +32,9 @@ function Review({review, helpful, report}) {
         <div className='username'><p>{review.reviewer_name}</p></div>
         <div className='timestamp' float='right'><p>{moment(review.date).fromNow()}</p></div>
       </div>
-      <div>{/*star rating here and reccomended*/}</div>
+      <div>{/*star rating here and reccomended*/}
+        <Rating rating={review.rating}/>
+      </div>
       <hr/>
       <div className="review-body">
         <p>{review.body}</p>
