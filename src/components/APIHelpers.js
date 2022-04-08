@@ -32,6 +32,13 @@ const APIHelpers = {
       params: { product_id: id, page: 1, count: 200}})
       .then(res => callback(null, res.data))
       .catch(err => callback(err))
+  },
+
+  getProductName: (id, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}`, {
+      headers: {Authorization: Authorization.TOKEN} })
+      .then(res =>  callback(null, res.data))
+      .catch(err => callback(err))
   }
 
 };

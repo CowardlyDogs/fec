@@ -13,9 +13,10 @@ import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
-var QandA = ({defaultId, productName}) => {
+var QandA = ({defaultId}) => {
 
   const [     product, setProduct     ] = useState(defaultId);
+  const [ productName, setProductName ] = useState('')
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
   const [  searchView, setSearchView  ] = useState(false);
@@ -25,17 +26,23 @@ var QandA = ({defaultId, productName}) => {
 
   var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
 
-  var product_id = 40344
-  var productName = 'Camo Onesie'
+  // var product_id = 40344
+  // var productName = 'Camo Onesie'
 
   useEffect(() => {
+    APIHelpers.getProductName(defaultId, (err, res) => {
+      if (err) {
+        console.log(err)
+      } else {
+        setProductName(res.name)
+      }
+    })
 
-    // Inital get request
+
     APIHelpers.getQuestions(defaultId, (err, res) => {
       if (err) {
         console.log(err)
       } else {
-        console.log(res)
         var sorted = sortQuestions(res);
         setQuestions(sorted);
         setVisibleQs(sorted);
@@ -102,7 +109,7 @@ var QandA = ({defaultId, productName}) => {
         <h2> Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
-        <AddQuestion product_id={product_id} productName={productName}/>
+        <AddQuestion defaultId={defaultId} productName={productName}/>
       </div>
     </QandAContext.Provider>
   );
