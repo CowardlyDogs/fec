@@ -1,5 +1,4 @@
 module.exports = {
-<<<<<<< HEAD
   env: {
     'es6': true
   },
@@ -65,9 +64,3 @@ module.exports = {
 // ],
 // "rules": {
 // }
-=======
-    extends: 'hackreactor',
-    rules: {
-    }
-  };
->>>>>>> main
