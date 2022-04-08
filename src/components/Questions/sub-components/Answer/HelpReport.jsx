@@ -3,7 +3,6 @@ import axios from 'axios';
 import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
 
 var HelpReport = ({id, helpfulness}) => {
@@ -12,6 +11,8 @@ var HelpReport = ({id, helpfulness}) => {
 
   const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
+
+
 
   var reportAnswer = () => {
       APIHelpers.reportAnswer(id, (err, res) => {
@@ -27,43 +28,40 @@ var HelpReport = ({id, helpfulness}) => {
 
 
   var helpfulAnswer = () => {
-
-    axios.put(`${url}answers/${id}/helpful`, {
-      headers: { 'Authorization': authorization.TOKEN }
-    })
-      .then(response => {
+    APIHelpers.helpfulAnswer(id, (err, res) => {
+      if (err) {
+        console.log('Answer HELPFUL request failed');
+      } else {
         console.log('Answer marked helpful');
         setHelpful(true);
-      })
-      .catch(error => {
-        console.log('Answer HELPFUL request failed');
-      });
+      }
+    })
   };
 
 
 
 
-  var help;
-  var report;
+  var helpfulDiv;
+  var reportDiv;
 
   if (helpful) {
-    help = <div>
+    helpfulDiv = <div>
              <span>Helpful?</span>
              <a>Yes({helpfulness += 1})</a>
            </div>;
   } else {
-    help = <div>
+    helpfulDiv = <div>
               <span>Helpful?</span>
               <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
             </div>;
   }
 
   if (reported) {
-    report = <div>
+    reportDiv = <div>
               <a>Reported</a>
             </div>;
   } else {
-    report = <div>
+    reportDiv = <div>
                <a onClick={reportAnswer}>Report</a>
              </div>;
   }
@@ -72,8 +70,8 @@ var HelpReport = ({id, helpfulness}) => {
 
   return (
     <div>
-      {report}
-      {help}
+      {reportDiv}
+      {helpfulDiv}
     </div>
   );
 };
