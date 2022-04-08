@@ -18,7 +18,7 @@ import StarIcon from '@material-ui/icons/Star';
 //persist across page navigation
 //persist after leaving and returning (definitely session id cookie)
 //action button = X -> removes item from list
-function OutfitMain() {
+function OutfitMain({ defaultId }) {
   const [outfit     ,    SetOutfit     ] = useState(['65644', '65662', '65665', '65680', '65671', '65631']);
   const [dispOutfit ,    setDispOutfit ] = useState([outfit[0], outfit[1]]);
 
