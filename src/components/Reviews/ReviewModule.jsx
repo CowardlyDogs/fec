@@ -10,9 +10,9 @@ import Helpers from '../APIHelpers.js';
 // axios.defaults.headers.common['Authorization'] = authorization.TOKEN;
 
 var ReviewModule = ({productId}) => {
-  var productId = productId || '40344';
+  var productId = productId;
 
-  const   [   product,            setProduct            ]   =   useState(productID);
+  const   [   product,            setProduct            ]   =   useState(productId);
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
   const   [   page,               setPage               ]   =   useState(0);
@@ -54,13 +54,13 @@ var ReviewModule = ({productId}) => {
 
   var helpful = (review_id) => {
     Helpers.rateHelpful(review_id, (err) => {
-      if (err) { console.error('Unable to Rate Helpful'); }
+      if (err) { console.error('Unable to Rate Helpful'); } else { setUpdate(update + 1); }
     });
   };
 
   var report = (review_id) => {
     Helpers.rateReport(review_id,  (err) => {
-      if (err) { console.error('Unable to Report'); }
+      if (err) { console.error('Unable to Report'); } else { setUpdate(update + 1); }
     });
   };
 

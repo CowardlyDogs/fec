@@ -34,11 +34,11 @@ const APIHelpers = {
     }
     */
     if (reviewInfo.page === 0) {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=1&page=1`)
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/?product_id=${reviewInfo.productId}&sort=helpful&count=1&page=1`)
         .then(res => callback(null, res.data))
         .catch(err => callback(err));
     } else {
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/?product_id=${productID}&sort=helpful&count=5&page=${page}`)
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/?product_id=${reviewInfo.productId}&sort=helpful&count=5&page=${reviewInfo.page}`)
         .then(res => callback(null, res.data))
         .catch(err => callback(err));
     }
@@ -51,13 +51,13 @@ const APIHelpers = {
   },
 
   rateHelpful: (reviewId, callback) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/helpful`)
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${reviewId}/helpful`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   },
 
   rateReport: (reviewId, callback) => {
-    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/report`)
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${reviewId}/report`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   }
