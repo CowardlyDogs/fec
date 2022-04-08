@@ -4,20 +4,21 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import '../../styles.css';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
 var AddAnswer = () => {
-  const { product, productName } = useContext(QandAContext);
+  const {     product, productName   } = useContext(QandAContext);
   const { question_id, question_body } = useContext(QuestionContext);
 
-  const [ addAnswer,    setAddAnswer    ] = useState(false)
+  const [ addAnswer,    setAddAnswer    ] = useState(false);
   const [ answerVal,    setAnswerVal    ] = useState('');
   const [ nicknameVal,  setNicknameVal  ] = useState('');
   const [ emailVal,     setEmailVal     ] = useState('');
   const [ warningBool,  setWarningBool  ] = useState(false);
-  const [ warningVals,  setWarningVals  ] = useState([])
-  const [ invalidEmail, setInvalidEmail ] = useState('')
-  const [ emailBool,    setEmailBool    ] = useState(false)
+  const [ warningVals,  setWarningVals  ] = useState([]);
+  const [ invalidEmail, setInvalidEmail ] = useState('');
+  const [ emailBool,    setEmailBool    ] = useState(false);
 
   const backgroundChange    = addAnswer   ? "modal-background" : "hide";
   const showHideAddAnswer   = addAnswer   ? "modal-body" : "hide";
@@ -31,28 +32,27 @@ var AddAnswer = () => {
   };
 
   var answer = {
-    "body": answerVal,
-    "name": nicknameVal,
-    "email": emailVal,
-    "photos": ["none"]
-    }
+    "body":   answerVal,
+    "name":   nicknameVal,
+    "email":  emailVal,
+    "photos": []
+  };
 
   var postAnswer = () => {
-
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
-      .then(response => {
-        console.log(`Question ${question_id} posted`, response)
+    APIHelpers.postAnswer(question_id, answer, (err, res) => {
+      if (err) {
+        console.log('Error', err);
+        setEmailBool(true);
+        setInvalidEmail('Question not posted, please provide valid email address');
+      } else {
+        console.log(`Question ${question_id} posted`, res);
         setAnswerVal('');
         setNicknameVal('');
         setEmailVal('');
-        setAddAnswer(prev=>!prev)
-      })
-      .catch(error => {
-        console.log('Error', error)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
-      })
-  }
+        setAddAnswer(prev=>!prev);
+      }
+    });
+  };
 
 
 
@@ -63,28 +63,30 @@ var AddAnswer = () => {
 
 
     if (nicknameVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'NickName'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'NickName']);
       warning = true;
     }
+
     if (answerVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Answer Body'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Answer Body']);
       warning = true;
     }
+
     if (emailVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Email'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Email']);
       warning = true;
     } else if (!emailVal.includes('@') && !emailVal.includes('.com')) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'Email in correct format'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'Email in correct format']);
       warning = true;
     }
     if (!warning) {
       postAnswer();
     }
-  }
+  };
 
   var setAndClear = () => {
     setAnswerVal('');
@@ -93,7 +95,7 @@ var AddAnswer = () => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
-  }
+  };
 
 
 

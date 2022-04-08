@@ -17,7 +17,70 @@ const APIHelpers = {
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   },
+
   getStyles: (id, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
+      headers: {Authorization: Authorization.TOKEN} })
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err));
+  },
+
+  getQuestions: (id, callback) => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/', {
+      headers: { Authorization: Authorization.TOKEN },
+      params: { product_id: id, page: 1, count: 200}})
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err));
+  },
+
+  getProductName: (id, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}`, {
+      headers: {Authorization: Authorization.TOKEN} })
+      .then(res =>  callback(null, res.data))
+      .catch(err => callback(err));
+  },
+
+  postQuestion: (question, callback) => {
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/', question,
+      {headers: { Authorization: Authorization.TOKEN }})
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
+  },
+
+  reportQuestion: (questionID, callback) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/${questionID}/report`, {
+      headers: { Authorization: Authorization.TOKEN }
+    })
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
+  },
+
+  helpfulQuestion: (questionID, callback) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/${questionID}/helpful`, {
+      headers: { Authorization: Authorization.TOKEN }
+    })
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
+  },
+
+  postAnswer: (question_id, answer, callback) => {
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/${question_id}/answers`, answer, {headers: { Authorization: Authorization.TOKEN }})
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
+  },
+
+  reportAnswer: (question_id, callback) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/answers/${question_id}/report`,
+      {headers: { Authorization: Authorization.TOKEN }})
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
+  },
+
+  helpfulAnswer: (question_id, callback) => {
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/answers/${question_id}/helpful`,
+      {headers: { Authorization: Authorization.TOKEN }})
+      .then(res => callback(null, res))
+      .catch(err => callback(err));
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
@@ -61,6 +124,7 @@ const APIHelpers = {
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   }
+
 };
 
 

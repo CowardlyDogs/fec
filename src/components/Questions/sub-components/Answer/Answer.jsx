@@ -3,6 +3,7 @@ import QandA from '../../QandA.jsx';
 import AnswerBody from './AnswerBody.jsx';
 import HelpReport from './HelpReport.jsx';
 import NameAndDate from './NameAndDate.jsx';
+import Photos from './Photos.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
@@ -13,12 +14,15 @@ var Answer = ({answerData}) => {
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
   const { answerer_name, body, date, helpfulness, id, photos } = answerData;
 
+  var photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
+
 
   return (
     <div>
-      <AnswerBody body={body}/>
+      <AnswerBody  body={body}/>
       <NameAndDate name={answerer_name} date={date}/>
-      <HelpReport helpfulness={helpfulness} id={id}/>
+      {photoDiv}
+      <HelpReport  helpfulness={helpfulness} id={id}/>
     </div>
   );
 };

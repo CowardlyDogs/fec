@@ -11,9 +11,9 @@ var AnswerContainer = ({question_body}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
 
-  const [ view, setView ] = useState(0);
-  const [ start, setStart ] = useState(0);
-  const [ end, setEnd ] = useState(2);
+  const [       view, setView       ] = useState(0);
+  const [      start, setStart      ] = useState(0);
+  const [        end, setEnd        ] = useState(2);
   const [ answerBool, setAnswerBool ] = useState(false);
 
 

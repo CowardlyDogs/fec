@@ -4,9 +4,10 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import '../../styles.css';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
-var AddQuestion = ({product_id, productName}) => {
+var AddQuestion = ({defaultId, productName}) => {
   const { setAddQuestion, addQuestion, product } = useContext(QandAContext);
 
   const [ questionVal,  setQuestionVal  ] = useState('');
@@ -33,28 +34,25 @@ var AddQuestion = ({product_id, productName}) => {
          "body": questionVal,
          "name": nicknameVal,
         "email": emailVal,
-   "product_id": product_id
+   "product_id": Number(defaultId)
    };
 
 
 
   var postQuestion = () => {
-
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/',
-      question,
-      {headers: { 'Authorization': authorization.TOKEN }})
-      .then(response => {
-        console.log(response, 'success')
+    APIHelpers.postQuestion(question, (err, res) => {
+      if (err) {
+        console.log(err, 'failed', question);
+        setEmailBool(true);
+        setInvalidEmail('Question not posted, please provide valid email address');
+      } else {
+        console.log(res, 'success');
         setQuestionVal('');
         setNicknameVal('');
         setEmailVal('');
         setAddQuestion(prev=>!prev)
-      })
-      .catch(error => {
-        console.log(error, 'failed', question)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
-      })
+      }
+    })
   };
 
 

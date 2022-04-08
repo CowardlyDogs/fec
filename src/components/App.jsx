@@ -10,12 +10,12 @@ const App = () => {
   const [productId, setProduct] = useState('65631');
   return (
     <div className="App">
-      {/* <Overview/> */}
+      <Overview/>
       <h1>Related Items</h1>
-      <RelatedMain mainId={productId}/>
+      <RelatedMain     mainId={productId}/>
       <h1>Your Outfit</h1>
-      <OutfitMain mainId={productId}/>
-      {/* <QandA/> */}
+      <OutfitMain      mainId={productId}/>
+      <QandA        defaultId={productId}/>
       <ReviewModule productId={productId}/>
     </div>
   );
