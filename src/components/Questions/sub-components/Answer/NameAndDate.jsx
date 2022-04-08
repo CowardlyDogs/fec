@@ -9,7 +9,7 @@ var NameAndDate = ({name, date}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
-  var answererName = name;
+  let answererName = name;
   if (name === 'Seller') {
     answererName = <strong>{name}</strong>;
   }
