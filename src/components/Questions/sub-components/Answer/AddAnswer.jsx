@@ -4,6 +4,7 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import '../../styles.css';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
 var AddAnswer = () => {
@@ -38,20 +39,19 @@ var AddAnswer = () => {
     }
 
   var postAnswer = () => {
-
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
-      .then(response => {
-        console.log(`Question ${question_id} posted`, response)
+    APIHelpers.postAnswer(question_id, answer, (err, res) => {
+      if (err) {
+        console.log('Error', err)
+        setEmailBool(true)
+        setInvalidEmail('Question not posted, please provide valid email address')
+      } else {
+        console.log(`Question ${question_id} posted`, res)
         setAnswerVal('');
         setNicknameVal('');
         setEmailVal('');
         setAddAnswer(prev=>!prev)
-      })
-      .catch(error => {
-        console.log('Error', error)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
-      })
+      }
+    })
   }
 
 

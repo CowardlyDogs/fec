@@ -15,7 +15,7 @@ export const QandAContext = React.createContext(null);
 
 var QandA = ({defaultId}) => {
 
-  const [     product, setProduct     ] = useState(defaultId);
+  // const [   defaultId, setdefaultId     ] = useState(defaultId);
   const [ productName, setProductName ] = useState('')
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
@@ -36,7 +36,6 @@ var QandA = ({defaultId}) => {
       }
     })
 
-
     APIHelpers.getQuestions(defaultId, (err, res) => {
       if (err) {
         console.log(err)
@@ -47,23 +46,6 @@ var QandA = ({defaultId}) => {
       }
     })
   }, []);
-
-
-  // var postAnswer = () => {
-  //   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
-  //     .then(response => {
-  //       console.log(`Question ${question_id} posted`, response)
-  //       setAnswerVal('');
-  //       setNicknameVal('');
-  //       setEmailVal('');
-  //       setAddAnswer(prev=>!prev)
-  //     })
-  //     .catch(error => {
-  //       console.log('Error', error)
-  //       setEmailBool(true)
-  //       setInvalidEmail('Question not posted, please provide valid email address')
-  //     })
-  // }
 
 
 
@@ -94,7 +76,7 @@ var QandA = ({defaultId}) => {
 
 
   return (
-    <QandAContext.Provider value={{product,     productName,
+    <QandAContext.Provider value={{defaultId,   productName,
                                    questions,   url,
                                    searchVal,   setSearchVal,
                                    visibleQs,   setVisibleQs,
