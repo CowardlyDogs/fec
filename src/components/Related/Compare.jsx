@@ -1,5 +1,6 @@
-import React from 'react';
-//comparison modal for action button (related)
+import React, { useState, useEffect } from 'react';
+import Helpers from '../APIHelpers.js';
+import './css/Related.css';
 
 //compares selected item in related to current item on page
 //title should be "comparing"
@@ -31,13 +32,36 @@ import React from 'react';
 //bottom 0
 //background color rgba(0,0,0,.7)
 //zindex 1000
-function Compare() {
+function Compare({ mainId, currentId }) {
+  const [mainFeat     ,   setMainFeat    ] = useState([]);
+  const [currentFeat  ,   setCurrentFeat ] = useState([]);
+
+
+  useEffect(() => {
+    Helpers.getFeatures(mainId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // save features
+        setMainFeat(res.data....)
+      }
+    })
+    Helpers.getFeatures(currentId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // save features
+        setCurrentFeat(res.data....)
+      }
+    })
+  }, []);
+
   return (
-  <div>
+  <div className="compare">
     <h3>
-      Comparing
+      Compare
     </h3>
-    {/* do stuff */}
+
   </div>
   )
 }

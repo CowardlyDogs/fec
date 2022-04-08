@@ -7,14 +7,14 @@ import ReviewModule from './Reviews/ReviewModule.jsx';
 import RelatedMain from './Related/RelatedMain.jsx';
 
 const App = () => {
-  const defaultId = '65631';
+  const mainId = '65631';
   return (
   <div className="App">
     {/* <Overview/> */}
     <h1>Related Items</h1>
-    <RelatedMain defaultId={defaultId}/>
+    <RelatedMain mainId={mainId}/>
     <h1>Your Outfit</h1>
-    <OutfitMain defaultId={defaultId}/>
+    <OutfitMain mainId={mainId}/>
     {/* <QandA/> */}
     {/* <ReviewModule/> */}
   </div>

@@ -7,7 +7,7 @@ import CompareIcon from '@material-ui/icons/Compare';
 import ClearIcon from '@material-ui/icons/Clear';
 import Helpers from '../APIHelpers.js';
 
-function OutfitCarousel({ unit }) {
+function OutfitCarousel({ unit, removeOutfit }) {
   const [name      ,  setName      ] = useState('');
   const [photo     ,  setPhoto     ] = useState('');
   const [category  ,  setCategory  ] = useState('');
@@ -61,12 +61,13 @@ function OutfitCarousel({ unit }) {
   };
 
   return (
+    unit ? (
     <div className="card">
       <div className="card-inner" style={{backgroundImage: `url(${photoHandler()})`}}>
         <div className="stars">
           <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/>
         </div>
-        <div className="action"><ClearIcon/></div>
+        <div className="action-remove" onClick={() => removeOutfit(unit)}><ClearIcon/></div>
       </div>
       <div className="bottom">
         <div className="product-name">{name}</div>
@@ -74,7 +75,7 @@ function OutfitCarousel({ unit }) {
         {saleHandler()}
       </div>
     </div>
-  )
+  ) : null)
 }
 
 

@@ -6,7 +6,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Helpers from '../APIHelpers.js';
 
 
-function RelatedMain({ defaultId }) {
+function RelatedMain({ mainId }) {
 
   const [relatedIds  ,    setRelatedIds    ] = useState([]);
   const [displayIds  ,    setDisplayIds    ] = useState([]);
@@ -17,7 +17,7 @@ function RelatedMain({ defaultId }) {
   const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
 
   useEffect(() => {
-    Helpers.getRelated(defaultId, (err, res) => {
+    Helpers.getRelated(mainId, (err, res) => {
       if (err) {
         console.log(err)
       } else {

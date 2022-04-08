@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './css/Related.css';
-import StarIcon from '@material-ui/icons/Star';
 import CompareIcon from '@material-ui/icons/Compare';
 import Helpers from '../APIHelpers.js';
+import Rating from '../Reviews/sub-components/StarRating.jsx';
 
 //TODO:
 //figure out how to access default data
-//fix css
 //stars
 //light box
 
@@ -17,6 +16,7 @@ function RelatedCarousel({ unit, length }) {
   const [price     ,  setPrice     ] = useState('');
   const [sale      ,  setSale      ] = useState('');
   const [def       ,  setDefault   ] = useState('');
+  const [rating    ,  setRating    ] = useState(0);
 
   const start = useRef(0);
   const end = useRef(length > 3 ? 3 : length);
@@ -46,6 +46,15 @@ function RelatedCarousel({ unit, length }) {
         setSale(res.results[0].sale_price)
       }
     })
+    Helpers.getReviews(unit, (err, res) => {
+      if (err) {
+        console.log(err)
+      } else {
+        for (var x = 0; x < res.results.length; x++) {
+            setRating((rating) => rating = [...rating, res.results[x].rating])
+        }
+      }
+    })
   }, []);
 
   const photoHandler = () => {
@@ -63,13 +72,27 @@ function RelatedCarousel({ unit, length }) {
     </div>
   };
 
+  const ratingHandler = () => {
+    const tempRating = rating;
+    const sum = tempRating.reduce((partialSum, a) => partialSum + a, 0);
+    const avg = sum / tempRating.length;
+    console.log('Average: ', avg)
+    return Rating(avg);
+  };
+
+  //build out compare lightbox / div
+  const compareHandler = () => {
+    return null;
+  }
+
   return (
+    unit ? (
     <div className="card">
       <div className="card-inner"  style={{backgroundImage: `url(${photoHandler()})`}}>
         <div className="stars">
-          <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/>
+          {ratingHandler()}
         </div>
-        <div className="action"><CompareIcon/></div>
+        <div className="action-compare" onClick={() => compareHandler(unit)}><CompareIcon/></div>
       </div>
       <div className="bottom">
         <div className="product-name">{name}</div>
@@ -77,7 +100,7 @@ function RelatedCarousel({ unit, length }) {
         {saleHandler()}
       </div>
     </div>
-  )
+  ) : null)
 }
 
 

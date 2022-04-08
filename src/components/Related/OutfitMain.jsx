@@ -17,15 +17,22 @@ import StarIcon from '@material-ui/icons/Star';
 //no max
 //persist across page navigation
 //persist after leaving and returning (definitely session id cookie)
-//action button = X -> removes item from list
-function OutfitMain({ defaultId }) {
-  const [outfit     ,    SetOutfit     ] = useState(['65644', '65662', '65665', '65680', '65671', '65631']);
-  const [dispOutfit ,    setDispOutfit ] = useState([outfit[0], outfit[1]]);
+function OutfitMain({ mainId }) {
+  const [outfit     ,    setOutfit     ] = useState([]);
+  const [dispOutfit ,    setDispOutfit ] = useState([]);
 
   const start = useRef(0);
   const end = useRef(1);
 
   const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
+
+  useEffect(() => {
+    setOutfit((outfit) => outfit = ['65644', '65662', '65665', '65680', '65671']);
+  }, []);
+
+  useEffect(() => {
+    setDispOutfit([outfit[0], outfit[1]])
+  }, [outfit])
 
   const left = () => {
     start.current = start.current - 1;
@@ -49,24 +56,41 @@ function OutfitMain({ defaultId }) {
     });
   };
 
+  const addToOutfit = () => {
+    let tempOutfit = [...outfit];
+    outfit.includes(mainId) ? null :
+    tempOutfit.unshift(mainId);
+    setOutfit((outfit) => outfit = tempOutfit)
+    setDispOutfit([outfit[0], outfit[1]]);
+  };
+
+  const removeOutfit = (id) => {
+    let tempOutfit = [...outfit];
+    let removeMe = tempOutfit.indexOf(id);
+    tempOutfit.splice(removeMe, 1)
+    setOutfit((outfit) => outfit = tempOutfit);
+    setDispOutfit([outfit[0], outfit[1]]);
+  };
 
   return (
     <div className="main">
       <div className="sub-main">
       {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
-          <div className="track">
-              <div className="add-fit" style={{backgroundImage: `url(${addFit})`}}>
+          <div className="add-track">
+              <button className="add-fit" onClick={() => addToOutfit()} style={{backgroundImage: `url(${addFit})`}}>
                 <h1 className="add-text">Add to Outfit</h1>
-              </div>
+              </button>
           </div>
-      {dispOutfit.map(unit => {
+          {dispOutfit.length > 1 &&
+      dispOutfit.map(unit => {
         return (
           <li className="track" key={unit}>
-          <OutfitCarousel unit={unit}/>
+          <OutfitCarousel unit={unit} removeOutfit={removeOutfit}/>
           </li>
         )
-      })}
+      })
+    }
       {end.current < outfit.length - 1 &&
         <div className="right" onClick={right}> <ArrowForwardIosIcon/> </div>}
       </div>
