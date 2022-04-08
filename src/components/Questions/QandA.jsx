@@ -74,14 +74,9 @@ const QandA = ({defaultId}) => {
 
 
   return (
-    <QandAContext.Provider value={{defaultId,   productName,
-                                   questions,   url,
-                                   searchVal,   setSearchVal,
-                                   visibleQs,   setVisibleQs,
-                                   searchView,  setSearchView,
-                                   addQuestion, setAddQuestion,
-                                                searchQuestions
-                                                }}>
+    <QandAContext.Provider value={{   defaultId,   productName,
+      questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
 
       <div className='QandA'>
         <h2> Questions and Answers</h2>
