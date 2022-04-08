@@ -12,42 +12,46 @@ var HelpReport = ({id, helpfulness}) => {
   const [ helpful, setHelpful ] = useState(false);
   const [ reported, setReported ] = useState(false);
 
+  //   const options = {
+  //     url: `${url}answers/${id}/report`,
+  //     method: 'put',
+  //     headers: { authorization: authorization.TOKEN }
+  //   };
+
+  //   const options = {
+  //     url: `${url}answers/${id}/helpful`,
+  //     method: 'put',
+  //     headers: { authorization: authorization.TOKEN }
+  //   };
+
 
   var reportAnswer = () => {
 
-    const options = {
-      url: `${url}answers/${id}/report`,
-      method: 'put',
-      headers: { authorization: authorization.TOKEN }
-    };
-
-    axios(options)
+    axios.put(`${url}answers/${id}/report`, {
+      headers: { 'Authorization': authorization.TOKEN }
+    })
       .then(response => {
         console.log(response, `Answer ${id} reported`);
         setReported(true);
       })
       .catch(error => {
         console.log(error, 'Answer not reported');
-        setReported(true);
       });
   };
 
+
+
   var helpfulAnswer = () => {
 
-    const options = {
-      url: `${url}answers/${id}/helpful`,
-      method: 'put',
-      headers: { authorization: authorization.TOKEN }
-    };
-
-    axios(options)
+    axios.put(`${url}answers/${id}/helpful`, {
+      headers: { 'Authorization': authorization.TOKEN }
+    })
       .then(response => {
         console.log('Answer marked helpful');
         setHelpful(true);
       })
       .catch(error => {
-        console.log('Helpful PUT request failed');
-        setHelpful(true);
+        console.log('Answer HELPFUL request failed');
       });
   };
 
