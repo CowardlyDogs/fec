@@ -30,7 +30,7 @@ var QandA = ({product_id, productName}) => {
   useEffect(() => {
     axios.get(`${url}questions/`, {
       headers: { Authorization: authorization.TOKEN },
-      params: { product_id: 40344, page: 1, count: 200}
+      params: { product_id: 65631, page: 1, count: 200}
     })
       .then(response => {
         var sorted = sortQuestions(response.data);
@@ -43,21 +43,21 @@ var QandA = ({product_id, productName}) => {
   }, []);
 
 
-  var postAnswer = () => {
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
-      .then(response => {
-        console.log(`Question ${question_id} posted`, response)
-        setAnswerVal('');
-        setNicknameVal('');
-        setEmailVal('');
-        setAddAnswer(prev=>!prev)
-      })
-      .catch(error => {
-        console.log('Error', error)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
-      })
-  }
+  // var postAnswer = () => {
+  //   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
+  //     .then(response => {
+  //       console.log(`Question ${question_id} posted`, response)
+  //       setAnswerVal('');
+  //       setNicknameVal('');
+  //       setEmailVal('');
+  //       setAddAnswer(prev=>!prev)
+  //     })
+  //     .catch(error => {
+  //       console.log('Error', error)
+  //       setEmailBool(true)
+  //       setInvalidEmail('Question not posted, please provide valid email address')
+  //     })
+  // }
 
 
 

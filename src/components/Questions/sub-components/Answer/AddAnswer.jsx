@@ -37,22 +37,22 @@ var AddAnswer = () => {
     "photos": []
     }
 
-  // var postAnswer = () => {
+  var postAnswer = () => {
 
-  //   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
-  //     .then(response => {
-  //       console.log(`Question ${question_id} posted`, response)
-  //       setAnswerVal('');
-  //       setNicknameVal('');
-  //       setEmailVal('');
-  //       setAddAnswer(prev=>!prev)
-  //     })
-  //     .catch(error => {
-  //       console.log('Error', error)
-  //       setEmailBool(true)
-  //       setInvalidEmail('Question not posted, please provide valid email address')
-  //     })
-  // }
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${question_id}/answers`, answer, {headers: { 'Authorization': authorization.TOKEN }})
+      .then(response => {
+        console.log(`Question ${question_id} posted`, response)
+        setAnswerVal('');
+        setNicknameVal('');
+        setEmailVal('');
+        setAddAnswer(prev=>!prev)
+      })
+      .catch(error => {
+        console.log('Error', error)
+        setEmailBool(true)
+        setInvalidEmail('Question not posted, please provide valid email address')
+      })
+  }
 
 
 
