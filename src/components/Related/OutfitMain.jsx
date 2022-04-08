@@ -57,7 +57,7 @@ function OutfitMain() {
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
           <div className="track">
               <div className="add-fit" style={{backgroundImage: `url(${addFit})`}}>
-                <h1 className="add-text">Add Item to Outfit</h1>
+                <h1 className="add-text">Add to Outfit</h1>
               </div>
           </div>
       {dispOutfit.map(unit => {
