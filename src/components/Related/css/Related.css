@@ -1,27 +1,44 @@
 .main {
   display: flex;
-  width: 93%;
+  width: 50%;
   height: 400px;
   flex-direction: row;
   overflow: hidden;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  place-content: center;
+  justify-content: center;
+}
+
+.sub-main {
+  display: flex;
+  width: 90%;
+  height: 400px;
+  flex-direction: row;
+  overflow: hidden;
+  place-content: center;
+  justify-content: center;
 }
 
 .track {
   display: flex;
-  width: 100%;
+  width: 33%;
   height: 400px;
   flex-direction: row;
   overflow: hidden;
+  align-self: center;
+  justify-self: center;
 }
 
 .card-container {
-  min-width: 16.66666666%;
-  max-width: 16.66666666%;
+  min-width: 33%;
+  max-width: 33%;
 }
 
 .card {
-  min-width: 15.6%;
-  max-width: 15.6%;
+  min-width: 90%;
+  max-width: 90%;
   height: 400px;
   background-color: #f5f2f0;
   display: flex;
@@ -83,7 +100,6 @@ h1 {
 
 .left {
   height: inherit;
-  background-color: rgba(0, 0, 0, 0.25);
   display: grid;
   place-items: center;
   color: rgb(0, 0, 0);
@@ -96,7 +112,6 @@ h1 {
 
 .right {
   height: inherit;
-  background-color: rgba(0, 0, 0, 0.25);
   display: grid;
   place-items: center;
   color: rgb(0, 0, 0);

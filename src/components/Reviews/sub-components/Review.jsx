@@ -1,9 +1,20 @@
-import React/*, { useState }*/ from 'react';
+import React from 'react';
 import moment from 'moment';
+import axios from 'axios';
+import authorization from '../../../../config.js';
+import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
+import Rating from './StarRating.jsx';
 
 
 
-function Review({review}) {
+function Review({review, helpful, report}) {
+
+  var handleHelp = () => {
+    helpful(review.review_id);
+  }
+  var handleReport = () => {
+    report(review.review_id);
+  }
 
   return (
     // <h1>Ratings and Reviews Will Go Here</h1>
@@ -21,7 +32,9 @@ function Review({review}) {
         <div className='username'><p>{review.reviewer_name}</p></div>
         <div className='timestamp' float='right'><p>{moment(review.date).fromNow()}</p></div>
       </div>
-      <div>{/*star rating here and reccomended*/}</div>
+      <div>{/*star rating here and reccomended*/}
+        <Rating rating={review.rating}/>
+      </div>
       <hr/>
       <div className="review-body">
         <p>{review.body}</p>
@@ -32,14 +45,20 @@ function Review({review}) {
         )))}
         <img></img>
       </div>
-      <div className="helpfulness">
-        <div className="helpful-circle">
-          {review.helpfulness}
-        </div>
-        <div>
-          people found this helpful
-        </div>
+      <div className="help-report">
+        <div className="helpfulness">
+          <div className="helpful-circle">
+            {review.helpfulness}
+          </div>
+          <div>
+            people found this helpful
+          </div>
 
+        </div>
+        <div className="report">
+          <button onClick={handleHelp}> This was Helpful </button>
+          <button onClick={handleReport}> Report </button>
+        </div>
       </div>
       {/* All review information */}
    </div>
