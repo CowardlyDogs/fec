@@ -13,8 +13,8 @@ function Price() {
       {/* if there is a sale on the current style, then strikethrough the original price and list the sale price next to it */}
       {currentStyle['sale_price'] ?
         <div>
-          <span style={{ textDecorationLine: 'line-through' }}>{'$' + currentStyle['original_price']}</span>
-          <span>{'$' + currentStyle['sale_price']}</span>
+          <span style={{ textDecorationLine: 'line-through'}}>{'$' + currentStyle['original_price']}</span>
+          <span style={{ color: 'red' }}>{'$' + currentStyle['sale_price']}</span>
         </div>
 
         // otherwise, just display the default price

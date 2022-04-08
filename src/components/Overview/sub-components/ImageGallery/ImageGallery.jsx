@@ -1,25 +1,27 @@
 import React, { useState, useContext } from 'react';
 import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
-import {Overview, OverviewContext } from '../../Overview.jsx';
+import { Overview, OverviewContext } from '../../Overview.jsx';
 
-function ImageGallery () {
+const ImageGallery = () => {
   const currentStyle = useContext(OverviewContext).currentStyle;
   const [isDefault, setIsDefault] = useState(true);
+  const [expandedPhoto, setExpandedPhoto] = useState({});
 
-  if (isDefault) {
-    return (
-      <div>
-        <DefaultView currentStyle={currentStyle} />
-      </div>
-    )
-  } else {
-    return (
-      <div>
-        <ExpandedView />
-      </div>
-    );
-  }
-}
+
+
+
+  return (
+    <div>
+      {
+        !isDefault ?
+          <ExpandedView setIsDefault={setIsDefault} expandedPhoto={expandedPhoto} photos={currentStyle.photos} />
+          : null
+      }
+      <DefaultView currentStyle={currentStyle} setIsDefault={setIsDefault} setExpandedPhoto={setExpandedPhoto} />
+    </div>
+  );
+
+};
 
 export default ImageGallery;
