@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import API from '../../../config.js';
 import RelatedCarousel from './RelatedCarousel.jsx';
 import './css/Related.css';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Helpers from '../APIHelpers.js';
 
 
-function RelatedMain() {
+function RelatedMain({ defaultId }) {
 
   const [relatedIds  ,    setRelatedIds    ] = useState([]);
   const [displayIds  ,    setDisplayIds    ] = useState([]);
@@ -16,18 +15,17 @@ function RelatedMain() {
   const end = useRef(2);
 
   const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
-  const testId = '65631';
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${testId}/related`, {
-      headers: { Authorization: API.TOKEN } })
-      .then(res => {
-        setRelatedIds(res.data)
-        setDisplayIds([res.data[0], res.data[1], res.data[2]])
-       }).then(() => {
+    Helpers.getRelated(defaultId, (err, res) => {
+      if (err) {
+        console.log(err)
+      } else {
+        setRelatedIds(res)
+        setDisplayIds([res[0], res[1], res[2]])
+      }
+    });
          end.current = relatedIds.length > 3 ? 2 : !relatedIds.length ? 2 : relatedIds.length
-      })
-      .catch((err) => { console.error(err) })
   }, []);
 
   const left = () => {

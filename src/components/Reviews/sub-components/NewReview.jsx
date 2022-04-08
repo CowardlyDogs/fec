@@ -2,7 +2,7 @@ import React/*, { useState }*/ from 'react';
 
 
 
-function NewReview({visible, toggle, product, onSubmit}) {
+var NewReview = ({visible, toggle, product, onSubmit}) => {
 
   var rating = 0;
   // var changeRating = (stars) => {
@@ -12,22 +12,22 @@ function NewReview({visible, toggle, product, onSubmit}) {
   var summary = '';
   var changeSummary = (e) => {
     summary = e.target.value;
-  }
+  };
 
   var review = '';
   var changeReview = (e) => {
     review = e.target.value;
-  }
+  };
 
   var username = '';
   var changeUsername = (e) => {
     username = e.target.value;
-  }
+  };
 
   var email = '';
   var changeEmail = (e) => {
     email = e.target.value;
-  }
+  };
 
   var photos = [];
   // var changePhotos = (e) => {
@@ -47,11 +47,11 @@ function NewReview({visible, toggle, product, onSubmit}) {
       summary: summary,
       body: review,
       name: username,
-      email : email,
+      email: email,
       photos: photos,
       characteristics: characteristics
-     });
-  }
+    });
+  };
 
   return (
 
@@ -68,8 +68,8 @@ function NewReview({visible, toggle, product, onSubmit}) {
               If rating >= star number, color = gold, else white. (Use ternary)
 
       */}
-      <button onClick={toggle} style={{display: (!visible ? "block" : "none")}}>Post a Review</button>
-      <div className="review-modal" style={{display: (visible ? "flex" : "none")}}>
+      <button onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
+      <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content">
           {/* TODO figure out star rating input */}
           <br/>
@@ -91,7 +91,7 @@ function NewReview({visible, toggle, product, onSubmit}) {
       </div>
     </div>
   );
-}
+};
 
 
 
