@@ -7,17 +7,17 @@ import Rating from './StarRating.jsx';
 
 
 
-function Review({review, helpful, report}) {
+var Review = ({review, helpful, report}) => {
 
   var handleHelp = () => {
     helpful(review.review_id);
-  }
+  };
   var handleReport = () => {
     report(review.review_id);
-  }
+  };
 
   return (
-    // <h1>Ratings and Reviews Will Go Here</h1>
+  // <h1>Ratings and Reviews Will Go Here</h1>
     /*
     ***TODO***
     *
@@ -41,7 +41,7 @@ function Review({review, helpful, report}) {
       </div>
       <div className="ReviewImages">
         {review.photos.map((image => (
-          <img key={image.id} src={image.url}/>
+          <img className="ReviewImage" key={image.id} src={image.url}/>
         )))}
         <img></img>
       </div>
@@ -61,8 +61,8 @@ function Review({review, helpful, report}) {
         </div>
       </div>
       {/* All review information */}
-   </div>
+    </div>
   );
-}
+};
 
 export default Review;

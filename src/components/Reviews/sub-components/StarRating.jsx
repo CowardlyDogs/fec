@@ -1,20 +1,20 @@
 import React from 'react';
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 
 
 
-function Rating({rating}) {
+var Rating = ({rating}) => {
 
-    return (
-      <div className="Star-Ratings">
-        {(rating >= 1) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
-        {(rating >= 2) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
-        {(rating >= 3) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
-        {(rating >= 4) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
-        {(rating >= 5) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
-      </div>
-    )
-}
+  return (
+    <div className="Star-Ratings">
+      {(rating >= 1) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
+      {(rating >= 2) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
+      {(rating >= 3) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
+      {(rating >= 4) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
+      {(rating >= 5) ? <StarIcon className='StarIcon'/> : <StarBorderOutlinedIcon className='StarIconEmpty'/> }
+    </div>
+  );
+};
 
 export default Rating;
