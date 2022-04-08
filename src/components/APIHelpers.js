@@ -1,7 +1,28 @@
 import axios from 'axios';
+import Authorization from '../../config.js';
 
-module.exports = {
-  getData()
-  //axios.get
-  //do stuff
-}
+const APIHelpers = {
+
+  getRelated: (productId, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${productId}/related`, {
+      headers: { Authorization: Authorization.TOKEN } })
+      .then((res) => { callback(null, res.data) })
+      .catch((err) => { callback(err) });
+  },
+
+  getProduct: (id, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}`, {
+      headers: { Authorization: Authorization.TOKEN } })
+    .then(res => callback(null, res.data))
+    .catch(err => callback(err));
+  },
+  getStyles: (id, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
+      headers: {Authorization: Authorization.TOKEN} })
+    .then(res => callback(null, res.data))
+    .catch(err => callback(err));
+  }
+};
+
+
+export default APIHelpers;

@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import './css/Related.css';
-import API from '../../../config.js';
 import StarIcon from '@material-ui/icons/Star';
 import CompareIcon from '@material-ui/icons/Compare';
+import Helpers from '../APIHelpers.js';
 
 //TODO:
 //figure out how to access default data
@@ -24,38 +23,36 @@ function RelatedCarousel({ unit, length }) {
   const noImage = "https://yanktontrailers.com/wp-content/uploads/2020/02/noimage.png"
 
   useEffect(() => {
-    getProductData(unit);
+    Helpers.getProduct(unit, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setName(res.name);
+        setCategory(res.category);
+        setPrice(res.default_price);
+      }
+    })
+    Helpers.getStyles(unit, (err, res) => {
+      if (err) {
+        console.log(err)
+      } else {
+        for (var x = 0; x < res.results.length; x++) {
+          if (Object.values(res.results[x]).includes(true)) {
+            setPhoto(res.results[x].photos[0].thumbnail_url)
+          } else {
+            setDefault(res.results[0].photos[0].thumbnail_url)
+          }
+        }
+        setSale(res.results[0].sale_price)
+      }
+    })
   }, []);
 
-  function getProductData(id) {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}`, {
-      headers: { Authorization: API.TOKEN } })
-    .then(res => {
-      setName(res.data.name);
-      setCategory(res.data.category);
-      setPrice(res.data.default_price);
-    })
-    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
-      headers: {Authorization: API.TOKEN}
-    })
-    .then(res => {
-      for (var x = 0; x < res.data.results.length; x++) {
-        if (Object.values(res.data.results[x]).includes(true)) {
-          setPhoto(res.data.results[x].photos[0].thumbnail_url)
-        } else {
-          setDefault(res.data.results[0].photos[0].thumbnail_url)
-        }
-      }
-      setSale(res.data.results[0].sale_price)
-    })
-    .catch(err => console.log('Err 2nd GET: ', err))
-  };
-
-  function photoHandler() {
+  const photoHandler = () => {
     return photo ? photo : def ? def : noImage;
   };
 
-  function saleHandler() {
+  const saleHandler = () => {
     return sale ?
     <div className="price-container">
       <div className="price">{price}</div>
