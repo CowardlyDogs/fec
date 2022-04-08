@@ -24,8 +24,6 @@ const APIHelpers = {
     .catch(err => callback(err));
   },
 
-
-  // QandA AXIOS calls
   getQuestions: (id, callback) => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/', {
       headers: { Authorization: Authorization.TOKEN },

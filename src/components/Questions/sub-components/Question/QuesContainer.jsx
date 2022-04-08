@@ -11,22 +11,15 @@ var QuesContainer = () => {
   const [ view, setView ] = useState(0);
   const [  end, setEnd  ] = useState(2);
 
-
-
-  // Functions to change view count in state.
   var increment = () => {
     setEnd(prev => prev + 2);
   };
 
-
-  // Function to map over questions.
   var mapQuestions = (questions) => {
     return questions.map( (question, idx) => {
       return <Question key={idx} data={question}/>;
     });
   };
-
-
 
 
 
