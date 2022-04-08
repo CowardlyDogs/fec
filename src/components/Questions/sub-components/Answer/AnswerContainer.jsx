@@ -7,9 +7,9 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
 
-var AnswerContainer = () => {
+var AnswerContainer = ({question_body}) => {
   const product = useContext(QandAContext);
-  const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
+  const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
 
   const [ view, setView ] = useState(0);
   const [ start, setStart ] = useState(0);

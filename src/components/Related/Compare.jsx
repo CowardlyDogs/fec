@@ -12,6 +12,25 @@ import React from 'react';
 //if no overlapping facts/values, display all but no single characteristic row would have a value for both products <-??
 //if comparison too long to display, should become scrollable
 //product names remain fixed at top of list
+
+
+//use reactdom.createportal
+//z index 1000
+//top 50%
+//bottom 50%
+//transform translate(-50%, -50%)
+//background color #FFF
+//padding 50px
+//position fixed
+
+//overlay:
+//position fixed
+//top 0
+//left 0
+//right 0
+//bottom 0
+//background color rgba(0,0,0,.7)
+//zindex 1000
 function Compare() {
   return (
   <div>
