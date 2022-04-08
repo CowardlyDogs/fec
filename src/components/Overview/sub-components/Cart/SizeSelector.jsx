@@ -18,7 +18,7 @@ function SizeSelector(props) {
 
       <button
         type="button"
-        className="size-selector"
+        className="size-button"
         onClick={() => setListOpen(!listOpen)}
 
         // if the user has selected a size, the button text will display the size selected
@@ -27,11 +27,11 @@ function SizeSelector(props) {
 
       {/* if the list is open, display the div below */}
       {listOpen || forceSize ? (
-        <div>
+        <ul>
           {
             // map through the keys of the skus and display the size of each sku
             Object.keys(currentStyle.skus).map((sku, i) => (
-              <li key={i} onClick={() => {
+              <li className="size-list" key={i} onClick={() => {
                 props.setSku(currentStyle.skus[sku]);
                 props.setSizeSelected(currentStyle.skus[sku].size)
                 setListOpen(false);
@@ -46,7 +46,7 @@ function SizeSelector(props) {
               </li>
             ))
           }
-        </div>
+        </ul>
       ) : null
       }
     </div>
