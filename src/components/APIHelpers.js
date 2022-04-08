@@ -16,12 +16,24 @@ const APIHelpers = {
     .then(res => callback(null, res.data))
     .catch(err => callback(err));
   },
+
   getStyles: (id, callback) => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
       headers: {Authorization: Authorization.TOKEN} })
     .then(res => callback(null, res.data))
     .catch(err => callback(err));
+  },
+
+
+  // QandA AXIOS calls
+  getQuestions: (id, callback) => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/qa/questions/', {
+      headers: { Authorization: Authorization.TOKEN },
+      params: { product_id: id, page: 1, count: 200}})
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err))
   }
+
 };
 
 

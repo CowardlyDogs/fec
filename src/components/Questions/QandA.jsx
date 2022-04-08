@@ -9,12 +9,13 @@ import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
 import AddQuestion from './sub-components/Question/AddQuestion.jsx';
 import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
+import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
-var QandA = ({product_id, productName}) => {
+var QandA = ({defaultId, productName}) => {
 
-  const [     product, setProduct     ] = useState(product_id);
+  const [     product, setProduct     ] = useState(defaultId);
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
   const [  searchView, setSearchView  ] = useState(false);
@@ -28,18 +29,18 @@ var QandA = ({product_id, productName}) => {
   var productName = 'Camo Onesie'
 
   useEffect(() => {
-    axios.get(`${url}questions/`, {
-      headers: { Authorization: authorization.TOKEN },
-      params: { product_id: 65631, page: 1, count: 200}
-    })
-      .then(response => {
-        var sorted = sortQuestions(response.data);
+
+    // Inital get request
+    APIHelpers.getQuestions(defaultId, (err, res) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(res)
+        var sorted = sortQuestions(res);
         setQuestions(sorted);
         setVisibleQs(sorted);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      }
+    })
   }, []);
 
 

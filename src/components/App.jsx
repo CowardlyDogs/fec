@@ -15,8 +15,8 @@ const App = () => {
     <RelatedMain defaultId={defaultId}/>
     <h1>Your Outfit</h1>
     <OutfitMain defaultId={defaultId}/>
-    {/* <QandA/> */}
-    {/* <ReviewModule/> */}
+    <QandA defaultId={defaultId}/>
+    <ReviewModule/>
   </div>
   )
 }
