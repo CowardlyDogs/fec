@@ -26,11 +26,11 @@ module.exports = {
 
   nextPhoto: (photo, photos, setPhoto) => {
 
-    setPhoto(photos[photos.indexOf(photo) + 1])
+    setPhoto(photos[photos.indexOf(photo) + 1]);
   },
 
   previousPhoto: (photo, photos, setPhoto) => {
-    setPhoto(photos[photos.indexOf(photo) - 1])
+    setPhoto(photos[photos.indexOf(photo) - 1]);
   }
 
-}
+};

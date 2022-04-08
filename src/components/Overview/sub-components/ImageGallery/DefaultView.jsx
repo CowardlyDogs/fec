@@ -3,16 +3,16 @@ import { Overview, OverviewContext } from '../../Overview.jsx';
 import carosel from './carosel.js';
 
 
-function DefaultView(props) {
+const DefaultView = (props) => {
   const currentStyle = props.currentStyle;
-  const [currentPhoto      , setCurrentPhoto      ] = useState(currentStyle.photos[0]);
-  const [displayedStyles   , setDisplayedStyles   ] = useState(currentStyle.photos.slice(0, 7));
+  const [currentPhoto, setCurrentPhoto] = useState(currentStyle.photos[0]);
+  const [displayedStyles, setDisplayedStyles] = useState(currentStyle.photos.slice(0, 7));
 
 
   useEffect(() => {
-    setCurrentPhoto(currentStyle.photos[0])
-    setDisplayedStyles(currentStyle.photos.slice(0, 7))
-  }, [currentStyle])
+    setCurrentPhoto(currentStyle.photos[0]);
+    setDisplayedStyles(currentStyle.photos.slice(0, 7));
+  }, [currentStyle]);
 
 
 
@@ -32,11 +32,11 @@ function DefaultView(props) {
       {/* if the user scrolled the carosel to the left, this button will be available */}
       {
         displayedStyles[0] !== currentStyle.photos[0]
-        ? <button className="previous"
+          ? <button className="previous"
             onClick={() => carosel.shiftThumbnailsRight(displayedStyles, currentStyle, setDisplayedStyles)} >
-          Previous
+            Previous
           </button>
-        : null
+          : null
       }
 
       {/* iterate through the thumbnails to render them to the page. max of 7 at a time */}
@@ -56,14 +56,14 @@ function DefaultView(props) {
       {/* if the user scrolled the carosel to the right, this button will be available */}
       {
         displayedStyles[displayedStyles.length - 1] !== currentStyle.photos[currentStyle.photos.length - 1]
-        ? <button className="next"
+          ? <button className="next"
             onClick={() => carosel.shiftThumbnailsLeft(displayedStyles, currentStyle, setDisplayedStyles)} >
             Next
-            </button>
-        : null
+          </button>
+          : null
       }
     </div>
-  )
-}
+  );
+};
 
 export default DefaultView;

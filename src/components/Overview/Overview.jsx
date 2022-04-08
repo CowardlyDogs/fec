@@ -10,12 +10,12 @@ import './styles.css';
 
 export const OverviewContext = React.createContext(null);
 
-function Overview () {
+const Overview = () => {
 
-  const [styles       , setStyles       ] = useState({});
-  const [currentStyle , setCurrentStyle ] = useState({});
-  const [productInfo  , setProductInfo  ] = useState({});
-  const [loading      , setLoading      ] = useState(true);
+  const [styles, setStyles] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [productInfo, setProductInfo] = useState({});
+  const [loading, setLoading] = useState(true);
 
 
 
@@ -31,31 +31,31 @@ function Overview () {
         setCurrentStyle(res.results[0]);
         setLoading(false);
       }
-    })
+    });
 
-    APIHelpers.getProductInfo(65635, (err, res) => {
+    APIHelpers.getProduct(65635, (err, res) => {
       if (err) {
         console.error(err);
       } else {
         setProductInfo(res);
       }
-    })
+    });
 
   }, []);
 
   if (loading) {
-    return (null)
+    return (null);
   }
 
 
   return (
-    <OverviewContext.Provider value={{currentStyle: currentStyle, styles: styles}}>
-      <ProductInfo productInfo={productInfo}/>
+    <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
+      <ProductInfo productInfo={productInfo} />
       <StylesSelector setCurrentStyle={setCurrentStyle} />
       <Cart />
       <ImageGallery />
     </OverviewContext.Provider>
   );
-}
+};
 
 export default Overview;

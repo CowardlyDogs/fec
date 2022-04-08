@@ -3,10 +3,10 @@ import DefaultView from './DefaultView.jsx';
 import ExpandedView from './ExpandedView.jsx';
 import { Overview, OverviewContext } from '../../Overview.jsx';
 
-function ImageGallery() {
+const ImageGallery = () => {
   const currentStyle = useContext(OverviewContext).currentStyle;
-  const [isDefault       , setIsDefault       ] = useState(true);
-  const [expandedPhoto   , setExpandedPhoto   ] = useState({});
+  const [isDefault, setIsDefault] = useState(true);
+  const [expandedPhoto, setExpandedPhoto] = useState({});
 
 
 
@@ -15,13 +15,13 @@ function ImageGallery() {
     <div>
       {
         !isDefault ?
-        <ExpandedView setIsDefault={setIsDefault} expandedPhoto={expandedPhoto} photos={currentStyle.photos} />
-        : null
+          <ExpandedView setIsDefault={setIsDefault} expandedPhoto={expandedPhoto} photos={currentStyle.photos} />
+          : null
       }
       <DefaultView currentStyle={currentStyle} setIsDefault={setIsDefault} setExpandedPhoto={setExpandedPhoto} />
     </div>
-  )
+  );
 
-}
+};
 
 export default ImageGallery;
