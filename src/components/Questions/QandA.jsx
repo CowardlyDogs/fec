@@ -79,8 +79,8 @@ const QandA = ({defaultId}) => {
       searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
 
       <div className='QandA'>
-        <h2> Questions and Answers</h2>
-        <div>{search}</div>
+        <h2 className='header'> Questions and Answers</h2>
+        <div className='search-bar'>{search}</div>
         <div>{questionList}</div>
         <AddQuestion defaultId={defaultId} productName={productName}/>
       </div>

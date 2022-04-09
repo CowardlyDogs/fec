@@ -3,6 +3,7 @@ import QandA from '../../QandA.jsx';
 import moment from 'moment';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
+import '../../styles.css';
 
 
 var NameAndDate = ({name, date}) => {
@@ -16,7 +17,8 @@ var NameAndDate = ({name, date}) => {
 
   return (
     <div>
-      {answererName} {moment(date).format("MMM Do YY")}
+      <div className='Aname'> Response from {answererName}</div>
+      <div className='Adate'>  {moment(date).format("MMM Do YY")}</div>
     </div>
   );
 };

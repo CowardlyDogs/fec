@@ -4,6 +4,7 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import APIHelpers from '../../../APIHelpers.js';
+import '../../styles.css';
 
 const HelpReport = ({id, helpfulness}) => {
   const {       product, url           } = useContext(QandAContext);
@@ -46,26 +47,20 @@ const HelpReport = ({id, helpfulness}) => {
 
   if (helpful) {
     helpfulDiv =
-    <div>
-      <span>Helpful?</span>
-      <a>Yes({helpfulness += 1})</a>
-    </div>;
+    <div className='helpful'> Helpful? Yes({helpfulness += 1}) </div>;
   } else {
     helpfulDiv =
-    <div>
-      <span>Helpful?</span>
-      <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
-    </div>;
+    <div className='helpful'> <a onClick={helpfulAnswer}> Helpful? Yes({helpfulness})</a> </div>;
   }
 
   if (reported) {
     reportDiv =
-    <div>
+    <div className='report'>
       <a>Reported</a>
     </div>;
   } else {
     reportDiv =
-    <div>
+    <div className='report'>
       <a onClick={reportAnswer}>Report</a>
     </div>;
   }
@@ -73,9 +68,10 @@ const HelpReport = ({id, helpfulness}) => {
 
 
   return (
-    <div>
-      {reportDiv}
-      {helpfulDiv}
+    <div className='help-report'>
+      <div className='answer-hr-flex'>
+        {reportDiv} {helpfulDiv}
+      </div>
     </div>
   );
 };

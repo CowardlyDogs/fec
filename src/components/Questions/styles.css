@@ -1,29 +1,189 @@
+* {
+  box-sizing: border-box;
+  /* width: 100%; */
+}
+
+
 
 .Qcontainer {
-  /* display: flex; */
+  /* position: fixed; */
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+
   background-color: lightblue;
-  /* justify-content: center; */
 }
 
 .QandA {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center; */
 }
 
 .header {
-  width: 100%;
+  width: 80%;
   height: auto;
-
+  margin: 10px;
+  font-size: 40px;
 }
 
+.search-bar {
+  margin: 10px 0px;
+}
+
+.search {
+  background-color: lightgray;
+  margin: 10px 40px;
+  width: 300px;
+}
+
+
+/* QUESTION */
+
+.question {
+  /* display: flex; */
+  /* border: 1px solid black; */
+}
+
+
+.NameAndDate {
+  padding: 5px 10px;
+  height: auto;
+}
+
+
+.Qname {
+  font-size: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+
+.Qdate {
+  font-size: 15px;
+}
+
+
+.Q {
+  font-size: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 50px;
+}
+
+
+.question-body {
+  font-size: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 70%;
+  height: auto;
+}
+
+.help-report {
+  display: inline-block;
+  width: 30%;
+}
+
+.hr-flex {
+  display: flex;
+  justify-content: end;
+  font-size: 15px;
+}
+
+
+.helpful {
+  margin: 0 5px;
+}
+
+.report {
+  margin: 0 5px;
+}
+
+
+
+
+
+
+
+/* Answers */
+
 .Acontainer {
-  color: red
+  /* border: 1px solid black; */
+  margin: 5px 10px;
+}
+
+.A {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 4px
+}
+
+.answerList {
+  display: inline-block;
+  padding: 0 5px;
+  width: 90%;
 }
 
 .Answer {
-  color: blue
+  margin-bottom: 10px;
 }
+
+.answer-body {
+  display: inline-block;
+  width: 100%;
+  color: green;
+  padding-bottom: 5px;
+}
+
+.answer-info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.answer-hr-flex {
+  display: flex;
+  justify-content: start;
+  padding-left: 20px;
+  font-size: 15px;
+}
+
+.Aname {
+  display: inline-block;
+  font-size: 15px;
+  width: auto;
+  padding-right: 20px;
+}
+
+.Adate {
+  display: inline-block;
+  font-size: 15px;
+}
+
+.answer-photos {
+  display: inline-block;
+  height: 20px;
+  border: 1px solid black;
+}
+
+.answer-buttons {
+  display: flex;
+  margin-left: 12px;
+  padding-top: 0px;
+}
+
+.answer-more {
+  color: green;
+}
+
+.add-answer {
+  color: green;
+}
+
+
+
+
+
 
 .TestOn {
   color: green
@@ -84,10 +244,10 @@
   transform: translate(-50%,-50%);
 }
 
-.name {
+/* .name {
   height: 40px;
   width: 200px;
-}
+} */
 
 
 .hide {

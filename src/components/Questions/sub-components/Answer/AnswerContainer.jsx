@@ -63,10 +63,13 @@ var AnswerContainer = ({question_body}) => {
 
   return (
     <div className='Acontainer'>
-      <strong>A:</strong> {answerList}
-      {showMore}
-      {prevAnswers}
-      <AddAnswer />
+      <div className='A'><strong>A:</strong></div>
+      <div className='answerList'>   {answerList} </div>
+      <div className='answer-buttons'>
+        <AddAnswer />
+        <div className='more-answers'> {showMore}   </div>
+        <div className='less-answers'> {prevAnswers}</div>
+      </div>
     </div>
   );
 };

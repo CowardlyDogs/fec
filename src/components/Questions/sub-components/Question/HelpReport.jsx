@@ -5,6 +5,7 @@ import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
+import '../../styles.css';
 
 
 const HelpReport = ({ helpfulness }) => {
@@ -37,7 +38,7 @@ const HelpReport = ({ helpfulness }) => {
         setHelpful(true);
         console.log('Question marked helpful');
       }
-    })
+    });
   };
 
 
@@ -48,37 +49,37 @@ const HelpReport = ({ helpfulness }) => {
 
   if (helpful) {
     helpfulDiv =
-    <div>
-      <span>Helpful?</span>
+    <div className='helpful'>
+      <span><strong>Helpful?</strong></span>
       <a>Yes({helpfulness += 1})</a>
     </div>;
   } else {
     helpfulDiv =
-    <div>
-      <span>Helpful?</span>
-      <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
+    <div className='helpful'>
+      <a onClick={helpfulQuestion}> <span><strong>Helpful?</strong></span></a>
+      <a onClick={helpfulQuestion}>  Yes ({helpfulness})</a>
     </div>;
   }
 
   if (reported) {
     reportDiv =
-    <div>
-      <a>Reported</a>
+    <div className='report'>
+      <a><strong>Report</strong></a>
     </div>;
   } else {
     reportDiv =
-    <div>
-      <a onClick={reportQuestion}>Report</a>
+    <div className='report'>
+      <a onClick={reportQuestion}><strong>Report</strong></a>
     </div>;
   }
 
 
 
   return (
-    <div>
-      <br/>
-      {reportDiv}
-      {helpfulDiv}
+    <div className='help-report'>
+      <div className='hr-flex'>
+        {reportDiv} {helpfulDiv}
+      </div>
     </div>
   );
 };

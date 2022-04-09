@@ -6,6 +6,7 @@ import QuestionBody from './QuestionBody.jsx';
 import HelpReport from './HelpReport.jsx';
 import QNameAndDate from './QNameAndDate.jsx';
 import AnswerContainer from '../Answer/AnswerContainer.jsx';
+import '../../styles.css';
 
 export const QuestionContext = React.createContext(null);
 
@@ -20,9 +21,9 @@ const Question = ({data}) => {
 
   return (
     <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body}}>
-      <div>
-        <strong>Q:</strong>
+      <div className='question'>
         <QNameAndDate     name={asker_name} date={question_date}/>
+        {/* <strong className='Q'>Q:</strong> */}
         <QuestionBody     body={question_body}/>
         <HelpReport       helpfulness={question_helpfulness}/>
         <AnswerContainer  question_body={question_body}/>
