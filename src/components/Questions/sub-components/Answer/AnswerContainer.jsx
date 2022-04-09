@@ -38,6 +38,7 @@ var AnswerContainer = ({question_body}) => {
   let answerList;
   let showMore;
   let prevAnswers;
+  let toggleListSize;
 
 
   if (sortedAnswers.length === 0) {
@@ -48,6 +49,7 @@ var AnswerContainer = ({question_body}) => {
     showMore = null;
   } else {
     if (view === 0) {
+      toggleListSize = 'answerList';
       answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       showMore = <button onClick={()=> {
         setView(1);
@@ -55,16 +57,18 @@ var AnswerContainer = ({question_body}) => {
 
     } else if (view === 1) {
       // Accordion view of answers
+      toggleListSize = 'scroll-list';
       answerList = mapAnswers([...seller, ...anons]);
       prevAnswers = <button onClick={()=>setView(0)}>Collapse answers</button>;
     }
   }
 
 
+
   return (
     <div className='Acontainer'>
       <div className='A'><strong>A:</strong></div>
-      <div className='answerList'>   {answerList} </div>
+      <div className={toggleListSize}>   {answerList} </div>
       <div className='answer-buttons'>
         <AddAnswer />
         <div className='more-answers'> {showMore}   </div>

@@ -46,12 +46,9 @@ var QuesContainer = () => {
 
 
   } else if ( view === 1 ) {
-    // Accordion view of questions
     questionList = mapQuestions(visibleQs.slice(0, end));
 
     toggleContainerSize = 'larger-container';
-
-
 
     showMore = <button onClick={increment}>       More Answered Questions </button>;
     prevQuestions = <button onClick={()=>setEnd(2)}>   Collapse Questions      </button>;
@@ -64,19 +61,6 @@ var QuesContainer = () => {
       setEnd(2);
     }
   }
-
-
-  // toggle state?
-  // setHieght - max height of each question
-  // useRef to get element we want to expand - scroll hieght measures content while 'overflow hidden'
-  //
-
-
-  // on click of MORE ANSWERED QUESTIONS
-  //    header to get positioned at top of page
-  //    expand question container to full height
-  //        show two more photos
-  //        make question container scroll
 
 
 
