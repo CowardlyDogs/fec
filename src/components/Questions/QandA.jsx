@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import reactDOM from 'react-dom';
 import './styles.css';
@@ -23,6 +23,10 @@ const QandA = ({defaultId}) => {
   const [   visibleQs, setVisibleQs   ] = useState(questions);
   const [ addQuestion, setAddQuestion ] = useState(false);
   const [     viewNum, setViewNum     ] = useState(0);
+
+
+  const ref = useRef(null);
+  const scrollToHeader = () => ref.current.scrollIntoView();
 
 
   useEffect(() => {
@@ -72,14 +76,13 @@ const QandA = ({defaultId}) => {
 
 
 
-
   return (
     <QandAContext.Provider value={{   defaultId,   productName,
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
-      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader  }}>
 
       <div className='QandA'>
-        <h2 className='header'> Questions and Answers</h2>
+        <h2 className='header'ref={ref}> Questions and Answers</h2>
         <div className='search-bar'>{search}</div>
         <div>{questionList}</div>
         <AddQuestion defaultId={defaultId} productName={productName}/>
