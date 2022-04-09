@@ -14,14 +14,14 @@ var AddQuestion = ({defaultId, productName}) => {
   const [ nicknameVal,  setNicknameVal  ] = useState('');
   const [ emailVal,     setEmailVal     ] = useState('');
   const [ warningBool,  setWarningBool  ] = useState(false);
-  const [ warningVals,  setWarningVals  ] = useState([])
-  const [ invalidEmail, setInvalidEmail ] = useState('')
-  const [ emailBool,    setEmailBool    ] = useState(false)
+  const [ warningVals,  setWarningVals  ] = useState([]);
+  const [ invalidEmail, setInvalidEmail ] = useState('');
+  const [ emailBool,    setEmailBool    ] = useState(false);
 
-  const backgroundChange    = addQuestion ? "modal-background" : "hide";
-  const showHideAddQuestion = addQuestion ? "modal-body" : "hide";
-  const emptyInputs         = warningBool ? "warning" : "hide";
-  const emailWarning        = emailBool   ? "invalid-email" : "hide";
+  const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
+  const showHideAddQuestion = addQuestion ? 'modal-body' : 'hide';
+  const emptyInputs         = warningBool ? 'warning' : 'hide';
+  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
 
   const hideModal = (e) => {
@@ -31,10 +31,10 @@ var AddQuestion = ({defaultId, productName}) => {
 
 
   let question = {
-         "body": questionVal,
-         "name": nicknameVal,
-        "email": emailVal,
-   "product_id": Number(defaultId)
+    "body": questionVal,
+    "name": nicknameVal,
+    "email": emailVal,
+    'product_id': Number(defaultId)
   };
 
 

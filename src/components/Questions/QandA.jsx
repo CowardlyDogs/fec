@@ -16,7 +16,7 @@ export const QandAContext = React.createContext(null);
 const QandA = ({defaultId}) => {
 
   // const [   defaultId, setdefaultId     ] = useState(defaultId);
-  const [ productName, setProductName ] = useState('')
+  const [ productName, setProductName ] = useState('');
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
   const [  searchView, setSearchView  ] = useState(false);
@@ -28,21 +28,21 @@ const QandA = ({defaultId}) => {
   useEffect(() => {
     APIHelpers.getProductName(defaultId, (err, res) => {
       if (err) {
-        console.log(err)
+        console.log(err);
       } else {
-        setProductName(res.name)
+        setProductName(res.name);
       }
-    })
+    });
 
     APIHelpers.getQuestions(defaultId, (err, res) => {
       if (err) {
-        console.log(err)
+        console.log(err);
       } else {
         var sorted = sortQuestions(res);
         setQuestions(sorted);
         setVisibleQs(sorted);
       }
-    })
+    });
   }, []);
 
 
@@ -65,7 +65,7 @@ const QandA = ({defaultId}) => {
 
   if (questions.length > 0) {
     questionList = <QuesContainer />;
-          search = <Search />;
+    search = <Search />;
   } else {
     questionList = <span>No questions asked yet.</span>;
   }
