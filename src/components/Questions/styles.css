@@ -29,40 +29,38 @@ html {
 }
 
 .QandA {
-  /* display: flex; */
-  /* flex-direction: column;
-  justify-content: center; */
+  margin-top: 50px;
 }
 
+
 .header {
-  width: 80%;
+  display: inline-block;
+  /* width: 80%; */
+  /* padding-top: 15px; */
   height: auto;
-  margin: 10px;
+  /* margin: 10px; */
   font-size: 40px;
 }
 
 .search-bar {
+  display: inline-block;
   margin: 10px 0px;
 }
 
 .search {
+  font-size: 15px;
   background-color: lightgray;
   margin: 10px 40px;
   width: 300px;
-}
-
-
-/* QUESTION */
-
-.question {
-  /* display: flex; */
-  /* border: 1px solid black; */
+  height: 50px;
+  /* border-radius: 15%; */
 }
 
 
 .NameAndDate {
   padding: 5px 10px;
   height: auto;
+
 }
 
 
@@ -179,9 +177,27 @@ html {
 }
 
 .answer-photos {
-  display: inline-block;
-  height: 20px;
-  border: 1px solid black;
+  display: flex;
+  gap: 15px;
+}
+
+.sm-answer-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 15%;
+  /* padding: 0 10px; */
+}
+
+.lg-answer-photo {
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  background: grey;
+  transform: translate(-50%,-50%);
+  border-radius: 10%;
 }
 
 .answer-buttons {
@@ -190,26 +206,6 @@ html {
   padding-top: 0px;
 }
 
-.answer-more {
-  color: green;
-}
-
-.add-answer {
-  color: green;
-}
-
-
-
-
-
-
-.TestOn {
-  color: green
-}
-
-.TestOff {
-  color: red
-}
 
 .front {
   z-index: 10;
@@ -261,11 +257,6 @@ html {
   left:50%;
   transform: translate(-50%,-50%);
 }
-
-/* .name {
-  height: 40px;
-  width: 200px;
-} */
 
 
 .hide {

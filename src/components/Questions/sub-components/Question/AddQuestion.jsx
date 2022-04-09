@@ -8,7 +8,7 @@ import APIHelpers from '../../../APIHelpers.js';
 
 
 var AddQuestion = ({defaultId, productName}) => {
-  const { setAddQuestion, addQuestion, product } = useContext(QandAContext);
+  const { setAddQuestion, addQuestion, product, visibleQs, setVisibleQs } = useContext(QandAContext);
 
   const [ questionVal,  setQuestionVal  ] = useState('');
   const [ nicknameVal,  setNicknameVal  ] = useState('');
@@ -46,13 +46,15 @@ var AddQuestion = ({defaultId, productName}) => {
         setEmailBool(true);
         setInvalidEmail('Question not posted, please provide valid email address');
       } else {
-        console.log(res, 'success');
+        console.log(res, 'Question posted');
         setQuestionVal('');
         setNicknameVal('');
         setEmailVal('');
         setAddQuestion(prev=>!prev);
       }
-    })
+    });
+
+    // setVisibleQs([question, ...visibleQs]);
   };
 
 

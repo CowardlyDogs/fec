@@ -64,7 +64,7 @@ const HelpReport = ({ helpfulness }) => {
   if (reported) {
     reportDiv =
     <div className='report'>
-      <a><strong>Report</strong></a>
+      <a><strong>Reported</strong></a>
     </div>;
   } else {
     reportDiv =
