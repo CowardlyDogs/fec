@@ -13,10 +13,10 @@ import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
-var QandA = ({defaultId}) => {
+const QandA = ({defaultId}) => {
 
   // const [   defaultId, setdefaultId     ] = useState(defaultId);
-  const [ productName, setProductName ] = useState('')
+  const [ productName, setProductName ] = useState('');
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
   const [  searchView, setSearchView  ] = useState(false);
@@ -24,34 +24,32 @@ var QandA = ({defaultId}) => {
   const [ addQuestion, setAddQuestion ] = useState(false);
   const [     viewNum, setViewNum     ] = useState(0);
 
-  var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
-
 
   useEffect(() => {
     APIHelpers.getProductName(defaultId, (err, res) => {
       if (err) {
-        console.log(err)
+        console.log(err);
       } else {
-        setProductName(res.name)
+        setProductName(res.name);
       }
-    })
+    });
 
     APIHelpers.getQuestions(defaultId, (err, res) => {
       if (err) {
-        console.log(err)
+        console.log(err);
       } else {
         var sorted = sortQuestions(res);
         setQuestions(sorted);
         setVisibleQs(sorted);
       }
-    })
+    });
   }, []);
 
 
 
-  var searchQuestions = (search) => {
+  const searchQuestions = (search) => {
 
-    var filtered = questions.filter( question => {
+    let filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
     setVisibleQs(filtered);
@@ -61,13 +59,13 @@ var QandA = ({defaultId}) => {
 
 
 
-  var questionList;
-  var search;
-  var noQuestions;
+  let questionList;
+  let search;
+  let noQuestions;
 
   if (questions.length > 0) {
     questionList = <QuesContainer />;
-          search = <Search />;
+    search = <Search />;
   } else {
     questionList = <span>No questions asked yet.</span>;
   }
@@ -76,14 +74,9 @@ var QandA = ({defaultId}) => {
 
 
   return (
-    <QandAContext.Provider value={{defaultId,   productName,
-                                   questions,   url,
-                                   searchVal,   setSearchVal,
-                                   visibleQs,   setVisibleQs,
-                                   searchView,  setSearchView,
-                                   addQuestion, setAddQuestion,
-                                                searchQuestions
-                                                }}>
+    <QandAContext.Provider value={{   defaultId,   productName,
+      questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
 
       <div className='QandA'>
         <h2> Questions and Answers</h2>

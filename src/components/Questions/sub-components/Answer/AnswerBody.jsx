@@ -3,7 +3,7 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
-var AnswerBody = ({body}) => {
+const AnswerBody = ({body}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 

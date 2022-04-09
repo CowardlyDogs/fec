@@ -9,13 +9,13 @@ import AnswerContainer from '../Answer/AnswerContainer.jsx';
 
 export const QuestionContext = React.createContext(null);
 
-var Question = ({data}) => {
+const Question = ({data}) => {
   const product = useContext(QandAContext);
   const { question_body, question_date, answers, asker_name, question_id, question_helpfulness } = data;
 
   const [ viewNum, setViewNum ] = useState(0);
 
-  var sortedAnswers = sortAnswers(answers);
+  let sortedAnswers = sortAnswers(answers);
 
 
   return (

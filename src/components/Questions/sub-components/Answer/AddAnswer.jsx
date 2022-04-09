@@ -26,19 +26,19 @@ var AddAnswer = () => {
   const emailWarning        = emailBool   ? "invalid-email" : "hide";
 
 
-  var hideModal = (e) => {
+  const hideModal = (e) => {
     e.preventDefault();
     setAddAnswer(prev=>!prev);
   };
 
-  var answer = {
+  const answer = {
     "body":   answerVal,
     "name":   nicknameVal,
     "email":  emailVal,
     "photos": []
   };
 
-  var postAnswer = () => {
+  const postAnswer = () => {
     APIHelpers.postAnswer(question_id, answer, (err, res) => {
       if (err) {
         console.log('Error', err);
@@ -57,7 +57,7 @@ var AddAnswer = () => {
 
 
 
-  var handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     var warning = false;
 
@@ -88,7 +88,7 @@ var AddAnswer = () => {
     }
   };
 
-  var setAndClear = () => {
+  const setAndClear = () => {
     setAnswerVal('');
     setNicknameVal('');
     setEmailVal('');

@@ -14,32 +14,32 @@ var AddQuestion = ({defaultId, productName}) => {
   const [ nicknameVal,  setNicknameVal  ] = useState('');
   const [ emailVal,     setEmailVal     ] = useState('');
   const [ warningBool,  setWarningBool  ] = useState(false);
-  const [ warningVals,  setWarningVals  ] = useState([])
-  const [ invalidEmail, setInvalidEmail ] = useState('')
-  const [ emailBool,    setEmailBool    ] = useState(false)
+  const [ warningVals,  setWarningVals  ] = useState([]);
+  const [ invalidEmail, setInvalidEmail ] = useState('');
+  const [ emailBool,    setEmailBool    ] = useState(false);
 
-  const backgroundChange    = addQuestion ? "modal-background" : "hide";
-  const showHideAddQuestion = addQuestion ? "modal-body" : "hide";
-  const emptyInputs         = warningBool ? "warning" : "hide";
-  const emailWarning        = emailBool   ? "invalid-email" : "hide";
+  const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
+  const showHideAddQuestion = addQuestion ? 'modal-body' : 'hide';
+  const emptyInputs         = warningBool ? 'warning' : 'hide';
+  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
 
-  var hideModal = (e) => {
+  const hideModal = (e) => {
     e.preventDefault();
     setAddQuestion(prev=>!prev);
   };
 
 
-  var question = {
-         "body": questionVal,
-         "name": nicknameVal,
-        "email": emailVal,
-   "product_id": Number(defaultId)
-   };
+  let question = {
+    "body": questionVal,
+    "name": nicknameVal,
+    "email": emailVal,
+    'product_id': Number(defaultId)
+  };
 
 
 
-  var postQuestion = () => {
+  const postQuestion = () => {
     APIHelpers.postQuestion(question, (err, res) => {
       if (err) {
         console.log(err, 'failed', question);
@@ -50,52 +50,52 @@ var AddQuestion = ({defaultId, productName}) => {
         setQuestionVal('');
         setNicknameVal('');
         setEmailVal('');
-        setAddQuestion(prev=>!prev)
+        setAddQuestion(prev=>!prev);
       }
     })
   };
 
 
 
-  var handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    var warning = false;
+    let warning = false;
 
 
     if (nicknameVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'NickName'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'NickName']);
       warning = true;
     }
     if (questionVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Question Body'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Question Body']);
       warning = true;
     }
     if (emailVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Email'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Email']);
       warning = true;
     } else if (!emailVal.includes('@') && !emailVal.includes('.com')) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'Email in correct format'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'Email in correct format']);
       warning = true;
     }
     if (!warning) {
       postQuestion();
     }
-  }
+  };
 
 
 
-  var setAndClear = () => {
+  const setAndClear = () => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
     setQuestionVal('');
     setNicknameVal('');
     setEmailVal('');
-  }
+  };
 
 
 

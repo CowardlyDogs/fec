@@ -3,12 +3,12 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
 
-var Photos = ({photos}) => {
+const Photos = ({photos}) => {
 
   return (
     <div>
       { photos.map( (photo, idx) => {
-          return <img key={idx} width={50} height={50} src={photo}></img>
+        return <img key={idx} width={50} height={50} src={photo}></img>;
       })}
     </div>
   );

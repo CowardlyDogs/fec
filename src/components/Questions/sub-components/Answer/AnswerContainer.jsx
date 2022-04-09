@@ -17,9 +17,8 @@ var AnswerContainer = ({question_body}) => {
   const [ answerBool, setAnswerBool ] = useState(false);
 
 
-  // Need to sort answers - bring seller responses to top
-  var seller = [];
-  var anons = [];
+  const seller = [];
+  const anons = [];
   sortedAnswers.forEach( answer => {
     if (answer.answerer_name === 'Seller') {
       seller.push(answer);
@@ -28,8 +27,7 @@ var AnswerContainer = ({question_body}) => {
     }
   });
 
-  // Function to map over answers
-  var mapAnswers = (answers) => {
+  const mapAnswers = (answers) => {
     return answers.map( (answer, idx) => {
       return <Answer key={idx} answerData={answer}/>;
     });
@@ -37,9 +35,9 @@ var AnswerContainer = ({question_body}) => {
 
 
 
-  var answerList;
-  var showMore;
-  var prevAnswers;
+  let answerList;
+  let showMore;
+  let prevAnswers;
 
 
   if (sortedAnswers.length === 0) {

@@ -9,12 +9,12 @@ import { QuestionContext } from '../Question/Question.jsx';
 
 
 
-var Answer = ({answerData}) => {
+const Answer = ({answerData}) => {
   const product = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
   const { answerer_name, body, date, helpfulness, id, photos } = answerData;
 
-  var photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
+  const photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
 
 
   return (

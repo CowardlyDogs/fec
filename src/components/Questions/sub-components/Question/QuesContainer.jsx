@@ -11,11 +11,11 @@ var QuesContainer = () => {
   const [ view, setView ] = useState(0);
   const [  end, setEnd  ] = useState(2);
 
-  var increment = () => {
+  const increment = () => {
     setEnd(prev => prev + 2);
   };
 
-  var mapQuestions = (questions) => {
+  const mapQuestions = (questions) => {
     return questions.map( (question, idx) => {
       return <Question key={idx} data={question}/>;
     });
@@ -23,9 +23,9 @@ var QuesContainer = () => {
 
 
 
-  var questionList;
-  var showMore;
-  var prevQuestions;
+  let questionList;
+  let showMore;
+  let prevQuestions;
 
   if ( view === 0 ) {
 
