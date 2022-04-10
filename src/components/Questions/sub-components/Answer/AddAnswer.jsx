@@ -21,7 +21,9 @@ var AddAnswer = () => {
   const [ emailBool,    setEmailBool    ] = useState(false);
   const [ answerImages, setAnswerImages ] = useState([]);
   const [ imageUploads, setImageUploads ] = useState([]);
-  const [ urls,          setUrls          ] = useState('');
+  const [ urls,          setUrls        ] = useState('');
+
+  const [ test, setTest ] = useState(false);
 
   const backgroundChange    = addAnswer   ? "modal-background" : "hide";
   const showHideAddAnswer   = addAnswer   ? "modal-body" : "hide";
@@ -100,10 +102,15 @@ var AddAnswer = () => {
     setWarningVals([]);
   };
 
+  const set = () => {
+    setWarningBool(false);
+    setEmailBool(false);
+  };
+
 
 
   const onFileChange = (e) => {
-    if (answerImages.length === 5) {
+    if ([...urls].length === 5) {
       alert('Only 5 images allowed');
     } else {
       const data = new FormData();
@@ -124,33 +131,11 @@ var AddAnswer = () => {
     }
   };
 
+  const hover = (url) => {
+    setTest(prev => !prev);
+    console.log(url);
+  };
 
-
-  // const onFileUpload = () => {
-
-  //   Promise.all([]);
-
-
-  //   answerImages.forEach( (photo, idx) => {
-  //     const data = new FormData();
-
-  //     data.append('file', photo);
-  //     data.append('upload_preset', 'ungsadl0');
-  //     data.append('cloud_name', 'cowardly-dog');
-
-  //     fetch('https://api.cloudinary.com/v1_1/cowardly-dog/upload', {
-  //       method: 'post',
-  //       body: data
-  //     })
-  //       .then(resp => resp.json())
-  //       .then(data => {
-  //         setUrls(prev=>[data.url, ...prev]);
-  //       })
-  //       .catch(err => {
-  //         console.log(err, 'ERROR in posting img');
-  //       });
-  //   });
-  // };
 
 
 
@@ -178,12 +163,10 @@ var AddAnswer = () => {
           <div>
             <label>Add Photos:</label>
             <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
-            {/* <button onClick={onFileUpload}>Upload Photos</button> */}
-            {console.log(urls)}
-          </div>
 
-          <div>
-            <img src={answerImages}/>
+            {[...urls].map( url => {
+              return <img key={url} className='thumbnail' src={url} width='50px' height='50px' onMouseEnter={()=>hover(url)} onMouseLeave={hover}/>;
+            })}
           </div>
 
 
@@ -192,8 +175,8 @@ var AddAnswer = () => {
         </form>
       </div>
 
-      <span className={emptyInputs}  onClick={setAndClear}>**You must enter the following: {warningVals.join(', ')}**</span>
-      <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
+      <span className={emptyInputs}  onClick={set}>**You must enter the following: {warningVals.join(', ')}**</span>
+      <span className={emailWarning} onClick={set}>{invalidEmail}</span>
 
 
       <button onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
