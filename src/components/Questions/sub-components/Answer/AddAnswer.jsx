@@ -21,14 +21,14 @@ var AddAnswer = () => {
   const [ emailBool,    setEmailBool    ] = useState(false);
   const [ answerImages, setAnswerImages ] = useState([]);
   const [ imageUploads, setImageUploads ] = useState([]);
-  const [ urls,          setUrls        ] = useState('');
-
-  const [ test, setTest ] = useState(false);
+  const [ urls,         setUrls         ] = useState('');
+  const [ hover,        setHover        ] = useState(false);
 
   const backgroundChange    = addAnswer   ? "modal-background" : "hide";
   const showHideAddAnswer   = addAnswer   ? "modal-body" : "hide";
   const emptyInputs         = warningBool ? "warning" : "hide";
   const emailWarning        = emailBool   ? "invalid-email" : "hide";
+
 
 
   const hideModal = (e) => {
@@ -131,9 +131,16 @@ var AddAnswer = () => {
     }
   };
 
-  const hover = (url) => {
-    setTest(prev => !prev);
-    console.log(url);
+
+  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
+
+  const remove = (url) => {
+    // console.log(urls);
+    var filtered = [...urls].filter(img => {
+      return img !== url;
+    });
+    // console.log(filtered);
+    setUrls(filtered);
   };
 
 
@@ -165,10 +172,11 @@ var AddAnswer = () => {
             <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
 
             {[...urls].map( url => {
-              return <img key={url} className='thumbnail' src={url} width='50px' height='50px' onMouseEnter={()=>hover(url)} onMouseLeave={hover}/>;
+              return <img key={url} className={thumbnail} src={url} width='50px' height='50px' onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
             })}
           </div>
 
+          {console.log(urls)}
 
           <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
           <button type='submit' onClick={hideModal}>Close</button>
