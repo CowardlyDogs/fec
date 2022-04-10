@@ -3,8 +3,8 @@
   /* width: 100%; */
 }
 
-.accordion {
-
+html {
+  scroll-behavior: smooth;
 }
 
 .larger-container {
@@ -13,19 +13,16 @@
   overflow: auto;
   max-height: 600px;
   margin: 20px 40px;
-  background-color: lightblue;
+  background-color: #f5f2f0;
   transition: max-height 1s ease;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 .Qcontainer {
   display: flex;
   flex-direction: column;
   margin: 20px 40px;
-  background-color: lightblue;
+  background-color: #f5f2f0;
 }
 
 .QandA {

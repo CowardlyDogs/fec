@@ -19,6 +19,9 @@ var AddAnswer = () => {
   const [ warningVals,  setWarningVals  ] = useState([]);
   const [ invalidEmail, setInvalidEmail ] = useState('');
   const [ emailBool,    setEmailBool    ] = useState(false);
+  const [ answerImages, setAnswerImages ] = useState([]);
+  const [ imageUploads, setImageUploads ] = useState([]);
+  const [ urls,          setUrls          ] = useState('');
 
   const backgroundChange    = addAnswer   ? "modal-background" : "hide";
   const showHideAddAnswer   = addAnswer   ? "modal-body" : "hide";
@@ -35,7 +38,7 @@ var AddAnswer = () => {
     "body":   answerVal,
     "name":   nicknameVal,
     "email":  emailVal,
-    "photos": []
+    "photos": urls
   };
 
   const postAnswer = () => {
@@ -43,9 +46,9 @@ var AddAnswer = () => {
       if (err) {
         console.log('Error', err);
         setEmailBool(true);
-        setInvalidEmail('Question not posted, please provide valid email address');
+        setInvalidEmail('Answer not posted, please provide valid email address');
       } else {
-        console.log(`Question ${question_id} posted`, res);
+        console.log(`Answer posted`, res, answer);
         setAnswerVal('');
         setNicknameVal('');
         setEmailVal('');
@@ -99,6 +102,56 @@ var AddAnswer = () => {
 
 
 
+  const onFileChange = (e) => {
+    if (answerImages.length === 5) {
+      alert('Only 5 images allowed');
+    } else {
+      const data = new FormData();
+      data.append('file', e.target.files[0]);
+      data.append('upload_preset', 'ungsadl0');
+      data.append('cloud_name', 'cowardly-dog');
+      fetch('https://api.cloudinary.com/v1_1/cowardly-dog/upload', {
+        method: 'post',
+        body: data
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          setUrls(prev=>[data.url, ...prev]);
+        })
+        .catch(err => {
+          console.log(err, 'ERROR in posting img');
+        });
+    }
+  };
+
+
+
+  // const onFileUpload = () => {
+
+  //   Promise.all([]);
+
+
+  //   answerImages.forEach( (photo, idx) => {
+  //     const data = new FormData();
+
+  //     data.append('file', photo);
+  //     data.append('upload_preset', 'ungsadl0');
+  //     data.append('cloud_name', 'cowardly-dog');
+
+  //     fetch('https://api.cloudinary.com/v1_1/cowardly-dog/upload', {
+  //       method: 'post',
+  //       body: data
+  //     })
+  //       .then(resp => resp.json())
+  //       .then(data => {
+  //         setUrls(prev=>[data.url, ...prev]);
+  //       })
+  //       .catch(err => {
+  //         console.log(err, 'ERROR in posting img');
+  //       });
+  //   });
+  // };
+
 
 
   return (
@@ -120,6 +173,18 @@ var AddAnswer = () => {
           <label>Your email</label>
           <input required className='answerEmail' placeholder='Example: jack@email.com'     type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
           <span>For authentication reasons, you will not be emailed</span>
+
+
+          <div>
+            <label>Add Photos:</label>
+            <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
+            {/* <button onClick={onFileUpload}>Upload Photos</button> */}
+            {console.log(urls)}
+          </div>
+
+          <div>
+            <img src={answerImages}/>
+          </div>
 
 
           <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
