@@ -6,26 +6,28 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Helpers from '../APIHelpers.js';
 
 
-function RelatedMain({ defaultId }) {
+const RelatedMain = ({ mainId }) => {
+  const [relatedIds,    setRelatedIds    ] = useState([]);
+  const [displayIds,    setDisplayIds    ] = useState([]);
 
-  const [relatedIds  ,    setRelatedIds    ] = useState([]);
-  const [displayIds  ,    setDisplayIds    ] = useState([]);
+  //TODO:
+  //set clicked related product to overview main product
 
   const start = useRef(0);
   const end = useRef(2);
 
-  const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
+  const addFit = 'https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png';
 
   useEffect(() => {
-    Helpers.getRelated(defaultId, (err, res) => {
+    Helpers.getRelated(mainId, (err, res) => {
       if (err) {
-        console.log(err)
+        console.log(err);
       } else {
-        setRelatedIds(res)
-        setDisplayIds([res[0], res[1], res[2]])
+        setRelatedIds(res);
+        setDisplayIds([res[0], res[1], res[2]]);
       }
     });
-         end.current = relatedIds.length > 3 ? 2 : !relatedIds.length ? 2 : relatedIds.length
+    end.current = relatedIds.length > 3 ? 2 : !relatedIds.length ? 2 : relatedIds.length;
   }, []);
 
   const left = () => {
@@ -54,21 +56,21 @@ function RelatedMain({ defaultId }) {
   return (
     <div className="main">
       <div className="sub-main">
-      {start.current > 0 &&
+        {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
-      {displayIds.map(unit => {
-        return (
-          <li className="track" key={unit}>
-          <RelatedCarousel unit={unit}/>
-          </li>
-        )
-      })}
-      {end.current < relatedIds.length - 1 &&
+        {displayIds.map(unit => {
+          return (
+            <li className="track" key={unit}>
+              <RelatedCarousel unit={unit} mainId={mainId}/>
+            </li>
+          );
+        })}
+        {end.current < relatedIds.length - 1 &&
         <div className="right" onClick={right}> <ArrowForwardIosIcon/> </div>}
       </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default RelatedMain;

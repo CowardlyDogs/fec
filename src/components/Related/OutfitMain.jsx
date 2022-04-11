@@ -5,27 +5,26 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StarIcon from '@material-ui/icons/Star';
 
-//appears below related list
-//carousel
-//user selected
-//title = "Your Outfit"
-//first card in list = + icon, "Add to Outfit"
-//adds current main product to outfit list
-//empty be default
-//should only apply to current customer (session id cookie?)
-//product can only be added once
-//no max
-//persist across page navigation
-//persist after leaving and returning (definitely session id cookie)
-//action button = X -> removes item from list
-function OutfitMain({ defaultId }) {
-  const [outfit     ,    SetOutfit     ] = useState(['65644', '65662', '65665', '65680', '65671', '65631']);
-  const [dispOutfit ,    setDispOutfit ] = useState([outfit[0], outfit[1]]);
+const OutfitMain = ({ mainId }) => {
+  const [outfit,     setOutfit     ] = useState([]);
+  const [dispOutfit, setDispOutfit ] = useState([]);
 
   const start = useRef(0);
   const end = useRef(1);
 
-  const addFit = "https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png"
+  const addFit = 'https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png';
+
+  useEffect(() => {
+    let temp = [];
+    for (let x = 0; x < localStorage.length; x++) {
+      temp.push(localStorage.getItem(localStorage.key(x)));
+    }
+    setOutfit(temp);
+  }, []);
+
+  useEffect(() => {
+    setDispOutfit([outfit[0], outfit[1]]);
+  }, [outfit]);
 
   const left = () => {
     start.current = start.current - 1;
@@ -49,30 +48,49 @@ function OutfitMain({ defaultId }) {
     });
   };
 
+  const addToOutfit = () => {
+    localStorage.setItem(mainId, mainId);
+    let tempOutfit = [...outfit];
+    outfit.includes(mainId) ? null :
+      tempOutfit.unshift(mainId);
+    setOutfit((outfit) => outfit = tempOutfit);
+    setDispOutfit([outfit[0], outfit[1]]);
+  };
+
+  const removeOutfit = (id) => {
+    localStorage.removeItem(id);
+    let tempOutfit = [...outfit];
+    let removeMe = tempOutfit.indexOf(id);
+    tempOutfit.splice(removeMe, 1);
+    setOutfit((outfit) => outfit = tempOutfit);
+    setDispOutfit([outfit[0], outfit[1]]);
+  };
 
   return (
     <div className="main">
       <div className="sub-main">
-      {start.current > 0 &&
+        {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
-          <div className="track">
-              <div className="add-fit" style={{backgroundImage: `url(${addFit})`}}>
-                <h1 className="add-text">Add to Outfit</h1>
-              </div>
-          </div>
-      {dispOutfit.map(unit => {
+        <div className="add-track">
+          <button className="add-fit" onClick={() => addToOutfit()} style={{backgroundImage: `url(${addFit})`}}>
+            <h1 className="add-text">Add to Outfit</h1>
+          </button>
+        </div>
+        {dispOutfit.length > 1 &&
+      dispOutfit.map((unit, index) => {
         return (
-          <li className="track" key={unit}>
-          <OutfitCarousel unit={unit}/>
+          <li className="track" key={index}>
+            <OutfitCarousel key={index} unit={unit} removeOutfit={removeOutfit}/>
           </li>
-        )
-      })}
-      {end.current < outfit.length - 1 &&
+        );
+      })
+        }
+        {end.current < outfit.length - 1 &&
         <div className="right" onClick={right}> <ArrowForwardIosIcon/> </div>}
       </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default OutfitMain;
