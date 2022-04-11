@@ -10,13 +10,12 @@ import './styles.css';
 
 export const OverviewContext = React.createContext(null);
 
-const Overview = () => {
+const Overview = ({ productId }) => {
 
   const [styles, setStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
   const [loading, setLoading] = useState(true);
-
 
 
   useEffect(() => {
