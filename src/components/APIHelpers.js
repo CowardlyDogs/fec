@@ -21,9 +21,6 @@ const APIHelpers = {
   },
 
   getStyles: (id, callback) => {
-<<<<<<< HEAD
-    id &&
-=======
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
       headers: {Authorization: Authorization.TOKEN} })
       .then(res => callback(null, res.data))
@@ -86,7 +83,6 @@ const APIHelpers = {
       {headers: { Authorization: Authorization.TOKEN }})
       .then(res => callback(null, res))
       .catch(err => callback(err));
->>>>>>> main
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
