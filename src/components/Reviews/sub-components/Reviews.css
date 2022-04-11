@@ -93,6 +93,7 @@ hr {
 .StarIconEmpty {
   color: gray;
 }
-
-
-
+.ReviewImage {
+  max-width: 10rem;
+  max-height: 10rem;
+}
