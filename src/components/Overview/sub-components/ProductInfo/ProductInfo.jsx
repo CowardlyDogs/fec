@@ -13,19 +13,44 @@ const axios = require('axios');
 export const ProductContext = React.createContext(null);
 
 
-const ProductInfo = ({ productInfo, numRatings }) => {
+const ProductInfo = ({ productInfo, ratings }) => {
   const currentStyle = useContext(OverviewContext).currentStyle;
+  const [averageRatings, setAverageRatings] = useState(0);
+  const [numRatings, setNumRatings] = useState(0);
 
-  console.log(productInfo);
-  console.log(numRatings);
 
+  const getAverage = () => {
+    let sum = 0;
+    let totalReviews = 0;
+    let ratingLength = Object.keys(ratings).length;
+    for (let key in ratings) {
+      let tempKeyTimesValue = (Number(key) * Number(ratings[key]));
+      sum += tempKeyTimesValue;
+      totalReviews += Number(ratings[key]);
+    }
+    let average = sum / totalReviews;
+    setAverageRatings(average);
+  };
 
+  const getNumRatings = () => {
+    let totalRatings = 0;
+    for (let rating in ratings) {
+      totalRatings += Number(ratings[rating]);
+    }
+    setNumRatings(totalRatings);
+
+  };
+
+  useEffect(() => {
+    getAverage();
+    getNumRatings();
+  }, [ratings]);
 
   return (
     <ProductContext.Provider value={{currentStyle: currentStyle, product: productInfo}}>
       {/* TODO: Delete Styles Selector Title */}
       <h1>Product Info</h1>
-      <StarRating numRatings={numRatings} />
+      <StarRating numRatings={numRatings} averageRatings={averageRatings} />
       <ProductCategory />
       <ProductTitle />
       <Price />

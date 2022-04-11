@@ -16,7 +16,7 @@ const Overview = ({ productId }) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
   const [loading, setLoading] = useState(true);
-  const [numRatings, setNumRatings] = useState(0);
+  const [ratings, setRatings] = useState(0);
 
 
 
@@ -46,12 +46,7 @@ const Overview = ({ productId }) => {
       if (err) {
         console.error(err);
       } else {
-        let totalRatings = 0;
-
-        for (let rating in res.ratings) {
-          totalRatings += Number(res.ratings[rating]);
-        }
-        setNumRatings(totalRatings);
+        setRatings(res.ratings);
       }
     });
 
@@ -64,7 +59,7 @@ const Overview = ({ productId }) => {
 
   return (
     <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
-      <ProductInfo productInfo={productInfo} numRatings={numRatings} />
+      <ProductInfo productInfo={productInfo} ratings={ratings} />
       <StylesSelector setCurrentStyle={setCurrentStyle} />
       <Cart />
       <ImageGallery />
