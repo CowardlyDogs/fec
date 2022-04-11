@@ -6,19 +6,28 @@ const APIHelpers = {
 
   //Related and Outfit Helpers
 
-  getRelated: (productId, callback) => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${productId}/related`)
+  getRelated: (id, callback) => {
+    id &&
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/related`)
       .then((res) => { callback(null, res.data); })
       .catch((err) => { callback(err); });
   },
 
   getProduct: (id, callback) => {
+    id &&
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   },
   getStyles: (id, callback) => {
+    id &&
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`)
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err));
+  },
+  getRatingsMeta: (id, callback) => {
+    id &&
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/meta?product_id=${id}`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   },
