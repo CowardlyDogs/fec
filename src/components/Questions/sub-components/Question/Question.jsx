@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useRef } from 'react';
 import { QandAContext } from '../../QandA.jsx';
 import { sortAnswers } from '../../HelperFunction.js';
 import QandA from '../../QandA.jsx';
@@ -10,7 +10,7 @@ import '../../styles.css';
 
 export const QuestionContext = React.createContext(null);
 
-const Question = ({data}) => {
+const Question = ({data, setHeight}) => {
   const product = useContext(QandAContext);
   const { question_body, question_date, answers, asker_name, question_id, question_helpfulness } = data;
 
@@ -20,8 +20,8 @@ const Question = ({data}) => {
 
 
   return (
-    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body}}>
-      <div className='question'>
+    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body, setHeight}}>
+      <div className='question' >
         <QNameAndDate     name={asker_name} date={question_date}/>
         {/* <strong className='Q'>Q:</strong> */}
         <QuestionBody     body={question_body}/>

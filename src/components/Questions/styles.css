@@ -7,23 +7,33 @@ html {
   scroll-behavior: smooth;
 }
 
+
+.on-load-Q-content {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+  background-color: lightcoral;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+
 .larger-container {
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  max-height: 600px;
+  overflow: scroll;
   margin: 20px 40px;
   background-color: #f5f2f0;
-  transition: max-height 1s ease;
+  transition: max-height 0.7s ease;
+  background-color: lightcoral;
 }
 
 
-.Qcontainer {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 40px;
-  background-color: #f5f2f0;
-}
+
+
+
+
+
 
 .QandA {
   margin-top: 50px;
@@ -134,15 +144,17 @@ html {
   padding: 0 5px;
   width: 90%;
   border-bottom: 1px solid black;
+  transition: max-height 0.7s ease;
+  overflow: hidden;
 }
 
 .scroll-list {
   display: inline-block;
   overflow: auto;
-  max-height: 400px;
   padding: 0 5px;
   width: 90%;
   border-bottom: 1px solid black;
+  transition: max-height 0.7s ease;
 }
 
 .Answer {
