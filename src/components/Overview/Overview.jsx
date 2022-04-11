@@ -16,6 +16,8 @@ const Overview = ({ productId }) => {
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
   const [loading, setLoading] = useState(true);
+  const [numRatings, setNumRatings] = useState(0);
+
 
 
   useEffect(() => {
@@ -40,6 +42,19 @@ const Overview = ({ productId }) => {
       }
     });
 
+    APIHelpers.getRatingsMeta(65635, (err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        let totalRatings = 0;
+
+        for (let rating in res.ratings) {
+          totalRatings += Number(res.ratings[rating]);
+        }
+        setNumRatings(totalRatings);
+      }
+    });
+
   }, []);
 
   if (loading) {
@@ -49,7 +64,7 @@ const Overview = ({ productId }) => {
 
   return (
     <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
-      <ProductInfo productInfo={productInfo} />
+      <ProductInfo productInfo={productInfo} numRatings={numRatings} />
       <StylesSelector setCurrentStyle={setCurrentStyle} />
       <Cart />
       <ImageGallery />

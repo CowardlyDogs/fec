@@ -13,16 +13,19 @@ const axios = require('axios');
 export const ProductContext = React.createContext(null);
 
 
-function ProductInfo (props) {
+const ProductInfo = ({ productInfo, numRatings }) => {
   const currentStyle = useContext(OverviewContext).currentStyle;
-  const productInfo = props.productInfo;
+
+  console.log(productInfo);
+  console.log(numRatings);
+
 
 
   return (
     <ProductContext.Provider value={{currentStyle: currentStyle, product: productInfo}}>
       {/* TODO: Delete Styles Selector Title */}
       <h1>Product Info</h1>
-      <StarRating />
+      <StarRating numRatings={numRatings} />
       <ProductCategory />
       <ProductTitle />
       <Price />
@@ -30,6 +33,6 @@ function ProductInfo (props) {
       <Share />
     </ProductContext.Provider>
   );
-}
+};
 
 export default ProductInfo;
