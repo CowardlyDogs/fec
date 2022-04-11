@@ -10,6 +10,9 @@ const ExpandedView = (props) => {
 
   return (
     <div>
+      <button className="close-expanded"
+        onClick={() => props.setIsDefault(true)}
+      >Close</button>
       {
         photo !== photos[0] ?
           <button className="expanded-previous"
