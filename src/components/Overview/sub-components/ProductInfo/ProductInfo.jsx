@@ -13,35 +13,13 @@ const axios = require('axios');
 export const ProductContext = React.createContext(null);
 
 
-function ProductInfo () {
+function ProductInfo (props) {
   const currentStyle = useContext(OverviewContext).currentStyle;
-  const [product, setProduct] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/40344/', {
-      headers: {
-        Authorization: authorization.TOKEN
-      }
-    })
-      .then((results) => {
-        setProduct(results.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-
-  }, []);
-
-  if (loading) {
-    return (<div></div>)
-  }
+  const productInfo = props.productInfo;
 
 
   return (
-    <ProductContext.Provider value={{currentStyle: currentStyle, product: product}}>
+    <ProductContext.Provider value={{currentStyle: currentStyle, product: productInfo}}>
       {/* TODO: Delete Styles Selector Title */}
       <h1>Product Info</h1>
       <StarRating />

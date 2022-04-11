@@ -4,79 +4,56 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
-var HelpReport = ({ helpfulness }) => {
+const HelpReport = ({ helpfulness }) => {
   const { url, product } = useContext(QandAContext);
   const { question_id } = useContext(QuestionContext);
 
-  const [ helpful, setHelpful ] = useState(false);
+  const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
 
 
 
-  var reportQuestion = () => {
-
-    axios.put(`${url}questions/${question_id}/report`, {
-      headers: { authorization: authorization.TOKEN }
-    })
-      .then(response => {
-        console.log(response, `Question ${question_id} reported`);
+  const reportQuestion = () => {
+    APIHelpers.reportQuestion(question_id, (err, res) => {
+      if (err) {
+        console.log(err, 'Question not reported');
+      } else {
+        console.log('Question Reported');
         setReported(true);
-      })
-      .catch(error => {
-        console.log(error, 'Question {} not reported');
-      });
+      }
+    });
   };
 
 
-// WAS WORKING WITH options object but now will not
-  // var helpfulQuestion = () => {
-  //   const options = {
-  //     url: `${url}questions/${question_id}/helpful`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
-
-  //   axios(options)
-  //     .then(response => {
-  //       console.log('Question marked helpful');
-  //       setHelpful(true);
-  //     })
-  //     .catch(error => {
-  //       console.log('Helpful Question PUT request failed', authorization.TOKEN);
-  //       setHelpful(true);
-  //     });
-  // };
-
-  var helpfulQuestion = () => {
-
-    axios.put(`${url}questions/${question_id}/helpful`, {
-      headers: { authorization: authorization.TOKEN }
-    })
-      .then(response => {
-        console.log('Question marked helpful');
+  const helpfulQuestion = () => {
+    APIHelpers.helpfulQuestion(question_id, (err, res) => {
+      if (err) {
+        console.log(err);
+        console.log('Question NOT marked helpful');
+      } else {
         setHelpful(true);
-      })
-      .catch(error => {
-        console.log('Helpful Question PUT request failed', authorization.TOKEN);
-      });
+        console.log('Question marked helpful');
+      }
+    })
   };
 
 
 
 
-  var help;
-  var report;
+  let helpfulDiv;
+  let reportDiv;
 
   if (helpful) {
-    help =
+    helpfulDiv =
     <div>
       <span>Helpful?</span>
       <a>Yes({helpfulness += 1})</a>
     </div>;
   } else {
-    help =
+    helpfulDiv =
     <div>
       <span>Helpful?</span>
       <a onClick={helpfulQuestion}>Yes({helpfulness})</a>
@@ -84,12 +61,12 @@ var HelpReport = ({ helpfulness }) => {
   }
 
   if (reported) {
-    report =
+    reportDiv =
     <div>
       <a>Reported</a>
     </div>;
   } else {
-    report =
+    reportDiv =
     <div>
       <a onClick={reportQuestion}>Report</a>
     </div>;
@@ -100,8 +77,8 @@ var HelpReport = ({ helpfulness }) => {
   return (
     <div>
       <br/>
-      {report}
-      {help}
+      {reportDiv}
+      {helpfulDiv}
     </div>
   );
 };

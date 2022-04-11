@@ -3,57 +3,53 @@ import axios from 'axios';
 import reactDOM from 'react-dom';
 import './styles.css';
 import authorization from '../../../config.js';
-
 import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
 import Question from './sub-components/Question/Question.jsx';
 import Search from './sub-components/Search.jsx';
 import AddQuestion from './sub-components/Question/AddQuestion.jsx';
 import AddAnswer from './sub-components/Answer/AddAnswer.jsx';
-
+import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
+const QandA = ({defaultId}) => {
 
-var QandA = ({product_id, productName}) => {
+  // const [   defaultId, setdefaultId     ] = useState(defaultId);
+  const [ productName, setProductName ] = useState('');
+  const [   questions, setQuestions   ] = useState([]);
+  const [   searchVal, setSearchVal   ] = useState('');
+  const [  searchView, setSearchView  ] = useState(false);
+  const [   visibleQs, setVisibleQs   ] = useState(questions);
+  const [ addQuestion, setAddQuestion ] = useState(false);
+  const [     viewNum, setViewNum     ] = useState(0);
 
-  const [ product,       setProduct ] =         useState(product_id);
-  const [ questions,     setQuestions ] =       useState([]);
-  const [ searchVal,     setSearchVal ] =       useState('');
-  const [ searchView,    setSearchView ] =      useState(false);
-  const [ addQuestion,   setAddQuestion ] =     useState(false);
-  // const [ addAnswer,     setAddAnswer ] =       useState(false);
-  const [ viewNum,       setViewNum ] =         useState(0);
-  const [ visibleQs,     setVisibleQs ] =       useState(questions);
-
-  var url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/';
-
-
-  var product_id = 40344
-  var productName = 'Camo Onesie'
 
   useEffect(() => {
-    axios.get(`${url}questions/`, {
-      headers: { Authorization: authorization.TOKEN },
-      params: { product_id: 40344, page: 1, count: 200}
-    })
-      .then(response => {
-        var sorted = sortQuestions(response.data);
+    APIHelpers.getProductName(defaultId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        setProductName(res.name);
+      }
+    });
+
+    APIHelpers.getQuestions(defaultId, (err, res) => {
+      if (err) {
+        console.log(err);
+      } else {
+        var sorted = sortQuestions(res);
         setQuestions(sorted);
         setVisibleQs(sorted);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      }
+    });
   }, []);
 
 
 
+  const searchQuestions = (search) => {
 
-
-  var searchQuestions = (search) => {
-
-    var filtered = questions.filter( question => {
+    let filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
     setVisibleQs(filtered);
@@ -63,9 +59,9 @@ var QandA = ({product_id, productName}) => {
 
 
 
-  var questionList;
-  var search;
-  var noQuestions;
+  let questionList;
+  let search;
+  let noQuestions;
 
   if (questions.length > 0) {
     questionList = <QuesContainer />;
@@ -78,28 +74,18 @@ var QandA = ({product_id, productName}) => {
 
 
   return (
-    <QandAContext.Provider value={{product, productName, questions, searchVal, setSearchVal, searchQuestions, url, visibleQs, searchView, setSearchView, setVisibleQs, setAddQuestion, addQuestion}}>
+    <QandAContext.Provider value={{   defaultId,   productName,
+      questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
+
       <div className='QandA'>
-        <h2>Questions and Answers</h2>
+        <h2> Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>
-        <AddQuestion product_id={product_id} productName={productName}/>
+        <AddQuestion defaultId={defaultId} productName={productName}/>
       </div>
     </QandAContext.Provider>
   );
 };
 
 export default QandA;
-
-
-
-
-// For testing before future import to App.js
-// const App = () => {
-//   return (
-//     <div>
-//       <h1>Hello World</h1>
-//       <QandA />
-//     </div>
-//   )
-// }

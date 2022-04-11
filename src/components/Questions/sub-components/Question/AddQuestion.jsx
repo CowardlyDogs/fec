@@ -4,100 +4,98 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import '../../styles.css';
 import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
 
-var AddQuestion = ({product_id, productName}) => {
+var AddQuestion = ({defaultId, productName}) => {
   const { setAddQuestion, addQuestion, product } = useContext(QandAContext);
 
   const [ questionVal,  setQuestionVal  ] = useState('');
   const [ nicknameVal,  setNicknameVal  ] = useState('');
   const [ emailVal,     setEmailVal     ] = useState('');
   const [ warningBool,  setWarningBool  ] = useState(false);
-  const [ warningVals,  setWarningVals  ] = useState([])
-  const [ invalidEmail, setInvalidEmail ] = useState('')
-  const [ emailBool,    setEmailBool    ] = useState(false)
+  const [ warningVals,  setWarningVals  ] = useState([]);
+  const [ invalidEmail, setInvalidEmail ] = useState('');
+  const [ emailBool,    setEmailBool    ] = useState(false);
 
-  const backgroundChange    = addQuestion ? "modal-background" : "hide";
-  const showHideAddQuestion = addQuestion ? "modal-body" : "hide";
-  const emptyInputs         = warningBool ? "warning" : "hide";
-  const emailWarning        = emailBool   ? "invalid-email" : "hide";
+  const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
+  const showHideAddQuestion = addQuestion ? 'modal-body' : 'hide';
+  const emptyInputs         = warningBool ? 'warning' : 'hide';
+  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
 
-  var hideModal = (e) => {
+  const hideModal = (e) => {
     e.preventDefault();
     setAddQuestion(prev=>!prev);
   };
 
 
-  var question = {
-         "body": questionVal,
-         "name": nicknameVal,
-        "email": emailVal,
-   "product_id": product_id
-   };
-
-
-
-  var postQuestion = () => {
-
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/',
-      question,
-      {headers: { 'Authorization': authorization.TOKEN }})
-      .then(response => {
-        console.log(response, 'success')
-        setQuestionVal('');
-        setNicknameVal('');
-        setEmailVal('');
-        setAddQuestion(prev=>!prev)
-      })
-      .catch(error => {
-        console.log(error, 'failed', question)
-        setEmailBool(true)
-        setInvalidEmail('Question not posted, please provide valid email address')
-      })
+  let question = {
+    "body": questionVal,
+    "name": nicknameVal,
+    "email": emailVal,
+    'product_id': Number(defaultId)
   };
 
 
 
-  var handleSubmit = (e) => {
+  const postQuestion = () => {
+    APIHelpers.postQuestion(question, (err, res) => {
+      if (err) {
+        console.log(err, 'failed', question);
+        setEmailBool(true);
+        setInvalidEmail('Question not posted, please provide valid email address');
+      } else {
+        console.log(res, 'success');
+        setQuestionVal('');
+        setNicknameVal('');
+        setEmailVal('');
+        setAddQuestion(prev=>!prev);
+      }
+    })
+  };
+
+
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    var warning = false;
+    let warning = false;
 
 
     if (nicknameVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'NickName'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'NickName']);
       warning = true;
     }
     if (questionVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Question Body'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Question Body']);
       warning = true;
     }
     if (emailVal.length === 0) {
-      setWarningBool(true)
-      setWarningVals(prev=> [...prev, 'Email'])
+      setWarningBool(true);
+      setWarningVals(prev=> [...prev, 'Email']);
       warning = true;
     } else if (!emailVal.includes('@') && !emailVal.includes('.com')) {
-      setWarningBool(true)
-      setWarningVals(prev=>[...prev, 'Email in correct format'])
+      setWarningBool(true);
+      setWarningVals(prev=>[...prev, 'Email in correct format']);
       warning = true;
     }
     if (!warning) {
       postQuestion();
     }
-  }
+  };
 
 
 
-  var setAndClear = () => {
+  const setAndClear = () => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
     setQuestionVal('');
     setNicknameVal('');
     setEmailVal('');
-  }
+  };
 
 
 

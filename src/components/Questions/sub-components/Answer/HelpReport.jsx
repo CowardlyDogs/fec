@@ -3,72 +3,55 @@ import axios from 'axios';
 import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import authorization from '../../../../../config.js';
+import APIHelpers from '../../../APIHelpers.js';
 
-var HelpReport = ({id, helpfulness}) => {
-  const { product, url } = useContext(QandAContext);
+const HelpReport = ({id, helpfulness}) => {
+  const {       product, url           } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
-  const [ helpful, setHelpful ] = useState(false);
+  const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
 
-  //   const options = {
-  //     url: `${url}answers/${id}/report`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
-
-  //   const options = {
-  //     url: `${url}answers/${id}/helpful`,
-  //     method: 'put',
-  //     headers: { authorization: authorization.TOKEN }
-  //   };
 
 
-  var reportAnswer = () => {
-
-    axios.put(`${url}answers/${id}/report`, {
-      headers: { 'Authorization': authorization.TOKEN }
-    })
-      .then(response => {
-        console.log(response, `Answer ${id} reported`);
+  const reportAnswer = () => {
+    APIHelpers.reportAnswer(id, (err, res) => {
+      if (err) {
+        console.log(err, 'Answer not reported');
+      } else {
+        console.log(res, `Answer ${id} reported`);
         setReported(true);
-      })
-      .catch(error => {
-        console.log(error, 'Answer not reported');
-      });
+      }
+    });
   };
 
 
 
-  var helpfulAnswer = () => {
-
-    axios.put(`${url}answers/${id}/helpful`, {
-      headers: { 'Authorization': authorization.TOKEN }
-    })
-      .then(response => {
+  const helpfulAnswer = () => {
+    APIHelpers.helpfulAnswer(id, (err, res) => {
+      if (err) {
+        console.log('Answer HELPFUL request failed');
+      } else {
         console.log('Answer marked helpful');
         setHelpful(true);
-      })
-      .catch(error => {
-        console.log('Answer HELPFUL request failed');
-      });
+      }
+    });
   };
 
 
 
 
-  var help;
-  var report;
+  let helpfulDiv;
+  let reportDiv;
 
   if (helpful) {
-    help =
+    helpfulDiv =
     <div>
       <span>Helpful?</span>
       <a>Yes({helpfulness += 1})</a>
     </div>;
   } else {
-    help =
+    helpfulDiv =
     <div>
       <span>Helpful?</span>
       <a onClick={helpfulAnswer}>Yes({helpfulness})</a>
@@ -76,12 +59,12 @@ var HelpReport = ({id, helpfulness}) => {
   }
 
   if (reported) {
-    report =
+    reportDiv =
     <div>
       <a>Reported</a>
     </div>;
   } else {
-    report =
+    reportDiv =
     <div>
       <a onClick={reportAnswer}>Report</a>
     </div>;
@@ -91,8 +74,8 @@ var HelpReport = ({id, helpfulness}) => {
 
   return (
     <div>
-      {report}
-      {help}
+      {reportDiv}
+      {helpfulDiv}
     </div>
   );
 };

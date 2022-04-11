@@ -13,10 +13,15 @@ const App = () => {
     <div className="App">
       <Overview/>
       <h1>Related Items</h1>
-      <RelatedMain mainId={productId}/>
+      <RelatedMain     mainId={productId}/>
       <h1>Your Outfit</h1>
+<<<<<<< HEAD
       <OutfitMain mainId={productId}/>
       <QandA/>
+=======
+      <OutfitMain      mainId={productId}/>
+      <QandA        defaultId={productId}/>
+>>>>>>> main
       <ReviewModule productId={productId}/>
     </div>
   );
