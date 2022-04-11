@@ -81,9 +81,6 @@ const APIHelpers = {
       {headers: { Authorization: Authorization.TOKEN }})
       .then(res => callback(null, res))
       .catch(err => callback(err));
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`)
-      .then(res => callback(null, res.data))
-      .catch(err => callback(err));
   },
 
 
