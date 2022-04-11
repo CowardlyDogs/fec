@@ -28,6 +28,7 @@ const ProductInfo = ({ productInfo, ratings }) => {
       sum += tempKeyTimesValue;
       totalReviews += Number(ratings[key]);
     }
+
     let average = sum / totalReviews;
     setAverageRatings(average);
   };
