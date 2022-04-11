@@ -5,6 +5,7 @@ import Overview from './Overview/Overview.jsx';
 import QandA from './Questions/QandA.jsx';
 import ReviewModule from './Reviews/ReviewModule.jsx';
 import RelatedMain from './Related/RelatedMain.jsx';
+import CompareMain from './Related/CompareMain.jsx';
 
 const App = () => {
   const [productId, setProduct] = useState('65631');
