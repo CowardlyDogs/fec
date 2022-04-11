@@ -22,7 +22,7 @@ var ReviewList = ({page, turnPage, product, reviews, helpful, report}) => {
     *
     */
     <div>
-      <div>
+      <div className="Review-Container">
         <ul>
 
           {reviews.map(review => (
@@ -31,8 +31,8 @@ var ReviewList = ({page, turnPage, product, reviews, helpful, report}) => {
         </ul>
       </div>
       <div className="review-nav">
-        {(page > 1) ? (<div><button onClick={prevPage}>Previous Page</button></div>) : ''}
-        {(page === 0) ? (<div><button onClick={nextPage}>Show More</button></div>) : (<div><button onClick={nextPage}>Next Page</button></div>)}
+        {(page > 1) ? (<div><button onClick={prevPage}>Previous</button></div>) : ''}
+        {(page === 0) ? (<div><button onClick={nextPage} >Show More</button></div>) : (<div><button onClick={nextPage}>Next Page</button></div>)}
 
       </div>
     </div>

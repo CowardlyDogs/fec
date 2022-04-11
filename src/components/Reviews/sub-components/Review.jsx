@@ -50,7 +50,7 @@ var Review = ({review, helpful, report}) => {
             {review.helpfulness}
           </div>
           <div>
-            people found this helpful
+            <p>&nbsp;&nbsp;people found this helpful</p>
           </div>
 
         </div>

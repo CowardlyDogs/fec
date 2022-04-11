@@ -87,7 +87,10 @@ let ReviewModule = ({productId}) => {
       */}
 
       { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product} onSubmit={submitNewReview} /> }
-      <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} helpful={helpful} report={report} />
+      <div className='Review-Container'>
+        <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} helpful={helpful} report={report} />
+      </div>
+
     </div>
   );
 };
