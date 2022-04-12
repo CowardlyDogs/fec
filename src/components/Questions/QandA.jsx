@@ -24,10 +24,7 @@ const QandA = ({defaultId}) => {
   const [ addQuestion, setAddQuestion ] = useState(false);
   const [     viewNum, setViewNum     ] = useState(0);
 
-
-  const ref = useRef(null);
-  const scrollToHeader = () => ref.current.scrollIntoView();
-
+  const header = useRef(null);
 
   useEffect(() => {
     APIHelpers.getProductName(defaultId, (err, res) => {
@@ -47,7 +44,7 @@ const QandA = ({defaultId}) => {
         setVisibleQs(sorted);
       }
     });
-  }, []);
+  }, [defaultId]);
 
 
 
@@ -61,6 +58,10 @@ const QandA = ({defaultId}) => {
   };
 
 
+
+  const scrollToHeader = () => {
+    header.current.scrollIntoView();
+  };
 
 
   let questionList;
@@ -76,14 +77,15 @@ const QandA = ({defaultId}) => {
 
 
 
+
   return (
     <QandAContext.Provider value={{   defaultId,   productName,
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
-      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader  }}>
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader   }}>
 
-      <div className='QandA'>
-        <h2 className='header'ref={ref}> Questions and Answers</h2>
-        <div className='search-bar'>{search}</div>
+      <div ref={header} className='QandA'>
+        <h2> Questions and Answers</h2>
+        <div>{search}</div>
         <div>{questionList}</div>
         <AddQuestion defaultId={defaultId} productName={productName}/>
       </div>

@@ -19,7 +19,7 @@ var AddQuestion = ({defaultId, productName}) => {
   const [ emailBool,    setEmailBool    ] = useState(false);
 
   const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
-  const showHideAddQuestion = addQuestion ? 'modal-body' : 'hide';
+  const showHideAddQuestion = addQuestion ? 'modal-body addQ' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
   const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
@@ -94,10 +94,16 @@ var AddQuestion = ({defaultId, productName}) => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
-    setQuestionVal('');
-    setNicknameVal('');
-    setEmailVal('');
+    // setQuestionVal('');
+    // setNicknameVal('');
+    // setEmailVal('');
   };
+
+  // const set = () => {
+  //   setWarningBool(false);
+  //   setEmailBool(false);
+  //   setWarningVals([]);
+  // };
 
 
 
@@ -109,27 +115,30 @@ var AddQuestion = ({defaultId, productName}) => {
       <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
         <form className={showHideAddQuestion}>
-          <h4>Ask Your Question</h4>
-          <h6>About the {productName}</h6>
+          <header>
+            <span class='formPrompt'>Ask Your Question</span>
+            <h1 class='formTitle'>About the {productName}</h1>
+          </header>
 
-          <label>Your Question</label>
-          <input required className='quesBody'  placeholder='Question'                 type='text'  maxLength='1000' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
+          <div className='formInputs'>
+            <span className='quesTitle'>Your Question</span>
+            <textarea required className='quesBody'  placeholder='Question'  rows='14' cols='10' wrap='soft' maxLength='1000' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
 
-          <label>What is your nickname?</label>
-          <input required className='quesName'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
-          <span>For privacy reasons, do not use your full name or email address</span>
+            <span className='quesTitle'>What is your nickname?</span>
+            <input required className='formInput'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
+            <span className='sub-title'>For privacy reasons, do not use your full name or email address</span>
 
-          <label>Your email</label>
-          <input required className='quesEmail' placeholder='Example: jack@email.com'  type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
-          <span>For authentication reasons, you will not be emailed</span>
+            <span className='quesTitle'>Your email</span>
+            <input required className='formInput' placeholder='Example: jack@email.com'  type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
+            <span className='sub-title'>For authentication reasons, you will not be emailed</span>
+          </div>
 
-
-          <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
+          <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
           <button type='submit' onClick={hideModal}>Close</button>
         </form>
       </div>
 
-      <span className={emptyInputs}  onClick={setAndClear}>**You must enter the following: {warningVals.join(', ')}**</span>
+      <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: {warningVals.join(', ')}**</span>
       <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
 
 

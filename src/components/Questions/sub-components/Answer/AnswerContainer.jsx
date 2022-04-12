@@ -7,9 +7,9 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
 
-var AnswerContainer = ({question_body}) => {
+var AnswerContainer = ({question_body, setHeight}) => {
   const product = useContext(QandAContext);
-  const { sortedAnswers, viewNum, data, setHeight} = useContext(QuestionContext);
+  const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
 
   const [       view, setView       ] = useState(0);
   const [      start, setStart      ] = useState(0);
@@ -17,14 +17,15 @@ var AnswerContainer = ({question_body}) => {
   const [ answerBool, setAnswerBool ] = useState(false);
   const [ listHeight, setListHeight ] = useState('');
 
-  const content = useRef(null);
+  const answers = useRef(null);
 
   useEffect( () => {
-    setListHeight(content.current.scrollHeight);
+    setListHeight(answers.current.scrollHeight);
   });
 
   const seller = [];
   const anons = [];
+
   sortedAnswers.forEach( answer => {
     if (answer.answerer_name === 'Seller') {
       seller.push(answer);
@@ -39,8 +40,6 @@ var AnswerContainer = ({question_body}) => {
     });
   };
 
-
-
   let answerList;
   let showMore;
   let prevAnswers;
@@ -48,7 +47,7 @@ var AnswerContainer = ({question_body}) => {
   let contentHeight;
 
   const moreQs = () => {
-    setHeight(prev => prev + content.current.scrollHeight);
+    setHeight(prev=> prev + listHeight);
     setView(1);
   };
 
@@ -65,10 +64,10 @@ var AnswerContainer = ({question_body}) => {
       toggleListSize = 'answerList';
       answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       contentHeight = `${listHeight}px`;
-      showMore = <button onClick={moreQs}>See More Answers</button>;
+      showMore = <button onClick={(moreQs)}>See More Answers</button>;
 
     } else if (view === 1) {
-      // Accordion view of answers
+
       toggleListSize = 'scroll-list';
       answerList = mapAnswers([...seller, ...anons]);
       contentHeight = '400px';
@@ -79,7 +78,7 @@ var AnswerContainer = ({question_body}) => {
 
 
   return (
-    <div ref={content} className='Acontainer'>
+    <div ref={answers} className='Acontainer'>
       <div className='A'><strong>A:</strong></div>
       <div className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
       <div className='answer-buttons'>

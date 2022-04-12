@@ -10,7 +10,7 @@ import '../../styles.css';
 
 export const QuestionContext = React.createContext(null);
 
-const Question = ({data, setHeight}) => {
+const Question = ({data, setHeight, contentHeight}) => {
   const product = useContext(QandAContext);
   const { question_body, question_date, answers, asker_name, question_id, question_helpfulness } = data;
 
@@ -20,13 +20,12 @@ const Question = ({data, setHeight}) => {
 
 
   return (
-    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body, setHeight}}>
+    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body}}>
       <div className='question' >
         <QNameAndDate     name={asker_name} date={question_date}/>
-        {/* <strong className='Q'>Q:</strong> */}
         <QuestionBody     body={question_body}/>
+        <AnswerContainer  question_body={question_body} setHeight={setHeight}/>
         <HelpReport       helpfulness={question_helpfulness}/>
-        <AnswerContainer  question_body={question_body}/>
       </div>
     </QuestionContext.Provider>
   );

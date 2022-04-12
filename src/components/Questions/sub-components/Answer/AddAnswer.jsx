@@ -176,7 +176,6 @@ var AddAnswer = () => {
             })}
           </div>
 
-          {console.log(urls)}
 
           <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
           <button type='submit' onClick={hideModal}>Close</button>

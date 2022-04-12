@@ -60,6 +60,11 @@ html {
 }
 
 
+.question {
+  /* display: flex; */
+}
+
+
 .NameAndDate {
   padding: 5px 10px;
   height: auto;
@@ -98,7 +103,9 @@ html {
 
 .help-report {
   display: inline-block;
-  width: 30%;
+  width:100%;
+  position:relative;
+  right: 0px
 }
 
 .hr-flex {
@@ -118,7 +125,105 @@ html {
 }
 
 
+.addQ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5%;
+  min-width: 300px;
+}
 
+.formPrompt {
+  display: inline-block;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  margin-top: 45px;
+  margin-left: 157px;
+}
+
+.formInputs {
+  min-width: 80%;
+  margin: auto auto;
+  border: none;
+}
+
+.formTitle {
+  font-family: ov-gothic,HelveticaNeue,Helvetica Neue ,Helvetica Neue,arial,sans-serif;
+  font-size: 36px;
+  margin: 0 0 38px;
+}
+
+.quesTitle {
+  display: inline-block;
+  font-size: 19px;
+  margin-bottom: 3px;
+}
+
+.sub-title {
+  color: #737373;
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.formInput {
+  font-family: merlo,georgia,serif;
+  margin-top: 3px;
+  background-color: #f1f1f1;
+  border: none;
+  font-size: 16px;
+  line-height: 38px;
+  min-height: 38px;
+  padding-left: 12px;
+  width: 100%;
+}
+
+.quesBody {
+  font-family: merlo,georgia,serif;
+  background-color: #f1f1f1;
+  border: none;
+  min-height: 150px;
+  max-width: 100%;
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 20px;
+  /* resize: none; */
+}
+
+input[type=text] {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 80px;
+}
+
+label {
+  display: block;
+  margin-top: 1em
+}
+
+input {
+  display: block;
+  margin-top: 1em;
+  padding: .5em;
+  border-radius: 5px;
+}
+
+.submit {
+  background: #202020;
+  display: inline-block;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  height: 36px;
+  width: 200px;
+  padding: 0 24px;
+  position: relative;
+  margin-left: 10%
+}
 
 
 
@@ -268,16 +373,16 @@ html {
 }
 
 .modal-body {
-  display: flex;
-  justify-content: space-evenly;
   position:fixed;
   background: lightgrey;
-  width: 80%;
-  height: 300px;
+  min-width: 700px;
+  min-height: 700px;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  border-radius: 5%;
 }
+
 
 
 .hide {
