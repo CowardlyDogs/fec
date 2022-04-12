@@ -10,7 +10,7 @@ const StarRating = ({ numRatings, averageRatings }) => {
   return (
     <div>
       <SharedStarRating rating={averageRatings} />
-      <span>{`Read all ${numRatings} reviews`}</span>
+      <span className="star-text"> {`Read all ${numRatings} reviews`}</span>
     </div>
   );
 };
