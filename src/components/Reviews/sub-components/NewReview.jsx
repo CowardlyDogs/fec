@@ -5,8 +5,8 @@ import React/*, { useState }*/ from 'react';
 var NewReview = ({visible, toggle, product, onSubmit}) => {
 
   var rating = 0;
-  var changeRating = (stars) => {
-    rating = stars;
+  var changeRating = (e) => {
+    rating = e.target.value;
   };
 
   var summary = '';
@@ -41,16 +41,24 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
 
 
   var handleSubmit = () => {
-    onSubmit({
-      product_id: product,
-      rating: rating,
-      summary: summary,
-      body: review,
-      name: username,
-      email: email,
-      photos: photos,
-      characteristics: characteristics
-    });
+    if (username !== '' && email !== '' && rating > 0) {
+      onSubmit({
+        product_id: product,
+        rating: rating,
+        summary: summary,
+        body: review,
+        name: username,
+        email: email,
+        photos: photos,
+        characteristics: characteristics
+      });
+    } else if (rating < 1) {
+      alert('You must provide a rating');
+    }
+    else {
+      alert('Username and Email are required');
+    }
+
   };
 
   return (
@@ -69,7 +77,7 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
 
       */}
       <button onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
-      <div onClick={toggle} className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
+      <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content">
           {/* TODO figure out star rating input */}
           <div className="modal-row">
@@ -83,7 +91,9 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
           <br/>
           <div className="modal-row">
             <input className='title-input' type='text' placeholder='Review Title' onChange={changeSummary}/>
-            <input className='review-input' type='text' placeholder='Review' onChange={changeReview}/>
+          </div>
+          <div className="modal-row">
+            <textarea className='review-input' cols='50' rows='5' placeholder='Review' onChange={changeReview}/>
           </div>
           <br/>
           <div className="modal-row">
