@@ -30,15 +30,20 @@ const HelpReport = ({ helpfulness }) => {
 
 
   const helpfulQuestion = () => {
-    APIHelpers.helpfulQuestion(question_id, (err, res) => {
-      if (err) {
-        console.log(err);
-        console.log('Question NOT marked helpful');
-      } else {
-        setHelpful(true);
-        console.log('Question marked helpful');
-      }
-    });
+    if (localStorage.getItem(question_id)) {
+      alert('Already marked helpful');
+    } else {
+      APIHelpers.helpfulQuestion(question_id, (err, res) => {
+        if (err) {
+          console.log(err);
+          console.log('Question NOT marked helpful');
+        } else {
+          setHelpful(true);
+          localStorage.setItem(question_id, question_id);
+        }
+      });
+    }
+
   };
 
 

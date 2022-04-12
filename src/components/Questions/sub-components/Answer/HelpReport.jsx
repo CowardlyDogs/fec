@@ -29,14 +29,18 @@ const HelpReport = ({id, helpfulness}) => {
 
 
   const helpfulAnswer = () => {
-    APIHelpers.helpfulAnswer(id, (err, res) => {
-      if (err) {
-        console.log('Answer HELPFUL request failed');
-      } else {
-        console.log('Answer marked helpful');
-        setHelpful(true);
-      }
-    });
+    if (localStorage.getItem(id)) {
+      alert('Answer already marked helpful');
+    } else {
+      APIHelpers.helpfulAnswer(id, (err, res) => {
+        if (err) {
+          console.log('Answer HELPFUL request failed');
+        } else {
+          setHelpful(true);
+          localStorage.setItem(id, id);
+        }
+      });
+    }
   };
 
 
