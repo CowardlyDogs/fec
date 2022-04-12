@@ -21,7 +21,7 @@ var ReviewList = ({page, turnPage, product, reviews, helpful, report}) => {
     * Check if there's more pages to allow next page button
     *
     */
-    <div>
+    <div className="Review-Container-Over">
       <div className="Review-Container">
         <ul>
 

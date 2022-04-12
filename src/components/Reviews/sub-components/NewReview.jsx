@@ -47,6 +47,7 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
         rating: rating,
         summary: summary,
         body: review,
+        recommend: ((rating > 2) ? true : false),
         name: username,
         email: email,
         photos: photos,
@@ -79,22 +80,31 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
       <button onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content">
-          {/* TODO figure out star rating input */}
+          <div className="modal-row">
+            <span className="review-title">New Review</span>
+          </div>
+          <hr/>
           <div className="modal-row">
             <input className="rating rating-new" max="5" type="range" onChange={changeRating}/>
           </div>
           <br/>
+          <hr/>
           <div className="modal-row">
-            <input className='username-input' type='text' placeholder='username' onChange={changeUsername}/>
-            <input className='email-input' type='text' placeholder='address@domain.com' onChange={changeEmail}/>
+            <input className='misc-review-input' type='text' placeholder='Review Title' onChange={changeSummary}/>
           </div>
-          <br/>
-          <div className="modal-row">
-            <input className='title-input' type='text' placeholder='Review Title' onChange={changeSummary}/>
-          </div>
+          <div className="modal-row"><span className='new-review-label'>A Brief Summary of Your Review</span></div>
           <div className="modal-row">
             <textarea className='review-input' cols='50' rows='5' placeholder='Review' onChange={changeReview}/>
           </div>
+          <div className="modal-row"><span className='new-review-label'>Your Full Review</span></div>
+          <div className="modal-row">
+            <input className='misc-review-input' type='text' placeholder='username' onChange={changeUsername}/>
+          </div>
+          <div className="modal-row"><span className='new-review-label'>For privacy reasons, do not use your full name or email address</span></div>
+          <div className="modal-row">
+            <input className='misc-review-input' type='text' placeholder='address@domain.com' onChange={changeEmail}/>
+          </div>
+          <div className="modal-row"> <span className='new-review-label'>For authentication reasons, you will not be emailed</span></div>
           <br/>
           <div className="modal-row">
             <button className='modal-close' onClick={handleSubmit}>Submit</button>
