@@ -62,9 +62,11 @@ html {
 
 .addQbutton {
   border: 2px solid #fca311;
-  background: transparent;
+  /* background: transparent; */
+  background: #fca311;
   border-radius: 18px;
-  color: grey;
+  /* color: grey; */
+  color: white;
   cursor: pointer;
   font-size: 15px;
   height: 40px;
@@ -76,8 +78,10 @@ html {
 }
 
 .addQbutton:hover {
-  background: #fca311;
-  color: white;
+  /* background: #fca311; */
+  background: transparent;
+  color: grey;
+  /* color: white; */
 }
 
 .moreQs {
@@ -512,29 +516,41 @@ input {
 }
 
 .invalid-email {
-  z-index: 10;
-  display: flex;
-  position: fixed;
-  justify-content: space-evenly;
-  height: 275px;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  background: grey;
-  transform: translate(-50%,-50%);
+  color: blue;
 }
 
-.warning {
+
+.warn-modal {
   z-index: 10;
   display: flex;
   position: fixed;
-  justify-content: space-evenly;
-  height: 275px;
-  width: 500px;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  width: 615px;
   top: 50%;
   left: 50%;
-  background: grey;
-  transform: translate(-50%,-50%);
+  border: 3px solid #fca311;
+  background: white;
+  transform: translate(-50%,-136%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.behind {
+  z-index: -9999;
+  height: 125px;
+  width: 615px;
+  top: 50%;
+  left: 50%;
+  transition: ease z-index 1s;
+}
+
+
+.warning {
+  text-align: center;
+  color: grey;
+  font-size: 22px;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .modal-background {
