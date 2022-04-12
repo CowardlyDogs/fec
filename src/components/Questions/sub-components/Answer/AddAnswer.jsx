@@ -19,12 +19,16 @@ var AddAnswer = () => {
   const [ warningVals,  setWarningVals  ] = useState([]);
   const [ invalidEmail, setInvalidEmail ] = useState('');
   const [ emailBool,    setEmailBool    ] = useState(false);
+  const [ answerImages, setAnswerImages ] = useState([]);
+  const [ imageUploads, setImageUploads ] = useState([]);
+  const [ urls,         setUrls         ] = useState('');
+  const [ hover,        setHover        ] = useState(false);
 
-  const backgroundChange    = addAnswer   ? "modal-background" : "hide";
-  const showHideAddAnswer   = addAnswer   ? "modal-body" : "hide";
-  const emptyInputs         = warningBool ? "warning" : "hide";
-  const emailWarning        = emailBool   ? "invalid-email" : "hide";
-
+  const backgroundChange    = addAnswer   ? 'modal-background' : 'hide';
+  const showHideAddAnswer   = addAnswer   ? 'modal-body addQ' : 'hide';
+  const emptyInputs         = warningBool ? 'warning' : 'hide';
+  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
+  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
 
   const hideModal = (e) => {
     e.preventDefault();
@@ -32,10 +36,10 @@ var AddAnswer = () => {
   };
 
   const answer = {
-    "body":   answerVal,
-    "name":   nicknameVal,
-    "email":  emailVal,
-    "photos": []
+    'body':   answerVal,
+    'name':   nicknameVal,
+    'email':  emailVal,
+    'photos': urls
   };
 
   const postAnswer = () => {
@@ -43,9 +47,9 @@ var AddAnswer = () => {
       if (err) {
         console.log('Error', err);
         setEmailBool(true);
-        setInvalidEmail('Question not posted, please provide valid email address');
+        setInvalidEmail('Answer not posted, please provide valid email address');
       } else {
-        console.log(`Question ${question_id} posted`, res);
+        console.log(`Answer posted`, res, answer);
         setAnswerVal('');
         setNicknameVal('');
         setEmailVal('');
@@ -53,9 +57,6 @@ var AddAnswer = () => {
       }
     });
   };
-
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,9 +98,39 @@ var AddAnswer = () => {
     setWarningVals([]);
   };
 
+  const set = () => {
+    setWarningBool(false);
+    setEmailBool(false);
+  };
 
+  const onFileChange = (e) => {
+    if ([...urls].length === 5) {
+      alert('Only 5 images allowed');
+    } else {
+      const data = new FormData();
+      data.append('file', e.target.files[0]);
+      data.append('upload_preset', 'ungsadl0');
+      data.append('cloud_name', 'cowardly-dog');
+      fetch('https://api.cloudinary.com/v1_1/cowardly-dog/upload', {
+        method: 'post',
+        body: data
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          setUrls(prev=>[data.url, ...prev]);
+        })
+        .catch(err => {
+          console.log(err, 'ERROR in posting img');
+        });
+    }
+  };
 
-
+  const remove = (url) => {
+    var filtered = [...urls].filter(img => {
+      return img !== url;
+    });
+    setUrls(filtered);
+  };
 
   return (
 
@@ -107,28 +138,44 @@ var AddAnswer = () => {
       <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
         <form className={showHideAddAnswer}>
-          <h4>Submit Your Answer</h4>
-          <h6>{productName}: {question_body}</h6>
+          <header>
+            <span className='formPrompt'>Submit Your Answer</span>
+            <h1 className='answer-title'>{productName}: {question_body}</h1>
+          </header>
 
-          <label>Your Answer</label>
-          <input required className='answerBody'  placeholder='Answer here'                 type='text'  maxLength='1000' value={answerVal} onChange={e=>setAnswerVal(e.target.value)}/>
+          <div className='formInputs'>
+            <span className='quesTitle'>Your Answer</span>
+            <textarea required className='quesBody' style={{height: '100px'}} placeholder='Answer here'  rows='14' cols='10' wrap='soft' maxLength='1000' value={answerVal} onChange={e=>setAnswerVal(e.target.value)}/>
 
-          <label>What is your nickname?</label>
-          <input required className='answerName'  placeholder='Example: jack543!'           type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
-          <span>For privacy reasons, do not use your full name or email address</span>
+            <span className='quesTitle'>What is your nickname?</span>
+            <input required className='formInput'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
+            <span className='sub-title'>For privacy reasons, do not use your full name or email address</span>
 
-          <label>Your email</label>
-          <input required className='answerEmail' placeholder='Example: jack@email.com'     type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
-          <span>For authentication reasons, you will not be emailed</span>
+            <span className='quesTitle'>Your email</span>
+            <input required className='formInput' placeholder='Example: jack@email.com'     type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
+            <span className='sub-title'>For authentication reasons, you will not be emailed</span>
 
 
-          <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-          <button type='submit' onClick={hideModal}>Close</button>
+            <div>
+              <span className='quesTitle'>Add photos:</span>
+              <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
+
+              {[...urls].map( url => {
+                return <img key={url} className={thumbnail} src={url} width='50px' height='50px' onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
+              })}
+            </div>
+          </div>
+
+          <div className='form-buttons'>
+            <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
+            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fill-rule='evenodd'></path></svg></button>
+          </div>
+
         </form>
       </div>
 
-      <span className={emptyInputs}  onClick={setAndClear}>**You must enter the following: {warningVals.join(', ')}**</span>
-      <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
+      <span className={emptyInputs}  onClick={set}>**You must enter the following: {warningVals.join(', ')}**</span>
+      <span className={emailWarning} onClick={set}>{invalidEmail}</span>
 
 
       <button onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>

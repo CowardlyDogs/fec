@@ -8,7 +8,7 @@ import APIHelpers from '../../../APIHelpers.js';
 
 
 var AddQuestion = ({defaultId, productName}) => {
-  const { setAddQuestion, addQuestion, product } = useContext(QandAContext);
+  const { setAddQuestion, addQuestion, product, visibleQs, setVisibleQs } = useContext(QandAContext);
 
   const [ questionVal,  setQuestionVal  ] = useState('');
   const [ nicknameVal,  setNicknameVal  ] = useState('');
@@ -19,25 +19,21 @@ var AddQuestion = ({defaultId, productName}) => {
   const [ emailBool,    setEmailBool    ] = useState(false);
 
   const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
-  const showHideAddQuestion = addQuestion ? 'modal-body' : 'hide';
+  const showHideAddQuestion = addQuestion ? 'modal-body addQ' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
   const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
-
 
   const hideModal = (e) => {
     e.preventDefault();
     setAddQuestion(prev=>!prev);
   };
 
-
   let question = {
-    "body": questionVal,
-    "name": nicknameVal,
-    "email": emailVal,
+    'body': questionVal,
+    'name': nicknameVal,
+    'email': emailVal,
     'product_id': Number(defaultId)
   };
-
-
 
   const postQuestion = () => {
     APIHelpers.postQuestion(question, (err, res) => {
@@ -46,21 +42,18 @@ var AddQuestion = ({defaultId, productName}) => {
         setEmailBool(true);
         setInvalidEmail('Question not posted, please provide valid email address');
       } else {
-        console.log(res, 'success');
+        console.log(res, 'Question posted');
         setQuestionVal('');
         setNicknameVal('');
         setEmailVal('');
         setAddQuestion(prev=>!prev);
       }
-    })
+    });
   };
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let warning = false;
-
 
     if (nicknameVal.length === 0) {
       setWarningBool(true);
@@ -86,18 +79,11 @@ var AddQuestion = ({defaultId, productName}) => {
     }
   };
 
-
-
   const setAndClear = () => {
     setWarningBool(false);
     setEmailBool(false);
     setWarningVals([]);
-    setQuestionVal('');
-    setNicknameVal('');
-    setEmailVal('');
   };
-
-
 
 
   return (
@@ -107,29 +93,36 @@ var AddQuestion = ({defaultId, productName}) => {
       <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
         <form className={showHideAddQuestion}>
-          <h4>Ask Your Question</h4>
-          <h6>About the {productName}</h6>
+          <header>
+            <span className='formPrompt'>Ask Your Question</span>
+            <h1 className='formTitle'>About the {productName}</h1>
+          </header>
 
-          <label>Your Question</label>
-          <input required className='quesBody'  placeholder='Question'                 type='text'  maxLength='1000' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
+          <div className='formInputs'>
+            <span className='quesTitle'>Your Question</span>
+            <textarea required className='quesBody'  placeholder='Question'  rows='14' cols='10' wrap='soft' maxLength='1000' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
 
-          <label>What is your nickname?</label>
-          <input required className='quesName'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
-          <span>For privacy reasons, do not use your full name or email address</span>
+            <span className='quesTitle'>What is your nickname?</span>
+            <input required className='formInput'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
+            <span className='sub-title'>For privacy reasons, do not use your full name or email address</span>
 
-          <label>Your email</label>
-          <input required className='quesEmail' placeholder='Example: jack@email.com'  type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
-          <span>For authentication reasons, you will not be emailed</span>
+            <span className='quesTitle'>Your email</span>
+            <input required className='formInput' placeholder='Example: jack@email.com'  type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
+            <span className='sub-title'>For authentication reasons, you will not be emailed</span>
+          </div>
+
+          <div className='form-buttons'>
+            <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
+            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fillRule='evenodd'></path></svg></button>
+          </div>
 
 
-          <button type='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-          <button type='submit' onClick={hideModal}>Close</button>
+
         </form>
       </div>
 
-      <span className={emptyInputs}  onClick={setAndClear}>**You must enter the following: {warningVals.join(', ')}**</span>
+      <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: {warningVals.join(', ')}</span>
       <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
-
 
       <button onClick={()=>setAddQuestion(prev=>!prev)}>Ask Question</button>
     </div>
