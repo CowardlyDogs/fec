@@ -116,8 +116,8 @@ var AddQuestion = ({defaultId, productName}) => {
 
         <form className={showHideAddQuestion}>
           <header>
-            <span class='formPrompt'>Ask Your Question</span>
-            <h1 class='formTitle'>About the {productName}</h1>
+            <span className='formPrompt'>Ask Your Question</span>
+            <h1 className='formTitle'>About the {productName}</h1>
           </header>
 
           <div className='formInputs'>
@@ -133,13 +133,20 @@ var AddQuestion = ({defaultId, productName}) => {
             <span className='sub-title'>For authentication reasons, you will not be emailed</span>
           </div>
 
-          <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-          <button type='submit' onClick={hideModal}>Close</button>
+          <div className='form-buttons'>
+            <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
+            <button className='exit' onClick={hideModal}><svg viewbox='15 10 25 20' height="40"  width="50"><title>Close "X" Icon</title><path aria-hidden="true" d="M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z" fill-rule="evenodd"></path></svg></button>
+          </div>
+
+
+
         </form>
       </div>
 
       <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: {warningVals.join(', ')}**</span>
       <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
+
+
 
 
       <button onClick={()=>setAddQuestion(prev=>!prev)}>Ask Question</button>
