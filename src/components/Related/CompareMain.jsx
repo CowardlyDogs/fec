@@ -4,7 +4,7 @@ import './css/Related.css';
 import CompareDisplay from './CompareDisplay.jsx';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 
-const CompareMain = ({ mainId, currentId, compare, setCompare }) => {
+const CompareMain = ({ productId, currentId, compare, setCompare }) => {
   const [features,     setFeatures    ] = useState([]);
   const [rel,          setRel         ] = useState([]);
   const [main,         setMain        ] = useState([]);
@@ -13,7 +13,7 @@ const CompareMain = ({ mainId, currentId, compare, setCompare }) => {
 
   useEffect(() => {
     let tempFeatures = new Set([]);
-    Helpers.getProduct(mainId, (err, res) => {
+    Helpers.getProduct(productId, (err, res) => {
       if (err) {
         console.log(err);
       } else {

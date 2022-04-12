@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import OutfitMain from './Related/OutfitMain.jsx';
 import Overview from './Overview/Overview.jsx';
@@ -13,9 +13,9 @@ const App = () => {
     <div className="App">
       <Overview/>
       <h1>Related Items</h1>
-      <RelatedMain     mainId={productId}/>
+      <RelatedMain     productId={productId} setProduct={setProduct}/>
       <h1>Your Outfit</h1>
-      <OutfitMain      mainId={productId}/>
+      <OutfitMain      productId={productId}/>
       <QandA        defaultId={productId}/>
       <ReviewModule productId={productId}/>
     </div>

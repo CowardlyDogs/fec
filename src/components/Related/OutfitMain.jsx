@@ -5,12 +5,13 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import StarIcon from '@material-ui/icons/Star';
 
-const OutfitMain = ({ mainId }) => {
+const OutfitMain = ({ productId }) => {
   const [outfit,     setOutfit     ] = useState([]);
   const [dispOutfit, setDispOutfit ] = useState([]);
 
   const start = useRef(0);
   const end = useRef(1);
+
 
   const addFit = 'https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png';
 
@@ -49,10 +50,10 @@ const OutfitMain = ({ mainId }) => {
   };
 
   const addToOutfit = () => {
-    localStorage.setItem(mainId, mainId);
+    localStorage.setItem(productId, productId);
     let tempOutfit = [...outfit];
-    outfit.includes(mainId) ? null :
-      tempOutfit.unshift(mainId);
+    outfit.includes(productId) ? null :
+      tempOutfit.unshift(productId);
     setOutfit((outfit) => outfit = tempOutfit);
     setDispOutfit([outfit[0], outfit[1]]);
   };

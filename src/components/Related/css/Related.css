@@ -29,7 +29,23 @@
   overflow: hidden;
   align-self: center;
   justify-self: center;
+  cursor: pointer;
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
 }
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 
 .card-container {
   min-width: 33%;
@@ -151,11 +167,6 @@ h1 {
 
 .product-name {
   font-weight: 700;
-}
-
-.stars {
-  color: goldenrod;
-  width: 100%;
 }
 
 .action-compare {

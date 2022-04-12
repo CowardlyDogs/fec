@@ -6,12 +6,9 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Helpers from '../APIHelpers.js';
 
 
-const RelatedMain = ({ mainId }) => {
-  const [relatedIds,    setRelatedIds    ] = useState([]);
+const RelatedMain = ({ productId, setProduct }) => {
+  const [relatedIds,    setRelatedIds    ] = useState('');
   const [displayIds,    setDisplayIds    ] = useState([]);
-
-  //TODO:
-  //set clicked related product to overview main product
 
   const start = useRef(0);
   const end = useRef(2);
@@ -19,16 +16,25 @@ const RelatedMain = ({ mainId }) => {
   const addFit = 'https://i.pinimg.com/originals/76/30/ad/7630ad49bdc79b8482c8627c663a1373.png';
 
   useEffect(() => {
-    Helpers.getRelated(mainId, (err, res) => {
+    let tempRel = new Set();
+    Helpers.getRelated(productId, (err, res) => {
       if (err) {
         console.log(err);
       } else {
-        setRelatedIds(res);
+        res.map(i => {
+          tempRel.add(i);
+        });
+        let tempRelArr = [...tempRel];
+        setRelatedIds(tempRelArr);
         setDisplayIds([res[0], res[1], res[2]]);
       }
     });
     end.current = relatedIds.length > 3 ? 2 : !relatedIds.length ? 2 : relatedIds.length;
-  }, []);
+  }, [productId]);
+
+  useEffect(() => {
+    setDisplayIds([relatedIds[0], relatedIds[1], relatedIds[2]]);
+  }, [relatedIds]);
 
   const left = () => {
     start.current = start.current - 1;
@@ -61,7 +67,7 @@ const RelatedMain = ({ mainId }) => {
         {displayIds.map(unit => {
           return (
             <li className="track" key={unit}>
-              <RelatedCarousel unit={unit} mainId={mainId}/>
+              <RelatedCarousel key={unit}unit={unit} productId={productId} setProduct={setProduct}/>
             </li>
           );
         })}

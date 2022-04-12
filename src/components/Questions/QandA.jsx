@@ -43,7 +43,7 @@ const QandA = ({defaultId}) => {
         setVisibleQs(sorted);
       }
     });
-  }, []);
+  }, [defaultId]);
 
 
 
