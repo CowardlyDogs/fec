@@ -21,11 +21,11 @@ const Answer = ({answerData}) => {
   return (
     <div className='Answer'>
       <AnswerBody  body={body}/>
+      {photoDiv}
       <div className='answer-info'>
         <NameAndDate name={answerer_name} date={date}/>
         <HelpReport  helpfulness={helpfulness} id={id}/>
       </div>
-      {photoDiv}
     </div>
   );
 };

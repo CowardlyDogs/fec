@@ -13,7 +13,7 @@ html {
 .on-load-Q-content {
   display: flex;
   flex-direction: column;
-  margin: 20px 40px;
+  margin: 2% 10%;
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
@@ -23,7 +23,7 @@ html {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  margin: 20px 40px;
+  margin: 2% 10%;
   background-color: #f5f2f0;
   transition: max-height 0.7s ease;
 }
@@ -39,8 +39,7 @@ html {
   margin-top: 50px;
   display: flex;
   align-items:center;
-  /* gap: 20px; */
-  margin-top: 50px;
+  margin-top: 80px;
   height: 80px;
 }
 
@@ -94,7 +93,7 @@ html {
   position: relative;
   margin-top: 22px;
   transition: background-color .2s ease-in-out, color .2s ease-in-out;
-  margin-left: 7%;
+  /* margin-left: 7%; */
 }
 
 .moreQs:hover {
@@ -124,6 +123,8 @@ html {
 
 .question-btns {
   display: flex;
+  margin-bottom: 70px;
+  margin-left: 10%;
 }
 
 .addA {
@@ -181,7 +182,7 @@ html {
 
 
 .Qname {
-  font-size: 20px;
+  font-size: 18px;
   height: 20px;
   margin-bottom: 5px;
 }
@@ -215,7 +216,8 @@ html {
   display: inline-block;
   width:100%;
   position:relative;
-  right: 0px
+  right: 0px;
+  color: grey
 }
 
 .hr-flex {
@@ -323,7 +325,8 @@ html {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 20px;
-  /* resize: none; */
+  font-size: 16px;
+  resize: none;
 }
 
 input[type=text] {
@@ -361,7 +364,13 @@ input {
   width: 200px;
   padding: 0 24px;
   position: relative;
-  margin-left: 10%
+  margin-left: 10%;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.submit:hover {
+  color: black;
+  background-color:white
 }
 
 .exit {
@@ -369,17 +378,16 @@ input {
   background: none;
   border: none;
   cursor: pointer;
-  /* height: 36px; */
-  transition:1s;
+  transition: color .2s ease-in-out
 }
 
-/* .exit:hover {
+.exit:hover {
   display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
-  transform:rotate(720deg);
-} */
+  color: white
+}
 
 
 .form-buttons {
@@ -399,9 +407,9 @@ input {
 
 .A {
   display: inline-block;
-  font-size: 20px;
+  font-size: 21px;
   vertical-align: top;
-  padding: 0 4px;
+  padding: 0 2px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -410,7 +418,6 @@ input {
   display: inline-block;
   padding: 0 16px;
   width: 90%;
-  /* border-bottom: 1px solid black; */
   overflow: hidden;
   transition: max-height 0.7s ease;
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
@@ -425,7 +432,6 @@ input {
   overflow: auto;
   padding: 0 16px;
   width: 90%;
-  /* border-bottom: 1px solid black; */
   transition: max-height 0.7s ease;
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
@@ -438,8 +444,7 @@ input {
 .answer-body {
   display: inline-block;
   width: 100%;
-  color: green;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .answer-info {
@@ -463,6 +468,7 @@ input {
 }
 
 .Adate {
+  width: 400px;
   color: grey;
   display: inline-block;
   font-size: 15px;
@@ -471,6 +477,7 @@ input {
 .answer-photos {
   display: flex;
   gap: 15px;
+  padding-bottom: 8px
 }
 
 .sm-answer-photo {

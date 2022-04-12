@@ -12,7 +12,7 @@ const QNameAndDate = ({name, date}) => {
 
   return (
     <div className='NameAndDate'>
-      <div className='Qname'>  <strong>{name} </strong> </div>
+      <div className='Qname'>  {name.toUpperCase()}</div>
       <div className='Qdate'>  {moment(date).format('MMM Do YY')}</div>
     </div>
   );
