@@ -1,37 +1,369 @@
-
-.Qcontainer {
-  /* display: flex; */
-  background-color: lightblue;
-  /* justify-content: center; */
+* {
+  box-sizing: border-box;
+  /* width: 100%; */
 }
 
-.QandA {
+html {
+  scroll-behavior: smooth;
+}
+
+
+.on-load-Q-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 20px 40px;
+  /* background-color: lightcoral; */
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
+
+.larger-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  margin: 20px 40px;
+  background-color: #f5f2f0;
+  transition: max-height 0.7s ease;
+  /* background-color: lightcoral; */
+}
+
+
+
+
+
+
+
+
+.QandA {
+  margin-top: 50px;
+}
+
+
 .header {
-  width: 100%;
+  display: inline-block;
+  height: auto;
+  font-size: 30px;
+}
+
+.search-bar {
+  display: inline-block;
+  margin: 10px 0px;
+}
+
+.search {
+  font-size: 15px;
+  background-color: lightgray;
+  margin: 10px 40px;
+  width: 300px;
+  height: 50px;
+  border: none;
+}
+
+
+.question {
+  /* display: flex; */
+}
+
+
+.NameAndDate {
+  padding: 5px 10px;
   height: auto;
 
 }
 
+
+.Qname {
+  font-size: 20px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+
+.Qdate {
+  font-size: 15px;
+}
+
+
+.Q {
+  font-size: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 50px;
+}
+
+
+.question-body {
+  font-size: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  width: 70%;
+  height: auto;
+  line-height: 1.42857;
+}
+
+.help-report {
+  display: inline-block;
+  width:100%;
+  position:relative;
+  right: 0px
+}
+
+.hr-flex {
+  display: flex;
+  justify-content: end;
+  font-size: 15px;
+  margin-right: 15px;;
+}
+
+
+
+.helpful {
+  margin: 0 5px;
+}
+
+.report {
+  margin: 0 5px;
+}
+
+
+.addQ {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5%;
+}
+
+.formPrompt {
+  display: inline-block;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  margin-top: 45px;
+  margin-left: 157px;
+}
+
+.answer-title {
+  display: inline-block;
+  font-family: ov-gothic, HelveticaNeue, Helvetica Neue ,Helvetica Neue,arial,sans-serif;
+  font-size: 20px;
+  margin-left: 154px;
+  margin-top: 12px;
+  max-width: 55%;
+}
+
+.formInputs {
+  min-width: 80%;
+  margin: auto auto;
+  border: none;
+}
+
+.formTitle {
+  font-family: ov-gothic,HelveticaNeue,Helvetica Neue ,Helvetica Neue,arial,sans-serif;
+  font-size: 36px;
+  margin: 0 0 38px;
+}
+
+.quesTitle {
+  display: inline-block;
+  font-size: 19px;
+  margin-bottom: 3px;
+}
+
+.sub-title {
+  color: #737373;
+  display: block;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  width: 100%;
+  font-size: 13px;
+}
+
+.formInput {
+  font-family: merlo,georgia,serif;
+  margin-top: 3px;
+  background-color: #f1f1f1;
+  border: none;
+  font-size: 16px;
+  line-height: 38px;
+  min-height: 38px;
+  padding-left: 12px;
+  width: 100%;
+}
+
+.quesBody {
+  font-family: merlo,georgia,serif;
+  background-color: #f1f1f1;
+  border: none;
+  min-height: 150px;
+  max-width: 100%;
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 20px;
+  /* resize: none; */
+}
+
+input[type=text] {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 80px;
+}
+
+label {
+  display: block;
+  margin-top: 1em
+}
+
+input {
+  display: block;
+  margin-top: 1em;
+  padding: .5em;
+  border-radius: 5px;
+}
+
+.submit {
+  background: #202020;
+  display: inline-block;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  height: 36px;
+  width: 200px;
+  padding: 0 24px;
+  position: relative;
+  margin-left: 10%
+}
+
+.exit {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* height: 36px; */
+  transition:1s;
+}
+
+/* .exit:hover {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform:rotate(720deg);
+} */
+
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 22px 25px 0;
+}
+
+
+/* Answers */
+
 .Acontainer {
-  color: red
+  /* border: 1px solid black; */
+  margin: 5px 10px;
+  /* border-top: 1px solid black; */
+  border-bottom: 1px solid black;
+}
+
+
+.A {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 4px
+}
+
+.answerList {
+  display: inline-block;
+  padding: 0 5px;
+  width: 90%;
+  border-bottom: 1px solid black;
+  transition: max-height 0.7s ease;
+  overflow: hidden;
+}
+
+.scroll-list {
+  display: inline-block;
+  overflow: auto;
+  padding: 0 5px;
+  width: 90%;
+  border-bottom: 1px solid black;
+  transition: max-height 0.7s ease;
 }
 
 .Answer {
-  color: blue
+  margin-bottom: 10px;
 }
 
-.TestOn {
-  color: green
+.answer-body {
+  display: inline-block;
+  width: 100%;
+  color: green;
+  padding-bottom: 5px;
 }
 
-.TestOff {
-  color: red
+.answer-info {
+  display: flex;
+  margin-bottom: 20px;
 }
+
+.answer-hr-flex {
+  display: flex;
+  justify-content: start;
+  padding-left: 20px;
+  font-size: 15px;
+}
+
+.Aname {
+  display: inline-block;
+  font-size: 15px;
+  width: auto;
+  padding-right: 20px;
+}
+
+.Adate {
+  display: inline-block;
+  font-size: 15px;
+}
+
+.answer-photos {
+  display: flex;
+  gap: 15px;
+}
+
+.sm-answer-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 15%;
+  /* padding: 0 10px; */
+}
+
+.shade {
+  /* opacity: 0.4;
+  filter: drop-shadow(2px 4px 6px black); */
+}
+
+.lg-answer-photo {
+  position: fixed;
+  width: 800px;
+  height: 800px;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  background: grey;
+  transform: translate(-50%,-50%);
+  border-radius: 10%;
+}
+
+.answer-buttons {
+  display: flex;
+  margin-left: 12px;
+  padding-top: 0px;
+}
+
 
 .front {
   z-index: 10;
@@ -73,21 +405,16 @@
 }
 
 .modal-body {
-  display: flex;
-  justify-content: space-evenly;
   position:fixed;
   background: lightgrey;
-  width: 80%;
-  height: 300px;
+  min-width: 700px;
+  min-height: 700px;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%);
+  border-radius: 5%;
 }
 
-.name {
-  height: 40px;
-  width: 200px;
-}
 
 
 .hide {

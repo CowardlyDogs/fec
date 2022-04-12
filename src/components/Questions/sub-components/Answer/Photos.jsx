@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
+import '../../styles.css';
+import Photo from './Photo.jsx';
 
 
 const Photos = ({photos}) => {
 
   return (
-    <div>
+    <div className='answer-photos'>
       { photos.map( (photo, idx) => {
-        return <img key={idx} width={50} height={50} src={photo}></img>;
+        return <Photo photo={photo} key={idx}/>;
       })}
     </div>
   );

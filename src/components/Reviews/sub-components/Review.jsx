@@ -43,7 +43,6 @@ var Review = ({review, helpful, report}) => {
         {review.photos.map((image => (
           <img className="ReviewImage" key={image.id} src={image.url}/>
         )))}
-        <img></img>
       </div>
       <div className="help-report">
         <div className="helpfulness">
@@ -51,7 +50,7 @@ var Review = ({review, helpful, report}) => {
             {review.helpfulness}
           </div>
           <div>
-            people found this helpful
+            <p>&nbsp;&nbsp;people found this helpful</p>
           </div>
 
         </div>

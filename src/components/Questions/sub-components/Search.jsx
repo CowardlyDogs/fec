@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
 import { QandAContext } from '../QandA.jsx';
+import '../styles.css';
 
 const Search = () => {
   const { product, setSearchVal, searchVal, searchQuestions, setVisibleQs, questions } = useContext(QandAContext);

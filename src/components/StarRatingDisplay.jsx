@@ -4,18 +4,17 @@ import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined';
 
 
 
-var StarRating = ({rating}) => {
+var StarRating = ({rating, special}) => {
 
+  var fullClass = 'rating ' + ((special) ? special : '');
   return (
     <input
-      className="rating rating--nojs"
+      className={fullClass}
       max="5"
       readOnly
-      step="0.25"
       type="range"
       value={rating}>
     </input>
-
   );
 };
 
