@@ -9,7 +9,7 @@ const ExpandedView = (props) => {
   const photos = props.photos;
 
   return (
-    <div>
+    <div className="expanded-modal">
       <button className="close-expanded"
         onClick={() => props.setIsDefault(true)}
       >Close</button>
@@ -23,12 +23,15 @@ const ExpandedView = (props) => {
       }
       <img className="expanded-photo" src={photo.url} height={isZoom ? 2000 : 800} width={isZoom ? 2000 : 800}
         onClick={() => setIsZoom(!isZoom)} />
-      {
-        photos.map((icon, i) =>
-          <img key={i} className="expanded-view-icon" src={icon['thumbnail_url']} height={50} width={50}
-            onClick={() => setPhoto(icon)} />
-        )
-      }
+      <div className="expanded-view-icon">
+        {
+          photos.map((icon, i) =>
+            <img key={i} src={icon['thumbnail_url']} height={50} width={50}
+              onClick={() => setPhoto(icon)} />
+          )
+        }
+
+      </div>
       {
         photo !== photos[photos.length - 1] ?
           <button className="expanded-next"

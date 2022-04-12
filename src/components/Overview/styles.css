@@ -16,11 +16,22 @@
 }
 
 .expanded-photo {
+  position: relative;
+  display: block;
   cursor: crosshair;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.expanded-view-icon {
+.expanded-view-icon img {
   cursor: pointer;
+  flex: 1;
+  z-index: 2;
+  bottom: 0;
+  left: 50%;
+  display: flex;
+  align-self: flex-end;
+  flex-direction: row;
 }
 
 .previous {
@@ -54,5 +65,26 @@
 }
 
 .style {
+  cursor: pointer;
+}
+
+.expanded-modal {
+  z-index:1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(0,0,0,0.75);
+  display: flex;
+}
+
+.close-expanded {
+  position: absolute;
+  border: 2px solid black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   cursor: pointer;
 }
