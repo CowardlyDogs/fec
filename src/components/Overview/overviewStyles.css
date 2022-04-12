@@ -1,5 +1,26 @@
+.sidebar {
+  border: solid black;
+  border-radius: 5px;
+  margin-left: 75%;
+  margin-top: 50px;
+}
+
+.Product-Info {
+  padding: 10px;
+
+}
+
+.Styles-Selector {
+  margin-top: 10px;
+}
+
+.Cart {
+  margin-top: 10px;
+}
+
 .style {
-  display: inline-block
+  display: inline-block;
+  cursor: pointer;
 }
 .style-title {
   display: list-item;
@@ -78,10 +99,6 @@
 
 .size-list {
   list-style-type: none;
-  cursor: pointer;
-}
-
-.style {
   cursor: pointer;
 }
 
