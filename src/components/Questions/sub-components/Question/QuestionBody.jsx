@@ -9,7 +9,10 @@ const QuestionBody = ({body}) => {
   const { data } = useContext(QuestionContext);
 
   return (
-    <div className='question-body'> <strong>Q:</strong> {body}</div>
+    <div style={{marginTop: '10px'}}>
+      <div className='Q'>Q:</div>
+      <div className='question-body'>{body}</div>
+    </div>
   );
 };
 

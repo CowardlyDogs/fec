@@ -89,7 +89,7 @@ var AddQuestion = ({defaultId, productName}) => {
   return (
 
 
-    <div>
+    <div className='addQ'>
       <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
         <form className={showHideAddQuestion}>
@@ -124,7 +124,7 @@ var AddQuestion = ({defaultId, productName}) => {
       <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: {warningVals.join(', ')}</span>
       <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
 
-      <button onClick={()=>setAddQuestion(prev=>!prev)}>Ask Question</button>
+      <button className='addQbutton' onClick={()=>setAddQuestion(prev=>!prev)}>Ask A Question</button>
     </div>
 
   );
