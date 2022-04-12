@@ -98,12 +98,6 @@ const APIHelpers = {
   //Ratings and Reviews Helpers
 
   getReviews: (reviewInfo, callback) => {
-    /*
-    reviewInfo = {
-      page = *,
-      productId = ******
-    }
-    */
     if (reviewInfo.page === 0) {
       axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/?product_id=${reviewInfo.productId}&sort=helpful&count=1&page=1`)
         .then(res => callback(null, res.data))
@@ -129,6 +123,12 @@ const APIHelpers = {
 
   rateReport: (reviewId, callback) => {
     axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/${reviewId}/report`)
+      .then(res => callback(null, res.data))
+      .catch(err => callback(err));
+  },
+
+  getReviewMeta: (reviewId, callback) => {
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/meta/?product_id=${reviewId}`)
       .then(res => callback(null, res.data))
       .catch(err => callback(err));
   }
