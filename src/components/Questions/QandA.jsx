@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import reactDOM from 'react-dom';
 import './styles.css';
@@ -15,7 +15,6 @@ export const QandAContext = React.createContext(null);
 
 const QandA = ({defaultId}) => {
 
-  // const [   defaultId, setdefaultId     ] = useState(defaultId);
   const [ productName, setProductName ] = useState('');
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
@@ -24,6 +23,7 @@ const QandA = ({defaultId}) => {
   const [ addQuestion, setAddQuestion ] = useState(false);
   const [     viewNum, setViewNum     ] = useState(0);
 
+  const header = useRef(null);
 
   useEffect(() => {
     APIHelpers.getProductName(defaultId, (err, res) => {
@@ -44,11 +44,13 @@ const QandA = ({defaultId}) => {
       }
     });
   }, [defaultId]);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> main
 
   const searchQuestions = (search) => {
-
     let filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
@@ -56,8 +58,9 @@ const QandA = ({defaultId}) => {
     setSearchView(true);
   };
 
-
-
+  const scrollToHeader = () => {
+    header.current.scrollIntoView();
+  };
 
   let questionList;
   let search;
@@ -70,15 +73,12 @@ const QandA = ({defaultId}) => {
     questionList = <span>No questions asked yet.</span>;
   }
 
-
-
-
   return (
     <QandAContext.Provider value={{   defaultId,   productName,
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
-      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions   }}>
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader   }}>
 
-      <div className='QandA'>
+      <div ref={header} className='QandA'>
         <h2> Questions and Answers</h2>
         <div>{search}</div>
         <div>{questionList}</div>

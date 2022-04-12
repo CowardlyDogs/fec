@@ -11,7 +11,7 @@ const App = () => {
   const [productId, setProduct] = useState('65631');
   return (
     <div className="App">
-      <Overview/>
+      <Overview     productId={productId}/>
       <h1>Related Items</h1>
       <RelatedMain     productId={productId} setProduct={setProduct}/>
       <h1>Your Outfit</h1>

@@ -6,6 +6,7 @@ import NameAndDate from './NameAndDate.jsx';
 import Photos from './Photos.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
+import '../../styles.css';
 
 
 
@@ -18,11 +19,13 @@ const Answer = ({answerData}) => {
 
 
   return (
-    <div>
+    <div className='Answer'>
       <AnswerBody  body={body}/>
-      <NameAndDate name={answerer_name} date={date}/>
+      <div className='answer-info'>
+        <NameAndDate name={answerer_name} date={date}/>
+        <HelpReport  helpfulness={helpfulness} id={id}/>
+      </div>
       {photoDiv}
-      <HelpReport  helpfulness={helpfulness} id={id}/>
     </div>
   );
 };

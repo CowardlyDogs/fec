@@ -10,12 +10,13 @@ import './styles.css';
 
 export const OverviewContext = React.createContext(null);
 
-const Overview = () => {
+const Overview = ({ productId }) => {
 
   const [styles, setStyles] = useState({});
   const [currentStyle, setCurrentStyle] = useState({});
   const [productInfo, setProductInfo] = useState({});
   const [loading, setLoading] = useState(true);
+  const [ratings, setRatings] = useState(0);
 
 
 
@@ -41,6 +42,14 @@ const Overview = () => {
       }
     });
 
+    APIHelpers.getRatingsMeta(65635, (err, res) => {
+      if (err) {
+        console.error(err);
+      } else {
+        setRatings(res.ratings);
+      }
+    });
+
   }, []);
 
   if (loading) {
@@ -50,7 +59,7 @@ const Overview = () => {
 
   return (
     <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
-      <ProductInfo productInfo={productInfo} />
+      <ProductInfo productInfo={productInfo} ratings={ratings} />
       <StylesSelector setCurrentStyle={setCurrentStyle} />
       <Cart />
       <ImageGallery />
