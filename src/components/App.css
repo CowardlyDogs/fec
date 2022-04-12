@@ -64,3 +64,8 @@ h1 {
 .rating-new {
   --size: 2rem;
 }
+.rating-overview {
+  --size: 2rem;
+  display: inline;
+  margin-left: -15px;
+}

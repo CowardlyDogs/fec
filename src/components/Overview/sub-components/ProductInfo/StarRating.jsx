@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ProductInfo, ProductContext } from './ProductInfo.jsx';
-import SharedStarRating from '../../../StarRatingDisplay.jsx';
+import StarRatingDisplay from '../../../StarRatingDisplay.jsx';
 
 
 const StarRating = ({ numRatings, averageRatings }) => {
@@ -9,7 +9,7 @@ const StarRating = ({ numRatings, averageRatings }) => {
 
   return (
     <div>
-      <SharedStarRating rating={averageRatings} />
+      <StarRatingDisplay rating={averageRatings} special="rating-overview"/>
       <span className="star-text"> {`Read all ${numRatings} reviews`}</span>
     </div>
   );
