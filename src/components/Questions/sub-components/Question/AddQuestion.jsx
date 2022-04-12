@@ -123,7 +123,6 @@ var AddQuestion = ({defaultId, productName}) => {
 
       <div className={warnModal}>
         <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: <br/>{warningVals.join(', ')}</span>
-        {/* <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span> */}
       </div>
 
       <button className='addQbutton' onClick={()=>setAddQuestion(prev=>!prev)}>Ask A Question</button>
