@@ -106,3 +106,15 @@ hr {
   max-width: 10rem;
   max-height: 10rem;
 }
+.Meta-Reviews {
+  size: 30%;
+}
+.Review-Container {
+  size: 30%;
+  max-height: 38rem;
+  overflow-y: auto;
+}
+.Rating-Review{
+  display: flex;
+  justify-content: space-around;
+}

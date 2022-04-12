@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
+import Metareview from './sub-components/ReviewMeta.jsx';
 import './sub-components/Reviews.css';
 import Helpers from '../APIHelpers.js';
 
-// import axios from 'axios';
-// import authorization from '../../../config.js';
-
-// axios.defaults.headers.common['Authorization'] = authorization.TOKEN;
-
 let ReviewModule = ({productId}) => {
 
-  const   [   product,            setProduct            ]   =   useState(productId);
+  // const   [   product,            setProduct            ]   =   useState(productId);
+  const   [   productMeta,        setProductMeta        ]   =   useState({});
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
   const   [   page,               setPage               ]   =   useState(0);
@@ -31,6 +28,17 @@ let ReviewModule = ({productId}) => {
       }
     });
 
+  }, [page, update]);
+
+  useEffect(() => {
+    Helpers.getReviewMeta(productId, (err, data) => {
+      if (err) {
+        console.error('Unable to fetch Product Metadata');
+      } else {
+        setProductMeta(data);
+        console.log(data.ratings);
+      }
+    });
   }, [page, update]);
 
   let submitNewReview = (review) => {
@@ -86,9 +94,10 @@ let ReviewModule = ({productId}) => {
       *
       */}
 
-      { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={product} onSubmit={submitNewReview} /> }
-      <div className='Review-Container'>
-        <ReviewList page={page} turnPage={turnPage} product={product} reviews={reviews} helpful={helpful} report={report} />
+      { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={productId} onSubmit={submitNewReview} /> }
+      <div className='Rating-Review'>
+        <Metareview product={productMeta}/>
+        <ReviewList page={page} turnPage={turnPage} product={productId} reviews={reviews} helpful={helpful} report={report} />
       </div>
 
     </div>

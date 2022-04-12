@@ -5,9 +5,9 @@ import React/*, { useState }*/ from 'react';
 var NewReview = ({visible, toggle, product, onSubmit}) => {
 
   var rating = 0;
-  // var changeRating = (stars) => {
-  //   rating = stars;
-  // }
+  var changeRating = (stars) => {
+    rating = stars;
+  };
 
   var summary = '';
   var changeSummary = (e) => {
@@ -69,9 +69,12 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
 
       */}
       <button onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
-      <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
+      <div onClick={toggle} className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content">
           {/* TODO figure out star rating input */}
+          <div className="modal-row">
+            <input className="rating rating-new" max="5" type="range" onChange={changeRating}/>
+          </div>
           <br/>
           <div className="modal-row">
             <input className='username-input' type='text' placeholder='username' onChange={changeUsername}/>
