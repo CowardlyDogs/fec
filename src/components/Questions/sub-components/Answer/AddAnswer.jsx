@@ -179,7 +179,7 @@ var AddAnswer = () => {
       <span className={emailWarning} onClick={set}>{invalidEmail}</span>
 
 
-      <button onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
+      <button className='addA' onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
     </div>
 
   );
