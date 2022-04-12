@@ -24,12 +24,11 @@ var AddAnswer = () => {
   const [ urls,         setUrls         ] = useState('');
   const [ hover,        setHover        ] = useState(false);
 
-  const backgroundChange    = addAnswer   ? "modal-background" : "hide";
-  const showHideAddAnswer   = addAnswer   ? "modal-body addQ" : "hide";
-  const emptyInputs         = warningBool ? "warning" : "hide";
-  const emailWarning        = emailBool   ? "invalid-email" : "hide";
-
-
+  const backgroundChange    = addAnswer   ? 'modal-background' : 'hide';
+  const showHideAddAnswer   = addAnswer   ? 'modal-body addQ' : 'hide';
+  const emptyInputs         = warningBool ? 'warning' : 'hide';
+  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
+  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
 
   const hideModal = (e) => {
     e.preventDefault();
@@ -37,10 +36,10 @@ var AddAnswer = () => {
   };
 
   const answer = {
-    "body":   answerVal,
-    "name":   nicknameVal,
-    "email":  emailVal,
-    "photos": urls
+    'body':   answerVal,
+    'name':   nicknameVal,
+    'email':  emailVal,
+    'photos': urls
   };
 
   const postAnswer = () => {
@@ -58,9 +57,6 @@ var AddAnswer = () => {
       }
     });
   };
-
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -107,8 +103,6 @@ var AddAnswer = () => {
     setEmailBool(false);
   };
 
-
-
   const onFileChange = (e) => {
     if ([...urls].length === 5) {
       alert('Only 5 images allowed');
@@ -131,20 +125,12 @@ var AddAnswer = () => {
     }
   };
 
-
-  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
-
   const remove = (url) => {
-    // console.log(urls);
     var filtered = [...urls].filter(img => {
       return img !== url;
     });
-    // console.log(filtered);
     setUrls(filtered);
   };
-
-
-
 
   return (
 
@@ -182,7 +168,7 @@ var AddAnswer = () => {
 
           <div className='form-buttons'>
             <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height="30"  width="50"><title>Close "X" Icon</title><path aria-hidden="true" d="M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z" fill-rule="evenodd"></path></svg></button>
+            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fill-rule='evenodd'></path></svg></button>
           </div>
 
         </form>

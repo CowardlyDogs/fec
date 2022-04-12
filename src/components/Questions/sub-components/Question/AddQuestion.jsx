@@ -23,21 +23,17 @@ var AddQuestion = ({defaultId, productName}) => {
   const emptyInputs         = warningBool ? 'warning' : 'hide';
   const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
-
   const hideModal = (e) => {
     e.preventDefault();
     setAddQuestion(prev=>!prev);
   };
 
-
   let question = {
-    "body": questionVal,
-    "name": nicknameVal,
-    "email": emailVal,
+    'body': questionVal,
+    'name': nicknameVal,
+    'email': emailVal,
     'product_id': Number(defaultId)
   };
-
-
 
   const postQuestion = () => {
     APIHelpers.postQuestion(question, (err, res) => {
@@ -55,12 +51,9 @@ var AddQuestion = ({defaultId, productName}) => {
     });
   };
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     let warning = false;
-
 
     if (nicknameVal.length === 0) {
       setWarningBool(true);
@@ -85,8 +78,6 @@ var AddQuestion = ({defaultId, productName}) => {
       postQuestion();
     }
   };
-
-
 
   const setAndClear = () => {
     setWarningBool(false);
@@ -122,7 +113,7 @@ var AddQuestion = ({defaultId, productName}) => {
 
           <div className='form-buttons'>
             <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height="30"  width="50"><title>Close "X" Icon</title><path aria-hidden="true" d="M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z" fillRule="evenodd"></path></svg></button>
+            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fillRule='evenodd'></path></svg></button>
           </div>
 
 

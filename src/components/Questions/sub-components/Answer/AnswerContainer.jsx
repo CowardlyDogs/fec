@@ -75,8 +75,6 @@ var AnswerContainer = ({question_body, setHeight}) => {
     }
   }
 
-
-
   return (
     <div ref={answers} className='Acontainer'>
       <div className='A'><strong>A:</strong></div>

@@ -13,8 +13,6 @@ const HelpReport = ({id, helpfulness}) => {
   const [  helpful, setHelpful  ] = useState(false);
   const [ reported, setReported ] = useState(false);
 
-
-
   const reportAnswer = () => {
     APIHelpers.reportAnswer(id, (err, res) => {
       if (err) {
@@ -25,8 +23,6 @@ const HelpReport = ({id, helpfulness}) => {
       }
     });
   };
-
-
 
   const helpfulAnswer = () => {
     if (localStorage.getItem(id)) {
@@ -42,8 +38,6 @@ const HelpReport = ({id, helpfulness}) => {
       });
     }
   };
-
-
 
 
   let helpfulDiv;
@@ -68,8 +62,6 @@ const HelpReport = ({id, helpfulness}) => {
       <a onClick={reportAnswer}>Report</a>
     </div>;
   }
-
-
 
   return (
     <div className='help-report'>

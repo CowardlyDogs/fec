@@ -18,7 +18,7 @@ var NameAndDate = ({name, date}) => {
   return (
     <div>
       <div className='Aname'> Response from {answererName}</div>
-      <div className='Adate'>  {moment(date).format("MMM Do YY")}</div>
+      <div className='Adate'>  {moment(date).format('MMM Do YY')}</div>
     </div>
   );
 };

@@ -15,7 +15,6 @@ export const QandAContext = React.createContext(null);
 
 const QandA = ({defaultId}) => {
 
-  // const [   defaultId, setdefaultId     ] = useState(defaultId);
   const [ productName, setProductName ] = useState('');
   const [   questions, setQuestions   ] = useState([]);
   const [   searchVal, setSearchVal   ] = useState('');
@@ -46,10 +45,7 @@ const QandA = ({defaultId}) => {
     });
   }, [defaultId]);
 
-
-
   const searchQuestions = (search) => {
-
     let filtered = questions.filter( question => {
       return question.question_body.includes(search);
     });
@@ -57,12 +53,9 @@ const QandA = ({defaultId}) => {
     setSearchView(true);
   };
 
-
-
   const scrollToHeader = () => {
     header.current.scrollIntoView();
   };
-
 
   let questionList;
   let search;
@@ -74,9 +67,6 @@ const QandA = ({defaultId}) => {
   } else {
     questionList = <span>No questions asked yet.</span>;
   }
-
-
-
 
   return (
     <QandAContext.Provider value={{   defaultId,   productName,
