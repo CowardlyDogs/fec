@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
-import carosel from './carosel.js';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import carousel from './carousel.js';
 
 const ExpandedView = (props) => {
   const [photo, setPhoto] = useState(props.expandedPhoto);
@@ -15,10 +17,10 @@ const ExpandedView = (props) => {
       >Close</button>
       {
         photo !== photos[0] ?
-          <button className="expanded-previous"
-            onClick={() => carosel.previousPhoto(photo, photos, setPhoto)} >
-            Previous
-          </button>
+          <div className="expanded-previous"
+            onClick={() => carousel.previousPhoto(photo, photos, setPhoto)} >
+            <ArrowBackIosIcon />
+          </div>
           : null
       }
       <img className="expanded-photo" src={photo.url} height={isZoom ? 2000 : 800} width={isZoom ? 2000 : 800}
@@ -34,10 +36,10 @@ const ExpandedView = (props) => {
       </div>
       {
         photo !== photos[photos.length - 1] ?
-          <button className="expanded-next"
-            onClick={() => carosel.nextPhoto(photo, photos, setPhoto)} >
-            Next
-          </button>
+          <div className="expanded-next"
+            onClick={() => carousel.nextPhoto(photo, photos, setPhoto)} >
+            <ArrowForwardIosIcon />
+          </div>
           : null
       }
     </div>
