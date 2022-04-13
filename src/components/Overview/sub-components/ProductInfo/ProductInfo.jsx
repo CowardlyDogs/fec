@@ -5,7 +5,7 @@ import ProductCategory from './ProductCategory.jsx';
 import ProductTitle from './ProductTitle.jsx';
 import ProductOverview from './ProductOverview.jsx';
 import Share from './Share.jsx';
-import {Overview, OverviewContext } from '../../Overview.jsx';
+import { Overview, OverviewContext } from '../../Overview.jsx';
 import authorization from '../../../../../config.js';
 
 const axios = require('axios');
@@ -48,15 +48,15 @@ const ProductInfo = ({ productInfo, ratings }) => {
   }, [ratings]);
 
   return (
-    <ProductContext.Provider value={{currentStyle: currentStyle, product: productInfo}}>
-      {/* TODO: Delete Styles Selector Title */}
-      <h1>Product Info</h1>
-      <StarRating numRatings={numRatings} averageRatings={averageRatings} />
-      <ProductCategory />
-      <ProductTitle />
-      <Price />
-      <ProductOverview />
-      <Share />
+    <ProductContext.Provider value={{ currentStyle: currentStyle, product: productInfo }}>
+      <div className="Product-Info">
+        <StarRating numRatings={numRatings} averageRatings={averageRatings} />
+        <ProductCategory />
+        <ProductTitle />
+        <Price />
+        <ProductOverview />
+        <Share />
+      </div>
     </ProductContext.Provider>
   );
 };
