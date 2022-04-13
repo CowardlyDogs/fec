@@ -72,9 +72,14 @@ let ReviewModule = ({productId}) => {
 
   return (
     <div className="reviews">
-      <h1>Ratings and Reviews</h1>
+      <div className="Rate-Review-Head">
+        <h2 className="Review-Header">Ratings and Reviews</h2>
+        <div className="New-Review-Button"> { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={productId} onSubmit={submitNewReview} /> } </div>
+      </div>
 
-      { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={productId} onSubmit={submitNewReview} /> }
+
+
+
       <div className='Rating-Review'>
         <Metareview product={productMeta}/>
         <ReviewList page={page} turnPage={turnPage} product={productId} reviews={reviews} helpful={helpful} report={report} />
