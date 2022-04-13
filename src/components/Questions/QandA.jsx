@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import reactDOM from 'react-dom';
-import './styles.css';
 import authorization from '../../../config.js';
 import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';
@@ -75,7 +74,7 @@ const QandA = ({defaultId}) => {
 
       <div ref={header}>
         <div className='QandA'>
-          <h2 className='QAheader'> Q&A</h2>
+          <h2 className='QAheader'> Q<span style={{fontSize: '48px'}}>&</span>A</h2>
           <div className='searchDiv'>{search}</div>
           <AddQuestion defaultId={defaultId} productName={productName}/>
         </div>

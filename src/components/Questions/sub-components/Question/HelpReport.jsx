@@ -5,7 +5,6 @@ import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
-import '../../styles.css';
 
 
 const HelpReport = ({ helpfulness }) => {
@@ -67,7 +66,7 @@ const HelpReport = ({ helpfulness }) => {
   } else {
     reportDiv =
     <div className='report'>
-      <a onClick={reportQuestion}><strong>Report</strong></a>
+      <a onClick={reportQuestion}><strong>Report Question</strong></a>
     </div>;
   }
 

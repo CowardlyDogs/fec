@@ -2,7 +2,6 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import QandA from '../../QandA.jsx';
 import Answer from './Answer.jsx';
 import AddAnswer from './AddAnswer.jsx';
-import '../../styles.css';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 

@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import '../../styles.css';
 import Photo from './Photo.jsx';
 
 

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './css/Related.css';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ClearIcon from '@material-ui/icons/Clear';
 import Helpers from '../APIHelpers.js';
-import StarRating from '../Reviews/sub-components/StarRating.jsx';
+import StarRatingDisplay from '../StarRatingDisplay.jsx';
 
 const OutfitCarousel = ({ unit, removeOutfit }) => {
   const [name,     setName      ] = useState('');
@@ -92,7 +91,7 @@ const OutfitCarousel = ({ unit, removeOutfit }) => {
         <div className="card-inner" style={{backgroundImage: `url(${photoHandler()})`}}>
           <div className="stars">
             {avg > 0 &&
-              <StarRating rating={avg} />}
+              <StarRatingDisplay special='rel-stars' rating={avg} />}
           </div>
           <div className="action-remove" onClick={() => removeOutfit(unit)}><ClearIcon/></div>
         </div>

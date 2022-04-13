@@ -6,7 +6,6 @@ import Cart from './sub-components/Cart/Cart.jsx';
 import ImageGallery from './sub-components/ImageGallery/ImageGallery.jsx';
 import authorization from '../../../config.js';
 import APIHelpers from '../APIHelpers.js';
-import './overviewStyles.css';
 
 export const OverviewContext = React.createContext(null);
 

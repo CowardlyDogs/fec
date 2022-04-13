@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './css/Related.css';
-
 
 const CompareDisplay = ({ feature, mainValue, relatedValue, rel, main }) => {
-  //TODO:
-  //handle same feature and value with checkmark
-  //possibly: rel[feat] ? rel[feat] === main[feat] ? <CheckMark/> : rel[feat] : null
 
   return (
     <div className="feat-container">

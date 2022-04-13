@@ -6,7 +6,6 @@ import QuestionBody from './QuestionBody.jsx';
 import HelpReport from './HelpReport.jsx';
 import QNameAndDate from './QNameAndDate.jsx';
 import AnswerContainer from '../Answer/AnswerContainer.jsx';
-import '../../styles.css';
 
 export const QuestionContext = React.createContext(null);
 

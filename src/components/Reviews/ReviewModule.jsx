@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import NewReview from './sub-components/NewReview.jsx';
 import ReviewList from './sub-components/ReviewList.jsx';
 import Metareview from './sub-components/ReviewMeta.jsx';
-import './sub-components/Reviews.css';
 import Helpers from '../APIHelpers.js';
 
 let ReviewModule = ({productId}) => {
-
-  // const   [   product,            setProduct            ]   =   useState(productId);
   const   [   productMeta,        setProductMeta        ]   =   useState({});
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
@@ -36,7 +33,6 @@ let ReviewModule = ({productId}) => {
         console.error('Unable to fetch Product Metadata');
       } else {
         setProductMeta(data);
-        console.log(data.ratings);
       }
     });
   }, [page, update]);
