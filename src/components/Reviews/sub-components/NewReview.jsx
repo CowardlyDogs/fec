@@ -55,8 +55,7 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
       });
     } else if (rating < 1) {
       alert('You must provide a rating');
-    }
-    else {
+    } else {
       alert('Username and Email are required');
     }
 
@@ -77,7 +76,7 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
               If rating >= star number, color = gold, else white. (Use ternary)
 
       */}
-      <button onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
+      <button className="Review-Button" onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content">
           <div className="modal-row">
