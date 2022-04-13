@@ -42,7 +42,7 @@ var QuesContainer = () => {
   const collapse = () => {
     setView(0);
     setEnd(1);
-    toggleContainerSize = 'on-load-Q-content';
+    // toggleContainerSize = 'on-load-Q-content';
   };
 
 

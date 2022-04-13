@@ -20,8 +20,10 @@ var AddQuestion = ({defaultId, productName}) => {
 
   const backgroundChange    = addQuestion ? 'modal-background' : 'hide';
   const showHideAddQuestion = addQuestion ? 'modal-body addQ' : 'hide';
+
+  const warnModal           = warningBool ? 'warn-modal' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
-  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
+  // const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
 
   const hideModal = (e) => {
     e.preventDefault();
@@ -92,12 +94,12 @@ var AddQuestion = ({defaultId, productName}) => {
     <div className='addQ'>
       <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
+
         <form className={showHideAddQuestion}>
           <header>
             <span className='formPrompt'>Ask Your Question</span>
             <h1 className='formTitle'>About the {productName}</h1>
           </header>
-
           <div className='formInputs'>
             <span className='quesTitle'>Your Question</span>
             <textarea required className='quesBody'  placeholder='Question'  rows='14' cols='10' wrap='soft' maxLength='1000' value={questionVal} onChange={e=>setQuestionVal(e.target.value)}/>
@@ -115,14 +117,13 @@ var AddQuestion = ({defaultId, productName}) => {
             <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
             <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fillRule='evenodd'></path></svg></button>
           </div>
-
-
-
         </form>
       </div>
 
-      <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: {warningVals.join(', ')}</span>
-      <span className={emailWarning} onClick={setAndClear}>{invalidEmail}</span>
+
+      <div className={warnModal}>
+        <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: <br/>{warningVals.join(', ')}</span>
+      </div>
 
       <button className='addQbutton' onClick={()=>setAddQuestion(prev=>!prev)}>Ask A Question</button>
     </div>

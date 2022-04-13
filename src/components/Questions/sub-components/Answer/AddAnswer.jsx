@@ -26,9 +26,14 @@ var AddAnswer = () => {
 
   const backgroundChange    = addAnswer   ? 'modal-background' : 'hide';
   const showHideAddAnswer   = addAnswer   ? 'modal-body addQ front' : 'hide';
+
+  const warnModal           = warningBool ? 'warn-modal' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
-  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
-  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
+
+
+  // const emptyInputs         = warningBool ? 'warning' : 'hide';
+  // const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
+
 
   const hideModal = (e) => {
     e.preventDefault();
@@ -162,7 +167,7 @@ var AddAnswer = () => {
               <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
 
               {[...urls].map( url => {
-                return <img key={url} className={thumbnail} src={url} width='50px' height='50px' onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
+                return <img key={url} width='75px' height='auto' src={url}  onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
               })}
             </div>
           </div>
@@ -174,9 +179,9 @@ var AddAnswer = () => {
 
         </form>
       </div>
-
-      <span className={emptyInputs}  onClick={set}>**You must enter the following: {warningVals.join(', ')}**</span>
-      <span className={emailWarning} onClick={set}>{invalidEmail}</span>
+      <div className={warnModal}>
+        <span className={emptyInputs}  onClick={set}>You must enter the following:<br/>{warningVals.join(', ')}</span>
+      </div>
 
 
       <button className='addA' onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
