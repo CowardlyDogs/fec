@@ -21,6 +21,7 @@ const APIHelpers = {
   },
 
   getStyles: (id, callback) => {
+    id &&
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${id}/styles`, {
       headers: {Authorization: Authorization.TOKEN} })
       .then(res => callback(null, res.data))

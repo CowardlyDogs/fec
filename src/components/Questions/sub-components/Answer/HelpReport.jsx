@@ -4,7 +4,6 @@ import QandA from '../../QandA.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import APIHelpers from '../../../APIHelpers.js';
-import '../../styles.css';
 
 const HelpReport = ({id, helpfulness}) => {
   const {       product, url           } = useContext(QandAContext);

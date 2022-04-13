@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import '../../styles.css';
 import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
 

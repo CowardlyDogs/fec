@@ -1,17 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './css/Related.css';
 import CompareIcon from '@material-ui/icons/Compare';
 import Helpers from '../APIHelpers.js';
-import StarRating from '../Reviews/sub-components/StarRating.jsx';
+import StarRatingDisplay from '../StarRatingDisplay.jsx';
 import CompareMain from './CompareMain.jsx';
+import '../App.css';
+//handle card click to set productId to clicked card
 
-//TODO:
-//figure out how to access default data
-//stars
-//light box
-//handle card click to set mainId to clicked card
-
-const RelatedCarousel = ({ unit, length, mainId }) => {
+const RelatedCarousel = ({ unit, length, productId, setProduct }) => {
   const [name,     setName      ] = useState('');
   const [photo,    setPhoto     ] = useState('');
   const [category, setCategory  ] = useState('');
@@ -93,19 +88,27 @@ const RelatedCarousel = ({ unit, length, mainId }) => {
     ratingHandler();
   }, [ratings]);
 
-  const compareHandler = () => {
+  const compareHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setCompare(!compare);
+  };
+
+  const updateProduct = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setProduct(unit);
   };
 
   return (
     unit ? (
       <div className="card">
-        <div className="card-inner"  style={{backgroundImage: `url(${photoHandler()})`}}>
-          <div className="stars">
+        <div className="card-inner" onClick={ (e) => { updateProduct(e); } } style={{backgroundImage: `url(${photoHandler()})`}}>
+          <div className="stars" onClick={ (e) => { updateProduct(e); } }>
             {avg > 0 &&
-              <StarRating rating={avg}/>}
+              <StarRatingDisplay special='rel-stars' rating={avg}/>}
           </div>
-          <div className="action-compare" onClick={() => compareHandler()}><CompareIcon/><CompareMain compare={compare} setCompare={setCompare} mainId={mainId} currentId={unit}/></div>
+          <div className="action-compare" onClick={(e) => compareHandler(e)}><CompareIcon/><CompareMain compare={compare} setCompare={setCompare} productId={productId} currentId={unit}/></div>
         </div>
         <div className="bottom">
           <div className="product-name">{name}</div>

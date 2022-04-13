@@ -2,7 +2,6 @@ import React, { useState, useContext, useRef, useEffect } from 'react';
 import QandA from '../../QandA.jsx';
 import Question from './Question.jsx';
 import { QandAContext } from '../../QandA.jsx';
-import '../../styles.css';
 
 
 var QuesContainer = () => {
