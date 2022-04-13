@@ -1,12 +1,17 @@
 import React, { useState, useContext } from 'react';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import PinterestIcon from '@mui/icons-material/Pinterest';
 
-function Share () {
+const Share = () => {
 
   return (
-    <div>
-      Share on Social Media (TODO: get icons for facebook, twitter and pinterest)
+    <div className="share-icons">
+      <FacebookIcon fontSize="small"/>
+      <TwitterIcon />
+      <PinterestIcon />
     </div>
-  )
-}
+  );
+};
 
 export default Share;

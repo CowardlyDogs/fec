@@ -7,7 +7,7 @@ import { Overview, OverviewContext } from '../../Overview.jsx';
 export const CartContext = React.createContext(null);
 
 
-function Cart() {
+const Cart = () => {
   const currentStyle = useContext(OverviewContext).currentStyle;
   const [sku, setSku] = useState(null);
   const [sizeSelected, setSizeSelected] = useState(null);
@@ -24,19 +24,19 @@ function Cart() {
   }
 
 
-  function toggleCart(value) {
+  const toggleCart = (value) => {
     setCartButtonClicked(value);
-  }
+  };
 
   return (
     <CartContext.Provider value={currentStyle}>
-      {/* TODO: Delete Cart Title */}
-      <h1>Add to Cart</h1>
-      <SizeSelector setSku={setSku} setSizeSelected={setSizeSelected} sizeSelected={sizeSelected} cartButtonClicked={cartButtonClicked} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart}/>
-      <QuantitySelector sku={sku} setQtySelected={setQtySelected} qtySelected={qtySelected}/>
-      <AddToCart sizeSelected={sizeSelected} qtySelected={qtySelected} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
+      <div className="Cart">
+        <SizeSelector setSku={setSku} setSizeSelected={setSizeSelected} sizeSelected={sizeSelected} cartButtonClicked={cartButtonClicked} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
+        <QuantitySelector sku={sku} setQtySelected={setQtySelected} qtySelected={qtySelected} />
+        <AddToCart sizeSelected={sizeSelected} qtySelected={qtySelected} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
+      </div>
     </CartContext.Provider>
   );
-}
+};
 
 export default Cart;
