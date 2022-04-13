@@ -1,8 +1,8 @@
 describe('First Unit Test', function () {
   it('Tests a testing test', function () {
-    expect(true).to.equal(true)
-  })
-})
+    expect(true).to.equal(true);
+  });
+});
 
 
 describe('Search query input', function () {
@@ -11,6 +11,14 @@ describe('Search query input', function () {
 
     cy.get('.search')
       .type('testing a search query')
-      .should('have.value', 'testing a search query')
-  })
-})
+      .should('have.value', 'testing a search query');
+  });
+});
+
+describe('AddQ input fields', function () {
+  it('Find AddQ input fields, enters text', function () {
+    cy.visit('http://localhost:3000/');
+
+    cy.contains('Ask A Question').click();
+  });
+});
