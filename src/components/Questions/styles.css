@@ -8,11 +8,12 @@ html {
 }
 
 
+
+
 .on-load-Q-content {
   display: flex;
   flex-direction: column;
-  margin: 20px 40px;
-  /* background-color: lightcoral; */
+  margin: 2% 10%;
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
@@ -21,11 +22,10 @@ html {
 .larger-container {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
-  margin: 20px 40px;
+  overflow: auto;
+  margin: 2% 10%;
   background-color: #f5f2f0;
   transition: max-height 0.7s ease;
-  /* background-color: lightcoral; */
 }
 
 
@@ -37,8 +37,119 @@ html {
 
 .QandA {
   margin-top: 50px;
+  display: flex;
+  align-items:center;
+  margin-top: 80px;
+  height: 80px;
 }
 
+
+.QAheader {
+  height: auto;
+  max-width: fit-content;
+  margin-left: 10%;
+  font-size: 60px;
+}
+
+.searchDiv {
+  padding-top: 10px;
+}
+
+.addQ {
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+.addQbutton {
+  border: 2px solid #fca311;
+  background: transparent;
+  border-radius: 18px;
+  color: grey;
+  cursor: pointer;
+  font-size: 15px;
+  height: 40px;
+  width: 160px;
+  padding: 0 10px;
+  position: relative;
+  margin-top: 22px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.addQbutton:hover {
+  background: #fca311;
+  color: white;
+}
+
+.moreQs {
+  border: 2px solid #fca311;
+  background: transparent;
+  border-radius: 18px;
+  color: grey;
+  cursor: pointer;
+  font-size: 15px;
+  height: 40px;
+  width: 230px;
+  padding: 0 10px;
+  position: relative;
+  margin-top: 22px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+  /* margin-left: 7%; */
+}
+
+.moreQs:hover {
+  background: #fca311;
+  color: white;
+}
+
+.exp-moreQs {
+  border: 2px solid #fca311;
+  background: transparent;
+  border-radius: 18px;
+  color: grey;
+  cursor: pointer;
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  padding: 0 10px;
+  position: relative;
+  margin-top: 22px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.exp-moreQs:hover {
+  background: #fca311;
+  color: white;
+}
+
+.question-btns {
+  display: flex;
+  margin-bottom: 70px;
+  margin-left: 10%;
+}
+
+.addA {
+  border: 2px solid #fca311;
+  background: transparent;
+  border-radius: 18px;
+  color: grey;
+  cursor: pointer;
+  font-size: 13px;
+  height: 30px;
+  width: 160px;
+  padding: 0 10px;
+  position: relative;
+  margin-top: 22px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.addA:hover {
+  background: #fca311;
+  color: white;
+}
+
+.answer-btns {
+  display: flex;
+}
 
 .header {
   display: inline-block;
@@ -53,16 +164,13 @@ html {
 
 .search {
   font-size: 15px;
-  background-color: lightgray;
+  border: 2px solid #fca311;
+  background-color: transparent;
   margin: 10px 40px;
-  width: 300px;
-  height: 50px;
-  border: none;
-}
-
-
-.question {
-  /* display: flex; */
+  width: 310px;
+  height: 40px;
+  border-radius: 18px;
+  padding-left: 20px;
 }
 
 
@@ -74,7 +182,7 @@ html {
 
 
 .Qname {
-  font-size: 20px;
+  font-size: 18px;
   height: 20px;
   margin-bottom: 5px;
 }
@@ -82,6 +190,7 @@ html {
 
 .Qdate {
   font-size: 15px;
+  color: grey;
 }
 
 
@@ -89,7 +198,7 @@ html {
   font-size: 20px;
   display: inline-block;
   padding: 5px 10px;
-  width: 50px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 
@@ -100,13 +209,15 @@ html {
   width: 70%;
   height: auto;
   line-height: 1.42857;
+
 }
 
 .help-report {
   display: inline-block;
   width:100%;
   position:relative;
-  right: 0px
+  right: 0px;
+  color: grey
 }
 
 .hr-flex {
@@ -122,8 +233,19 @@ html {
   margin: 0 5px;
 }
 
+.helpful:hover {
+  color: #fca311;
+  cursor: pointer;
+}
+
 .report {
   margin: 0 5px;
+  transition: color .2s ease-in-out
+}
+
+.report:hover {
+  color: #fca311;
+  cursor: pointer;
 }
 
 
@@ -139,16 +261,17 @@ html {
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 17px;
   margin-top: 45px;
-  margin-left: 157px;
+  margin-left: 25%;
 }
 
 .answer-title {
   display: inline-block;
-  font-family: ov-gothic, HelveticaNeue, Helvetica Neue ,Helvetica Neue,arial,sans-serif;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
-  margin-left: 154px;
+  margin-left: 25%;
   margin-top: 12px;
   max-width: 55%;
+  text-align: left;
 }
 
 .formInputs {
@@ -158,9 +281,12 @@ html {
 }
 
 .formTitle {
-  font-family: ov-gothic,HelveticaNeue,Helvetica Neue ,Helvetica Neue,arial,sans-serif;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 36px;
   margin: 0 0 38px;
+  margin-left: 25%;
+  text-align: left;
+  max-width: 60%;
 }
 
 .quesTitle {
@@ -179,7 +305,7 @@ html {
 }
 
 .formInput {
-  font-family: merlo,georgia,serif;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-top: 3px;
   background-color: #f1f1f1;
   border: none;
@@ -191,7 +317,7 @@ html {
 }
 
 .quesBody {
-  font-family: merlo,georgia,serif;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f1f1f1;
   border: none;
   min-height: 150px;
@@ -199,13 +325,20 @@ html {
   width: 100%;
   padding: 0.5em;
   margin-bottom: 20px;
-  /* resize: none; */
+  font-size: 16px;
+  resize: none;
 }
 
 input[type=text] {
   word-wrap: break-word;
   word-break: break-all;
-  height: 80px;
+  height: 60px;
+}
+
+input[type=email] {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 60px;
 }
 
 label {
@@ -216,7 +349,6 @@ label {
 input {
   display: block;
   margin-top: 1em;
-  padding: .5em;
   border-radius: 5px;
 }
 
@@ -232,7 +364,13 @@ input {
   width: 200px;
   padding: 0 24px;
   position: relative;
-  margin-left: 10%
+  margin-left: 10%;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.submit:hover {
+  color: black;
+  background-color:white
 }
 
 .exit {
@@ -240,17 +378,16 @@ input {
   background: none;
   border: none;
   cursor: pointer;
-  /* height: 36px; */
-  transition:1s;
+  transition: color .2s ease-in-out
 }
 
-/* .exit:hover {
+.exit:hover {
   display: inline-block;
   background: none;
   border: none;
   cursor: pointer;
-  transform:rotate(720deg);
-} */
+  color: white
+}
 
 
 .form-buttons {
@@ -260,38 +397,44 @@ input {
 }
 
 
-/* Answers */
+
 
 .Acontainer {
-  /* border: 1px solid black; */
   margin: 5px 10px;
-  /* border-top: 1px solid black; */
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 
 
 .A {
   display: inline-block;
+  font-size: 21px;
   vertical-align: top;
-  padding: 0 4px
+  padding: 0 2px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .answerList {
+  background-color: #f5f2f0;
   display: inline-block;
-  padding: 0 5px;
+  padding: 0 16px;
   width: 90%;
-  border-bottom: 1px solid black;
-  transition: max-height 0.7s ease;
   overflow: hidden;
+  transition: max-height 0.7s ease;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
 }
 
+
+
 .scroll-list {
+  background-color: #f5f2f0;
   display: inline-block;
   overflow: auto;
-  padding: 0 5px;
+  padding: 0 16px;
   width: 90%;
-  border-bottom: 1px solid black;
   transition: max-height 0.7s ease;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
 }
 
 .Answer {
@@ -301,8 +444,7 @@ input {
 .answer-body {
   display: inline-block;
   width: 100%;
-  color: green;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .answer-info {
@@ -318,6 +460,7 @@ input {
 }
 
 .Aname {
+  color: grey;
   display: inline-block;
   font-size: 15px;
   width: auto;
@@ -325,6 +468,8 @@ input {
 }
 
 .Adate {
+  width: 400px;
+  color: grey;
   display: inline-block;
   font-size: 15px;
 }
@@ -332,6 +477,7 @@ input {
 .answer-photos {
   display: flex;
   gap: 15px;
+  padding-bottom: 8px
 }
 
 .sm-answer-photo {
@@ -341,10 +487,6 @@ input {
   /* padding: 0 10px; */
 }
 
-.shade {
-  /* opacity: 0.4;
-  filter: drop-shadow(2px 4px 6px black); */
-}
 
 .lg-answer-photo {
   position: fixed;
@@ -366,7 +508,7 @@ input {
 
 
 .front {
-  z-index: 10;
+  z-index: 100;
 }
 
 .invalid-email {
@@ -396,6 +538,7 @@ input {
 }
 
 .modal-background {
+  z-index: 1;
   position: fixed;
   width:100%;
   height: 100%;

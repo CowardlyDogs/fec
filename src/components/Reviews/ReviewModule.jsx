@@ -42,18 +42,6 @@ let ReviewModule = ({productId}) => {
   }, [page, update]);
 
   let submitNewReview = (review) => {
-    /*
-    **TODO** double check that review object is in correct format
-    product_id
-    rating
-    summary
-    body
-    recommend
-    name
-    email
-    photos
-    characteristics
-    */
     Helpers.postReview(review, (err) => {
       if (err) { console.error('Unable to Post'); }
     });
@@ -85,14 +73,6 @@ let ReviewModule = ({productId}) => {
   return (
     <div className="reviews">
       <h1>Ratings and Reviews</h1>
-
-      {/*****TODO***
-      *
-      * Create styled Div's
-      * Place NewReview tag
-      * Place ReviewedList taga
-      *
-      */}
 
       { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={productId} onSubmit={submitNewReview} /> }
       <div className='Rating-Review'>

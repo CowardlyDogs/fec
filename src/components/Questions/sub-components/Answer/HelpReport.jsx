@@ -45,7 +45,7 @@ const HelpReport = ({id, helpfulness}) => {
 
   if (helpful) {
     helpfulDiv =
-    <div className='helpful'> Helpful? Yes({helpfulness += 1}) </div>;
+    <div style={{color: '#fca311'}} className='helpful'> Helpful? Yes({helpfulness += 1}) </div>;
   } else {
     helpfulDiv =
     <div className='helpful'> <a onClick={helpfulAnswer}> Helpful? Yes({helpfulness})</a> </div>;
@@ -53,7 +53,7 @@ const HelpReport = ({id, helpfulness}) => {
 
   if (reported) {
     reportDiv =
-    <div className='report'>
+    <div style={{color: '#fca311'}} className='report'>
       <a>Reported</a>
     </div>;
   } else {

@@ -64,21 +64,22 @@ var AnswerContainer = ({question_body, setHeight}) => {
       toggleListSize = 'answerList';
       answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       contentHeight = `${listHeight}px`;
-      showMore = <button onClick={(moreQs)}>See More Answers</button>;
+      showMore = <button className='addA' onClick={(moreQs)}>See More Answers</button>;
 
     } else if (view === 1) {
 
       toggleListSize = 'scroll-list';
       answerList = mapAnswers([...seller, ...anons]);
       contentHeight = '400px';
-      prevAnswers = <button onClick={()=>setView(0)}>Collapse answers</button>;
+      prevAnswers = <button className='addA' onClick={()=>setView(0)}>Collapse answers</button>;
     }
   }
 
   return (
     <div ref={answers} className='Acontainer'>
-      <div className='A'><strong>A:</strong></div>
+      <div className='A'>A:</div>
       <div className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
+
       <div className='answer-buttons'>
         <AddAnswer />
         <div className='more-answers'> {showMore}   </div>
