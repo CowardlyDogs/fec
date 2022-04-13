@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Cart, CartContext } from './Cart.jsx';
 
-function SizeSelector(props) {
+const SizeSelector = (props) => {
   const currentStyle = useContext(CartContext);
   const [listOpen, setListOpen] = useState(false);
   const [forceSize, setForceSize] = useState(false);
@@ -13,7 +13,7 @@ function SizeSelector(props) {
   }
 
   return (
-    <div>
+    <div className="size-selector">
       {forceSize ? <div>Please select size</div> : null}
 
       <button
@@ -27,18 +27,18 @@ function SizeSelector(props) {
 
       {/* if the list is open, display the div below */}
       {listOpen || forceSize ? (
-        <ul>
+        <ul className="size-list">
           {
             // map through the keys of the skus and display the size of each sku
             Object.keys(currentStyle.skus).map((sku, i) => (
-              <li className="size-list" key={i} onClick={() => {
+              <li className="size" key={i} onClick={() => {
                 props.setSku(currentStyle.skus[sku]);
-                props.setSizeSelected(currentStyle.skus[sku].size)
+                props.setSizeSelected(currentStyle.skus[sku].size);
                 setListOpen(false);
                 setForceSize(false);
-                setButtonText(currentStyle.skus[sku].size)
+                setButtonText(currentStyle.skus[sku].size);
                 if (props.cartButtonClicked) {
-                  props.toggleCart(false)
+                  props.toggleCart(false);
                 }
               }
               }>
@@ -50,7 +50,7 @@ function SizeSelector(props) {
       ) : null
       }
     </div>
-  )
-}
+  );
+};
 
 export default SizeSelector;
