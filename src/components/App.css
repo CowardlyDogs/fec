@@ -75,3 +75,8 @@ h1 {
 .rating-new {
   --size: 2rem;
 }
+.rel-stars {
+  --size: 1.5rem;
+  padding: 0;
+  margin: 0;
+}

@@ -33,7 +33,9 @@ const RelatedMain = ({ productId, setProduct }) => {
   }, [productId]);
 
   useEffect(() => {
-    setDisplayIds([relatedIds[0], relatedIds[1], relatedIds[2]]);
+    relatedIds && (
+      setDisplayIds([relatedIds[0], relatedIds[1], relatedIds[2]])
+    );
   }, [relatedIds]);
 
   const left = () => {
@@ -64,10 +66,12 @@ const RelatedMain = ({ productId, setProduct }) => {
       <div className="sub-main">
         {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
-        {displayIds.map(unit => {
+        {displayIds.map((unit, index) => {
+          console.log('unit ', unit)
+          console.log('index', index)
           return (
-            <li className="track" key={unit}>
-              <RelatedCarousel key={unit}unit={unit} productId={productId} setProduct={setProduct}/>
+            <li className="track" key={index}>
+              <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct}/>
             </li>
           );
         })}

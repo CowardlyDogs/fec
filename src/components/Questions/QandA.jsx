@@ -44,11 +44,6 @@ const QandA = ({defaultId}) => {
       }
     });
   }, [defaultId]);
-<<<<<<< HEAD
-
-
-=======
->>>>>>> main
 
   const searchQuestions = (search) => {
     let filtered = questions.filter( question => {

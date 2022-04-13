@@ -46,12 +46,6 @@
 	}
 }
 
-
-.card-container {
-  min-width: 33%;
-  max-width: 33%;
-}
-
 .card {
   min-width: 90%;
   max-width: 90%;
@@ -172,7 +166,9 @@ h1 {
 .action-compare {
   color: #fca311;
   cursor: pointer;
+  flex: 1;
 }
+
 
 .action-remove {
   color: black;
@@ -288,4 +284,8 @@ h2 {
   flex-direction: row;
   height: 15%;
   width: 100%;
+}
+
+.stars {
+  flex: 5;
 }
