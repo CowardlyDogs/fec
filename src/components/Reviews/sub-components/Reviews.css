@@ -106,11 +106,16 @@ hr {
   font-size: .8rem;
 }
 .reviews {
-  margin: 2rem;
+  /* margin: 2rem;
   padding: 1rem;
   background: linear-gradient(145deg, #e1e1e1, #e9e9e9);
   border-style: double;
-  border-radius: 1em;
+  border-radius: 1em; */
+  display: flex;
+  flex-direction: column;
+  margin: 2% 10%;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 .review {
   max-height: 40rem;
@@ -147,9 +152,46 @@ hr {
 .Review-Container {
   max-height: 45rem;
   overflow-y: auto;
-  border: 1px;
 }
-.Rating-Review{
+.Rating-Review {
   display: flex;
   justify-content: space-around;
+}
+
+.Review-Button {
+  border: 2px solid #fca311;
+  background: transparent;
+  border-radius: 18px;
+  color: grey;
+  cursor: pointer;
+  font-size: 15px;
+  height: 40px;
+  width: 160px;
+  padding: 0 10px;
+  position: relative;
+  margin-top: 22px;
+  margin-left: 60%;
+  margin-right: 5px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+.Review-Button:hover {
+  background: #fca311;
+  color: white;
+}
+.Rate-Review-Head {
+  margin-top: 50px;
+  display: flex;
+  align-items:center;
+  margin-top: 80px;
+  height: 80px;
+}
+.Review-Header {
+  height: auto;
+  max-width: fit-content;
+
+  font-size: 60px;
+}
+.New-Review-Button {
+  margin-left: auto;
+  margin-right: 10%;
 }
