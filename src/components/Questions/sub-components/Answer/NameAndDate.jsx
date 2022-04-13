@@ -3,7 +3,6 @@ import QandA from '../../QandA.jsx';
 import moment from 'moment';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import '../../styles.css';
 
 
 var NameAndDate = ({name, date}) => {

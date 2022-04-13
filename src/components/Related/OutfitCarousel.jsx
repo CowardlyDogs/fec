@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './css/Related.css';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ClearIcon from '@material-ui/icons/Clear';

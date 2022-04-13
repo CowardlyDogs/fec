@@ -3,8 +3,6 @@ import QandA from '../../QandA.jsx';
 import moment from 'moment';
 import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
-import '../../styles.css';
-
 
 const QNameAndDate = ({name, date}) => {
   const  product = useContext(QandAContext);

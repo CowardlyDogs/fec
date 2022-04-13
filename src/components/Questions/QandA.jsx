@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import reactDOM from 'react-dom';
-import './styles.css';
 import authorization from '../../../config.js';
 import { sortQuestions, sortAnswers } from './HelperFunction.js';
 import QuesContainer from './sub-components/Question/QuesContainer.jsx';

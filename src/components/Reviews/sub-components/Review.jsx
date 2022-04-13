@@ -54,7 +54,7 @@ var Review = ({review, helpful, report}) => {
           </div>
 
         </div>
-        <div className="report">
+        <div className="report-container">
           <button onClick={handleHelp}> This was Helpful </button>
           <button onClick={handleReport}> Report </button>
         </div>

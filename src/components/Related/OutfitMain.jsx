@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './css/Related.css';
 import OutfitCarousel from './OutfitCarousel.jsx';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -74,7 +73,7 @@ const OutfitMain = ({ productId }) => {
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
         <div className="add-track">
           <button className="add-fit" onClick={() => addToOutfit()} style={{backgroundImage: `url(${addFit})`}}>
-            <h1 className="add-text">Add to Outfit</h1>
+            <h1 className="rel-title">Add to Outfit</h1>
           </button>
         </div>
         {dispOutfit.length > 1 &&

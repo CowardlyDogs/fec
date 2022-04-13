@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import RelatedCarousel from './RelatedCarousel.jsx';
-import './css/Related.css';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Helpers from '../APIHelpers.js';
@@ -67,8 +66,6 @@ const RelatedMain = ({ productId, setProduct }) => {
         {start.current > 0 &&
         <div className="left" onClick={left}> <ArrowBackIosIcon/> </div>}
         {displayIds.map((unit, index) => {
-          console.log('unit ', unit)
-          console.log('index', index)
           return (
             <li className="track" key={index}>
               <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct}/>

@@ -6,7 +6,6 @@ import NameAndDate from './NameAndDate.jsx';
 import Photos from './Photos.jsx';
 import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
-import '../../styles.css';
 
 
 

@@ -12,9 +12,9 @@ const App = () => {
   return (
     <div className="App">
       <Overview     productId={productId}/>
-      <h1>Related Items</h1>
+      <h1 className="rel-title">Related Items</h1>
       <RelatedMain     productId={productId} setProduct={setProduct}/>
-      <h1>Your Outfit</h1>
+      <h1 className="rel-title">Your Outfit</h1>
       <OutfitMain      productId={productId}/>
       <QandA        defaultId={productId}/>
       <ReviewModule productId={productId}/>

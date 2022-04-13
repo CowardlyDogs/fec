@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Helpers from '../APIHelpers.js';
-import './css/Related.css';
 import CompareDisplay from './CompareDisplay.jsx';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 
@@ -75,7 +74,7 @@ const CompareMain = ({ productId, currentId, compare, setCompare }) => {
         </h1>
         <div className="main-compare">
           <div className="prod-names">
-            <h2>{mainName}</h2><h3 className="compare-arrow"><CompareArrowsIcon/></h3><h2>{relatedName}</h2>
+            <h2 className="prod-sub">{mainName}</h2><h3 className="compare-arrow"><CompareArrowsIcon/></h3><h2 className="prod-sub">{relatedName}</h2>
           </div>
           <CompareDisplay feature={[...features]} rel={rel} main={main}/>
         </div>

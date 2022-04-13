@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './css/Related.css';
 import CompareIcon from '@material-ui/icons/Compare';
 import Helpers from '../APIHelpers.js';
 import StarRatingDisplay from '../StarRatingDisplay.jsx';
