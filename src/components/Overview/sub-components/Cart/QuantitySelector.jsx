@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Cart, CartContext } from './Cart.jsx';
 
 
-function QuantitySelector(props) {
+const QuantitySelector = (props) => {
   const currentStyle = useContext(CartContext).currentStyle;
   const sku = props.sku;
   const [listOpen, setListOpen] = useState(false);
@@ -23,7 +23,7 @@ function QuantitySelector(props) {
         className="quantity-button"
         onClick={() => {
           if (sku) {
-            setListOpen(!listOpen)
+            setListOpen(!listOpen);
           }
         }}
 
@@ -34,19 +34,19 @@ function QuantitySelector(props) {
 
       {/* if the button is clicked, the state is set to open and will render the div below */}
       {listOpen ? (
-        <div>
+        <ul className="quantity-list">
           {quantity.map((num, i) => (
-            <li className="quantity-list" key={i} onClick={() => {
+            <li className="quantity" key={i} onClick={() => {
               setListOpen(!listOpen);
               props.setQtySelected(num);
             }}>
               {num}
             </li>
           ))}
-        </div>
+        </ul>
       ) : null}
     </div>
-  )
-}
+  );
+};
 
 export default QuantitySelector;

@@ -25,10 +25,15 @@ var AddAnswer = () => {
   const [ hover,        setHover        ] = useState(false);
 
   const backgroundChange    = addAnswer   ? 'modal-background' : 'hide';
-  const showHideAddAnswer   = addAnswer   ? 'modal-body addQ' : 'hide';
+  const showHideAddAnswer   = addAnswer   ? 'modal-body addQ front' : 'hide';
+
+  const warnModal           = warningBool ? 'warn-modal' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
-  const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
-  const thumbnail           = hover       ? 'sm-answer-photo shade' : 'sm-answer-photo';
+
+
+  // const emptyInputs         = warningBool ? 'warning' : 'hide';
+  // const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
+
 
   const hideModal = (e) => {
     e.preventDefault();
@@ -140,6 +145,7 @@ var AddAnswer = () => {
         <form className={showHideAddAnswer}>
           <header>
             <span className='formPrompt'>Submit Your Answer</span>
+            <br/>
             <h1 className='answer-title'>{productName}: {question_body}</h1>
           </header>
 
@@ -161,24 +167,24 @@ var AddAnswer = () => {
               <input type='file' name='image' onChange={(e)=>onFileChange(e)}/>
 
               {[...urls].map( url => {
-                return <img key={url} className={thumbnail} src={url} width='50px' height='50px' onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
+                return <img key={url} width='75px' height='auto' src={url}  onClick={()=>remove(url)} onMouseEnter={()=>setHover(prev=>!prev)} onMouseLeave={()=>setHover(prev=>!prev)}/>;
               })}
             </div>
           </div>
 
           <div className='form-buttons'>
             <button type='submit' className='submit' onClick={warningBool ? setAndClear : handleSubmit}>  Submit</button>
-            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fill-rule='evenodd'></path></svg></button>
+            <button className='exit' onClick={hideModal}><svg viewBox='15 10 25 20' height='30'  width='50'><title>Close 'X' Icon</title><path aria-hidden='true' d='M19.414 18l4.243 4.243a1 1 0 0 1-1.414 1.414L18 19.414l-4.243 4.243a1 1 0 0 1-1.414-1.414L16.586 18l-4.243-4.243a1 1 0 0 1 1.414-1.414L18 16.586l4.243-4.243a1 1 0 0 1 1.414 1.414L19.414 18z' fillRule='evenodd'></path></svg></button>
           </div>
 
         </form>
       </div>
+      <div className={warnModal}>
+        <span className={emptyInputs}  onClick={set}>You must enter the following:<br/>{warningVals.join(', ')}</span>
+      </div>
 
-      <span className={emptyInputs}  onClick={set}>**You must enter the following: {warningVals.join(', ')}**</span>
-      <span className={emailWarning} onClick={set}>{invalidEmail}</span>
 
-
-      <button onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
+      <button className='addA' onClick={()=>setAddAnswer(prev=>!prev)}>Add Answer</button>
     </div>
 
   );

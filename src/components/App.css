@@ -39,7 +39,7 @@ h1 {
 
 /*  Firefox Styles For Star Rating Range  */
 .rating::-moz-range-track {
-  background: rgba(100,100,100, 0.15);
+  background: rgba(50, 50, 50, 0.33);
   block-size: 100%;
   mask: repeat left center/var(--size) var(--star);
 }
@@ -54,7 +54,7 @@ h1 {
 
 /*  Chrome Styles For Star Rating Range */
 .rating::-webkit-slider-runnable-track {
-  background: rgba(100,100,100, 0.15);
+  background: rgba(50, 50, 50, 0.33);
   block-size: 100%;
   mask: repeat left center/var(--size) var(--star);
   -webkit-mask: repeat left center/var(--size) var(--star);
@@ -75,8 +75,15 @@ h1 {
 .rating-new {
   --size: 2rem;
 }
+<<<<<<< HEAD
 .rel-stars {
   --size: 1.5rem;
   padding: 0;
   margin: 0;
+=======
+.rating-overview {
+  --size: 2rem;
+  display: inline;
+  margin-left: -15px;
+>>>>>>> main
 }

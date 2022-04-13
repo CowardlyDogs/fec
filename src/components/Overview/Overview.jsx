@@ -6,7 +6,7 @@ import Cart from './sub-components/Cart/Cart.jsx';
 import ImageGallery from './sub-components/ImageGallery/ImageGallery.jsx';
 import authorization from '../../../config.js';
 import APIHelpers from '../APIHelpers.js';
-import './styles.css';
+import './overviewStyles.css';
 
 export const OverviewContext = React.createContext(null);
 
@@ -59,9 +59,11 @@ const Overview = ({ productId }) => {
 
   return (
     <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
-      <ProductInfo productInfo={productInfo} ratings={ratings} />
-      <StylesSelector setCurrentStyle={setCurrentStyle} />
-      <Cart />
+      <div className="sidebar">
+        <ProductInfo productInfo={productInfo} ratings={ratings} />
+        <StylesSelector setCurrentStyle={setCurrentStyle} />
+        <Cart />
+      </div>
       <ImageGallery />
     </OverviewContext.Provider>
   );

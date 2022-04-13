@@ -73,11 +73,13 @@ const QandA = ({defaultId}) => {
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
       searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader   }}>
 
-      <div ref={header} className='QandA'>
-        <h2> Questions and Answers</h2>
-        <div>{search}</div>
+      <div ref={header}>
+        <div className='QandA'>
+          <h2 className='QAheader'> Q<span style={{fontSize: '48px'}}>&</span>A</h2>
+          <div className='searchDiv'>{search}</div>
+          <AddQuestion defaultId={defaultId} productName={productName}/>
+        </div>
         <div>{questionList}</div>
-        <AddQuestion defaultId={defaultId} productName={productName}/>
       </div>
     </QandAContext.Provider>
   );
