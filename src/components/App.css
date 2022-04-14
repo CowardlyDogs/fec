@@ -1216,15 +1216,12 @@ hr {
   position: absolute;
   top: 0;
   margin-top: 50px;
-  left: 5%;
+  left: 88px;
+  object-fit: contain;
 }
 
 .thumbnails {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-end;
-  align-self: center;
+margin-left: 0%;
 }
 
 .thumbnail {
@@ -1237,13 +1234,16 @@ hr {
 
 .previous {
   cursor: pointer;
+  position: absolute;
+  bottom: 25px;
+  left: 30px;
 }
 
 .next {
   cursor: pointer;
-  position: relative;
-  left: 50px;
-  bottom: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
 }
 
 
@@ -1256,6 +1256,7 @@ hr {
   max-height: 90%;
   min-height: 90%;
   align-self: flex-start;
+  object-fit: contain;
 }
 
 .expanded-view-icon {

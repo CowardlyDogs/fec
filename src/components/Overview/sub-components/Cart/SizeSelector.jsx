@@ -3,12 +3,6 @@ import { Cart, CartContext } from './Cart.jsx';
 
 const SizeSelector = (props) => {
   const currentStyle = useContext(CartContext);
-  const [defaultSize, setDefaultSize] = useState("Select Size");
-
-
-  if (props.cartButtonClicked && !forceSize) {
-    setForceSize(true);
-  }
 
   const updateSize = (e) => {
 
@@ -20,7 +14,7 @@ const SizeSelector = (props) => {
   return (
     <div className="size-selector">
       <select value={!props.sizeSelected ? '' : null} className="size-list" onChange={(e) => updateSize(e)}>
-        <option value="" disabled selected>{defaultSize}</option>
+        <option value="" disabled selected>Select Size</option>
         {
           // map through the keys of the skus and display the size of each sku
           Object.keys(currentStyle.skus).map((sku, i) => (
