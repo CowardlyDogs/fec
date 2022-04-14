@@ -5,7 +5,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import Helpers from '../APIHelpers.js';
 
 
-const RelatedMain = ({ productId, setProduct }) => {
+const RelatedMain = ({ theme, productId, setProduct }) => {
   const [relatedIds,    setRelatedIds    ] = useState('');
   const [displayIds,    setDisplayIds    ] = useState([]);
 
@@ -68,7 +68,7 @@ const RelatedMain = ({ productId, setProduct }) => {
         {displayIds.map((unit, index) => {
           return (
             <li className="track" key={index}>
-              <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct}/>
+              <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct} theme={theme}/>
             </li>
           );
         })}
