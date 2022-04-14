@@ -23,7 +23,7 @@ const Overview = ({ productId }) => {
 
     // 65631 original
     // 65635 for styles with lots of pictures
-    APIHelpers.getStyles(65635, (err, res) => {
+    APIHelpers.getStyles(productId, (err, res) => {
       if (err) {
         console.error(err);
       } else {
@@ -33,7 +33,7 @@ const Overview = ({ productId }) => {
       }
     });
 
-    APIHelpers.getProduct(65635, (err, res) => {
+    APIHelpers.getProduct(productId, (err, res) => {
       if (err) {
         console.error(err);
       } else {
@@ -41,7 +41,7 @@ const Overview = ({ productId }) => {
       }
     });
 
-    APIHelpers.getRatingsMeta(65635, (err, res) => {
+    APIHelpers.getRatingsMeta(productId, (err, res) => {
       if (err) {
         console.error(err);
       } else {

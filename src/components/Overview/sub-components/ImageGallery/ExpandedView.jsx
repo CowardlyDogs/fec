@@ -25,10 +25,10 @@ const ExpandedView = (props) => {
       }
       <img className="expanded-photo" src={photo.url} height={isZoom ? 2000 : 800} width={isZoom ? 2000 : 800}
         onClick={() => setIsZoom(!isZoom)} />
-      <div className="expanded-view-icon">
+      <div className="expanded-view-icons">
         {
           photos.map((icon, i) =>
-            <img key={i} src={icon['thumbnail_url']} height={50} width={50}
+            <img className="expanded-view-icon" key={i} src={icon['thumbnail_url']} height={50} width={50}
               onClick={() => setPhoto(icon)} />
           )
         }

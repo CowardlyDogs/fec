@@ -8,7 +8,7 @@ const StarRating = ({ numRatings, averageRatings }) => {
 
 
   return (
-    <div>
+    <div className="star-rating">
       <StarRatingDisplay rating={averageRatings} special="rating-overview"/>
       <span className="star-text"> {`Read all ${numRatings} reviews`}</span>
     </div>

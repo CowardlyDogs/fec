@@ -6,10 +6,10 @@ const AddToCart = (props) => {
 
 
   return (
-    <div>
+    <div className="add-to-cart">
       <button
         type="button"
-        className="add-to-cart"
+        className="add-to-cart-button"
         onClick={() => {
           !props.sizeSelected ?
             props.toggleCart(true)

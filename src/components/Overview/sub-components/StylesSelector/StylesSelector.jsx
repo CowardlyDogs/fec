@@ -24,20 +24,38 @@ const StylesSelector = (props) => {
     productRows.push(groupedStyles);
   }
 
+
+
   return (
     <div className="Styles-Selector">
       {
         productRows.map((row, i) =>
           <div key={i} className="styles-row">
             {
-              row.map((style, j) =>
-                <div key={j} className="style">
-                  <span className="style-title">{style.name}</span>
-                  <img className="style-thumbnail" src={style.photos[0].thumbnail_url} width={50} height={50}
-                    onClick={() => {
-                      props.setCurrentStyle(style);
-                    }} />
-                </div>
+              row.map((style, j) => {
+
+                var colors = style.name.split(' & ');
+                for (let i = 0; i < colors.length; i++) {
+                  if (colors[i].split(' ').length > 1) {
+                    colors[i] = colors[i].split(' ')[1];
+                  }
+                }
+
+                return (
+                  <div key={j} className="style">
+                    <span className="style-title">{style.name}</span>
+                    <div className="style-thumbnail"
+                      style={{
+                        // backgroundImage: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`
+                        backgroundImage: `linear-gradient(-45deg, ${colors[1]}, ${colors[1]} 49%, white 49%, white 51%, ${colors[0]} 51%)`
+
+                      }}
+                      onClick={() => {
+                        props.setCurrentStyle(style);
+                      }} />
+                  </div>
+                );
+              }
               )
             }
           </div>
