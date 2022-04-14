@@ -8,7 +8,7 @@ import { QuestionContext } from '../Question/Question.jsx';
 
 var AnswerContainer = ({question_body, setHeight}) => {
   const product = useContext(QandAContext);
-  const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
+  const { visibleAs, viewNum, data} = useContext(QuestionContext);
 
   const [       view, setView       ] = useState(0);
   const [      start, setStart      ] = useState(0);
@@ -25,7 +25,7 @@ var AnswerContainer = ({question_body, setHeight}) => {
   const seller = [];
   const anons = [];
 
-  sortedAnswers.forEach( answer => {
+  visibleAs.forEach( answer => {
     if (answer.answerer_name === 'Seller') {
       seller.push(answer);
     } else {
@@ -51,10 +51,10 @@ var AnswerContainer = ({question_body, setHeight}) => {
   };
 
 
-  if (sortedAnswers.length === 0) {
+  if (visibleAs.length === 0) {
     answerList = <span>No answers yet.</span>;
 
-  } else if (sortedAnswers.length <= 2) {
+  } else if (visibleAs.length <= 2) {
     answerList = mapAnswers([...seller, ...anons]);
     contentHeight = `${listHeight}px`;
     showMore = null;

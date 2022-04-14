@@ -13,13 +13,15 @@ const Question = ({data, setHeight, contentHeight}) => {
   const product = useContext(QandAContext);
   const { question_body, question_date, answers, asker_name, question_id, question_helpfulness } = data;
 
-  const [ viewNum, setViewNum ] = useState(0);
-
   let sortedAnswers = sortAnswers(answers);
+
+  const [ viewNum, setViewNum ] = useState(0);
+  const [visibleAs, setVisibleAs ] = useState(sortedAnswers);
+
 
 
   return (
-    <QuestionContext.Provider value={{sortedAnswers, data, viewNum, question_id, question_body}}>
+    <QuestionContext.Provider value={{visibleAs, data, viewNum, question_id, question_body, setVisibleAs}}>
       <div className='question' >
         <QNameAndDate     name={asker_name} date={question_date}/>
         <QuestionBody     body={question_body}/>

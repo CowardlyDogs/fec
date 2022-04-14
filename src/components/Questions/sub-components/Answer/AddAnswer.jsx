@@ -4,11 +4,12 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 import authorization from '../../../../../config.js';
 import APIHelpers from '../../../APIHelpers.js';
+import Answer from './Answer.jsx';
 
 
 var AddAnswer = () => {
   const {     product, productName   } = useContext(QandAContext);
-  const { question_id, question_body } = useContext(QuestionContext);
+  const { question_id, question_body, setVisibleAs } = useContext(QuestionContext);
 
   const [ addAnswer,    setAddAnswer    ] = useState(false);
   const [ answerVal,    setAnswerVal    ] = useState('');
@@ -49,6 +50,7 @@ var AddAnswer = () => {
         setInvalidEmail('Answer not posted, please provide valid email address');
       } else {
         console.log(`Answer posted`, res, answer);
+        setVisibleAs(prev=>[...prev, answer]);
         setAnswerVal('');
         setNicknameVal('');
         setEmailVal('');
