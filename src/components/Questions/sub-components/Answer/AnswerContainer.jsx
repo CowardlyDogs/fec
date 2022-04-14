@@ -78,8 +78,8 @@ var AnswerContainer = ({question_body, setHeight}) => {
     <div ref={answers} className='Acontainer'>
       <div className='A'>A:</div>
       <div className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
-
       <div className='answer-buttons'>
+
         <AddAnswer />
         <div className='more-answers'> {showMore}   </div>
         <div className='less-answers'> {prevAnswers}</div>

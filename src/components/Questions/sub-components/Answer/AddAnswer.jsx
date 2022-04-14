@@ -20,7 +20,7 @@ var AddAnswer = () => {
   const [ emailBool,    setEmailBool    ] = useState(false);
   const [ answerImages, setAnswerImages ] = useState([]);
   const [ imageUploads, setImageUploads ] = useState([]);
-  const [ urls,         setUrls         ] = useState('');
+  const [ urls,         setUrls         ] = useState([]);
   const [ hover,        setHover        ] = useState(false);
 
   const backgroundChange    = addAnswer   ? 'modal-background' : 'hide';
@@ -28,11 +28,6 @@ var AddAnswer = () => {
 
   const warnModal           = warningBool ? 'warn-modal' : 'hide';
   const emptyInputs         = warningBool ? 'warning' : 'hide';
-
-
-  // const emptyInputs         = warningBool ? 'warning' : 'hide';
-  // const emailWarning        = emailBool   ? 'invalid-email' : 'hide';
-
 
   const hideModal = (e) => {
     e.preventDefault();

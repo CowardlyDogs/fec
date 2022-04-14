@@ -610,7 +610,7 @@ html {
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 17px;
   margin-top: 45px;
-  margin-left: 25%;
+  margin-left: 20%;
 }
 
 .answer-title {
@@ -633,7 +633,8 @@ html {
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 36px;
   margin: 0 0 38px;
-  margin-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
   max-width: 60%;
 }

@@ -64,7 +64,7 @@ const QandA = ({defaultId}) => {
     questionList = <QuesContainer />;
     search = <Search />;
   } else {
-    questionList = <span>No questions asked yet.</span>;
+    questionList = <span style={{marginLeft: '10%'}}>No questions asked yet.</span>;
   }
 
   return (
