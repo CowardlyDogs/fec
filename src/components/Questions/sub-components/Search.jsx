@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import QandA from '../QandA.jsx';
 import { QandAContext } from '../QandA.jsx';
 const Search = () => {
-  const { product, setSearchVal, searchVal, searchQuestions, setVisibleQs, questions } = useContext(QandAContext);
+  const { product, setSearchVal, searchVal, searchQuestions, setVisibleQs, questions, theme } = useContext(QandAContext);
 
   const handleChange = (e) => {
     setSearchVal(e.target.value);
@@ -16,7 +16,7 @@ const Search = () => {
 
   return (
     <form>
-      <input className='search'
+      <input id={theme} className='search'
         id='searchVal'
         placeholder='Have a question? Search for answers...'
         value={searchVal}

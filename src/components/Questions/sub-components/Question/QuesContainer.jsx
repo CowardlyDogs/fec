@@ -47,32 +47,24 @@ var QuesContainer = () => {
 
 
   if ( view === 0 ) {
-    toggleContainerSize = 'on-load-Q-content';
+    contentHeight = `${height + ansHeight}px`;
 
     if (visibleQs.length <= 1) {
       showMore = null;
       questionList = mapQuestions(visibleQs.slice(0, end));
-      contentHeight = `${height + ansHeight}px`;
-
     } else {
       questionList = mapQuestions(visibleQs.slice(0, end));
-      contentHeight = `${height + ansHeight}px`;
       showMore = <button id={theme} className='moreQs' onClick={()=> {
         increment();
         setView(1);
       }}>   More Answered Questions   </button>;
     }
   } else if ( view === 1 ) {
-
     if (visibleQs.length === 0) {
       setView(0);
     }
 
-
     questionList = mapQuestions(visibleQs.slice(0, end));
-
-    toggleContainerSize = 'larger-container';
-    contentHeight = '650px';
 
     if (end >= visibleQs.length) {
       showMore = null;
@@ -87,11 +79,9 @@ var QuesContainer = () => {
     }
   }
 
-
-
   return (
     <div>
-      <div ref={content} className={toggleContainerSize} style={{maxHeight: contentHeight}}>
+      <div ref={content} className='larger-container' style={{maxHeight: view === 0 ? contentHeight : '650px'}}>
         {questionList}
       </div>
       <div className='question-btns'>
