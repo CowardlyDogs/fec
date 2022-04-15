@@ -17,7 +17,7 @@ const QuantitySelector = (props) => {
 
   return (
     <div className="quantity-selector">
-      <select className="size-list" disabled={!sku ? true : null} onChange={(e) => props.setQtySelected(e.target.value)}>
+      <select className="size-list" maxMenuHeight={50} disabled={!sku ? true : null} onChange={(e) => props.setQtySelected(e.target.value)}>
         <option value="" disabled selected>-</option>
         { quantity ?
           quantity.map((num, i) => (

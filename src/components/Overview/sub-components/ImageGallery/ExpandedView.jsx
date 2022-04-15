@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -7,8 +7,16 @@ import carousel from './carousel.js';
 const ExpandedView = (props) => {
   const [photo, setPhoto] = useState(props.expandedPhoto);
   const [isZoom, setIsZoom] = useState(false);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const imageRef = useRef(null);
 
   const photos = props.photos;
+
+  const handleMove = (e) => {
+    console.log(imageRef.current.getBoundingClientRect());
+
+  };
 
   return (
     <div className="expanded-modal">
@@ -23,8 +31,13 @@ const ExpandedView = (props) => {
           </div>
           : null
       }
-      <img className="expanded-photo" src={photo.url} height={isZoom ? 2000 : 800} width={isZoom ? 2000 : 800}
-        onClick={() => setIsZoom(!isZoom)} />
+      <div className="img-wrapper" ref={imageRef}
+        onMouseMove={(e) => handleMove(e)}>
+
+        <img className={isZoom ? 'expanded-photo-zoom' : 'expanded-photo'} src={photo.url}
+          onClick={() => setIsZoom(!isZoom)}
+        />
+      </div>
       <div className="expanded-view-icons">
         {
           photos.map((icon, i) =>

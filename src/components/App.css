@@ -1139,6 +1139,7 @@ hr {
 .star-text {
   font-size: 13px;
   padding-top: 13px;
+  cursor: pointer;
 }
 
 .product-category {
@@ -1264,6 +1265,9 @@ hr {
   top: 100%;
   transform: rotate(90deg);
 }
+.img-wrapper {
+  overflow: hidden;
+}
 
 .expanded-photo {
   display: block;
@@ -1274,6 +1278,18 @@ hr {
   min-height: 90%;
   align-self: flex-start;
   object-fit: contain;
+}
+
+.expanded-photo-zoom {
+  display: block;
+  cursor: crosshair;
+  margin-left: auto;
+  margin-right: auto;
+  align-self: flex-start;
+  object-fit: contain;
+  width: 100%;
+  transform: scale(2.5);
+  transition: all 0.3s ease 0s;
 }
 
 .expanded-view-icons {
