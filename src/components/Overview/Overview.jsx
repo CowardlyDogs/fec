@@ -49,7 +49,7 @@ const Overview = ({ productId }) => {
       }
     });
 
-  }, []);
+  }, [productId]);
 
   if (loading) {
     return (null);
