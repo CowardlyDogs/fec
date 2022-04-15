@@ -7,15 +7,27 @@ import carousel from './carousel.js';
 const ExpandedView = (props) => {
   const [photo, setPhoto] = useState(props.expandedPhoto);
   const [isZoom, setIsZoom] = useState(false);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  // const [x, setX] = useState(0);
+  // const [y, setY] = useState(0);
   const imageRef = useRef(null);
 
   const photos = props.photos;
 
   const handleMove = (e) => {
-    console.log(imageRef.current.getBoundingClientRect());
+    const offsetLeft = imageRef.current.getBoundingClientRect().left;
+    const offsetTop = imageRef.current.getBoundingClientRect().top;
+    const height = imageRef.current.style.height;
+    const width = imageRef.current.style.width;
 
+    // console.log(imageRef.current.style.height);
+
+    // console.log(imageRef.current.getBoundingClientRect());
+
+    const x = ((e.pageX - offsetLeft) / parseInt(width, 10)) * 100;
+    const y = ((e.pageY - offsetTop) / parseInt(height, 10)) * 100;
+
+    console.log('x: ', x);
+    console.log('y: ', y);
   };
 
   return (
