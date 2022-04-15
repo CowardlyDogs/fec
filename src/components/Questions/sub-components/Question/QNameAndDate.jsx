@@ -5,13 +5,13 @@ import { QandAContext } from  '../../QandA.jsx';
 import { QuestionContext } from './Question.jsx';
 
 const QNameAndDate = ({name, date}) => {
-  const  product = useContext(QandAContext);
+  const  { theme, product } = useContext(QandAContext);
   const { data } = useContext(QuestionContext);
 
   return (
-    <div className='NameAndDate'>
+    <div id={theme} className='NameAndDate'>
       <div className='Qname'>  {name.toUpperCase()}</div>
-      <div className='Qdate'>  {moment(date).format('MMM Do YY')}</div>
+      <div >  {moment(date).format('MMM Do YY')}</div>
     </div>
   );
 };

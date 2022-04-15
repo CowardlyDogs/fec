@@ -10,14 +10,14 @@ import { QuestionContext } from '../Question/Question.jsx';
 
 
 const Answer = ({answerData}) => {
-  const product = useContext(QandAContext);
+  const { theme, product } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
   const { answerer_name, body, date, helpfulness, id, photos } = answerData;
 
   const photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
 
   return (
-    <div>
+    <div className='darkBody'>
       <AnswerBody  body={body}/>
       {photoDiv}
       <div className='answer-info'>

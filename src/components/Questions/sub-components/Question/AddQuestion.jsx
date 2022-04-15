@@ -8,7 +8,7 @@ import Question from './Question.jsx';
 
 
 var AddQuestion = ({defaultId, productName}) => {
-  const { setAddQuestion, addQuestion, product, visibleQs, setVisibleQs, setQuestions } = useContext(QandAContext);
+  const { setAddQuestion, addQuestion, product, visibleQs, setVisibleQs, setQuestions, theme } = useContext(QandAContext);
 
   const [ questionVal,  setQuestionVal  ] = useState('');
   const [ nicknameVal,  setNicknameVal  ] = useState('');
@@ -92,10 +92,10 @@ var AddQuestion = ({defaultId, productName}) => {
 
 
     <div className='addQ'>
-      <div className={backgroundChange} onClick={warningBool ? setAndClear : null}>
+      <div  className={backgroundChange} onClick={warningBool ? setAndClear : null}>
 
 
-        <form className={showHideAddQuestion}>
+        <form id={theme} className={showHideAddQuestion}>
           <header>
             <span className='formPrompt'>Ask Your Question</span>
             <h1 className='formTitle'>About the {productName}</h1>

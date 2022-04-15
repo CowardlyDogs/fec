@@ -5,7 +5,7 @@ import { QandAContext } from '../../QandA.jsx';
 
 
 var QuesContainer = () => {
-  const { product, questions, searchResults, answers, searchView, setSearchView, visibleQs, scrollToHeader } = useContext(QandAContext);
+  const { product, questions, searchResults, answers, searchView, setSearchView, visibleQs, scrollToHeader, theme } = useContext(QandAContext);
 
   const [   view, setView   ] = useState(0);
   const [    end, setEnd    ] = useState(1);
@@ -57,7 +57,7 @@ var QuesContainer = () => {
     } else {
       questionList = mapQuestions(visibleQs.slice(0, end));
       contentHeight = `${height + ansHeight}px`;
-      showMore = <button className='moreQs' onClick={()=> {
+      showMore = <button id={theme} className='moreQs' onClick={()=> {
         increment();
         setView(1);
       }}>   More Answered Questions   </button>;
@@ -77,9 +77,9 @@ var QuesContainer = () => {
     if (end >= visibleQs.length) {
       showMore = null;
     } else {
-      showMore = <button className='moreQs' onClick={increment}>     More Answered Questions </button>;
+      showMore = <button id={theme} className='moreQs' onClick={increment}>     More Answered Questions </button>;
     }
-    prevQuestions = <button className='moreQs' onClick={collapse}>   Collapse Questions      </button>;
+    prevQuestions = <button id={theme} className='moreQs' onClick={collapse}>   Collapse Questions      </button>;
 
 
     if (end === 1) {
@@ -90,7 +90,7 @@ var QuesContainer = () => {
 
 
   return (
-    <div >
+    <div>
       <div ref={content} className={toggleContainerSize} style={{maxHeight: contentHeight}}>
         {questionList}
       </div>

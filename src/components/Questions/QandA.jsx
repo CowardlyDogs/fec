@@ -12,7 +12,7 @@ import APIHelpers from '../APIHelpers.js';
 
 export const QandAContext = React.createContext(null);
 
-const QandA = ({defaultId}) => {
+const QandA = ({defaultId, theme}) => {
 
   const [ productName, setProductName ] = useState('');
   const [   questions, setQuestions   ] = useState([]);
@@ -64,11 +64,11 @@ const QandA = ({defaultId}) => {
     questionList = <QuesContainer />;
     search = <Search />;
   } else {
-    questionList = <span style={{marginLeft: '10%'}}>No questions asked yet.</span>;
+    questionList = <span id={theme} className='darkBody' style={{marginLeft: '10%'}}>No questions asked yet.</span>;
   }
 
   return (
-    <QandAContext.Provider value={{   defaultId,   productName,
+    <QandAContext.Provider value={{   theme, defaultId,   productName,
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
       searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader, setQuestions   }}>
 

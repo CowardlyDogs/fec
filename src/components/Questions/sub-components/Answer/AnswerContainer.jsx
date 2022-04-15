@@ -7,7 +7,7 @@ import { QuestionContext } from '../Question/Question.jsx';
 
 
 var AnswerContainer = ({question_body, setHeight, setAnsHeight}) => {
-  const product = useContext(QandAContext);
+  const { theme, product } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
 
   const [       view, setView       ] = useState(0);
@@ -67,26 +67,26 @@ var AnswerContainer = ({question_body, setHeight, setAnsHeight}) => {
     if (view === 0) {
       answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       contentHeight = `${listHeight}px`;
-      showMore = <button className='addA' onClick={(moreQs)}>See More Answers</button>;
+      showMore = <button id={theme} className='addA' onClick={(moreQs)}>See More Answers</button>;
 
     } else if (view === 1) {
 
       toggleListSize = 'scroll-list Answer';
       answerList = mapAnswers([...seller, ...anons]);
       contentHeight = '400px';
-      prevAnswers = <button className='addA' onClick={collapse}>Collapse answers</button>;
+      prevAnswers = <button id={theme} className='addA' onClick={collapse}>Collapse answers</button>;
     }
   }
 
   return (
-    <div  className='Acontainer'>
+    <div id={theme} className='Acontainer'>
       <div className='A'>A:</div>
-      <div ref={answers} className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
+      <div ref={answers} id={theme} className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
       <div className='answer-buttons'>
 
         <AddAnswer />
-        <div className='more-answers'> {showMore}   </div>
-        <div className='less-answers'> {prevAnswers}</div>
+        <div > {showMore}   </div>
+        <div > {prevAnswers}</div>
       </div>
     </div>
   );

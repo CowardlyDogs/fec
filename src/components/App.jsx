@@ -32,7 +32,7 @@ const App = () => {
       <RelatedMain     productId={productId} setProduct={setProduct} theme={theme}/>
       <h1 className="rel-title" id={theme}>Your Outfit</h1>
       <OutfitMain      productId={productId}/>
-      <QandA        defaultId={productId}/>
+      <QandA        theme={theme} defaultId={productId}/>
       <ReviewModule productId={productId}/>
     </div>
   );
