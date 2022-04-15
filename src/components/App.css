@@ -1588,12 +1588,13 @@ hr {
   background-position: center;
   background-size: cover;
   transition: all .2s ease-out;
+  z-index: 2;
 }
 
 .expanded-view-icons {
   cursor: pointer;
   flex: 1;
-  z-index: 2;
+  z-index: 1;
   bottom: 0;
   display: flex;
   align-self: flex-start;
