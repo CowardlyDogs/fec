@@ -33,7 +33,7 @@ const App = () => {
       <h1 className="rel-title" id={theme}>Your Outfit</h1>
       <OutfitMain      productId={productId}/>
       <QandA        theme={theme} defaultId={productId}/>
-      <ReviewModule productId={productId}/>
+      <ReviewModule productId={productId} theme={theme}/>
     </div>
   );
 };

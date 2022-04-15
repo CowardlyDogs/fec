@@ -31,8 +31,10 @@ const Cart = () => {
   return (
     <CartContext.Provider value={currentStyle}>
       <div className="Cart">
-        <SizeSelector setSku={setSku} setSizeSelected={setSizeSelected} sizeSelected={sizeSelected} cartButtonClicked={cartButtonClicked} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
-        <QuantitySelector sku={sku} setQtySelected={setQtySelected} qtySelected={qtySelected} />
+        <div className="selectors">
+          <SizeSelector setSku={setSku} setSizeSelected={setSizeSelected} sizeSelected={sizeSelected} cartButtonClicked={cartButtonClicked} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
+          <QuantitySelector sku={sku} setQtySelected={setQtySelected} qtySelected={qtySelected} />
+        </div>
         <AddToCart sizeSelected={sizeSelected} qtySelected={qtySelected} setCartButtonClicked={setCartButtonClicked} toggleCart={toggleCart} />
       </div>
     </CartContext.Provider>

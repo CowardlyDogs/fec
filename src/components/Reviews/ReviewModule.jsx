@@ -4,7 +4,7 @@ import ReviewList from './sub-components/ReviewList.jsx';
 import Metareview from './sub-components/ReviewMeta.jsx';
 import Helpers from '../APIHelpers.js';
 
-let ReviewModule = ({productId}) => {
+let ReviewModule = ({productId, theme}) => {
   const   [   productMeta,        setProductMeta        ]   =   useState({});
   const   [   reviews,            setReviews            ]   =   useState([]);
   const   [   newReviewVisible,   setNewReviewVisible   ]   =   useState(false);
@@ -67,7 +67,7 @@ let ReviewModule = ({productId}) => {
 
 
   return (
-    <div className="reviews">
+    <div className="reviews" id={theme}>
       <div className="Rate-Review-Head">
         <h2 className="Review-Header">Ratings and Reviews</h2>
         <div className="New-Review-Button"> { <NewReview visible={newReviewVisible} toggle={toggleNewReview} product={productId} onSubmit={submitNewReview} /> } </div>
@@ -78,7 +78,7 @@ let ReviewModule = ({productId}) => {
 
       <div className='Rating-Review'>
         <Metareview product={productMeta}/>
-        <ReviewList page={page} turnPage={turnPage} product={productId} reviews={reviews} helpful={helpful} report={report} />
+        <ReviewList page={page} turnPage={turnPage} product={productId} reviews={reviews} helpful={helpful} report={report} theme={theme} />
       </div>
 
     </div>

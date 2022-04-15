@@ -5,7 +5,6 @@ import { Cart, CartContext } from './Cart.jsx';
 const QuantitySelector = (props) => {
   const currentStyle = useContext(CartContext).currentStyle;
   const sku = props.sku;
-  const [listOpen, setListOpen] = useState(false);
 
   // if the user enters a size, then create an array from 1 to maximum quantity of item, or 15. Whichever is smaller.
   if (sku) {
@@ -18,33 +17,17 @@ const QuantitySelector = (props) => {
 
   return (
     <div className="quantity-selector">
-      <button
-        type="button"
-        className="quantity-button"
-        onClick={() => {
-          if (sku) {
-            setListOpen(!listOpen);
-          }
-        }}
-
-        // if the user clicks on a quantity, the text of the button will update to that number
-        // else if only the size has been selected, the text will default to '1'
-        // else, display '-'
-      >{props.qtySelected ? props.qtySelected : sku ? 1 : '-'}</button>
-
-      {/* if the button is clicked, the state is set to open and will render the div below */}
-      {listOpen ? (
-        <ul className="quantity-list">
-          {quantity.map((num, i) => (
-            <li className="quantity" key={i} onClick={() => {
-              setListOpen(!listOpen);
-              props.setQtySelected(num);
-            }}>
+      <select className="size-list" maxMenuHeight={50} disabled={!sku ? true : null} onChange={(e) => props.setQtySelected(e.target.value)}>
+        <option value="" disabled selected>-</option>
+        { quantity ?
+          quantity.map((num, i) => (
+            <option value={num} className="quantity" key={i} >
               {num}
-            </li>
-          ))}
-        </ul>
-      ) : null}
+            </option>
+          ))
+          : null
+        }
+      </select>
     </div>
   );
 };
