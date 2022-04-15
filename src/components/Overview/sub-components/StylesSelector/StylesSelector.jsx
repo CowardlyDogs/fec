@@ -6,8 +6,6 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
   const product = useContext(OverviewContext).styles;
 
-
-
   // This is to separate the styles by four
   var productRows = [];
   var groupedStyles = [];
@@ -32,19 +30,6 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
     s.color = strColor;
     return s.color !== '';
   };
-
-  const updateColor1 = (color) => {
-    setColor1(color);
-  };
-
-  const updateColor2 = (color) => {
-    setColor2(color);
-  };
-  useEffect(() => {
-
-  }, []);
-
-
 
   return (
     <div className="Styles-Selector">
@@ -96,7 +81,6 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
             }
           </div>
         )
-
       }
     </div>
   );
