@@ -6,7 +6,7 @@ import { QuestionContext } from '../Question/Question.jsx';
 import APIHelpers from '../../../APIHelpers.js';
 
 const HelpReport = ({id, helpfulness}) => {
-  const {       product, url           } = useContext(QandAContext);
+  const {       product, url, theme    } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
   const [  helpful, setHelpful  ] = useState(false);
