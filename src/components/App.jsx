@@ -9,7 +9,7 @@ import CompareMain from './Related/CompareMain.jsx';
 import NavBar from './NavBar.jsx';
 
 const App = () => {
-  const [productId, setProduct] = useState('65631');
+  const [productId, setProduct] = useState('65633');
   const [theme,     setTheme  ] = useState('dark');
   console.log(theme);
 
