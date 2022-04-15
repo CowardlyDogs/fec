@@ -7,6 +7,7 @@ body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  height: 100vh;
 }
 
 h1 {
@@ -466,22 +467,15 @@ html {
   scroll-behavior: smooth;
 }
 
-.on-load-Q-content {
-  display: flex;
-  flex-direction: column;
-  margin: 2% 10%;
-  transition: max-height 0.4s ease;
-}
 
 .larger-container {
   display: flex;
   flex-direction: column;
-  /* overflow: auto; */
   overflow-y: auto;
   overflow-x: hidden;
   margin: 2% 10%;
   background-color: #f5f2f0;
-  transition: max-height 0.7s ease;
+  transition: max-height 0.6s ease;
 }
 
 .QandA {
@@ -662,6 +656,18 @@ html {
   margin: 10px 0px;
 }
 
+#dark .search {
+  color: #fca311;
+  font-size: 15px;
+  border: 2px solid #fca311;
+  background-color: transparent;
+  margin: 10px 40px;
+  width: 310px;
+  height: 40px;
+  border-radius: 18px;
+  padding-left: 20px;
+}
+
 .search {
   font-size: 15px;
   border: 2px solid #fca311;
@@ -779,6 +785,12 @@ html {
   max-width: 60%;
   text-align: left;
 }
+
+#dark ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fca311;
+}
+
+
 
 .formInputs {
   min-width: 80%;
@@ -978,6 +990,7 @@ input {
   transition: max-height 0.4s ease-out;
   margin-bottom: 10px;
 }
+
 
 #light .scroll-list {
   background-color: #f5f2f0;
@@ -1472,6 +1485,12 @@ hr {
   max-width: 50px;
   text-align: center;
 }
+
+.checkmark {
+  position: absolute;
+  color: limegreen;
+  padding-left: 24px;
+}
 .style-thumbnail {
   border-radius: 100%;
   width: 50px;
@@ -1519,27 +1538,31 @@ hr {
   top: 100px;
   left: 60px;
   min-height: 80%;
+  max-height: 500px;
   justify-content: center;
 }
 
 .thumbnail {
   cursor: pointer;
   padding: 5px;
-  object-fit: contain;
+  height: 60px;
+  width: 60px;
+  border-radius: 5%;
 }
 
 .previous {
   cursor: pointer;
   position: absolute;
-  bottom: 25px;
-  left: 30px;
+  left: 30%;
+  top: 4%;
+  transform: rotate(90deg);
 }
 
 .next {
   cursor: pointer;
   position: absolute;
   left: 30%;
-  top: 100%;
+  top: 93%;
   transform: rotate(90deg);
 }
 .img-wrapper {
@@ -1558,15 +1581,14 @@ hr {
 }
 
 .expanded-photo-zoom {
-  display: block;
   cursor: crosshair;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: flex-start;
-  object-fit: contain;
-  width: 100%;
   transform: scale(2.5);
-  transition: all 0.3s ease 0s;
+  max-height: 615px;
+  max-width:  100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all .2s ease-out;
 }
 
 .expanded-view-icons {
@@ -1616,7 +1638,7 @@ hr {
 
 .close-expanded {
   position: absolute;
-  border: 2px solid black;
+  color: white;
   position: absolute;
   top: 0px;
   right: 0px;
