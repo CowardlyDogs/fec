@@ -6,7 +6,7 @@ import { QuestionContext } from '../Question/Question.jsx';
 
 
 var NameAndDate = ({name, date}) => {
-  const product = useContext(QandAContext);
+  const { theme, product } = useContext(QandAContext);
   const { sortedAnswers, viewNum, data } = useContext(QuestionContext);
 
   let answererName = name;
@@ -16,7 +16,6 @@ var NameAndDate = ({name, date}) => {
 
   return (
     <div>
-      {/* <div className='Aname'> Response from {answererName}</div> */}
       <div className='Adate'> Response from {answererName} on {moment(date).format('MMM Do YY')}</div>
     </div>
   );
