@@ -1031,12 +1031,14 @@ hr {
 .helpful-circle {
   width: 2rem;
   height: 2rem;
-  padding: .5rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   border-style: solid;
   border-radius: 50%;
   background-color:#fca311;
   background: linear-gradient(-45deg, #fca311, #f2d9b1);
-  text-align: center;
+  justify-content: center;
 }
 .helpfulness {
   justify-content: center;
@@ -1067,20 +1069,26 @@ hr {
   margin: auto;
   width: 75%;
   max-width: 40rem;
-  background: #d3d3d3;
+
   border-radius: 5%;
+}
+#dark .modal-content {
+  background: linear-gradient(0deg, #24314d, #394a73);
+}
+#light .modal-content {
+  background: linear-gradient(325deg, #e5e5e5, #f9f9f9);
 }
 .modal-row {
   display: flex;
   justify-content: center;
 }
+
 .review-title {
   display: inline-block;
   font-size: 2em;
   text-align: center;
 }
 .review-input{
-  background-color: #f5f5f5;
   min-height: 10rem;
   padding: .5rem;
   margin-bottom: 1rem;
@@ -1089,8 +1097,13 @@ hr {
   border:none;
   border-radius: .5rem;
 }
-.misc-review-input {
+#light .review-input{
   background-color: #f5f5f5;
+}
+#dark .review-input{
+  background-color: #414141;
+}
+.misc-review-input {
   border: none;
   border-radius: .5rem;
   font-size: 1rem;
@@ -1099,35 +1112,57 @@ hr {
   padding-left: 1rem;
   width: 80%;
 }
+#light .misc-review-input {
+  background-color: #f5f5f5;
+}
+#dark .misc-review-input {
+  background-color: #414141;
+}
 .new-review-label {
-  color: #737373;
   display: block;
   margin-top: .5rem;
   margin-bottom: 1rem;
   width: 80%;
   font-size: .8rem;
 }
+#light .new-review-label {
+  color: #737373;
+}
+#dark .new-review-label {
+  color: #adadad;
+}
 .reviews {
-  /* margin: 2rem;
-  padding: 1rem;
-  background: linear-gradient(145deg, #e1e1e1, #e9e9e9);
-  border-style: double;
-  border-radius: 1em; */
   display: flex;
   flex-direction: column;
   margin: 2% 10%;
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
+#dark .reviews {
+  color: #f5f5f5;
+}
+#light .reviews {
+  color: #101010;
+}
+
 .review {
   max-height: 40rem;
   width: 90%;
   background: linear-gradient(325deg, #e9e9e9, #f1f1f1);
-  border-style: double;
   border-radius: 1.5rem;
   margin: 1rem;
   padding: .5rem;
   padding-left: 1.5rem;
+}
+#dark .review {
+  background: linear-gradient(325deg, #24314d, #26324f);
+  border: double #f5f5f5;
+  color: #f5f5f5;
+}
+#light .review {
+  background: linear-gradient(325deg, #e9e9e9, #f1f1f1);
+  border-style: double #101010;
+  color: #101010;
 }
 .review-body {
   max-height: 10rem;

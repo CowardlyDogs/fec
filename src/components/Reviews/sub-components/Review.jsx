@@ -47,7 +47,7 @@ var Review = ({review, helpful, report}) => {
       <div className="help-report">
         <div className="helpfulness">
           <div className="helpful-circle">
-            {review.helpfulness}
+            <p>{review.helpfulness}</p>
           </div>
           <div>
             <p>&nbsp;&nbsp;people found this helpful</p>
