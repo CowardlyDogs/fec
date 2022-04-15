@@ -243,6 +243,11 @@ h1 {
   font-weight: 100;
   color: #fca311;
 }
+.add-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 100;
+  color: black;
+}
 
 #dark .bottom {
   border-style: solid;

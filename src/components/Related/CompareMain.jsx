@@ -55,9 +55,10 @@ const CompareMain = ({ productId, currentId, compare, setCompare }) => {
       }
     });
     setFeatures(tempFeatures);
-  }, []);
+  }, [currentId]);
 
   const showToggle = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     if (e.target.className === 'compare-background' || e.target.className === 'compare-title') {
       setCompare(false);
