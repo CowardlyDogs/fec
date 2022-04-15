@@ -807,10 +807,18 @@ html {
 }
 
 #dark .formInput {
-  background-color: grey
+  background-color: grey;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 3px;
+  border: none;
+  font-size: 16px;
+  line-height: 38px;
+  min-height: 38px;
+  padding-left: 12px;
+  width: 100%;
 }
 
-.formInput {
+#light .formInput {
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-top: 3px;
   background-color: #f1f1f1;
@@ -1097,7 +1105,7 @@ input {
   background: rgba(0, 0, 0, 0.75);
 }
 
-.modal-body {
+#light .modal-body {
   position:fixed;
   background: lightgrey;
   min-width: 700px;
@@ -1106,6 +1114,10 @@ input {
   left:50%;
   transform: translate(-50%,-50%);
   border-radius: 5%;
+  height: auto;
+  width: auto;
+  bottom: auto;
+  right: auto;
 }
 
 #dark .modal-body {
