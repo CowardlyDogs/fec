@@ -4,9 +4,8 @@ import Helpers from '../APIHelpers.js';
 import StarRatingDisplay from '../StarRatingDisplay.jsx';
 import CompareMain from './CompareMain.jsx';
 import '../App.css';
-//handle card click to set productId to clicked card
 
-const RelatedCarousel = ({ unit, length, productId, setProduct }) => {
+const RelatedCarousel = ({ theme, unit, length, productId, setProduct }) => {
   const [name,     setName      ] = useState('');
   const [photo,    setPhoto     ] = useState('');
   const [category, setCategory  ] = useState('');
@@ -52,7 +51,7 @@ const RelatedCarousel = ({ unit, length, productId, setProduct }) => {
         setRatings(res.ratings);
       }
     });
-  }, []);
+  }, [productId, unit]);
 
 
   const photoHandler = () => {
@@ -89,14 +88,10 @@ const RelatedCarousel = ({ unit, length, productId, setProduct }) => {
   }, [ratings]);
 
   const compareHandler = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     setCompare(!compare);
   };
 
   const updateProduct = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
     setProduct(unit);
   };
 
@@ -110,7 +105,7 @@ const RelatedCarousel = ({ unit, length, productId, setProduct }) => {
           </div>
           <div className="action-compare" onClick={(e) => compareHandler(e)}><CompareIcon/><CompareMain compare={compare} setCompare={setCompare} productId={productId} currentId={unit}/></div>
         </div>
-        <div className="bottom">
+        <div className="bottom" id={theme}>
           <div className="product-name">{name}</div>
           <div>{category}</div>
           {saleHandler()}

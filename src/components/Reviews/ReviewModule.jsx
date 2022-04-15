@@ -35,7 +35,7 @@ let ReviewModule = ({productId}) => {
         setProductMeta(data);
       }
     });
-  }, [page, update]);
+  }, [page, update, productId]);
 
   let submitNewReview = (review) => {
     Helpers.postReview(review, (err) => {
