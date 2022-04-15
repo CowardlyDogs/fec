@@ -78,7 +78,7 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
       */}
       <button className="Review-Button" onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
-        <div className="modal-content">
+        <div className="modal-content" style={{'max-height': '90vh', 'max-width': '60vw', 'overflow-y': 'auto'}}>
           <div className="modal-row">
             <span className="review-title">New Review</span>
           </div>
