@@ -6,7 +6,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
   const product = useContext(OverviewContext).styles;
 
-  // This is to separate the styles by four
+
   var productRows = [];
   var groupedStyles = [];
   var numStyles = 0;
@@ -53,7 +53,6 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
                     }
                   }
                 }
-
                 return (
 
                   <div key={j} className="style">
