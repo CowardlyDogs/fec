@@ -2,39 +2,39 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import CloseIcon from '@mui/icons-material/Close';
 import carousel from './carousel.js';
 
 const ExpandedView = (props) => {
   const [photo, setPhoto] = useState(props.expandedPhoto);
   const [isZoom, setIsZoom] = useState(false);
-  // const [x, setX] = useState(0);
-  // const [y, setY] = useState(0);
+  const [mouseX, setMouseX] = useState(0);
+  const [mouseY, setMouseY] = useState(0);
   const imageRef = useRef(null);
 
   const photos = props.photos;
 
-  const handleMove = (e) => {
-    const offsetLeft = imageRef.current.getBoundingClientRect().left;
-    const offsetTop = imageRef.current.getBoundingClientRect().top;
-    const height = imageRef.current.style.height;
-    const width = imageRef.current.style.width;
 
-    // console.log(imageRef.current.style.height);
 
-    // console.log(imageRef.current.getBoundingClientRect());
+  const moveMouse = (e) => {
+    const {
+      top: offsetTop,
+      left: offsetLeft
+    } = e.target.getBoundingClientRect();
 
-    const x = ((e.pageX - offsetLeft) / parseInt(width, 10)) * 100;
-    const y = ((e.pageY - offsetTop) / parseInt(height, 10)) * 100;
+    const x = ((e.pageX - offsetLeft) / e.target.width) * 50;
+    const y = ((e.pageY - offsetTop) / e.target.height) * 50;
 
-    console.log('x: ', x);
-    console.log('y: ', y);
+    setMouseX(x);
+    setMouseY(y);
   };
 
   return (
     <div className="expanded-modal">
-      <button className="close-expanded"
-        onClick={() => props.setIsDefault(true)}
-      >Close</button>
+      <div className="close-expanded"
+        onClick={() => props.setIsDefault(true)} >
+        <CloseIcon style={{ fontSize: '50px'}}/>
+      </div>
       {
         photo !== photos[0] ?
           <div className="expanded-previous"
@@ -43,13 +43,16 @@ const ExpandedView = (props) => {
           </div>
           : null
       }
-      <div className="img-wrapper" ref={imageRef}
-        onMouseMove={(e) => handleMove(e)}>
 
-        <img className={isZoom ? 'expanded-photo-zoom' : 'expanded-photo'} src={photo.url}
-          onClick={() => setIsZoom(!isZoom)}
-        />
-      </div>
+      <img className={isZoom ? 'expanded-photo-zoom' : 'expanded-photo'}
+        src={photo.url}
+        style={isZoom ? { transformOrigin: `${mouseX}% ${mouseY}%` } : null}
+        onClick={() => setIsZoom(!isZoom)}
+        onMouseMove={isZoom ?
+          (e) => moveMouse(e)
+          : null}
+      />
+
       <div className="expanded-view-icons">
         {
           photos.map((icon, i) =>
