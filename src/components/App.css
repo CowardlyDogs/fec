@@ -1420,15 +1420,14 @@ hr {
 }
 
 .expanded-photo-zoom {
-  display: block;
   cursor: crosshair;
-  margin-left: auto;
-  margin-right: auto;
-  align-self: flex-start;
-  object-fit: contain;
-  width: 100%;
   transform: scale(2.5);
-  transition: all 0.3s ease 0s;
+  max-height: 615px;
+  max-width:  100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all .2s ease-out;
 }
 
 .expanded-view-icons {
@@ -1478,7 +1477,7 @@ hr {
 
 .close-expanded {
   position: absolute;
-  border: 2px solid black;
+  color: white;
   position: absolute;
   top: 0px;
   right: 0px;
