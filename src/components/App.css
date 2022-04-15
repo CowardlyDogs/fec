@@ -1394,23 +1394,24 @@ hr {
 .thumbnail {
   cursor: pointer;
   padding: 5px;
-  height: auto;
-  width: 70px;
+  height: 60px;
+  width: 60px;
   border-radius: 5%;
 }
 
 .previous {
   cursor: pointer;
   position: absolute;
-  bottom: 25px;
-  left: 30px;
+  left: 30%;
+  top: 4%;
+  transform: rotate(90deg);
 }
 
 .next {
   cursor: pointer;
   position: absolute;
   left: 30%;
-  top: 100%;
+  top: 93%;
   transform: rotate(90deg);
 }
 .img-wrapper {
