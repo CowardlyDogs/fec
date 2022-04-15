@@ -6,9 +6,9 @@ import { QandAContext } from '../../QandA.jsx';
 import { QuestionContext } from '../Question/Question.jsx';
 
 
-var AnswerContainer = ({question_body, setHeight}) => {
+var AnswerContainer = ({question_body, setHeight, setAnsHeight}) => {
   const product = useContext(QandAContext);
-  const { visibleAs, viewNum, data} = useContext(QuestionContext);
+  const { sortedAnswers, viewNum, data} = useContext(QuestionContext);
 
   const [       view, setView       ] = useState(0);
   const [      start, setStart      ] = useState(0);
@@ -20,12 +20,13 @@ var AnswerContainer = ({question_body, setHeight}) => {
 
   useEffect( () => {
     setListHeight(answers.current.scrollHeight);
+    setAnsHeight(answers.current.scrollHeight);
   });
 
   const seller = [];
   const anons = [];
 
-  visibleAs.forEach( answer => {
+  sortedAnswers.forEach( answer => {
     if (answer.answerer_name === 'Seller') {
       seller.push(answer);
     } else {
@@ -35,14 +36,14 @@ var AnswerContainer = ({question_body, setHeight}) => {
 
   const mapAnswers = (answers) => {
     return answers.map( (answer, idx) => {
-      return <Answer key={idx} answerData={answer}/>;
+      return <Answer key={idx} answerData={answer} />;
     });
   };
 
   let answerList;
   let showMore;
   let prevAnswers;
-  let toggleListSize;
+  let toggleListSize = 'answerList Answer';
   let contentHeight;
 
   const moreQs = () => {
@@ -50,34 +51,37 @@ var AnswerContainer = ({question_body, setHeight}) => {
     setView(1);
   };
 
+  const collapse = () => {
+    setView(0);
+    contentHeight = `${listHeight}px`;
+  };
 
-  if (visibleAs.length === 0) {
+
+  if (sortedAnswers.length === 0) {
     answerList = <span>No answers yet.</span>;
-
-  } else if (visibleAs.length <= 2) {
+  } else if (sortedAnswers.length <= 2) {
     answerList = mapAnswers([...seller, ...anons]);
     contentHeight = `${listHeight}px`;
     showMore = null;
   } else {
     if (view === 0) {
-      toggleListSize = 'answerList';
       answerList = mapAnswers([...seller, ...anons].slice(0, 2));
       contentHeight = `${listHeight}px`;
       showMore = <button className='addA' onClick={(moreQs)}>See More Answers</button>;
 
     } else if (view === 1) {
 
-      toggleListSize = 'scroll-list';
+      toggleListSize = 'scroll-list Answer';
       answerList = mapAnswers([...seller, ...anons]);
       contentHeight = '400px';
-      prevAnswers = <button className='addA' onClick={()=>setView(0)}>Collapse answers</button>;
+      prevAnswers = <button className='addA' onClick={collapse}>Collapse answers</button>;
     }
   }
 
   return (
-    <div ref={answers} className='Acontainer'>
+    <div  className='Acontainer'>
       <div className='A'>A:</div>
-      <div className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
+      <div ref={answers} className={toggleListSize} style={{maxHeight: contentHeight}}>  {answerList} </div>
       <div className='answer-buttons'>
 
         <AddAnswer />

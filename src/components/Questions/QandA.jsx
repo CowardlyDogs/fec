@@ -70,7 +70,7 @@ const QandA = ({defaultId}) => {
   return (
     <QandAContext.Provider value={{   defaultId,   productName,
       questions, searchVal, setSearchVal, visibleQs,   setVisibleQs,
-      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader   }}>
+      searchView,  setSearchView, addQuestion, setAddQuestion, searchQuestions, scrollToHeader, setQuestions   }}>
 
       <div ref={header}>
         <div className='QandA'>

@@ -11,6 +11,8 @@ var QuesContainer = () => {
   const [    end, setEnd    ] = useState(1);
   const [ height, setHeight ] = useState(0);
 
+  const [ ansHeight, setAnsHeight ] = useState(0);
+
   const content = useRef(null);
 
   let contentHeight;
@@ -22,8 +24,7 @@ var QuesContainer = () => {
 
   useEffect( () => {
     setHeight(content.current.scrollHeight);
-  });
-
+  }, [ ansHeight ]);
 
   const increment = () => {
     setEnd(prev => prev + 2);
@@ -33,7 +34,7 @@ var QuesContainer = () => {
 
   const mapQuestions = (questions) => {
     return questions.map( (question, idx) => {
-      return <Question key={idx} data={question} id={idx} setHeight={setHeight} />;
+      return <Question key={idx} data={question} id={idx} setHeight={setHeight}  setAnsHeight={setAnsHeight}/>;
     });
   };
 
@@ -41,7 +42,6 @@ var QuesContainer = () => {
   const collapse = () => {
     setView(0);
     setEnd(1);
-    // toggleContainerSize = 'on-load-Q-content';
   };
 
 
@@ -52,11 +52,11 @@ var QuesContainer = () => {
     if (visibleQs.length <= 1) {
       showMore = null;
       questionList = mapQuestions(visibleQs.slice(0, end));
-      contentHeight = `${height}px`;
+      contentHeight = `${height + ansHeight}px`;
 
     } else {
       questionList = mapQuestions(visibleQs.slice(0, end));
-      contentHeight = `${height}px`;
+      contentHeight = `${height + ansHeight}px`;
       showMore = <button className='moreQs' onClick={()=> {
         increment();
         setView(1);

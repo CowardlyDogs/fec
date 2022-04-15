@@ -374,7 +374,6 @@ html {
   display: flex;
   flex-direction: column;
   margin: 2% 10%;
-  overflow: hidden;
   transition: max-height 0.4s ease;
 }
 
@@ -445,7 +444,7 @@ html {
   width: 230px;
   padding: 0 10px;
   position: relative;
-  margin-top: 22px;
+  margin-top: 0;
   transition: background-color .2s ease-in-out, color .2s ease-in-out;
 }
 
@@ -766,20 +765,23 @@ input {
   padding: 0 16px;
   width: 90%;
   overflow: hidden;
-  transition: max-height 0.7s ease;
+  height: 100%;
+  transition: max-height 0.4s ease-out;
 }
 
 .scroll-list {
   background-color: #f5f2f0;
-  display: inline-block;
   overflow: auto;
   padding: 0 16px;
   width: 90%;
-  transition: max-height 0.7s ease;
+  transition: max-height 0.4s ease-out;
+  margin-bottom: 10px;
+  /* display: inline-block; */
 }
 
 .Answer {
   margin-bottom: 10px;
+  display: inline-block;
 }
 
 .answer-body {

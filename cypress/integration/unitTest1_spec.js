@@ -20,5 +20,19 @@ describe('AddQ input fields', function () {
     cy.visit('http://localhost:3000/');
 
     cy.contains('Ask A Question').click();
+
+    cy.get('textarea[name=AddQbody]')
+      .type('Question Body')
+      .should('have.value', 'Question Body');
+
+    cy.get('input[name=AddQNickName]')
+      .type('Input 1')
+      .should('have.value', 'Input 1');
+
+    cy.get('input[name=AddQEmail]')
+      .type('email@email.com')
+      .should('have.value', 'email@email.com');
+
+    cy.get('button[name=submit]').click({force: true});
   });
 });

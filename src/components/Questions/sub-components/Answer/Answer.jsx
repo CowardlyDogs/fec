@@ -16,9 +16,8 @@ const Answer = ({answerData}) => {
 
   const photoDiv = photos.length > 0 ? <Photos photos={photos}/> : null;
 
-
   return (
-    <div className='Answer'>
+    <div>
       <AnswerBody  body={body}/>
       {photoDiv}
       <div className='answer-info'>
