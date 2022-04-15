@@ -465,22 +465,15 @@ html {
   scroll-behavior: smooth;
 }
 
-.on-load-Q-content {
-  display: flex;
-  flex-direction: column;
-  margin: 2% 10%;
-  transition: max-height 0.4s ease;
-}
 
 .larger-container {
   display: flex;
   flex-direction: column;
-  /* overflow: auto; */
   overflow-y: auto;
   overflow-x: hidden;
   margin: 2% 10%;
   background-color: #f5f2f0;
-  transition: max-height 0.7s ease;
+  transition: max-height 0.6s ease;
 }
 
 .QandA {
@@ -661,6 +654,18 @@ html {
   margin: 10px 0px;
 }
 
+#dark .search {
+  color: #fca311;
+  font-size: 15px;
+  border: 2px solid #fca311;
+  background-color: transparent;
+  margin: 10px 40px;
+  width: 310px;
+  height: 40px;
+  border-radius: 18px;
+  padding-left: 20px;
+}
+
 .search {
   font-size: 15px;
   border: 2px solid #fca311;
@@ -778,6 +783,12 @@ html {
   max-width: 60%;
   text-align: left;
 }
+
+#dark ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fca311;
+}
+
+
 
 .formInputs {
   min-width: 80%;
@@ -977,6 +988,7 @@ input {
   transition: max-height 0.4s ease-out;
   margin-bottom: 10px;
 }
+
 
 #light .scroll-list {
   background-color: #f5f2f0;
