@@ -11,10 +11,8 @@ import NavBar from './NavBar.jsx';
 const App = () => {
   const [productId, setProduct] = useState('65633');
   const [theme,     setTheme  ] = useState('dark');
-  console.log(theme);
 
   const toggleTheme = () => {
-    console.log('got here');
     setTheme(theme => {
       if (theme === 'light') {
         return theme = 'dark';

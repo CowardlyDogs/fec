@@ -7,6 +7,7 @@ body {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   height: 100vh;
+  width: 100vw;
 }
 
 h1 {
@@ -242,6 +243,11 @@ h1 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 100;
   color: #fca311;
+}
+.add-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 100;
+  color: black;
 }
 
 #dark .bottom {
