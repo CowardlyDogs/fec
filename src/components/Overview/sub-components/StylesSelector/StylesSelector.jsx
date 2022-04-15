@@ -51,7 +51,7 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
                     <span className="style-title">{style.name}</span>
                     {style.name === currentStyle.name ?
                       <div className="checkmark">
-                        <CheckCircleIcon style={{fontSize: '18px'}}/>
+                        <CheckCircleIcon style={{fontSize: '15px'}}/>
                       </div>
                       : null}
                     <div className="style-thumbnail"

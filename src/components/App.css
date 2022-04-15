@@ -1337,7 +1337,7 @@ hr {
 
 .checkmark {
   position: absolute;
-  color: green;
+  color: limegreen;
   padding-left: 24px;
 }
 .style-thumbnail {
@@ -1387,13 +1387,16 @@ hr {
   top: 100px;
   left: 60px;
   min-height: 80%;
+  max-height: 500px;
   justify-content: center;
 }
 
 .thumbnail {
   cursor: pointer;
   padding: 5px;
-  object-fit: contain;
+  height: auto;
+  width: 70px;
+  border-radius: 5%;
 }
 
 .previous {
