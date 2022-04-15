@@ -46,8 +46,8 @@ const StylesSelector = (props) => {
                     <span className="style-title">{style.name}</span>
                     <div className="style-thumbnail"
                       style={{
-                        // backgroundImage: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`
-                        backgroundImage: `linear-gradient(-45deg, ${colors[1]}, ${colors[1]} 49%, white 49%, white 51%, ${colors[0]} 51%)`
+                        backgroundImage: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`
+                        // backgroundImage: `linear-gradient(-45deg, ${colors[1]}, ${colors[1]} 49%, white 49%, white 51%, ${colors[0]} 51%)`
 
                       }}
                       onClick={() => {

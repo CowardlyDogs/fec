@@ -1343,8 +1343,10 @@ hr {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  top: 100px;
   left: 60px;
+  min-height: 80%;
+  justify-content: center;
 }
 
 .thumbnail {
