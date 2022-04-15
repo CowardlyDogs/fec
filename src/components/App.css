@@ -1078,7 +1078,7 @@ input {
   top: 50%;
   left: 50%;
   border: 3px solid #fca311;
-  background: white;
+  background: grey;
   transform: translate(-50%,-136%);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
@@ -1094,7 +1094,6 @@ input {
 
 .warning {
   text-align: center;
-  color: grey;
   font-size: 22px;
   font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

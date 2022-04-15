@@ -122,7 +122,7 @@ var AddQuestion = ({defaultId, productName}) => {
 
 
       <div className={warnModal}>
-        <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: <br/>{warningVals.join(', ')}</span>
+        <span className={emptyInputs}  onClick={setAndClear}>You must enter the following: <br/><br/><span>{warningVals.join(', ').toUpperCase()}</span></span>
       </div>
 
       <button className='addQbutton' onClick={()=>setAddQuestion(prev=>!prev)}>Ask A Question</button>
