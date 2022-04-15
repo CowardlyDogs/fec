@@ -60,7 +60,7 @@ const Overview = ({ productId }) => {
     <OverviewContext.Provider value={{ currentStyle: currentStyle, styles: styles }}>
       <div className="sidebar">
         <ProductInfo productInfo={productInfo} ratings={ratings} />
-        <StylesSelector setCurrentStyle={setCurrentStyle} />
+        <StylesSelector setCurrentStyle={setCurrentStyle} currentStyle={currentStyle} />
         <Cart />
       </div>
       <ImageGallery />

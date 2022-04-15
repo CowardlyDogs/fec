@@ -1334,6 +1334,12 @@ hr {
   max-width: 50px;
   text-align: center;
 }
+
+.checkmark {
+  position: absolute;
+  color: green;
+  padding-left: 24px;
+}
 .style-thumbnail {
   border-radius: 100%;
   width: 50px;
