@@ -1,3 +1,4 @@
+
 body {
   background-color: #f5f2f0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -1277,6 +1278,7 @@ hr {
   margin: 2% 10%;
   overflow: hidden;
   transition: max-height 0.4s ease;
+  width: 80% !important;
 }
 #dark .reviews {
   color: #f5f5f5;
@@ -1619,4 +1621,7 @@ hr {
   top: 0px;
   right: 0px;
   cursor: pointer;
+}
+.page{
+  overflow:hidden;
 }
