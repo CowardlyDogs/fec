@@ -5,7 +5,7 @@ import StarRatingDisplay from '../StarRatingDisplay.jsx';
 import CompareMain from './CompareMain.jsx';
 import '../App.css';
 
-const RelatedCarousel = ({ theme, unit, length, productId, setProduct }) => {
+const RelatedCarousel = ({ theme, unit, length, productId, setProduct, relatedIds }) => {
   const [name,     setName      ] = useState('');
   const [photo,    setPhoto     ] = useState('');
   const [category, setCategory  ] = useState('');
@@ -21,6 +21,7 @@ const RelatedCarousel = ({ theme, unit, length, productId, setProduct }) => {
   const noImage = 'https://yanktontrailers.com/wp-content/uploads/2020/02/noimage.png';
 
   useEffect(() => {
+    setPhoto('');
     Helpers.getProduct(unit, (err, res) => {
       if (err) {
         console.log(err);
@@ -51,7 +52,7 @@ const RelatedCarousel = ({ theme, unit, length, productId, setProduct }) => {
         setRatings(res.ratings);
       }
     });
-  }, [productId, unit]);
+  }, [relatedIds, unit]);
 
 
   const photoHandler = () => {

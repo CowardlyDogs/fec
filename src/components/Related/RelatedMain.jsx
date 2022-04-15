@@ -35,7 +35,7 @@ const RelatedMain = ({ theme, productId, setProduct }) => {
     relatedIds && (
       setDisplayIds([relatedIds[0], relatedIds[1], relatedIds[2]])
     );
-  }, [relatedIds]);
+  }, []);
 
   const left = () => {
     start.current = start.current - 1;
@@ -68,7 +68,7 @@ const RelatedMain = ({ theme, productId, setProduct }) => {
         {displayIds.map((unit, index) => {
           return (
             <li className="track" key={index}>
-              <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct} theme={theme}/>
+              <RelatedCarousel unit={unit} productId={productId} setProduct={setProduct} theme={theme} relatedIds={relatedIds}/>
             </li>
           );
         })}

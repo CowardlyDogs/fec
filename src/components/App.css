@@ -6,6 +6,8 @@ body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  height: inherit;
+  width: inherit;
 }
 
 h1 {
@@ -241,6 +243,11 @@ h1 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 100;
   color: #fca311;
+}
+.add-title {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 100;
+  color: black;
 }
 
 #dark .bottom {
