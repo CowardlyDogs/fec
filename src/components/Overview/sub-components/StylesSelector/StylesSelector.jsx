@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Overview, OverviewContext } from '../../Overview.jsx';
 import stylesData from '../../sample-data/stylesData.js';
-// import CheckIcon from '@mui/icons-material/Check';
-// import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
   const product = useContext(OverviewContext).styles;
+
+
 
   // This is to separate the styles by four
   var productRows = [];
@@ -27,6 +27,23 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
     productRows.push(groupedStyles);
   }
 
+  const isColor = (strColor) => {
+    const s = new Option().style;
+    s.color = strColor;
+    return s.color !== '';
+  };
+
+  const updateColor1 = (color) => {
+    setColor1(color);
+  };
+
+  const updateColor2 = (color) => {
+    setColor2(color);
+  };
+  useEffect(() => {
+
+  }, []);
+
 
 
   return (
@@ -37,10 +54,18 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
             {
               row.map((style, j) => {
 
-                var colors = style.name.split(' & ');
-                for (let i = 0; i < colors.length; i++) {
-                  if (colors[i].split(' ').length > 1) {
-                    colors[i] = colors[i].split(' ')[1];
+                var styleWords = style.name.split(' ');
+                var color1 = null;
+                var color2 = null;
+
+                for (let i = 0; i < styleWords.length; i++) {
+                  if (isColor(styleWords[i])) {
+                    if (color1) {
+                      color2 = styleWords[i];
+                      break;
+                    } else {
+                      color1 = styleWords[i];
+                    }
                   }
                 }
 
@@ -54,11 +79,12 @@ const StylesSelector = ({ setCurrentStyle, currentStyle }) => {
                         <CheckCircleIcon style={{fontSize: '15px'}}/>
                       </div>
                       : null}
-                    <div className="style-thumbnail"
-                      style={{
-                        // backgroundImage: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`
-                        backgroundImage: `linear-gradient(-45deg, ${colors[1]}, ${colors[0]})`
 
+                    <div className="style-thumbnail"
+                      style={ color1 && color2 ? {
+                        backgroundImage: `linear-gradient(-45deg, ${color1}, ${color2})`
+                      } : {
+                        backgroundColor: color1 ? color1 : 'white'
                       }}
                       onClick={() => {
                         setCurrentStyle(style);
