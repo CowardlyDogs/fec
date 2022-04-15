@@ -1031,12 +1031,14 @@ hr {
 .helpful-circle {
   width: 2rem;
   height: 2rem;
-  padding: .5rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   border-style: solid;
   border-radius: 50%;
   background-color:#fca311;
   background: linear-gradient(-45deg, #fca311, #f2d9b1);
-  text-align: center;
+  justify-content: center;
 }
 .helpfulness {
   justify-content: center;
