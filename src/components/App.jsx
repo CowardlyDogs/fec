@@ -9,11 +9,10 @@ import CompareMain from './Related/CompareMain.jsx';
 import NavBar from './NavBar.jsx';
 
 const App = () => {
-  const [productId, setProduct] = useState('65631');
+  const [productId, setProduct] = useState('65633');
   const [theme,     setTheme  ] = useState('dark');
 
   const toggleTheme = () => {
-    console.log('got here');
     setTheme(theme => {
       if (theme === 'light') {
         return theme = 'dark';

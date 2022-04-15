@@ -89,10 +89,14 @@ const RelatedCarousel = ({ theme, unit, length, productId, setProduct, relatedId
   }, [ratings]);
 
   const compareHandler = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setCompare(!compare);
   };
 
   const updateProduct = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setProduct(unit);
   };
 
