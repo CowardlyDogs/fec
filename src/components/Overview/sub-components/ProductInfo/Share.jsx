@@ -7,9 +7,9 @@ const Share = () => {
 
   return (
     <div className="share-icons">
-      <FacebookIcon fontSize="small"/>
-      <TwitterIcon />
-      <PinterestIcon />
+      <FacebookIcon style={{cursor: 'pointer'}}/>
+      <TwitterIcon style={{cursor: 'pointer'}}/>
+      <PinterestIcon style={{cursor: 'pointer'}}/>
     </div>
   );
 };

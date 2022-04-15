@@ -50,9 +50,9 @@ const ProductInfo = ({ productInfo, ratings }) => {
   return (
     <ProductContext.Provider value={{ currentStyle: currentStyle, product: productInfo }}>
       <div className="Product-Info">
+        <ProductTitle />
         <StarRating numRatings={numRatings} averageRatings={averageRatings} />
         <ProductCategory />
-        <ProductTitle />
         <Price />
         <ProductOverview />
         <Share />
