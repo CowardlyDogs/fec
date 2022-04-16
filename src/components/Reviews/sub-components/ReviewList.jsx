@@ -1,12 +1,7 @@
 import React from 'react';
 import Review from './Review.jsx';
 var ReviewList = ({page, turnPage, product, reviews, helpful, report, theme}) => {
-  var nextPage = () => {
-    turnPage('inc');
-  };
-  var prevPage = () => {
-    turnPage('dec');
-  };
+  var nextPage = () => { turnPage('inc'); }; var prevPage = () => { turnPage('dec'); };
   return (
     <div className="Review-Container-Over">
       <div className="Review-Container">

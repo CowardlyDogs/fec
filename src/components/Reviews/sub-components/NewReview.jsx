@@ -1,46 +1,18 @@
 import React from 'react';
 var NewReview = ({visible, toggle, product, onSubmit}) => {
   var rating = 0;
-  var changeRating = (e) => {
-    rating = e.target.value;
-  };
+  var changeRating = (e) => { rating = e.target.value; };
   var summary = '';
-  var changeSummary = (e) => {
-    summary = e.target.value;
-  };
+  var changeSummary = (e) => { summary = e.target.value; };
   var review = '';
-  var changeReview = (e) => {
-    review = e.target.value;
-  };
+  var changeReview = (e) => { review = e.target.value; };
   var username = '';
-  var changeUsername = (e) => {
-    username = e.target.value;
-  };
+  var changeUsername = (e) => { username = e.target.value; };
   var email = '';
-  var changeEmail = (e) => {
-    email = e.target.value;
-  };
+  var changeEmail = (e) => { email = e.target.value; };
   var photos = [];
   var characteristics = {};
-  var handleSubmit = () => {
-    if (username !== '' && email !== '' && rating > 0) {
-      onSubmit({
-        product_id: product,
-        rating: rating,
-        summary: summary,
-        body: review,
-        recommend: ((rating > 2) ? true : false),
-        name: username,
-        email: email,
-        photos: photos,
-        characteristics: characteristics
-      });
-    } else if (rating < 1) {
-      alert('You must provide a rating');
-    } else {
-      alert('Username and Email are required');
-    }
-  };
+  var handleSubmit = () => { if (username !== '' && email !== '' && rating > 0) { onSubmit({ product_id: product, rating: rating, summary: summary, body: review, recommend: ((rating > 2) ? true : false), name: username, email: email, photos: photos, characteristics: characteristics}); } else if (rating < 1) { alert('You must provide a rating'); } else { alert('Username and Email are required'); } };
   return (
     <div>
       <button className="Review-Button" onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>

@@ -5,12 +5,8 @@ import authorization from '../../../../config.js';
 import AccessibleForwardIcon from '@material-ui/icons/AccessibleForward';
 import StarRating from '../../StarRatingDisplay.jsx';
 var Review = ({review, helpful, report}) => {
-  var handleHelp = () => {
-    helpful(review.review_id);
-  };
-  var handleReport = () => {
-    report(review.review_id);
-  };
+  var handleHelp = () => { helpful(review.review_id); };
+  var handleReport = () => { report(review.review_id); };
   return (
     <div className="review">
       <h3>{review.summary}</h3>
