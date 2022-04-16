@@ -1,15 +1,10 @@
 import React from 'react';
 import StarRating from '../../StarRatingDisplay.jsx';
-
 let Metareview = ({product}) => {
   let totalRatings = 0;
   let ratingPoints = 0;
-  for (let star in product.ratings) {
-    totalRatings += parseInt(product.ratings[star]);
-    ratingPoints += parseInt(star) * product.ratings[star];
-  }
+  for (let star in product.ratings) { totalRatings += parseInt(product.ratings[star]); ratingPoints += parseInt(star) * product.ratings[star]; }
   let averageRating = ratingPoints / totalRatings;
-
   if (product.ratings) {
     return (
       <div className='Meta-Reviews'>
@@ -36,7 +31,5 @@ let Metareview = ({product}) => {
       </p>
     );
   }
-
 };
-
 export default Metareview;

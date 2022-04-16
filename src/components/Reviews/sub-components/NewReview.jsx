@@ -1,84 +1,23 @@
-import React/*, { useState }*/ from 'react';
-
-
-
+import React from 'react';
 var NewReview = ({visible, toggle, product, onSubmit}) => {
-
   var rating = 0;
-  var changeRating = (e) => {
-    rating = e.target.value;
-  };
-
+  var changeRating = (e) => { rating = e.target.value; };
   var summary = '';
-  var changeSummary = (e) => {
-    summary = e.target.value;
-  };
-
+  var changeSummary = (e) => { summary = e.target.value; };
   var review = '';
-  var changeReview = (e) => {
-    review = e.target.value;
-  };
-
+  var changeReview = (e) => { review = e.target.value; };
   var username = '';
-  var changeUsername = (e) => {
-    username = e.target.value;
-  };
-
+  var changeUsername = (e) => { username = e.target.value; };
   var email = '';
-  var changeEmail = (e) => {
-    email = e.target.value;
-  };
-
+  var changeEmail = (e) => { email = e.target.value; };
   var photos = [];
-  // var changePhotos = (e) => {
-  //   photos = e.target.value;
-  // }
-
   var characteristics = {};
-  // var changeCharacteristics = () => {
-  //   characteristics = e.target.value;
-  // }
-
-
-  var handleSubmit = () => {
-    if (username !== '' && email !== '' && rating > 0) {
-      onSubmit({
-        product_id: product,
-        rating: rating,
-        summary: summary,
-        body: review,
-        recommend: ((rating > 2) ? true : false),
-        name: username,
-        email: email,
-        photos: photos,
-        characteristics: characteristics
-      });
-    } else if (rating < 1) {
-      alert('You must provide a rating');
-    } else {
-      alert('Username and Email are required');
-    }
-
-  };
-
+  var handleSubmit = () => { if (username !== '' && email !== '' && rating > 0) { onSubmit({ product_id: product, rating: rating, summary: summary, body: review, recommend: ((rating > 2) ? true : false), name: username, email: email, photos: photos, characteristics: characteristics}); } else if (rating < 1) { alert('You must provide a rating'); } else { alert('Username and Email are required'); } };
   return (
-
     <div>
-      {/*
-
-      **TODO**
-
-      Add Star Rating System
-
-      Idea -- 5 icons
-              onhover, icon grows larger.
-              On click set rating integer to the star number.
-              If rating >= star number, color = gold, else white. (Use ternary)
-
-      */}
       <button className="Review-Button" onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
-        <div className="modal-content" style={{'max-height': '90vh', 'max-width': '60vw', 'overflow-y': 'auto'}}>
+        <div className="modal-content" style={{'maxHeight': '90vh', 'maxWidth': '60vw', 'overflowY': 'auto'}}>
           <div className="modal-row">
             <span className="review-title">New Review</span>
           </div>
@@ -114,7 +53,4 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
     </div>
   );
 };
-
-
-
 export default NewReview;
