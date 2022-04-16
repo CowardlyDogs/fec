@@ -36,3 +36,25 @@ describe('AddQ input fields', function () {
     cy.get('button[name=submit]').click({force: true});
   });
 });
+
+describe('AddA input infields', function () {
+  it('Find AddA input fields, enters text', function () {
+    cy.visit('http://localhost:3000/');
+
+    cy.contains('Add Answer').click();
+
+    cy.get('textarea[name=AddAbody]')
+      .type('Question Body')
+      .should('have.value', 'Question Body');
+
+    cy.get('input[name=AddANickName]')
+      .type('Input 1')
+      .should('have.value', 'Input 1');
+
+    cy.get('input[name=AddAEmail]')
+      .type('email@email.com')
+      .should('have.value', 'email@email.com');
+
+    cy.get('button[name=submit]').click({force: true});
+  });
+});
