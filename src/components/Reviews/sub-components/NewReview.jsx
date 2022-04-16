@@ -1,45 +1,27 @@
-import React/*, { useState }*/ from 'react';
-
-
-
+import React from 'react';
 var NewReview = ({visible, toggle, product, onSubmit}) => {
-
   var rating = 0;
   var changeRating = (e) => {
     rating = e.target.value;
   };
-
   var summary = '';
   var changeSummary = (e) => {
     summary = e.target.value;
   };
-
   var review = '';
   var changeReview = (e) => {
     review = e.target.value;
   };
-
   var username = '';
   var changeUsername = (e) => {
     username = e.target.value;
   };
-
   var email = '';
   var changeEmail = (e) => {
     email = e.target.value;
   };
-
   var photos = [];
-  // var changePhotos = (e) => {
-  //   photos = e.target.value;
-  // }
-
   var characteristics = {};
-  // var changeCharacteristics = () => {
-  //   characteristics = e.target.value;
-  // }
-
-
   var handleSubmit = () => {
     if (username !== '' && email !== '' && rating > 0) {
       onSubmit({
@@ -58,24 +40,9 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
     } else {
       alert('Username and Email are required');
     }
-
   };
-
   return (
-
     <div>
-      {/*
-
-      **TODO**
-
-      Add Star Rating System
-
-      Idea -- 5 icons
-              onhover, icon grows larger.
-              On click set rating integer to the star number.
-              If rating >= star number, color = gold, else white. (Use ternary)
-
-      */}
       <button className="Review-Button" onClick={toggle} style={{display: (!visible ? 'block' : 'none')}}>Post a Review</button>
       <div className="review-modal" style={{display: (visible ? 'flex' : 'none')}}>
         <div className="modal-content" style={{'maxHeight': '90vh', 'maxWidth': '60vw', 'overflowY': 'auto'}}>
@@ -114,7 +81,4 @@ var NewReview = ({visible, toggle, product, onSubmit}) => {
     </div>
   );
 };
-
-
-
 export default NewReview;
