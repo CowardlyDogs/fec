@@ -145,14 +145,14 @@ var AddAnswer = () => {
 
           <div className='formInputs'>
             <span className='quesTitle'>Your Answer</span>
-            <textarea required className='quesBody' style={{height: '100px'}} placeholder='Answer here'  rows='14' cols='10' wrap='soft' maxLength='1000' value={answerVal} onChange={e=>setAnswerVal(e.target.value)}/>
+            <textarea required className='quesBody' name='AddAbody' style={{height: '100px'}} placeholder='Answer here'  rows='14' cols='10' wrap='soft' maxLength='1000' value={answerVal} onChange={e=>setAnswerVal(e.target.value)}/>
 
             <span className='quesTitle'>What is your nickname?</span>
-            <input required className='formInput'  placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
+            <input required className='formInput' name='AddANickName' placeholder='Example: jackson11!'      type='text'  maxLength='60'   value={nicknameVal} onChange={e=>setNicknameVal(e.target.value)}/>
             <span className='sub-title'>For privacy reasons, do not use your full name or email address</span>
 
             <span className='quesTitle'>Your email</span>
-            <input required className='formInput' placeholder='Example: jack@email.com'     type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
+            <input required className='formInput' name='AddAEmail' placeholder='Example: jack@email.com'     type='email' maxLength='60'   value={emailVal}    onChange={e=>setEmailVal(e.target.value)}/>
             <span className='sub-title'>For authentication reasons, you will not be emailed</span>
 
 
